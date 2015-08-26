@@ -1,5 +1,5 @@
 <?php
-class package extends CI_Controller{
+class payment extends CI_Controller{
 
 	public function main(){
 
@@ -7,14 +7,13 @@ class package extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('admin') != null){
+		if($this->session->userdata('id') != null){
 			
-			$this->load->view("package.php");
+			$this->load->view("payment");
 
 		}else{
 			redirect("auth");
 		}
-		
 		
 
 	}

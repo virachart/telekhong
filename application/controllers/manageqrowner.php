@@ -44,7 +44,7 @@ class manageqr extends CI_Controller{
 
 
 	public function search(){
-		if($this->session->userdata('admin') != null){
+		if ($this->input->post("btsave")!=null) {
 			$name = $this->input->post("searchqr");
 			// echo $name;
 

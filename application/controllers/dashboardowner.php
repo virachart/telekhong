@@ -1,5 +1,5 @@
 <?php
-class dashboard extends CI_Controller{
+class dashboardowner extends CI_Controller{
 
 	public function main(){
 
@@ -7,7 +7,7 @@ class dashboard extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('admin') != null){
+		if($this->session->userdata('id') != null){
 			$y = date("Y");
 			$sqlStore = "Select * from store";
 			$data['store'] = $this->db->query($sqlStore);
@@ -43,7 +43,7 @@ class dashboard extends CI_Controller{
 			$data['user2'] = $this->db->query($sqlUser2);
 			$sqlUser1 = "SELECT * FROM user WHERE user_date like '".$y."-01%'";
 			$data['user1'] = $this->db->query($sqlUser1);
-			$this->load->view("dashboard",$data);
+			$this->load->view("dashboardowner",$data);
 			
 		}else{
 			redirect("auth");

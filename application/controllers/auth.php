@@ -53,9 +53,24 @@ class Auth extends CI_CONTROLLER{
 					))."'</script>");
 			}
 
-			$this->checkUser($me);
+			$this->checkAdmin($me);
 		}
 	}
+
+	public function checkAdmin($me){
+		$id = $me['id'];
+		$sqlUser = "Select * from admin where fb_id = ".$id;
+		$rs = $this->db->query($sqlUser);
+		if ($rs->num_rows==0) {
+			$this->checkUser($me);
+		}else{
+				$this->session->set_userdata($me);
+				$arad = array('admin' => "adminpass");
+				$this->session->set_userdata($arad);
+				redirect(base_url('index.php/statistics'));
+			}
+		}
+	
 
 	public function checkUser($me){
 		$id = $me['id'];
@@ -75,7 +90,7 @@ class Auth extends CI_CONTROLLER{
 				redirect("regis");
 			}else{
 				$this->session->set_userdata($me);
-				redirect(base_url('index.php/dashboard'));
+				redirect(base_url('index.php/dashboardowner'));
 			}
 		}
 	}

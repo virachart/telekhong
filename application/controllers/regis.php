@@ -29,7 +29,7 @@ class regis extends CI_Controller{
 		// 	// $this->db->set("user_fb_id",$id);
 			// $this->db->insert("owner",$arr);
 			
-			redirect("dashboard","refresh");
+			redirect("dashboardowner","refresh");
 			exit();
 		 }
 		$this->load->view("auth");

@@ -7,7 +7,7 @@ class manageuser extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('id') != null){
+		if($this->session->userdata('admin') != null){
 			$this->load->library("pagination");
 			$config['base_url'] = base_url()."index.php/manageuser/index";
 			$config['per_page'] = 10;

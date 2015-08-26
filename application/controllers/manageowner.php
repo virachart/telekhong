@@ -66,7 +66,7 @@ class manageowner extends CI_Controller{
 
 	
 	public function search(){
-		if ($this->input->post("btsave")!=null) {
+		if($this->session->userdata('admin') != null){
 			$name = $this->input->post("searchow");
 			// echo $name;
 			

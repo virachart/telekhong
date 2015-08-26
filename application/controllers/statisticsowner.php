@@ -7,7 +7,7 @@ class statistics extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('admin') != null){
+		if($this->session->userdata('id') != null){
 			$this->ye15();
 		}else{
 			redirect("auth");
