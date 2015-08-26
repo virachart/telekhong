@@ -8,7 +8,7 @@ class statistics extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('id') != null){
-			$this->load->view("statistics",$data);
+			$this->ye15();
 		}else{
 			redirect("auth");
 		}
@@ -47,7 +47,7 @@ class statistics extends CI_Controller{
 		//start owner
 		$sqlOwner12 = "SELECT * FROM owner WHERE owner_date like '".$y."-12%'";
 		$data['owner12'] = $this->db->query($sqlOwner12);
-		$sqlUser11 = "SELECT * FROM owner WHERE owner_date like '".$y."-11%'";
+		$sqlOwner11 = "SELECT * FROM owner WHERE owner_date like '".$y."-11%'";
 		$data['owner11'] = $this->db->query($sqlOwner11);
 		$sqlOwner10 = "SELECT * FROM owner WHERE owner_date like '".$y."-10%'";
 		$data['owner10'] = $this->db->query($sqlOwner10);
@@ -74,7 +74,7 @@ class statistics extends CI_Controller{
 		//start sensoro
 		$sqlsen12 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-12%'";
 		$data['sen12'] = $this->db->query($sqlsen12);
-		$sqlUser11 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-11%'";
+		$sqlsen11 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-11%'";
 		$data['sen11'] = $this->db->query($sqlsen11);
 		$sqlsen10 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-10%'";
 		$data['sen10'] = $this->db->query($sqlsen10);
@@ -109,6 +109,8 @@ class statistics extends CI_Controller{
 		$data['pack1'] = $this->db->query($sqlsen1);
 		//end package
 
+		//year
+		$data['year'] = 2014;
 		$this->load->view("statistics",$data);
 		
 	}
@@ -146,7 +148,7 @@ class statistics extends CI_Controller{
 		//start owner
 		$sqlOwner12 = "SELECT * FROM owner WHERE owner_date like '".$y."-12%'";
 		$data['owner12'] = $this->db->query($sqlOwner12);
-		$sqlUser11 = "SELECT * FROM owner WHERE owner_date like '".$y."-11%'";
+		$sqlOwner11 = "SELECT * FROM owner WHERE owner_date like '".$y."-11%'";
 		$data['owner11'] = $this->db->query($sqlOwner11);
 		$sqlOwner10 = "SELECT * FROM owner WHERE owner_date like '".$y."-10%'";
 		$data['owner10'] = $this->db->query($sqlOwner10);
@@ -173,7 +175,7 @@ class statistics extends CI_Controller{
 		//start sensoro
 		$sqlsen12 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-12%'";
 		$data['sen12'] = $this->db->query($sqlsen12);
-		$sqlUser11 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-11%'";
+		$sqlsen11 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-11%'";
 		$data['sen11'] = $this->db->query($sqlsen11);
 		$sqlsen10 = "SELECT * FROM sensoro WHERE sensoro_date like '".$y."-10%'";
 		$data['sen10'] = $this->db->query($sqlsen10);
@@ -207,6 +209,8 @@ class statistics extends CI_Controller{
 		$sqlpack1 = "SELECT * FROM store WHERE package_id = 1 and status_store_id = 1";
 		$data['pack1'] = $this->db->query($sqlsen1);
 		//end package
+
+		$data['year'] = 2015;
 
 		$this->load->view("statistics",$data);
 		

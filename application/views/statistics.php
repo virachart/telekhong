@@ -208,7 +208,8 @@
                             <div class="dropdown col-lg-6">
                                 <?php echo form_open()?>
 
-                                <select onchange="this.form.action='<?php echo site_url('statistics')?>/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;">
+                                <select onchange="this.form.action='<?php echo site_url('statistics')?>/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;" >
+                                    <option hidden><?php echo $year; ?></option>
                                     <option value="ye15">2015</option>
                                     <option value="ye14">2014</option>
                                 </select>
@@ -216,21 +217,44 @@
                             </div>
                         </div>
 
-                        <!-- /.row -->
+                        <!-- /.row user line graph -->
                         <div class="col-lg-12" >
                             <div class="panel panel-red">
                                 <div class="panel-heading">
                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> User Graph </h3>
                                 </div>
                                 <div class="panel-body">
-                                    <div id="morris-line-chart"></div>
-                                    <div class="text-right">
-                                        <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                    </div>
+                                <div id="morris-line-chart-user"></div>
+                                    
                                 </div>
                             </div>
                         </div>
 
+                        <!-- /.row owner line graph-->
+                        <div class="col-lg-12" >
+                            <div class="panel panel-primary">
+                                <div class="panel-heading" style="background-color : #337ab7; border-color: #337ab7;">
+                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Owner Graph </h3>
+                                </div>
+                                <div class="panel-body">
+                                <div id="morris-line-chart-owner"></div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- /.row sensoro line graph -->
+                        <div class="col-lg-12" >
+                            <div class="panel panel-red">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> User Graph </h3>
+                                </div>
+                                <div class="panel-body">
+                                <div id="morris-line-chart-sen"></div>
+                                    
+                                </div>
+                            </div>
+                        </div>
                         <!-- /.row -->
 
                         <div class="row" style="display:none;">
@@ -785,6 +809,512 @@
                 });
 
 </script>
+
+<!-- user line graph -->
+<!-- start -->
+<script type="text/javascript">
+    var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
+    // Line Chart
+    Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'morris-line-chart-user',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+        // month 1
+        <?php
+        
+        $yy = date("Y");
+        if ($year == $yy) {
+            $z = date("n");
+        }else{
+            $z = 12;
+        }
+
+        
+        if ($z >= 1) {
+            echo "{
+            M: '".$year."-01',
+            visits: ";
+            echo $user1->num_rows();
+            echo "}, ";
+        };?> 
+        
+        // month 2
+        <?php
+        if ($z >= 2) {
+            echo "{
+            M: '".$year."-02',
+            visits: ";
+            $numUser = $user2->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 3
+        <?php
+        if ($z >= 3) {
+            echo "{
+            M: '".$year."-03',
+            visits: ";
+            $numUser = $user3->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 4
+        <?php
+        if ($z >= 4) {
+            echo "{
+            M: '".$year."-04',
+            visits: ";
+            $numUser = $user4->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 5
+        <?php
+        if ($z >= 5) {
+            echo "{
+            M: '".$year."-05',
+            visits: ";
+            $numUser = $user5->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 6
+        <?php
+        if ($z >= 6) {
+            echo "{
+            M: '".$year."-06',
+            visits: ";
+            $numUser = $user6->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        
+        // month 7
+        <?php
+        if ($z >= 7) {
+            echo "{
+            M: '".$year."-07',
+            visits: ";
+            $numUser = $user7->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 8
+        <?php
+        if ($z >= 8) {
+            echo "{
+            M: '".$year."-08',
+            visits: ";
+            $numUser = $user8->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 9
+        <?php
+        if ($z >= 9) {
+            echo "{
+            M: '".$year."-09',
+            visits: ";
+            $numUser = $user9->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        // month 10
+        <?php
+        if ($z >= 10) {
+            echo "{
+            M: '".$year."-10',
+            visits: ";
+            $numUser = $user10->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        // month 11
+        <?php
+        if ($z >= 11) {
+            echo "{
+            M: '".$year."-11',
+            visits: ";
+            $numUser = $user11->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?>
+        // month 12
+        <?php
+        if ($z >= 12) {
+            echo "{
+            M: '".$year."-12',
+            visits: ";
+            $numUser = $user12->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?>
+        //end of value 12 month
+        ],
+        // The name of the data record attribute that contains x-visitss.
+        xkey: 'M',
+        // A list of names of data record attributes that contain y-visitss.
+        ykeys: ['visits'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['<?php echo $year ?>'],
+
+        xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+        var month = months[x.getMonth()];
+        return month;
+        },
+        // Disables line smoothing
+        smooth: false,
+        resize: true
+    });
+</script>
+<!-- end user line graph -->
+
+
+<!-- owner line graph -->
+<!-- start -->
+<script type="text/javascript">
+    var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
+    // Line Chart
+    Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'morris-line-chart-owner',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+        // month 1
+        <?php
+        
+        $yy = date("Y");
+        if ($year == $yy) {
+            $z = date("n");
+        }else{
+            $z = 12;
+        }
+        //month1
+        if ($z >= 1) {
+            echo "{
+            M: '".$year."-01',
+            visits: ";
+            echo $owner1->num_rows();
+            echo "}, ";
+        };?> 
+        
+        // month 2
+        <?php
+        if ($z >= 2) {
+            echo "{
+            M: '".$year."-02',
+            visits: ";
+            $numUser = $owner2->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 3
+        <?php
+        if ($z >= 3) {
+            echo "{
+            M: '".$year."-03',
+            visits: ";
+            $numUser = $owner3->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 4
+        <?php
+        if ($z >= 4) {
+            echo "{
+            M: '".$year."-04',
+            visits: ";
+            $numUser = $owner4->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 5
+        <?php
+        if ($z >= 5) {
+            echo "{
+            M: '".$year."-05',
+            visits: ";
+            $numUser = $owner5->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 6
+        <?php
+        if ($z >= 6) {
+            echo "{
+            M: '".$year."-06',
+            visits: ";
+            $numUser = $owner6->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        
+        // month 7
+        <?php
+        if ($z >= 7) {
+            echo "{
+            M: '".$year."-07',
+            visits: ";
+            $numUser = $owner7->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 8
+        <?php
+        if ($z >= 8) {
+            echo "{
+            M: '".$year."-08',
+            visits: ";
+            $numUser = $owner8->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 9
+        <?php
+        if ($z >= 9) {
+            echo "{
+            M: '".$year."-09',
+            visits: ";
+            $numUser = $owner9->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        // month 10
+        <?php
+        if ($z >= 10) {
+            echo "{
+            M: '".$year."-10',
+            visits: ";
+            $numUser = $owner10->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        // month 11
+        <?php
+        if ($z >= 11) {
+            echo "{
+            M: '".$year."-11',
+            visits: ";
+            $numUser = $owner11->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?>
+        // month 12
+        <?php
+        if ($z >= 12) {
+            echo "{
+            M: '".$year."-12',
+            visits: ";
+            $numUser = $owner12->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?>
+        //end of value 12 month
+        ],
+        // The name of the data record attribute that contains x-visitss.
+        xkey: 'M',
+        // A list of names of data record attributes that contain y-visitss.
+        ykeys: ['visits'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['<?php echo $year ?>'],
+
+        xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+        var month = months[x.getMonth()];
+        return month;
+        },
+        // Disables line smoothing
+        smooth: false,
+        resize: true
+    });
+</script>
+<!-- end owner line graph -->
+
+<!-- sensoro line graph -->
+<!-- start -->
+<script type="text/javascript">
+    var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
+    // Line Chart
+    Morris.Line({
+        // ID of the element in which to draw the chart.
+        element: 'morris-line-chart-owner',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+        // month 1
+        <?php
+        
+        $yy = date("Y");
+        if ($year == $yy) {
+            $z = date("n");
+        }else{
+            $z = 12;
+        }
+        //month1
+        if ($z >= 1) {
+            echo "{
+            M: '".$year."-01',
+            visits: ";
+            echo $owner1->num_rows();
+            echo "}, ";
+        };?> 
+        
+        // month 2
+        <?php
+        if ($z >= 2) {
+            echo "{
+            M: '".$year."-02',
+            visits: ";
+            $numUser = $owner2->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 3
+        <?php
+        if ($z >= 3) {
+            echo "{
+            M: '".$year."-03',
+            visits: ";
+            $numUser = $owner3->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 4
+        <?php
+        if ($z >= 4) {
+            echo "{
+            M: '".$year."-04',
+            visits: ";
+            $numUser = $owner4->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 5
+        <?php
+        if ($z >= 5) {
+            echo "{
+            M: '".$year."-05',
+            visits: ";
+            $numUser = $owner5->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 6
+        <?php
+        if ($z >= 6) {
+            echo "{
+            M: '".$year."-06',
+            visits: ";
+            $numUser = $owner6->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        
+        // month 7
+        <?php
+        if ($z >= 7) {
+            echo "{
+            M: '".$year."-07',
+            visits: ";
+            $numUser = $owner7->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 8
+        <?php
+        if ($z >= 8) {
+            echo "{
+            M: '".$year."-08',
+            visits: ";
+            $numUser = $owner8->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+         
+        // month 9
+        <?php
+        if ($z >= 9) {
+            echo "{
+            M: '".$year."-09',
+            visits: ";
+            $numUser = $owner9->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        // month 10
+        <?php
+        if ($z >= 10) {
+            echo "{
+            M: '".$year."-10',
+            visits: ";
+            $numUser = $owner10->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?> 
+        // month 11
+        <?php
+        if ($z >= 11) {
+            echo "{
+            M: '".$year."-11',
+            visits: ";
+            $numUser = $owner11->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?>
+        // month 12
+        <?php
+        if ($z >= 12) {
+            echo "{
+            M: '".$year."-12',
+            visits: ";
+            $numUser = $owner12->num_rows();
+            echo $numUser;
+            echo "}, ";
+        };?>
+        //end of value 12 month
+        ],
+        // The name of the data record attribute that contains x-visitss.
+        xkey: 'M',
+        // A list of names of data record attributes that contain y-visitss.
+        ykeys: ['visits'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['<?php echo $year ?>'],
+
+        xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+        var month = months[x.getMonth()];
+        return month;
+        },
+        // Disables line smoothing
+        smooth: false,
+        resize: true
+    });
+</script>
+<!-- end sensoro line graph -->
+
+
+
 </body>
 
 </html>
