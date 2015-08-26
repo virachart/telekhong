@@ -56,7 +56,7 @@ $(function() {
 
     var data = [{
         label: "Series 0",
-        data: 1
+        data: 10
     }, {
         label: "Series 1",
         data: 3

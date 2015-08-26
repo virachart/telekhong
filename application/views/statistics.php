@@ -210,7 +210,7 @@
 
                                 <select onchange="this.form.action='<?php echo site_url('statistics')?>/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;" >
                                     <option hidden><?php echo $year; ?></option>
-                                    <option value="ye15">2015</option>
+                                    <option value="">2015</option>
                                     <option value="ye14">2014</option>
                                 </select>
                                 <?php echo form_close(); ?>
@@ -224,7 +224,7 @@
                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> User Graph </h3>
                                 </div>
                                 <div class="panel-body">
-                                <div id="morris-line-chart-user"></div>
+                                    <div id="morris-line-chart-user"></div>
                                     
                                 </div>
                             </div>
@@ -237,7 +237,7 @@
                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Owner Graph </h3>
                                 </div>
                                 <div class="panel-body">
-                                <div id="morris-line-chart-owner"></div>
+                                    <div id="morris-line-chart-owner"></div>
                                     
                                 </div>
                             </div>
@@ -247,10 +247,10 @@
                         <div class="col-lg-12" >
                             <div class="panel panel-red">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> User Graph </h3>
+                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Sensoro Graph </h3>
                                 </div>
                                 <div class="panel-body">
-                                <div id="morris-line-chart-sen"></div>
+                                    <div id="morris-line-chart-sen"></div>
                                     
                                 </div>
                             </div>
@@ -272,548 +272,103 @@
                             </div>
                         </div>
                         <!-- /.row -->
-                        <div class="col-lg-12">
-                            <div class="panel panel-primary">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Bar Graph </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div class="flot-chart">
-                                        <div class="flot-chart-content" id="flot-bar-chart"></div>
-                                    </div>
-                                    <div class="text-right">
-                                        <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>Bar Chart in 2015</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-
-                                                <td>Total/Month</td>
-                                                <td>Jan</td>
-                                                <td>Feb</td>
-                                                <td>March</td>
-                                                <td>Apirl</td>
-                                                <td>May</td>
-                                                <td>June</td>
-                                                <td>July</td>
-                                                <td>Aug</td>
-                                                <td>Sep</td>
-                                                <td>Oct</td>
-                                                <td>Nov</td>
-                                                <td>Dec</td>
-                                                <td>Total</td>
-
-                                            </tr>
-
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>receiver</td>
-                                                <td>10</td>
-                                                <td>20</td>
-                                                <td>30</td>
-                                                <td>40</td>
-                                                <td>50</td>
-                                                <td>60</td>
-                                                <td>70</td>
-                                                <td>80</td>
-                                                <td>90</td>
-                                                <td>100</td>
-                                                <td>110</td>
-                                                <td>120</td>
-                                                <td>780</td>
-
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>                                 
-                        </div>
+                        
+                        
                         <div class="row" style=" margin-top: 40px;">
                             <div class="col-lg-6">
                                 <div class="panel panel-green">
                                     <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Pie Chart </h3>
+                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Package Chart </h3>
                                     </div>
                                     <div class="panel-body">
                                         <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-pie-chart"></div>
+                                            <div class="flot-chart-content" id="flot-pie-chart-package"></div>
                                         </div>
-                                        <div class="text-right">
-                                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h4>Pie Chart in 2015</h4>
+                                    <h4>Package Chart</h4>
                                     <div class="table-responsive">
                                         <table class="table table-bordered table-hover">
                                             <thead>
                                                 <tr>
 
-                                                    <td>11-15</td>
-                                                    <td>16-20</td>
-                                                    <td>21-25</td>
-                                                    <td>26-30</td>
+                                                    <td>Normal Package</td>
+                                                    <td>Gold Package</td>
+                                                    <td>Silver Package</td>
+                                                    <td>Platnum Package</td>
                                                     <td>Total</td>
 
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td>50</td>
-                                                    <td>100</td>
-                                                    <td>650</td>
-                                                    <td>200</td>
-                                                    <td>1000</td>
+                                                    <td><?php $pa1 = $pack1->num_rows(); echo $pa1; ?></td>
+                                                    <td><?php $pa2 = $pack2->num_rows(); echo $pa2; ?></td>
+                                                    <td><?php $pa3 = $pack3->num_rows(); echo $pa3; ?></td>
+                                                    <td><?php $pa4 = $pack4->num_rows(); echo $pa4; ?></td>
+                                                    <td><?php $pa = $pa1+$pa2+$pa3+$pa4; echo $pa; ?></td>
 
                                                 </tr>
-                                                <tr>
-                                                    <td>5 %</td>
-                                                    <td>10 %</td>
-                                                    <td>65 %</td>
-                                                    <td>20 %</td>
-                                                    <td>100 %</td>
-
-                                                </tr>
-
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>                                 
                             </div>
-                            <div class="col-lg-8" style="display:none;">
-                                <div class="panel panel-yellow">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Multiple Axes Line Graph Example with Tooltips and Raw Data</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-multiple-axes-chart"></div>
-                                        </div>
-                                        <div class="text-right">
-                                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-
-                        <div class="row" >
-                            <div class="col-lg-6" style="display:none;">
-                                <div class="panel panel-red">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Moving Line Chart</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-moving-line-chart"></div>
-                                        </div>
-                                        <div class="text-right">
-                                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <!-- /.row -->
-
-                        <!-- Morris Charts -->
-                        <div class="row" style="display:none;">
-                            <div class="col-lg-12">
-                                <h2 class="page-header">Morris Charts</h2>
-                                <p class="lead">Morris.js is a very simple API for drawing line, bar, area and donut charts. For full usage instructions and documentation for Morris.js charts, visit <a href="http://morrisjs.github.io/morris.js/">http://morrisjs.github.io/morris.js/</a>.</p>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-
-                        <div class="row" style="display:none;">
-                            <div class="col-lg-12">
-                                <div class="panel panel-green">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Area Line Graph Example with Tooltips</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div id="morris-area-chart"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-
-                        <div class="row" >
-                            <div class="col-lg-4" style="display:none;">
-                                <div class="panel panel-yellow">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Donut Chart Example</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div id="morris-donut-chart"></div>
-                                        <div class="text-right">
-                                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4" style="display:none;">
-                                <div class="panel panel-red">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Line Graph Example with Tooltips</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div id="morris-line-chart"></div>
-                                        <div class="text-right">
-                                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12" >
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Bar Graph </h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div id="morris-bar-chart"></div>
-                                        <div class="text-right">
-                                            <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <h4>Bar Graph in 2015</h4>
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover">
-                                        <thead>
-                                            <tr>
-
-                                                <td>Total/Month</td>
-                                                <td>Jan</td>
-                                                <td>Feb</td>
-                                                <td>March</td>
-                                                <td>Apirl</td>
-                                                <td>May</td>
-                                                <td>June</td>
-                                                <td>July</td>
-                                                <td>Aug</td>
-                                                <td>Sep</td>
-                                                <td>Oct</td>
-                                                <td>Nov</td>
-                                                <td>Dec</td>
-                                                <td>Total</td>
-
-                                            </tr>
-
-                                        </thead>
-                                        <tbody>
-
-                                            <tr>
-                                                <td>Buy</td>
-                                                <td>10</td>
-                                                <td>20</td>
-                                                <td>30</td>
-                                                <td>40</td>
-                                                <td>50</td>
-                                                <td>60</td>
-                                                <td>70</td>
-                                                <td>80</td>
-                                                <td>90</td>
-                                                <td>100</td>
-                                                <td>110</td>
-                                                <td>120</td>
-                                                <td>780</td>
-
-                                            </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>                                 
-                        </div>
-                        <div><br></div>
-                        <center><div class="row">
-                            <div class="col-lg-12">
-                                <ol class="breadcrumb">
-                                    <li>You can contact us in this page </li>
-                                    <li> facebook : www.facebook.com/promotion2you</li>
-                                    <li> tel.08X-XXX-XXXX KingMongkutt's University of technology thonburi</li>
-                                </ol>
-                            </div>
-                        </div></center>
-                        <!-- /.row -->
 
                     </div>
-                    <!-- /.container-fluid -->
+                    <!-- /.row .........................-->
+
+                    
+                    <div><br></div>
+                    <center><div class="row">
+                        <div class="col-lg-12">
+                            <ol class="breadcrumb">
+                                <li>You can contact us in this page </li>
+                                <li> facebook : www.facebook.com/promotion2you</li>
+                                <li> tel.08X-XXX-XXXX KingMongkutt's University of technology thonburi</li>
+                            </ol>
+                        </div>
+                    </div></center>
+                    <!-- /.row -->
 
                 </div>
-                <!-- /#page-wrapper -->
+                <!-- /.container-fluid -->
 
             </div>
-            <!-- /#wrapper -->
+            <!-- /#page-wrapper -->
 
-            <!-- jQuery -->
-            <script src="<?=base_url()?>assets/js/jquery.js"></script>
+        </div>
+        <!-- /#wrapper -->
 
-            <!-- Bootstrap Core JavaScript -->
-            <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+        <!-- jQuery -->
+        <script src="<?=base_url()?>assets/js/jquery.js"></script>
 
-            <!-- Morris Charts JavaScript -->
-            <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
-            <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
-            <!-- <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script>-->
+        <!-- Bootstrap Core JavaScript -->
+        <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 
-            <!-- Flot Charts JavaScript -->
-            <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-            <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.js"></script>
-            <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-            <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
-            <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
-            <script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script>
+        <!-- Morris Charts JavaScript -->
+        <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
+        <!-- <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script>-->
 
-            <script type="text/javascript">
-                // Area Chart
-                Morris.Area({
-                    element: 'morris-area-chart',
-                    data: [{
-                        period: '2010 Q1',
-                        iphone: 2666,
-                        ipad: null,
-                        itouch: 2647
-                    }, {
-                        period: '2010 Q2',
-                        iphone: 2778,
-                        ipad: 2294,
-                        itouch: 2441
-                    }, {
-                        period: '2010 Q3',
-                        iphone: 4912,
-                        ipad: 1969,
-                        itouch: 2501
-                    }, {
-                        period: '2010 Q4',
-                        iphone: 3767,
-                        ipad: 3597,
-                        itouch: 5689
-                    }, {
-                        period: '2011 Q1',
-                        iphone: 6810,
-                        ipad: 1914,
-                        itouch: 2293
-                    }, {
-                        period: '2011 Q2',
-                        iphone: 5670,
-                        ipad: 4293,
-                        itouch: 1881
-                    }, {
-                        period: '2011 Q3',
-                        iphone: 4820,
-                        ipad: 3795,
-                        itouch: 1588
-                    }, {
-                        period: '2011 Q4',
-                        iphone: 15073,
-                        ipad: 5967,
-                        itouch: 5175
-                    }, {
-                        period: '2012 Q1',
-                        iphone: 10687,
-                        ipad: 4460,
-                        itouch: 2028
-                    }, {
-                        period: '2012 Q2',
-                        iphone: 8432,
-                        ipad: 5713,
-                        itouch: 1791
-                    }],
-                    xkey: 'period',
-                    ykeys: ['iphone', 'ipad', 'itouch'],
-                    labels: ['iPhone', 'iPad', 'iPod Touch'],
-                    pointSize: 2,
-                    hideHover: 'auto',
-                    resize: true
-                });
+        <!-- Flot Charts JavaScript -->
+        <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
+        <!-- <script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script> -->
 
-                // Donut Chart
-                Morris.Donut({
-                    element: 'morris-donut-chart',
-                    data: [{
-                        label: "Download Sales",
-                        value: 12
-                    }, {
-                        label: "In-Store Sales",
-                        value: 30
-                    }, {
-                        label: "Mail-Order Sales",
-                        value: 20
-                    }],
-                    resize: true
-                });
 
-                // Line Chart
-                Morris.Line({
-                    // ID of the element in which to draw the chart.
-                    element: 'morris-line-chart',
-                    // Chart data records -- each entry in this array corresponds to a point on
-                    // the chart.
-                    data: [{
-                        d: '2012-10-01',
-                        visits: 802
-                    }, {
-                        d: '2012-10-02',
-                        visits: 783
-                    }, {
-                        d: '2012-10-03',
-                        visits: 820
-                    }, {
-                        d: '2012-10-04',
-                        visits: 839
-                    }, {
-                        d: '2012-10-05',
-                        visits: 792
-                    }, {
-                        d: '2012-10-06',
-                        visits: 859
-                    }, {
-                        d: '2012-10-07',
-                        visits: 790
-                    }, {
-                        d: '2012-10-08',
-                        visits: 1680
-                    }, {
-                        d: '2012-10-09',
-                        visits: 1592
-                    }, {
-                        d: '2012-10-10',
-                        visits: 1420
-                    }, {
-                        d: '2012-10-11',
-                        visits: 882
-                    }, {
-                        d: '2012-10-12',
-                        visits: 889
-                    }, {
-                        d: '2012-10-13',
-                        visits: 819
-                    }, {
-                        d: '2012-10-14',
-                        visits: 849
-                    }, {
-                        d: '2012-10-15',
-                        visits: 870
-                    }, {
-                        d: '2012-10-16',
-                        visits: 1063
-                    }, {
-                        d: '2012-10-17',
-                        visits: 1192
-                    }, {
-                        d: '2012-10-18',
-                        visits: 1224
-                    }, {
-                        d: '2012-10-19',
-                        visits: 1329
-                    }, {
-                        d: '2012-10-20',
-                        visits: 1329
-                    }, {
-                        d: '2012-10-21',
-                        visits: 1239
-                    }, {
-                        d: '2012-10-22',
-                        visits: 1190
-                    }, {
-                        d: '2012-10-23',
-                        visits: 1312
-                    }, {
-                        d: '2012-10-24',
-                        visits: 1293
-                    }, {
-                        d: '2012-10-25',
-                        visits: 1283
-                    }, {
-                        d: '2012-10-26',
-                        visits: 1248
-                    }, {
-                        d: '2012-10-27',
-                        visits: 1323
-                    }, {
-                        d: '2012-10-28',
-                        visits: 1390
-                    }, {
-                        d: '2012-10-29',
-                        visits: 1420
-                    }, {
-                        d: '2012-10-30',
-                        visits: 1529
-                    }, {
-                        d: '2012-10-31',
-                        visits: 1892
-                    }, ],
-                    // The name of the data record attribute that contains x-visitss.
-                    xkey: 'd',
-                    // A list of names of data record attributes that contain y-visitss.
-                    ykeys: ['visits'],
-                    // Labels for the ykeys -- will be displayed when you hover over the
-                    // chart.
-                    labels: ['Visits'],
-                    // Disables line smoothing
-                    smooth: false,
-                    resize: true
-                });
 
-                // Bar Chart
-                Morris.Bar({
-                    element: 'morris-bar-chart',
-                    data: [{
-                        device: 'iPhone',
-                        geekbench: 136
-                    }, {
-                        device: 'iPhone 3G',
-                        geekbench: 137
-                    }, {
-                        device: 'iPhone 3GS',
-                        geekbench: 275
-                    }, {
-                        device: 'iPhone 4',
-                        geekbench: 380
-                    }, {
-                        device: 'iPhone 4S',
-                        geekbench: 655
-                    }, {
-                        device: 'iPhone 5',
-                        geekbench: 1571
-                    }],
-                    xkey: 'device',
-                    ykeys: ['geekbench'],
-                    labels: ['Geekbench'],
-                    barRatio: 0.4,
-                    xLabelAngle: 35,
-                    hideHover: 'auto',
-                    resize: true
-                });
-
-</script>
-
-<!-- user line graph -->
-<!-- start -->
-<script type="text/javascript">
-    var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
+        <!-- user line graph -->
+        <!-- start -->
+        <script type="text/javascript">
+            var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -834,129 +389,129 @@
         
         if ($z >= 1) {
             echo "{
-            M: '".$year."-01',
-            visits: ";
-            echo $user1->num_rows();
-            echo "}, ";
-        };?> 
-        
+                M: '".$year."-01',
+                visits: ";
+                echo $user1->num_rows();
+                echo "}, ";
+            };?> 
+
         // month 2
         <?php
         if ($z >= 2) {
             echo "{
-            M: '".$year."-02',
-            visits: ";
-            $numUser = $user2->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-02',
+                visits: ";
+                $numUser = $user2->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 3
         <?php
         if ($z >= 3) {
             echo "{
-            M: '".$year."-03',
-            visits: ";
-            $numUser = $user3->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-03',
+                visits: ";
+                $numUser = $user3->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 4
         <?php
         if ($z >= 4) {
             echo "{
-            M: '".$year."-04',
-            visits: ";
-            $numUser = $user4->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-04',
+                visits: ";
+                $numUser = $user4->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 5
         <?php
         if ($z >= 5) {
             echo "{
-            M: '".$year."-05',
-            visits: ";
-            $numUser = $user5->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-05',
+                visits: ";
+                $numUser = $user5->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 6
         <?php
         if ($z >= 6) {
             echo "{
-            M: '".$year."-06',
-            visits: ";
-            $numUser = $user6->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-        
+                M: '".$year."-06',
+                visits: ";
+                $numUser = $user6->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 7
         <?php
         if ($z >= 7) {
             echo "{
-            M: '".$year."-07',
-            visits: ";
-            $numUser = $user7->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-07',
+                visits: ";
+                $numUser = $user7->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 8
         <?php
         if ($z >= 8) {
             echo "{
-            M: '".$year."-08',
-            visits: ";
-            $numUser = $user8->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-08',
+                visits: ";
+                $numUser = $user8->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 9
         <?php
         if ($z >= 9) {
             echo "{
-            M: '".$year."-09',
-            visits: ";
-            $numUser = $user9->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
+                M: '".$year."-09',
+                visits: ";
+                $numUser = $user9->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
         // month 10
         <?php
         if ($z >= 10) {
             echo "{
-            M: '".$year."-10',
-            visits: ";
-            $numUser = $user10->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
+                M: '".$year."-10',
+                visits: ";
+                $numUser = $user10->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
         // month 11
         <?php
         if ($z >= 11) {
             echo "{
-            M: '".$year."-11',
-            visits: ";
-            $numUser = $user11->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
+                M: '".$year."-11',
+                visits: ";
+                $numUser = $user11->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?>
         // month 12
         <?php
         if ($z >= 12) {
             echo "{
-            M: '".$year."-12',
-            visits: ";
-            $numUser = $user12->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
+                M: '".$year."-12',
+                visits: ";
+                $numUser = $user12->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?>
         //end of value 12 month
         ],
         // The name of the data record attribute that contains x-visitss.
@@ -968,8 +523,8 @@
         labels: ['<?php echo $year ?>'],
 
         xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
-        var month = months[x.getMonth()];
-        return month;
+            var month = months[x.getMonth()];
+            return month;
         },
         // Disables line smoothing
         smooth: false,
@@ -1002,129 +557,129 @@
         //month1
         if ($z >= 1) {
             echo "{
-            M: '".$year."-01',
-            visits: ";
-            echo $owner1->num_rows();
-            echo "}, ";
-        };?> 
-        
+                M: '".$year."-01',
+                visits: ";
+                echo $owner1->num_rows();
+                echo "}, ";
+            };?> 
+
         // month 2
         <?php
         if ($z >= 2) {
             echo "{
-            M: '".$year."-02',
-            visits: ";
-            $numUser = $owner2->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-02',
+                visits: ";
+                $numUser = $owner2->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 3
         <?php
         if ($z >= 3) {
             echo "{
-            M: '".$year."-03',
-            visits: ";
-            $numUser = $owner3->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-03',
+                visits: ";
+                $numUser = $owner3->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 4
         <?php
         if ($z >= 4) {
             echo "{
-            M: '".$year."-04',
-            visits: ";
-            $numUser = $owner4->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-04',
+                visits: ";
+                $numUser = $owner4->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 5
         <?php
         if ($z >= 5) {
             echo "{
-            M: '".$year."-05',
-            visits: ";
-            $numUser = $owner5->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-05',
+                visits: ";
+                $numUser = $owner5->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 6
         <?php
         if ($z >= 6) {
             echo "{
-            M: '".$year."-06',
-            visits: ";
-            $numUser = $owner6->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-        
+                M: '".$year."-06',
+                visits: ";
+                $numUser = $owner6->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 7
         <?php
         if ($z >= 7) {
             echo "{
-            M: '".$year."-07',
-            visits: ";
-            $numUser = $owner7->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-07',
+                visits: ";
+                $numUser = $owner7->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 8
         <?php
         if ($z >= 8) {
             echo "{
-            M: '".$year."-08',
-            visits: ";
-            $numUser = $owner8->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-08',
+                visits: ";
+                $numUser = $owner8->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 9
         <?php
         if ($z >= 9) {
             echo "{
-            M: '".$year."-09',
-            visits: ";
-            $numUser = $owner9->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
+                M: '".$year."-09',
+                visits: ";
+                $numUser = $owner9->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
         // month 10
         <?php
         if ($z >= 10) {
             echo "{
-            M: '".$year."-10',
-            visits: ";
-            $numUser = $owner10->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
+                M: '".$year."-10',
+                visits: ";
+                $numUser = $owner10->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
         // month 11
         <?php
         if ($z >= 11) {
             echo "{
-            M: '".$year."-11',
-            visits: ";
-            $numUser = $owner11->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
+                M: '".$year."-11',
+                visits: ";
+                $numUser = $owner11->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?>
         // month 12
         <?php
         if ($z >= 12) {
             echo "{
-            M: '".$year."-12',
-            visits: ";
-            $numUser = $owner12->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
+                M: '".$year."-12',
+                visits: ";
+                $numUser = $owner12->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?>
         //end of value 12 month
         ],
         // The name of the data record attribute that contains x-visitss.
@@ -1136,8 +691,8 @@
         labels: ['<?php echo $year ?>'],
 
         xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
-        var month = months[x.getMonth()];
-        return month;
+            var month = months[x.getMonth()];
+            return month;
         },
         // Disables line smoothing
         smooth: false,
@@ -1153,7 +708,7 @@
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
-        element: 'morris-line-chart-owner',
+        element: 'morris-line-chart-sen',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
         data: [
@@ -1169,129 +724,129 @@
         //month1
         if ($z >= 1) {
             echo "{
-            M: '".$year."-01',
-            visits: ";
-            echo $owner1->num_rows();
-            echo "}, ";
-        };?> 
-        
+                M: '".$year."-01',
+                visits: ";
+                echo $sen1->num_rows();
+                echo "}, ";
+            };?> 
+
         // month 2
         <?php
         if ($z >= 2) {
             echo "{
-            M: '".$year."-02',
-            visits: ";
-            $numUser = $owner2->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-02',
+                visits: ";
+                $numUser = $sen2->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 3
         <?php
         if ($z >= 3) {
             echo "{
-            M: '".$year."-03',
-            visits: ";
-            $numUser = $owner3->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-03',
+                visits: ";
+                $numUser = $sen3->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 4
         <?php
         if ($z >= 4) {
             echo "{
-            M: '".$year."-04',
-            visits: ";
-            $numUser = $owner4->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-04',
+                visits: ";
+                $numUser = $sen4->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 5
         <?php
         if ($z >= 5) {
             echo "{
-            M: '".$year."-05',
-            visits: ";
-            $numUser = $owner5->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-05',
+                visits: ";
+                $numUser = $sen5->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 6
         <?php
         if ($z >= 6) {
             echo "{
-            M: '".$year."-06',
-            visits: ";
-            $numUser = $owner6->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-        
+                M: '".$year."-06',
+                visits: ";
+                $numUser = $sen6->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 7
         <?php
         if ($z >= 7) {
             echo "{
-            M: '".$year."-07',
-            visits: ";
-            $numUser = $owner7->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-07',
+                visits: ";
+                $numUser = $sen7->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 8
         <?php
         if ($z >= 8) {
             echo "{
-            M: '".$year."-08',
-            visits: ";
-            $numUser = $owner8->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
+                M: '".$year."-08',
+                visits: ";
+                $numUser = $sen8->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
+
         // month 9
         <?php
         if ($z >= 9) {
             echo "{
-            M: '".$year."-09',
-            visits: ";
-            $numUser = $owner9->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
+                M: '".$year."-09',
+                visits: ";
+                $numUser = $sen9->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
         // month 10
         <?php
         if ($z >= 10) {
             echo "{
-            M: '".$year."-10',
-            visits: ";
-            $numUser = $owner10->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
+                M: '".$year."-10',
+                visits: ";
+                $numUser = $sen10->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?> 
         // month 11
         <?php
         if ($z >= 11) {
             echo "{
-            M: '".$year."-11',
-            visits: ";
-            $numUser = $owner11->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
+                M: '".$year."-11',
+                visits: ";
+                $numUser = $sen11->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?>
         // month 12
         <?php
         if ($z >= 12) {
             echo "{
-            M: '".$year."-12',
-            visits: ";
-            $numUser = $owner12->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
+                M: '".$year."-12',
+                visits: ";
+                $numUser = $sen12->num_rows();
+                echo $numUser;
+                echo "}, ";
+            };?>
         //end of value 12 month
         ],
         // The name of the data record attribute that contains x-visitss.
@@ -1303,8 +858,8 @@
         labels: ['<?php echo $year ?>'],
 
         xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
-        var month = months[x.getMonth()];
-        return month;
+            var month = months[x.getMonth()];
+            return month;
         },
         // Disables line smoothing
         smooth: false,
@@ -1314,7 +869,62 @@
 <!-- end sensoro line graph -->
 
 
+<!-- pie chart package -->
+<!-- start -->
+<script type="text/javascript">
+    // Flot Pie Chart with Tooltips
+    $(function() {
 
+        var data = [{
+            label: "Normal Package",
+            <?php
+            echo "data: ";
+            echo $pack1->num_rows();
+            ?>
+        }, {
+            label: "Gold Package",
+            <?php
+            echo "data: ";
+            echo $pack2->num_rows();
+            ?>
+        }, {
+            label: "Silver Package",
+            <?php
+            echo "data: ";
+            echo $pack3->num_rows();
+            ?>
+        }, {
+            label: "Plattinum Package",
+            <?php
+            echo "data: ";
+            echo $pack4->num_rows();
+            ?>
+        }];
+
+        var plotObj = $.plot($("#flot-pie-chart-package"), data, {
+            series: {
+                pie: {
+                    show: true
+                }
+            },
+            grid: {
+                hoverable: true
+            },
+            tooltip: true,
+            tooltipOpts: {
+            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+            shifts: {
+                x: 20,
+                y: 0
+            },
+            defaultTheme: false
+        }
+    });
+
+    });
+
+</script>
+<!-- end pie chart package -->
 </body>
 
 </html>

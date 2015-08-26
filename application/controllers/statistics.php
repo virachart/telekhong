@@ -100,13 +100,13 @@ class statistics extends CI_Controller{
 
 		//start package
 		$sqlpack4 = "SELECT * FROM store WHERE package_id = 4 and status_store_id = 1";
-		$data['pack4'] = $this->db->query($sqlsen4);
+		$data['pack4'] = $this->db->query($sqlpack4);
 		$sqlpack3 = "SELECT * FROM store WHERE package_id = 3 and status_store_id = 1";
-		$data['pack3'] = $this->db->query($sqlsen3);
+		$data['pack3'] = $this->db->query($sqlpack3);
 		$sqlpack2 = "SELECT * FROM store WHERE package_id = 2 and status_store_id = 1";
-		$data['pack2'] = $this->db->query($sqlsen2);
+		$data['pack2'] = $this->db->query($sqlpack2);
 		$sqlpack1 = "SELECT * FROM store WHERE package_id = 1 and status_store_id = 1";
-		$data['pack1'] = $this->db->query($sqlsen1);
+		$data['pack1'] = $this->db->query($sqlpack1);
 		//end package
 
 		//year
@@ -201,17 +201,18 @@ class statistics extends CI_Controller{
 
 		//start package
 		$sqlpack4 = "SELECT * FROM store WHERE package_id = 4 and status_store_id = 1";
-		$data['pack4'] = $this->db->query($sqlsen4);
+		$data['pack4'] = $this->db->query($sqlpack4);
 		$sqlpack3 = "SELECT * FROM store WHERE package_id = 3 and status_store_id = 1";
-		$data['pack3'] = $this->db->query($sqlsen3);
+		$data['pack3'] = $this->db->query($sqlpack3);
 		$sqlpack2 = "SELECT * FROM store WHERE package_id = 2 and status_store_id = 1";
-		$data['pack2'] = $this->db->query($sqlsen2);
+		$data['pack2'] = $this->db->query($sqlpack2);
 		$sqlpack1 = "SELECT * FROM store WHERE package_id = 1 and status_store_id = 1";
-		$data['pack1'] = $this->db->query($sqlsen1);
+		$data['pack1'] = $this->db->query($sqlpack1);
 		//end package
 
 		$data['year'] = 2015;
 
+		// echo $data['pack1']->num_rows();
 		$this->load->view("statistics",$data);
 		
 	}
