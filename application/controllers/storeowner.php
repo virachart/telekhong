@@ -1,5 +1,5 @@
 <?php
-class store extends CI_Controller{
+class storeowner extends CI_Controller{
 
 	public function main(){
 
@@ -9,7 +9,7 @@ class store extends CI_Controller{
 	public function index(){
 		if($this->session->userdata('id') != null){
 			
-			$this->load->view("store.php");
+			$this->load->view("storeowner");
 		}else{
 			redirect("auth");
 		}

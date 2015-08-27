@@ -30,7 +30,7 @@ class regis extends CI_Controller{
 			// $this->db->insert("owner",$arr);
 			
 			redirect("dashboardowner","refresh");
-			exit();
+			
 		 }
 		$this->load->view("auth");
 

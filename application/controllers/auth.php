@@ -61,9 +61,12 @@ class Auth extends CI_CONTROLLER{
 		$id = $me['id'];
 		$sqlUser = "Select * from admin where fb_id = ".$id;
 		$rs = $this->db->query($sqlUser);
+		echo $this->db->last_query();
 		if ($rs->num_rows==0) {
 			$this->checkUser($me);
+			// echo "user";
 		}else{
+			// echo "admin";
 				$this->session->set_userdata($me);
 				$arad = array('admin' => "adminpass");
 				$this->session->set_userdata($arad);
@@ -97,6 +100,9 @@ class Auth extends CI_CONTROLLER{
 
 	public function logout(){
 		$this->session->sess_destroy();
+		$uid = "";
+		$access_token = "";
+		// print_r($this->session->all_userdata());
 		redirect("auth");
 	} 
 

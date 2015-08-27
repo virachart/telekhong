@@ -30,7 +30,7 @@ class manageqr extends CI_Controller{
 			// echo "<pre>";
 			// print_r($data['rs']);
 			// echo "</pre>";
-			$this->load->view("manageqr",$data);
+			$this->load->view("manageqrowner",$data);
 		}else{
 			redirect("auth");
 		}
@@ -38,7 +38,7 @@ class manageqr extends CI_Controller{
 
 	public function del($id){
 		$this->db->delete("qr",array("qr_id"=>$id));
-		redirect("manageqr","refresh");
+		redirect("manageqrowner","refresh");
 		exit();
 	}
 
@@ -64,7 +64,7 @@ class manageqr extends CI_Controller{
 				$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->like("store_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 				
 				// echo $this->db->last_query();
-				$this->load->view("manageqr",$data);
+				$this->load->view("manageqrowner",$data);
 				// print_r($data['rs']);
 				// // exit();
 			}else{
