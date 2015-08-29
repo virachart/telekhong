@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'te';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -64,6 +64,20 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
-
+$db['te']['hostname'] = 'localhost';
+$db['te']['username'] = 'root';
+$db['te']['password'] = 'lazinfirst';
+$db['te']['database'] = 'telekhong';
+$db['te']['dbdriver'] = 'mysql';
+$db['te']['dbprefix'] = '';
+$db['te']['pconnect'] = TRUE;
+$db['te']['db_debug'] = TRUE;
+$db['te']['cache_on'] = FALSE;
+$db['te']['cachedir'] = '';
+$db['te']['char_set'] = 'utf8';
+$db['te']['dbcollat'] = 'utf8_general_ci';
+$db['te']['swap_pre'] = '';
+$db['te']['autoinit'] = TRUE;
+$db['te']['stricton'] = FALSE;
 /* End of file database.php */
 /* Location: ./application/config/database.php */
