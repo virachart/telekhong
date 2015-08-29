@@ -1,5 +1,5 @@
 <?php
-class managestore extends CI_Controller{
+class Managestore extends CI_Controller{
 
 	public function main(){
 

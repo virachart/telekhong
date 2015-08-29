@@ -203,7 +203,52 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <div  class="col-sm-4 " >
+
+                <!-- php code show package -->
+                <?php
+                $no = 0;
+                $a[0] = "panel-info";
+                $a[1] = "panel-green";
+                $a[2] = "panel-red";
+                foreach ($rs as $r) {
+                    echo "<div  class='col-sm-4 '' >
+                    <div class='panel ";
+                    if ($no == 0) {
+                        echo $a[0];
+                        $no++;
+                    }elseif ($no == 1) {
+                        echo $a[1];
+                        $no++;
+                    }else{
+                        echo $a[2];
+                        $no = 0;
+                    }
+
+                        // echo "panel-info";
+                    echo "'>
+                    <div class='panel-heading'>
+                        <h3 class='panel-title'>Package ";
+                            echo $r['package_name'];
+                            echo "</h3>
+
+                        </div>
+                        <div class='panel-body'>
+                            <div class='col-sm-8'><p> Upload Limit : ";
+                                echo $r['upload_limit']."</p><br>";
+                                echo "<p> Description : ".$r['package_descrip']."</p>";  
+                                echo "<p> Price : ".$r['price']." ฿</p>";      
+                                echo "</div>";
+                                echo "</div>
+                            </div>
+                        </div>";
+
+                    }
+                    ?>
+
+
+
+
+                <!-- <div  class="col-sm-4 " >
                         <div class="panel panel-info">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Package 1</h3>
@@ -247,43 +292,7 @@
                             </div>
                             </div>
                         </div>
-                        </div>
-                        
-                    <div  class="col-sm-2 " style=" margin-top: 20px;">
-                        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"> + New Package</button>
-
-  <!-- Modal -->
-                        <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog">
-    
-      <!-- Modal content-->
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title" >Create New Package</h4>
-                                </div>
-                                <div class="modal-body"style="padding:50px 50px;">
-          
-                                    <div class="col-sm-4">Package Name :</div><div class="col-sm-4"><input type="text" name="name" id="package_name"/></div><br><hr>
-                                    <div class="col-sm-4">Description :</div><div class="col-sm-4"><textarea name="description" id="des"></textarea></div><br><hr>
-                                    <div class="col-sm-12"><center><label class="checkbox-inline"><input type="checkbox" value="">Option 1</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 2</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 3</label>
-                                    <label class="checkbox-inline"><input type="checkbox" value="">Option 4</label></center></div><br>
-                                    <div class="col-sm-4" style=" margin-top: 20px;">Service_charge (/M):</div><div class="col-sm-6" style=" margin-top: 20px;"><input type="text" name="name" id="service_charge"/> </div>
-          
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Create</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                </div>
-                                </div>
-      
-                                </div>
-                        </div>
-
-                    </div>
-
+                        </div> -->
             </div>
             
 

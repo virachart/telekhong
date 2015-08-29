@@ -1,5 +1,5 @@
 <?php
-class statistics extends CI_Controller{
+class Statistics extends CI_Controller{
 
 	public function main(){
 

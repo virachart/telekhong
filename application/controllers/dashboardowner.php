@@ -1,5 +1,5 @@
 <?php
-class dashboardowner extends CI_Controller{
+class Dashboardowner extends CI_Controller{
 
 	public function main(){
 

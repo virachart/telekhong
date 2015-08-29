@@ -1,5 +1,5 @@
 <?php
-class manageqr extends CI_Controller{
+class Manageqr extends CI_Controller{
 
 	public function main(){
 

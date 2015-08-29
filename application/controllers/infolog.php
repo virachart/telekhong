@@ -1,5 +1,5 @@
 <?php
-class infolog extends CI_Controller{
+class Infolog extends CI_Controller{
 
 	public function main(){
 

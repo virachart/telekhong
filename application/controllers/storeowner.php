@@ -1,5 +1,5 @@
 <?php
-class storeowner extends CI_Controller{
+class Storeowner extends CI_Controller{
 
 	public function main(){
 

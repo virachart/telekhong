@@ -1,5 +1,5 @@
 <?php
-class manageowner extends CI_Controller{
+class Manageowner extends CI_Controller{
 
 	public function main(){
 

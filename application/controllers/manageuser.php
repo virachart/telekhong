@@ -1,5 +1,5 @@
 <?php
-class manageuser extends CI_Controller{
+class Manageuser extends CI_Controller{
 
 	public function main(){
 

@@ -1,5 +1,5 @@
 <?php
-class regis extends CI_Controller{
+class Regis extends CI_Controller{
 
 	public function main(){
 

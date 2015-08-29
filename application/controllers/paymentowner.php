@@ -1,5 +1,5 @@
 <?php
-class payment extends CI_Controller{
+class Payment extends CI_Controller{
 
 	public function main(){
 

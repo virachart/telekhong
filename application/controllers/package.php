@@ -1,5 +1,5 @@
 <?php
-class package extends CI_Controller{
+class Package extends CI_Controller{
 
 	public function main(){
 

@@ -241,19 +241,6 @@
                                 echo "</div>
                             </div>
                         </div>";
-                        // echo "<tr>";
-                        // echo "<td>".$no."</td>";
-                        // echo "<td>".$r['store_name']."</td>";
-                        // echo "<td>".$r['tel']."</td>";
-                        // echo "<td>".$r['expire_date']."</td>";
-                        // echo "<td>".$r['store_date']."</td>";
-                        // echo "<td align= center>";
-                        // echo anchor("managestore/edit/".$r["store_id"], "<button type='button' class='btn btn-warning'>Edit</button>");
-                        // echo "&nbsp";
-                        // echo anchor("managestore/del/".$r["store_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
-                        // echo "</td>";
-                        // echo "</tr>";
-                        // $no++;
 
                     }
                     ?>
