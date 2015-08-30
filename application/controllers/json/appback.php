@@ -20,9 +20,21 @@ class Appback extends CI_Controller{
 		$info = $this->input->post("info");
 		$data = json_decode($info);
 		$uuid = $data->uuid;
-		$uuid = $data->major;
-		$uuid = $data->minor;
-		$uuid = $data->fb_id;
+		$major = $data->major;
+		$minor = $data->minor;
+		$id = $data->fb_id;
+		// $ar = array('uuid' => $uuid , 'major' => $major , 'minor' => $minor , 'sensoro_type' => '1');
+		$sqlSenType = "select * from sensoro where uuid='".$uuid."' and major='".$major."' and minor='".$minor."' and sensoro_type='1' ";
+		// $data['rs'] = $this->db->select("*")->from("sensoro");
+		$rs = $this->db->query($sqlSenType);
+		$data1 = $rs->row_array();
+		if ($rs->num_rows != 0) {
+			// $data1['rs'] = $rs->row_array();
+			// echo $data1['sensoro_id'];
+			
+		}else{
+			// $sqlAddSenLog = ""
+		}
 
 	}
 

@@ -61,7 +61,7 @@ class Auth extends CI_CONTROLLER{
 		$id = $me['id'];
 		$sqlUser = "Select * from admin where fb_id = ".$id;
 		$rs = $this->db->query($sqlUser);
-		echo $this->db->last_query();
+		// echo $this->db->last_query();
 		if ($rs->num_rows==0) {
 			$this->checkUser($me);
 			// echo "user";
