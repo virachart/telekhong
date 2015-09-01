@@ -113,12 +113,11 @@ class Appback extends CI_Controller{
 		$arFav = json_decode($jsFav);
 		//var_dump($ar1);
 		$fbid = $arFav->fb_id;
-		$infoid = $arFav->info_id
+		$infoid = $arFav->info_id;
 		$arInfo = array("info_id"=>$infoid,
-						"fb_id"=>$fbid
-							);
+						"fb_id"=>$fbid);
 		$this->db->insert("favorite",$arInfo);
-		$arsend = array("status"=> "finish")
+		$arsend = array("status"=> "finish");
 		echo json_encode($arsend);
 	}
 
@@ -127,7 +126,7 @@ class Appback extends CI_Controller{
 		$arFol = json_decode($jsFol);
 		//var_dump($ar1);
 		$fbid = $arFav->fb_id;
-		$storeid = $arFol->store_id
+		$storeid = $arFol->store_id;
 		$sqlFol = "select * from sensoro where store_id = '".$storeid."' and sensoro_type = '1' ";
 		$rsFol = $this->db->query($sqlFol);
 		$dataFol = $rsStore->row_array();
@@ -136,19 +135,86 @@ class Appback extends CI_Controller{
 						"fb_id"=>$fbid
 							);
 		$this->db->insert("follow",$arFol);
-		$arsend = array("status"=> "finish")
+		$arsend = array("status"=> "finish");
 		echo json_encode($arsend);
 	}
 
 	public function setapp(){
+		$jsSet = $this->input->post("setap");
+		$arSet = json_decode($jsSet);
+		$fb = $arSet->id;
+		$food = $arSet->food;
+		$fashion = $arSet->fashion;
+		$sport = $arSet->sport;
+		$entertain = $arSet->entertain;
+		$book = $arSet->book;
+		$it = $arSet->it;
+		$healty = $arSet->healty;
+		$arUpdate = array('food' => $food ,
+							'fashion' => $fashion ,
+							'sport' => $sport ,
+							'entertain' => $entertain , 
+							'book' => $book ,
+							'it' => $it ,
+							'healty' => $healty 
+						);
+		$this->db->where('fb_id' , $fb);
+		$this->db->update('user', $arUpdate);
 		
+		$arsend = array('status' => "finish");
+		echo json_encode($arsend);
 	}
 
 	public function qrcode(){
-				
+		$jsQr = $this->input->post("qr");
+		$arQr = json_decode($jsQr);
+		$fb = $arQr->fb;
+		$info = $arQr->info;
+		$sqlQr = "select * from qr where info_id = '".$info."' ";
+		$rsQr = $this->db->query($sqlQr);
+		$dataQr = $rsQr->row_array();
+		// echo $dataQr['qr_id'];
+		$qrid = $dataQr['qr_id'];
+		$arRe = array('qr_id' => $qrid , 'fb_id'=>$fb );
+		$this->db->insert('qr_log', $arRe);
+		$arSend = array('qrid' => $qrid,
+						'qrcode' => $dataQr['code']);
+		echo json_encode($arSend);
+		// $arapp = array('testa' => $b,'testb' => $c);
+		// echo json_encode($arapp);
 	}
 
+	public function login(){
+		$jsLog = $this->input->post("login");
+		$arLog = json_decode($jsLog);
+		$fbid = $arLog->id;
+		$name = $arLog->name;
+		$sex = $arLog->gender;
 
+		$sqlLogin = "Select * from user where fb_id = '".$fbid."' ";
+		$rsLogin = $this->db->query($sqlLogin);
+		if ($rsLogin->num_rows == 0) {
+			$arInLogin = array('fb_id' => $fbid ,
+								'fb_name' => $name,
+								'sex' => $sex);
+			$this->db->insert('user' , $arInLogin);
+		}
+		$sqlLogin2 = "Select * from user where fb_id = '".$fbid."' ";
+		$rsLogin2 = $this->db->query($sqlLogin2);
+		$dataLogin = $rsLogin2->row_array();
+		$arSend = array('fbid' => $dataLogin['fb_id'],
+						'name' => $dataLogin['fb_name'],
+						'sex' => $dataLogin['sex'],
+						'food' => $dataLogin['food'],
+						'fashion' => $dataLogin['fashion'],
+						'sport' => $dataLogin['sport'],
+						'entertain' => $dataLogin['entertain'],
+						'book' => $dataLogin['book'],
+						'it' => $dataLogin['it'],
+						'healty' => $dataLogin['healty'],
+						 );
+		echo json_encode($arSend);
+	}
 	
 
 }
