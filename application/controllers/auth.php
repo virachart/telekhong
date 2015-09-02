@@ -54,6 +54,7 @@ class Auth extends CI_CONTROLLER{
 			}
 
 			$this->checkAdmin($me);
+			// $this->checkUser($me);
 		}
 	}
 
@@ -87,12 +88,17 @@ class Auth extends CI_CONTROLLER{
 		}elseif ($rs->num_rows>0) {
 			$sqlOwner = "Select * from owner where fb_id = ".$id;
 			$rs2 = $this->db->query($sqlOwner);
+
 			if ($rs2->num_rows()==0) {
 				$this->session->set_userdata($me);
 			// print_r($me);
 				redirect("regis");
 			}else{
+				$dataOwner = $rs2->row_array();
 				$this->session->set_userdata($me);
+				$ownerid = array('ownerid' => $dataOwner['owner_id']);
+				$this->session->set_userdata($ownerid);
+				// echo $this->session->userdata('ownerid');
 				redirect(base_url('index.php/dashboardowner'));
 			}
 		}

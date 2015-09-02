@@ -64,7 +64,7 @@ $active_record = TRUE;
 // $db['default']['autoinit'] = TRUE;
 // $db['default']['stricton'] = FALSE;
 
-$db['te']['hostname'] = '10.4.43.97';
+$db['te']['hostname'] = '10.4.43.98';
 $db['te']['username'] = 'root';
 $db['te']['password'] = 'lazinfirst';
 $db['te']['database'] = 'telekhong';
