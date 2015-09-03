@@ -25,48 +25,53 @@ class Appback extends CI_Controller{
 		$rs = $this->db->query($sqlSenType);
 		$data1 = $rs->row_array();
 		$ar=array(
-				"sensoro_id"=>$data1['sensoro_id'],
-				"fb_id"=>$id
+			"sensoro_id"=>$data1['sensoro_id'],
+			"fb_id"=>$id
 			);
-			$this->db->insert("sensoro_log",$ar);
+		$this->db->insert("sensoro_log",$ar);
 		if ($rs->num_rows != 0) {
 			$idSen = $data1['sensoro_id'];
 			
 			// SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id
-			$sqlInfo = "SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id where sensoro_id = '".$idSen."' and info_begin_date < NOW() and info_expire_date >= NOW() and status_store_id = '1' ";
+			$sqlInfo = "SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id where sensoro_id = '".$idSen."' and info_begin_date < NOW() and info_expire_date >= NOW()+1 and status_store_id = '1' ";
 			// ".$idSen."
 			$rsInfo = $this->db->query($sqlInfo);
-			// echo $this->db->last_query();
-			$dataInfo = $rsInfo->row_array();
-			$cat = $dataInfo['catagory'];
-			$sqlCat = "Select * from user where ".$cat." = '1' ";
-			$rsCat = $this->db->query($sqlCat);
-			if ($rsCat->num_rows != 0) {
-				$arsend = array("info_id"=>$dataInfo['info_id'],
-								"info_name"=>$dataInfo['info_name'],
-								"info_desc"=>$dataInfo['info_descrip'],
-								"info_begin"=>$dataInfo['info_begin_date'],
-								"info_expire"=>$dataInfo['info_expire_date'],
-								"info_pic"=>$dataInfo['info_pic'],
-								"catagory"=>$dataInfo['catagory'],
-								"store_id"=>$dataInfo['store_id'],
-								"store_name"=>$dataInfo['store_name']
-								);
+			if ($rsInfo->num_rows != 0) {
+				$dataInfo = $rsInfo->row_array();
+				print_r($dataInfo);
+				$cat = $dataInfo['catagory'];
+				$sqlCat = "Select * from user where ".$cat." = '1' ";
+				$rsCat = $this->db->query($sqlCat);
+				if ($rsCat->num_rows != 0) {
+					$arsend = array("info_id"=>$dataInfo['info_id'],
+						"info_name"=>$dataInfo['info_name'],
+						"info_desc"=>$dataInfo['info_descrip'],
+						"info_begin"=>$dataInfo['info_begin_date'],
+						"info_expire"=>$dataInfo['info_expire_date'],
+						"info_pic"=>$dataInfo['info_pic'],
+						"catagory"=>$dataInfo['catagory'],
+						"store_id"=>$dataInfo['store_id'],
+						"store_name"=>$dataInfo['store_name']
+						);
 
 				//insert data to info_log
-				$arInfo = array("info_id"=>$dataInfo['info_id'],
-								"fb_id"=>$id
-							);
-				$this->db->insert("info_log",$arInfo);
-
+					$arInfo = array("info_id"=>$dataInfo['info_id'],
+						"fb_id"=>$id
+						);
+					$this->db->insert("info_log",$arInfo);
+				}
+			// echo $this->db->last_query();
 			}
+		}
+
+
 			// echo "<pre>";
 			// echo $dataInfo->store_id;
 			// print_r($dataInfo);
 			// print_r($dataInfo2);
 			// print_r($rsInfo);
 			// echo "</pre>";
-		}
+		// }
 		echo json_encode($arsend);
 
 	}
@@ -84,20 +89,20 @@ class Appback extends CI_Controller{
 		$dataStore = $rsStore->row_array();
 		if ($rsStore->num_rows != 0) {
 			$arsend = array("detail"=>$dataStore['detail'],
-							"address"=>$dataStore['address'],
-							"tel"=>$dataStore['tel'],
-							"opentime"=>$dataStore['open_time'],
-							"pic"=>$dataStore['picture_store']
-							);
+				"address"=>$dataStore['address'],
+				"tel"=>$dataStore['tel'],
+				"opentime"=>$dataStore['open_time'],
+				"pic"=>$dataStore['picture_store']
+				);
 		}else{
 			$arsend = array("detail"=>null,
-							"address"=>null,
-							"tel"=>null,
-							"opentime"=>null,
-							"pic"=>null
-							);
+				"address"=>null,
+				"tel"=>null,
+				"opentime"=>null,
+				"pic"=>null
+				);
 		}
-		
+
 
 		echo json_encode($arsend);
 	}
@@ -109,7 +114,7 @@ class Appback extends CI_Controller{
 		$fbid = $arFav->fb_id;
 		$infoid = $arFav->info_id;
 		$arInfo = array("info_id"=>$infoid,
-						"fb_id"=>$fbid);
+			"fb_id"=>$fbid);
 		$this->db->insert("favorite",$arInfo);
 		$arsend = array("status"=> "finish");
 		echo json_encode($arsend);
@@ -126,8 +131,8 @@ class Appback extends CI_Controller{
 		$dataFol = $rsStore->row_array();
 		$senid = $dataFol['sensoro_id'];
 		$arFol = array("sensoro_id"=>$senid,
-						"fb_id"=>$fbid
-							);
+			"fb_id"=>$fbid
+			);
 		$this->db->insert("follow",$arFol);
 		$arsend = array("status"=> "finish");
 		echo json_encode($arsend);
@@ -145,16 +150,16 @@ class Appback extends CI_Controller{
 		$it = $arSet->it;
 		$healty = $arSet->healty;
 		$arUpdate = array('food' => $food ,
-							'fashion' => $fashion ,
-							'sport' => $sport ,
-							'entertain' => $entertain , 
-							'book' => $book ,
-							'it' => $it ,
-							'healty' => $healty 
-						);
+			'fashion' => $fashion ,
+			'sport' => $sport ,
+			'entertain' => $entertain , 
+			'book' => $book ,
+			'it' => $it ,
+			'healty' => $healty 
+			);
 		$this->db->where('fb_id' , $fb);
 		$this->db->update('user', $arUpdate);
-		
+
 		$arsend = array('status' => "finish");
 		echo json_encode($arsend);
 	}
@@ -167,12 +172,18 @@ class Appback extends CI_Controller{
 		$sqlQr = "select * from qr where info_id = '".$info."' ";
 		$rsQr = $this->db->query($sqlQr);
 		$dataQr = $rsQr->row_array();
-		// echo $dataQr['qr_id'];
-		$qrid = $dataQr['qr_id'];
-		$arRe = array('qr_id' => $qrid , 'fb_id'=>$fb );
-		$this->db->insert('qr_log', $arRe);
-		$arSend = array('qrid' => $qrid,
-						'qrcode' => $dataQr['code']);
+		$sqlChQr = "select * FROM info join qr on info.info_id = qr.info_id where info_begin_date < NOW() and info_expire_date >= NOW()+1";
+		$rsChQr = $this->db->query($sqlChQr);
+		if ($rsChQr->num_rows != 0) {
+			$qrid = $dataQr['qr_id'];
+			$arRe = array('qr_id' => $qrid , 'fb_id'=>$fb );
+			$this->db->insert('qr_log', $arRe);
+			$arSend = array('qrid' => $qrid,
+							'qrcode' => $dataQr['code']);
+		}else{
+			$arSend = null;
+		}
+
 		echo json_encode($arSend);
 		// $arapp = array('testa' => $b,'testb' => $c);
 		// echo json_encode($arapp);
@@ -189,27 +200,27 @@ class Appback extends CI_Controller{
 		$rsLogin = $this->db->query($sqlLogin);
 		if ($rsLogin->num_rows == 0) {
 			$arInLogin = array('fb_id' => $fbid ,
-								'fb_name' => $name,
-								'sex' => $sex);
+				'fb_name' => $name,
+				'sex' => $sex);
 			$this->db->insert('user' , $arInLogin);
 		}
 		$sqlLogin2 = "Select * from user where fb_id = '".$fbid."' ";
 		$rsLogin2 = $this->db->query($sqlLogin2);
 		$dataLogin = $rsLogin2->row_array();
 		$arSend = array('fbid' => $dataLogin['fb_id'],
-						'name' => $dataLogin['fb_name'],
-						'sex' => $dataLogin['sex'],
-						'food' => $dataLogin['food'],
-						'fashion' => $dataLogin['fashion'],
-						'sport' => $dataLogin['sport'],
-						'entertain' => $dataLogin['entertain'],
-						'book' => $dataLogin['book'],
-						'it' => $dataLogin['it'],
-						'healty' => $dataLogin['healty'],
-						 );
+			'name' => $dataLogin['fb_name'],
+			'sex' => $dataLogin['sex'],
+			'food' => $dataLogin['food'],
+			'fashion' => $dataLogin['fashion'],
+			'sport' => $dataLogin['sport'],
+			'entertain' => $dataLogin['entertain'],
+			'book' => $dataLogin['book'],
+			'it' => $dataLogin['it'],
+			'healty' => $dataLogin['healty'],
+			);
 		echo json_encode($arSend);
 	}
-	
+
 
 }
 

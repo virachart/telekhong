@@ -109,7 +109,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
                         <ul class="dropdown-menu alert-dropdown">
                             <li>
-                                <a href="#">Store 1 <span class="label label-success "style="margin-left :50px">Avaliable</span></a>
+                                <a href="#">Store 1 <span class="label label-success" style="margin-left :50px">Avaliable</span></a>
                             </li>
                             <li>
                                 <a href="#">Store 2 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
