@@ -80,7 +80,7 @@ class Createinfo extends CI_Controller{
 				$sqlupdate = "UPDATE info SET info_pic ='".$newname."' WHERE info_id = '".$infoid."'";
 				$this->db->query($sqlupdate);
 				$this->session->unset_userdata('storeid');
-				redirect("storeowner");
+				redirect("thankyou");
 			}else{
 				$this->index();
 			}
