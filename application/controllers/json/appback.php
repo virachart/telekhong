@@ -38,7 +38,7 @@ class Appback extends CI_Controller{
 			$rsInfo = $this->db->query($sqlInfo);
 			if ($rsInfo->num_rows != 0) {
 				$dataInfo = $rsInfo->row_array();
-				print_r($dataInfo);
+				// print_r($dataInfo);
 				$cat = $dataInfo['catagory'];
 				$sqlCat = "Select * from user where ".$cat." = '1' ";
 				$rsCat = $this->db->query($sqlCat);

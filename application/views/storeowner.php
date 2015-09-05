@@ -128,11 +128,11 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('first_name');?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<?php echo site_url("auth/logout");?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>
@@ -171,7 +171,7 @@
                     </li>
                     <li class="active">
                     
-                        <a href="<?=base_url()?>package"><i class="fa fa-fw fa-arrows-v"></i> Package</a>
+                        <a href="<?=base_url()?>package"><i class="fa fa-fw fa-arrows-v"></i> Store</a>
                     </li>
                     
                 </ul>
@@ -238,7 +238,7 @@
                                 <table>
                                     <tr height='30'>
                                         <td >Status : </td>
-                                        <td style='padding-left: 30px;''><span class='label label-";
+                                        <td style='padding-left: 10px;''><span class='label label-";
 
                                         if ($r['status_store_id'] == 1) {
                                             echo "success";
@@ -262,13 +262,13 @@
                                     </tr>
                                     <tr height='30'>
                                         <td>Package : </td>
-                                        <td style='padding-left: 30px;'>";
+                                        <td style='padding-left: 10px;'>";
                                         echo $r['package_name'];
                                         echo "</td>
                                     </tr>
                                     <tr height='30'>
                                         <td>Uploaded : </td>
-                                        <td style='padding-left: 30px;'>";
+                                        <td style='padding-left: 10px;'>";
                                          echo $r['upload'];
                                          echo "</td>
                                     </tr>
@@ -285,7 +285,7 @@
                                         echo anchor("storeowner/addinfo/".$r["store_id"], "<button type='button' class='btn btn-success' ".$dis.">+ Information</button>");
                                          
                                         echo "</td>
-                                        <td style='padding-left: 30px;'>";
+                                        <td style='padding-left: 10px;'>";
                                         echo anchor("storeowner/del/".$r["store_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                         
                                         echo "</td>

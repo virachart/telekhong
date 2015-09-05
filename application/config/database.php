@@ -45,7 +45,7 @@
 | the active record class
 */
 
-$active_group = 'default';
+$active_group = 'te';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
@@ -64,7 +64,7 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
-$db['te']['hostname'] = '10.4.43.98';
+$db['te']['hostname'] = '10.4.43.99';
 $db['te']['username'] = 'root';
 $db['te']['password'] = 'lazinfirst';
 $db['te']['database'] = 'telekhong';
