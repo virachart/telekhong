@@ -100,10 +100,9 @@
 
                 <!-- store picture -->
                 <div class="col-lg-6" style="text-align:right;" >Store Picture :</div>
-                <div class="col-lg-6">
-                    <input type="file" id="image" name="picture"  /> 
-                    (Picture size less than 1024x1024 pixel is best size)
-                    
+                <div class="form-group col-lg-6">
+                    <input type="file" id="image" name="picture">
+                    <label>(Picture size less than 1024x1024 pixel is best size)</label>
                 </div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
