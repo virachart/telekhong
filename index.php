@@ -203,3 +203,9 @@ require_once BASEPATH.'core/CodeIgniter.php';
 
 /* End of file index.php */
 /* Location: ./index.php */
+
+
+/**
+ *  set the default timezone.
+ */
+ date_default_timezone_set('Asia/Bangkok'); 

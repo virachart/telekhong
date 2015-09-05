@@ -19,25 +19,36 @@ class Appback extends CI_Controller{
 		$major = $data->major;
 		$minor = $data->minor;
 		$id = $data->fb_id;
-		// $ar = array('uuid' => $uuid , 'major' => $major , 'minor' => $minor , 'sensoro_type' => '1');
+		// echo "<pre>";
+		// print_r($data);
+		// echo "</pre>";
+
+		$ar = array('uuid' => $uuid , 'major' => $major , 'minor' => $minor , 'sensoro_type' => '1');
 		$sqlSenType = "select * from sensoro where uuid='".$uuid."' and major='".$major."' and minor='".$minor."' and sensoro_type='1' and status_sensoro_id = '1' ";
 		// $data['rs'] = $this->db->select("*")->from("sensoro");
 		$rs = $this->db->query($sqlSenType);
 		$data1 = $rs->row_array();
+		
+		// echo "string";
+				
 		$ar=array(
 			"sensoro_id"=>$data1['sensoro_id'],
 			"fb_id"=>$id
 			);
 		$this->db->insert("sensoro_log",$ar);
-		if ($rs->num_rows != 0) {
-			$idSen = $data1['sensoro_id'];
+		// echo $this->db->last_query();
+		if ($rs->num_rows() != null) {
 			
-			// SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id
+			$idSen = $data1['sensoro_id'];
+		// 	// SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id
 			$sqlInfo = "SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id where sensoro_id = '".$idSen."' and info_begin_date < NOW() and info_expire_date >= NOW()+1 and status_store_id = '1' ";
-			// ".$idSen."
+		
 			$rsInfo = $this->db->query($sqlInfo);
-			if ($rsInfo->num_rows != 0) {
+			
+
+			if ($rsInfo->num_rows() != 0) {
 				$dataInfo = $rsInfo->row_array();
+				
 				// print_r($dataInfo);
 				$cat = $dataInfo['catagory'];
 				$sqlCat = "Select * from user where ".$cat." = '1' ";
@@ -71,7 +82,7 @@ class Appback extends CI_Controller{
 			// print_r($dataInfo2);
 			// print_r($rsInfo);
 			// echo "</pre>";
-		// }
+		
 		echo json_encode($arsend);
 
 	}
@@ -124,11 +135,11 @@ class Appback extends CI_Controller{
 		$jsFol = $this->input->post("fol");
 		$arFol = json_decode($jsFol);
 		//var_dump($ar1);
-		$fbid = $arFav->fb_id;
+		$fbid = $arFol->fb_id;
 		$storeid = $arFol->store_id;
 		$sqlFol = "select * from sensoro where store_id = '".$storeid."' and sensoro_type = '1' ";
 		$rsFol = $this->db->query($sqlFol);
-		$dataFol = $rsStore->row_array();
+		$dataFol = $rsFol->row_array();
 		$senid = $dataFol['sensoro_id'];
 		$arFol = array("sensoro_id"=>$senid,
 			"fb_id"=>$fbid
