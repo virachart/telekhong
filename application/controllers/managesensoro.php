@@ -112,6 +112,46 @@ class Managesensoro extends CI_Controller{
 		}
 	}
 
+	public function add(){
+		if ($this->input->post("btsave")!=NULL) {
+			$uuid = $this->input->post("uuid");
+			$major = $this->input->post("major");
+			$minor = $this->input->post("minor");
+			$type = $this->input->post("type");
+			$rancode1 = random_string('alnum', 10);
+			$strcode1 = strtolower($rancode1);
+			$rancode2 = random_string('alnum', 7);
+			$strcode2 = strtolower($rancode2);
+			//check code1
+			$sqlChCode = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
+			$rsChCode = $this->db->query($sqlChCode);
+			while ($rsChCode->num_rows != 0) {
+				$rancode1 = random_string('alnum', 10);
+				$strcode1 = strtolower($ranqr);
+				$sqlChCode = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
+				$rsChCode = $this->db->query($sqlChCode);
+			}
+			//check code2
+			$sqlChCode2 = "SELECT * FROM sensoro where sensoro_code2 ='".$strcode2."' ";
+			$rsChCode2 = $this->db->query($sqlChCode2);
+			while ($rsChCode2->num_rows != 0) {
+				$rancode2 = random_string('alnum', 7);
+				$strcode2 = strtolower($ranqr);
+				$sqlChCode2 = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
+				$rsChCode2 = $this->db->query($sqlChCode2);
+			}
+			//insert to sensoro table
+			$sql = "INSERT INTO `sensoro` (`uuid`, `major`, `minor`, `sensoro_code1`, `sensoro_code2`, `store_id`, `sensoro_type`) VALUES ('".$uuid."', '".$major."', '".$minor."', '".$strcode1."', '".$strcode2."', '6', '".$type."');";
+			$this->db->query($sql);
+			
+
+			// INSERT INTO `telekhong`.`sensoro` (`uuid`, `major`, `minor`, `sensoro_code1`, `sensoro_code2`, `store_id`, `sensoro_type`) VALUES ('2345878o7t', '34', '34', '1234', '3124', '6', '1');
+			
+			redirect("managesensoro");
+			
+		 }redirect("createsensoro");
+	}
+
 }
 
 ?>

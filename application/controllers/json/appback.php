@@ -206,13 +206,15 @@ class Appback extends CI_Controller{
 		$fbid = $arLog->id;
 		$name = $arLog->name;
 		$sex = $arLog->gender;
+		$birth = $arLog->birth;
 
 		$sqlLogin = "Select * from user where fb_id = '".$fbid."' ";
 		$rsLogin = $this->db->query($sqlLogin);
 		if ($rsLogin->num_rows == 0) {
 			$arInLogin = array('fb_id' => $fbid ,
 				'fb_name' => $name,
-				'sex' => $sex);
+				'sex' => $sex,
+				'birth' => $birth);
 			$this->db->insert('user' , $arInLogin);
 		}
 		$sqlLogin2 = "Select * from user where fb_id = '".$fbid."' ";

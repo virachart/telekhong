@@ -222,8 +222,10 @@
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div class="input-group">
-                                    <button type="button" class="btn btn-primary">Create Sensoro +
-                                    </button>
+                                    <?php
+                                        echo anchor("managesensoro/edit/".$r["sensoro_id"], "<button type='button' class='btn btn-primary'>Create Sensoro + </button>"); 
+                                    ?>
+                                    
                                     <form action="<?php echo site_url('managestore/search');?>" method = "post">
                                     <input type="text" name="searchst" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Store Name">
                                     <div class="input-group-btn">
@@ -236,6 +238,8 @@
                                     <tr>
                                         <td>No.</td>
                                         <td>Store Name</td>
+                                        <td>Major</td>
+                                        <td>Minor</td>
                                         <td>Sensoro Type</td>
                                         <td>Status</td>
                                         <td style="text-align: center">Action</td>
@@ -253,6 +257,8 @@
                                                 echo "<tr>";
                                                 echo "<td>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
+                                                echo "<td>".$r['major']."</td>";
+                                                echo "<td>".$r['minor']."</td>";
                                                 echo "<td>".$r['sensoro_type']."</td>";
                                                 echo "<td>".$r['status_sensoro_id']."</td>";
                                                 echo "<td align= center>";
