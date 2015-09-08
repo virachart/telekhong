@@ -8,7 +8,7 @@ class Statisticsowner extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('id') != null){
-			if($this->session->userdata('storeid') != null){
+			// if($this->session->userdata('storeid') != null){
 				$id = $this->session->userdata('storeid');
 				$arsq = array('store_id' => $id);
 				$data['rs'] = $this->db->select("*")->from("info")->where($arsq)->get()->result_array();
@@ -46,16 +46,16 @@ class Statisticsowner extends CI_Controller{
 				$sqlsexun = "SELECT * FROM user WHERE sex = null ";
 				$data['unkn'] = $this->db->query($sqlsexun);
 				$this->load->view("statisticsowner",$data);
-			}else{
-				redirect("storeowner");
-			}
+			// }else{
+			// 	redirect("storeowner");
+			// }
 		}else{
 			redirect("auth");
 		}
 	}
 
 	
-	
+	public function 
 
 
 	public function ye14(){
