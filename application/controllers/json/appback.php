@@ -4,6 +4,8 @@ class Appback extends CI_Controller{
 	public function main(){
 
 		parent::__construct();
+		// $this->output->set_content_type('application/json');
+
 	}
 
 	public function index(){
@@ -82,7 +84,7 @@ class Appback extends CI_Controller{
 			// print_r($dataInfo2);
 			// print_r($rsInfo);
 			// echo "</pre>";
-		
+		$this->output->set_content_type('application/json');
 		echo json_encode($arsend);
 
 	}
@@ -90,10 +92,9 @@ class Appback extends CI_Controller{
 
 	public function storedetail(){
 		$arsend = null;
-
-		$jsStore = $this->input->post("store");
-		$arJsStore = json_decode($jsStore);
-		$id = $arJsStore->store_id;
+		$id = $this->input->post("store_id");
+		// $arJsStore = json_decode($jsStore);
+		// $id = $arJsStore->store_id;
 
 		$sqlStore = "Select * from store where store_id = '".$id."' and status_store_id = '1' ";
 		$rsStore = $this->db->query($sqlStore);
@@ -113,9 +114,10 @@ class Appback extends CI_Controller{
 				"pic"=>null
 				);
 		}
-
-
-		echo json_encode($arsend);
+		$this->output
+        			->set_content_type('application/json')
+        			->set_output(json_encode($arsend));
+		// echo $aa;
 	}
 
 	public function fav(){
@@ -128,6 +130,7 @@ class Appback extends CI_Controller{
 			"fb_id"=>$fbid);
 		$this->db->insert("favorite",$arInfo);
 		$arsend = array("status"=> "finish");
+		$this->output->set_content_type('application/json');
 		echo json_encode($arsend);
 	}
 
@@ -146,6 +149,7 @@ class Appback extends CI_Controller{
 			);
 		$this->db->insert("follow",$arFol);
 		$arsend = array("status"=> "finish");
+		$this->output->set_content_type('application/json');
 		echo json_encode($arsend);
 	}
 
@@ -172,6 +176,7 @@ class Appback extends CI_Controller{
 		$this->db->update('user', $arUpdate);
 
 		$arsend = array('status' => "finish");
+		$this->output->set_content_type('application/json');
 		echo json_encode($arsend);
 	}
 
@@ -194,7 +199,7 @@ class Appback extends CI_Controller{
 		}else{
 			$arSend = null;
 		}
-
+		$this->output->set_content_type('application/json');
 		echo json_encode($arSend);
 		// $arapp = array('testa' => $b,'testb' => $c);
 		// echo json_encode($arapp);
@@ -231,6 +236,7 @@ class Appback extends CI_Controller{
 			'it' => $dataLogin['it'],
 			'healty' => $dataLogin['healty'],
 			);
+		$this->output->set_content_type('application/json');
 		echo json_encode($arSend);
 	}
 

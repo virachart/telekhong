@@ -40,7 +40,7 @@ a:active {
 }
 </style>		
 	<div style="text-align:center;margin-top:250px;">
-		<img src="<?=base_url()?>assets/Image/ipsb_05.png" alt="" style="width:128px;height:128px;">
+		<img src="<?=base_url()?>assets/Image/ipsb_07.png" alt="" style="width:128px;height:128px;">
 	</div>
 	<div style="text-align:center;margin-top:80px">
 		<button type="button" class="btn btn-primary" ><a href="<?php echo site_url("auth/login");?>">Sign up or Sign in</a></button>

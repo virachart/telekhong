@@ -83,7 +83,7 @@ class Auth extends CI_CONTROLLER{
 		if ($rs->num_rows==0) {
 			$this->session->set_userdata($me);
 			$birth = null;
-			if ($me['birthday'] != "1970-01-01") {
+			if ($me['birthday'] == null) {
 				$birth = "0000-00-00";
 			}else{
 				$bi = $me['birthday'];
