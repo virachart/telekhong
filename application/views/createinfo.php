@@ -33,6 +33,27 @@
 
     <body>
 
+    <script>
+    
+    function bdateCheck() {
+            var selectedDate = new Date (document.getElementById("beda").value)
+            var today = new Date();
+            var checkDate = today.setDate(today.getDate()-1);
+        if (selectedDate < checkDate) {
+            alert("Begin Date has invalid");
+            document.getElement
+        }
+    }
+    function edateCheck(){
+            var beginDate = new Date(document.getElementById("beda").value)
+            var expireDate = new Date(document.getElementById("exda").value)
+            if (beginDate > expireDate) {
+                alert("Expire Date has invalid");
+            }
+    }
+
+    </script>
+
         <div id="wrapper">
 
             <!-- Navigation -->
@@ -209,39 +230,7 @@
            <!-- Begin Date -->
            <div class="col-lg-6" style="text-align:right;" >Begin Date :</div>
            <div class="col-lg-6">
-            <select class="form-control" name="beda" style="width:80px ; display : inline;">
-                <option hidden>Day</option>
-                <?php 
-                for ($x = 1; $x <= 31; $x++) {
-                    echo "<option value='".$x."'>".$x."</option>";
-                } 
-                ?>
-            </select>
-            &nbsp
-            <select class="form-control" name="bemo" style="width:125px ; display : inline;">
-                <option hidden>Month</option>
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </select>
-            &nbsp
-            <select class="form-control" name="beye" style="width:90px ; display : inline;">
-                <option hidden>Year</option>
-                <?php 
-                for ($x = date("Y"); $x <= date("Y")+5; $x++) {
-                    echo "<option value='".$x."'>".$x."</option>";
-                } 
-                ?>
-            </select>
+            <input type="date" name="beda" id="beda" class="form-control" style="width:280px ; display : inline;" oninput="bdateCheck()">
         </div>
         <div class="col-lg-12" style="margin-top:30px;"></div>
 
@@ -249,40 +238,9 @@
         <!-- Expire Date -->
         <div class="col-lg-6" style="text-align:right;" >Expire Date :</div>
         <div class="col-lg-6">
-            <select class="form-control" name="exda" style="width:80px ; display : inline;">
-                <option hidden>Day</option>
-                <?php 
-                for ($x = 1; $x <= 31; $x++) {
-                    echo "<option value='".$x."'>".$x."</option>";
-                } 
-                ?>
-            </select>
-            &nbsp
-            <select class="form-control" name="exmo" style="width:125px ; display : inline;">
-                <option hidden>Month</option>
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </select>
-            &nbsp
-            <select class="form-control" name="exye" style="width:90px ; display : inline;">
-                <option hidden>Year</option>
-                <?php 
-                for ($x = date("Y"); $x <= date("Y")+5; $x++) {
-                    echo "<option value='".$x."'>".$x."</option>";
-                } 
-                ?>
-            </select>
+            <input type="date" name="exda" id="exda" class="form-control" style="width:280px ; display : inline;" oninput="edateCheck()">
         </div>
+        
         <div class="col-lg-12" style="margin-top:30px;"></div>
 
         <!-- Info picture -->

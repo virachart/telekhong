@@ -187,14 +187,48 @@
 
                 <!-- Page Heading -->
                 <div class="col-lg-12">
-                    <div class="col-lg-11">
+                    <div class="col-lg-9">
                         <h1 class="page-header">
                             Information Store  <small>Package 1</small>
                         </h1>
                     </div>
                 <div>
-                    <div class="col-lg-1"style="margin-top :45px">
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Delete Store</button></div>
+                    <div class="col-lg-3"style="margin-top :45px">
+                            <button type="button" class="btn btn-warning btn-default " data-toggle="modal" data-target="#myModal3">Change Package</button>
+                            <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>   
+                    </div>
+    
+      <!-- Modal content-->
+
+      
+      <div class="modal fade" id="myModal3" role="dialog">
+            <div class="modal-dialog">
+                            <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title" >Change Package</h4>
+                            </div>
+                            <div class="modal-body"style="padding:50px 50px;">
+          
+                            <div class="col-sm-12">Select your new package :</div><br><hr>
+                            
+                            <div class="col-sm-12"><center>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 1</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 2</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 3</label>
+                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 4</label>
+                                </center></div><br>
+                            
+          
+                            </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Change</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        </div>
+                        
+                        </div>
+                        </div>
+                        </div>
                 <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
     
@@ -217,7 +251,7 @@
             </div>
                 </div>
                 </div>
-                    <div class="row">
+                    
                     <div class="col-lg-12">
                         <ol class="breadcrumb">
                             <li class="active">
@@ -232,7 +266,7 @@
                     </div>
 
 
-                </div>
+                
                 <!-- /.row -->
                 
                     
@@ -243,8 +277,56 @@
                 
                     <div class="col-lg-12">
                         <div class="col-lg-5">
-                            <img class="img-thumbnail" src="http://placehold.it/420x420" style="margin-left:100px;" alt="">
-                        </div>
+                        <div class="panel panel-primary" >    
+                            <div class="panel-heading">
+                                <h3 class="panel-title">sale 20 % for this month !!</h3>
+                            </div>
+                            <div class="panel-body">
+                                <img class="img-thumbnail" src="http://placehold.it/420x420"  alt="">
+                            <div class="col-sm-12" style="margin-top:12px">
+                                    
+                            <table >
+                                <tr>
+                                    <td>Description :&nbsp</td> 
+                                    <td><textarea name="des" rows="3" class="form-control" style="width:250px;"></textarea></td>
+                                </tr>
+                                <tr><td>&nbsp</td></tr>
+                                <tr>
+                                    <td>Begin Date :&nbsp</td>
+                                    <td><input type="text" name="bdate" class="form-control"/></td>
+                                </tr>
+                                <tr><td>&nbsp</td></tr>
+                                <tr>
+                                    <td>Expire Date :&nbsp</td> 
+                                    <td><input type="text" name="edate" class="form-control"/></td>
+                                </tr>
+                                
+                                        
+                            </table>
+                            <br>
+                            <button type="button" class="btn btn-danger btn-default pull-right"data-toggle="modal" data-target="#myModal" style="text-align:right;">Delete</button>
+                            </div>
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Confirm</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>This info was deleted , Are you sure ?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>  
+                    
                         <div class="col-lg-7">
                         <div class="panel panel-green">
                             <div class="panel-heading">
@@ -266,23 +348,36 @@
                                         <span class="badge"style="margin-top :35px">1 month ago</span>
                                         <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
                                     </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge"style="margin-top :35px">1 month ago</span>
+                                        <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge"style="margin-top :35px">1 month ago</span>
+                                        <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge"style="margin-top :35px">1 month ago</span>
+                                        <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
+                                    </a>
                                 </div>
-                                <div class="text-right">
+                                <!--<div class="text-right">
                                     <a href="<?=base_url()?>infolog">View all information <i class="fa fa-arrow-circle-right"></i></a>
                                 </div>
+                                -->
                             </div>
                         </div>
                         </div>  
                     </div>
             
-                <div class="row">
+               
                     <center><div class="col-lg-12">
-                        <ol class="breadcrumb">
-                         <li class="active">   
+                        
+                            
             
                     
-                    <div class="col-lg-0.5"></div>
-                    <div   class="col-sm-5 " style="margin-top:20px;">
+                    <div   class="col-lg-4 "></div>
+                    <div   class="col-lg-4 " style="margin-top:20px;">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title">Upload Information</h3>
@@ -311,7 +406,7 @@
                                                 <input type="file" name="upl" multiple="true">
                                             </div>
                                             <div class="col-lg-8" >
-                                                <div class="col-lg-4">Topic :</div><div class="col-lg-8"><input type="text" name="topic" id="topic"/></div>
+                                                <div class="col-lg-4">Topic :</div><div class="col-lg-8"><input type="text" name="topic" id="topic" class="form-control"/></div>
                                                 <div class="col-lg-12" style="margin-top:10px;"></div>
                                                 <div class="col-lg-4">Category :</div>
                                                     <div class="dropdown col-lg-8">
@@ -329,24 +424,24 @@
                                                 <div class="col-lg-4">Expire Date :</div>
                                                 <div class="col-lg-8">
                                                     <form action="action_page.php">
-                                                        <input type="date" name="day">  
+                                                        <input type="date" name="day" class="form-control">  
                                                     </form>
                                                 </div>
                                                 <div class="col-lg-12" style="margin-top:10px;"></div>
-                                                <div class="col-lg-4">Description</div><div class="col-lg-8"><textarea name="description" id="des"></textarea></div>
+                                                <div class="col-lg-4">Description :</div><div class="col-lg-8"><textarea name="description" id="des" class="form-control"></textarea></div>
                                                 <div class="col-lg-12"></div>
-                                                <div class="col-lg-4">Use QR Coce ? :</div>
-                                                <div class="col-lg-8">
+                                                <div class="col-lg-4" style="margin-top:20px;">Use QR Coce ? :</div>
+                                                <div class="col-lg-8" style="margin-top:20px;">
                                                     <label class="radio-inline"><input type="radio" name="optradio">YES</label>
                                                     <label class="radio-inline"><input type="radio" name="optradio">NO</label>
                                                 </div>
                                             </div>
                                           </div>
                                         </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal4">Submit</button>
+                                        <div class="modal-footer" style="margin-top:250px">
+                                            
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
+                                            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal4">Submit</button>
                                             <div class="modal fade" id="myModal4" role="dialog">
                                                 <div class="modal-dialog modal-md">
                                                     <div class="modal-content">
@@ -376,67 +471,14 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-1" ></div>
-                        <div  class="col-sm-5" style="margin-top:20px;" >
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Change Package</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-sm-4">
-                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt="">
-                            </div>
-                            <div class="col-sm-8">
-                                Change your package for upgrade or downgrade.
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button" class="btn btn-warning btn-default pull-right" data-toggle="modal" data-target="#myModal2">Change</button>
-                            
-    
-      <!-- Modal content-->
-
-      
-      <div class="modal fade" id="myModal3" role="dialog">
-            <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title" >Change Package</h4>
-                            </div>
-                            <div class="modal-body"style="padding:50px 50px;">
-          
-                            <div class="col-sm-12">Select your new package :</div><br><hr>
-                            
-                            <div class="col-sm-12"><center>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 1</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 2</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 3</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 4</label>
-                                </center></div><br>
-                            
-          
-                            </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Change</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        </div>
-                        </div>
-      
-            </div>
-        </div>
-
-
-                            </div>
-                            </div>
-                        </div>
-                        </div>
+                    
+                        
                     
                     
-                        </li>
-                        </ol>
+                        
                     </div>
                     </center>
-                </div>
+                
                 
                      
                     
