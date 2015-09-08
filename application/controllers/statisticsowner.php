@@ -1,5 +1,5 @@
 <?php
-class Statistics extends CI_Controller{
+class Statisticsowner extends CI_Controller{
 
 	public function main(){
 
@@ -8,15 +8,58 @@ class Statistics extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('id') != null){
-			$this->ye15();
+			if($this->session->userdata('storeid') != null){
+				$id = $this->session->userdata('storeid');
+				$arsq = array('store_id' => $id);
+				$data['rs'] = $this->db->select("*")->from("info")->where($arsq)->get()->result_array();
+
+				$y = date("Y");
+				$nowdate = date("Y-m-d");
+
+				$y17 = $y-17;
+				$y18 = $y-18;
+				$y25 = $y-25;
+				$y26 = $y-26;
+				$y35 = $y-35;
+				$y36 = $y-36;
+				$y50 = $y-50;
+				$y51 = $y-51;
+				$y100 = $y-100;
+
+				//user age data
+				$sqlage1 = "SELECT * FROM user where birth between '".$y17."-01-01' and '".$nowdate."';";
+				$data['age1'] = $this->db->query($sqlage1);
+				$sqlage2 = "SELECT * FROM user where birth between '".$y25."-01-01' and '".$y18."-12-31';";
+				$data['age1'] = $this->db->query($sqlage2);
+				$sqlage3 = "SELECT * FROM user where birth between '".$y35."-01-01' and '".$y26."-12-31';";
+				$data['age1'] = $this->db->query($sqlage3);
+				$sqlage4 = "SELECT * FROM user where birth between '".$y50."-01-01' and '".$y36."-12-31';";
+				$data['age1'] = $this->db->query($sqlage4);
+				$sqlage5 = "SELECT * FROM user where birth between '".$y100."-01-01' and '".$y51."-12-31';";
+				$data['age1'] = $this->db->query($sqlage5);
+
+				//user sex
+				$sqlsexma = "SELECT * FROM user WHERE sex = 'male' ";
+				$data['male'] = $this->db->query($sqlsexma);
+				$sqlsexfe = "SELECT * FROM user WHERE sex = 'female'";
+				$data['female'] = $this->db->query($sqlsexfe);
+				$sqlsexun = "SELECT * FROM user WHERE sex = null ";
+				$data['unkn'] = $this->db->query($sqlsexun);
+				$this->load->view("statisticsowner",$data);
+			}else{
+				redirect("storeowner");
+			}
 		}else{
 			redirect("auth");
 		}
 	}
 
 	
+	
+
+
 	public function ye14(){
-		$y = "2014";
+		
 		// month usesr data
 		$sqlUser12 = "SELECT * FROM user WHERE user_date like '".$y."-12%'";
 		$data['user12'] = $this->db->query($sqlUser12);
