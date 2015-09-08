@@ -55,7 +55,7 @@ class Statisticsowner extends CI_Controller{
 	}
 
 	
-	public function 
+	// public function 
 
 
 	public function ye14(){
