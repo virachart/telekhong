@@ -217,107 +217,33 @@
                             </div>
                         </div>
 
-                        <!-- /.row user line graph -->
-                        <div class="col-lg-12" >
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> User Graph </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div id="morris-line-chart-user"></div>
-                                    
-                                </div>
-                            </div>
-                        </div>
+                <div class="tabbable"> <!-- Only required for left/right tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab1" data-toggle="tab">User Received</a></li>
+                        <li><a href="#tab2" data-toggle="tab">Received and come to Store</a></li>
+                        <li><a href="#tab3" data-toggle="tab">First QR Code</a></li>
+                        <li><a href="#tab4" data-toggle="tab">Second or more QR Code</a></li>
+                        <li><a href="#tab5" data-toggle="tab">General Graph</a></li>
+                    </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <p>I'm in Section 1.</p>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <p>Howdy, I'm in Section 2.</p>
+                    </div>
+                    <div class="tab-pane" id="tab3">
+                        <p>Howdy, I'm in Section 2.</p>
+                    </div>
+                    <div class="tab-pane" id="tab4">
+                        <p>Howdy, I'm in Section 2.</p>
+                    </div>
+                    <div class="tab-pane" id="tab5">
+                        <p>Howdy, I'm in Section 2.</p>
+                    </div>
+                </div>
+                </div>
 
-                        <!-- /.row owner line graph-->
-                        <div class="col-lg-12" >
-                            <div class="panel panel-primary">
-                                <div class="panel-heading" style="background-color : #337ab7; border-color: #337ab7;">
-                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Owner Graph </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div id="morris-line-chart-owner"></div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- /.row sensoro line graph -->
-                        <div class="col-lg-12" >
-                            <div class="panel panel-red">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Sensoro Graph </h3>
-                                </div>
-                                <div class="panel-body">
-                                    <div id="morris-line-chart-sen"></div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-
-                        <div class="row" style="display:none;">
-                            <div class="col-lg-12">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Line Graph Example with Tooltips</h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-line-chart"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                        
-                        
-                        <div class="row" style=" margin-top: 40px;">
-                            <div class="col-lg-6">
-                                <div class="panel panel-green">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Package Chart </h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <div class="flot-chart">
-                                            <div class="flot-chart-content" id="flot-pie-chart-package"></div>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-lg-6">
-                                    <h4>Package Chart</h4>
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-
-                                                    <td>Normal Package</td>
-                                                    <td>Gold Package</td>
-                                                    <td>Silver Package</td>
-                                                    <td>Platnum Package</td>
-                                                    <td>Total</td>
-
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><?php $pa1 = $pack1->num_rows(); echo $pa1; ?></td>
-                                                    <td><?php $pa2 = $pack2->num_rows(); echo $pa2; ?></td>
-                                                    <td><?php $pa3 = $pack3->num_rows(); echo $pa3; ?></td>
-                                                    <td><?php $pa4 = $pack4->num_rows(); echo $pa4; ?></td>
-                                                    <td><?php $pa = $pa1+$pa2+$pa3+$pa4; echo $pa; ?></td>
-
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>                                 
-                            </div>
 
                     </div>
                     <!-- /.row .........................-->
