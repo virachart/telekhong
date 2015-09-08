@@ -45,6 +45,23 @@ class Statisticsowner extends CI_Controller{
 				$data['female'] = $this->db->query($sqlsexfe);
 				$sqlsexun = "SELECT * FROM user WHERE sex = null ";
 				$data['unkn'] = $this->db->query($sqlsexun);
+
+				$sqlMax = "SELECT MAX(info_id) AS maxinfo from info where store_id = '".$id."'; ";
+				$maxinfo = $this->db->query($sqlMax);
+				$infoid = $maxinfo->row_array();
+				$maxid = $infoid['maxinfo'];
+
+				$sqlreciveage1 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' ;";
+				$data['reage1'] = $this->db->query($sqlreciveage1);
+				$sqlreciveage2 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31';";
+				$data['reage2'] = $this->db->query($sqlreciveage2);
+				$sqlreciveage3 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31';";
+				$data['reage3'] = $this->db->query($sqlreciveage3);
+				$sqlreciveage4 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31';";
+				$data['reage4'] = $this->db->query($sqlreciveage4);
+				$sqlreciveage5 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31';";
+				$data['reage5'] = $this->db->query($sqlreciveage5);
+
 				$this->load->view("statisticsowner",$data);
 			// }else{
 			// 	redirect("storeowner");
@@ -55,7 +72,9 @@ class Statisticsowner extends CI_Controller{
 	}
 
 	
-	// public function 
+	public function repro($infoid){
+		$
+	}
 
 
 	public function ye14(){
