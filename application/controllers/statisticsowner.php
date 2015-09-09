@@ -46,21 +46,136 @@ class Statisticsowner extends CI_Controller{
 				$sqlsexun = "SELECT * FROM user WHERE sex = null ";
 				$data['unkn'] = $this->db->query($sqlsexun);
 
+				//function recive promotion 
 				$sqlMax = "SELECT MAX(info_id) AS maxinfo from info where store_id = '".$id."'; ";
 				$maxinfo = $this->db->query($sqlMax);
 				$infoid = $maxinfo->row_array();
-				$maxid = $infoid['maxinfo'];
+				// $maxid = $infoid['maxinfo'];
+				$maxid = "6";
 
-				$sqlreciveage1 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' ;";
-				$data['reage1'] = $this->db->query($sqlreciveage1);
-				$sqlreciveage2 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31';";
-				$data['reage2'] = $this->db->query($sqlreciveage2);
-				$sqlreciveage3 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31';";
-				$data['reage3'] = $this->db->query($sqlreciveage3);
-				$sqlreciveage4 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31';";
-				$data['reage4'] = $this->db->query($sqlreciveage4);
-				$sqlreciveage5 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31';";
-				$data['reage5'] = $this->db->query($sqlreciveage5);
+				//count day of month
+				// $d = cal_days_in_month(CAL_GREGORIAN,$m,$ye);
+
+				$day1 = date("j");
+				$day2 ;
+				$mo1 = date("m");
+				$yearre = date("Y");
+				//part of age recive promotion 
+				for ($i=1; $i <= $day1 ; $i++) { 
+					if ($i < 10) {
+						$day2 = "0".$i;
+					}else{
+						$day2 = $i;
+					}
+					$sqlreciveage1[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' ;";
+					$data['reage1d'.$i] = $this->db->query($sqlreciveage1[$i]);
+					$sqlreciveage2[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reage2d'.$i] = $this->db->query($sqlreciveage2[$i]);
+					$sqlreciveage3[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reage3d'.$i] = $this->db->query($sqlreciveage3[$i]);
+					$sqlreciveage4[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reage4d'.$i] = $this->db->query($sqlreciveage4[$i]);
+					$sqlreciveage5[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reage5d'.$i] = $this->db->query($sqlreciveage5[$i]);
+				}
+				//part of sex recive promotion
+				for ($i=1; $i <= $day1 ; $i++) { 
+					if ($i < 10) {
+						$day2 = "0".$i;
+					}else{
+						$day2 = $i;
+					}
+
+					$sqlrecivesex1[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and sex = 'male' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' ;";
+					$data['resex1d'.$i] = $this->db->query($sqlrecivesex1[$i]);
+					$sqlrecivesex2[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and sex = 'female' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['resex2d'.$i] = $this->db->query($sqlrecivesex2[$i]);
+					$sqlrecivesex3[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and sex = null and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['resex3d'.$i] = $this->db->query($sqlrecivesex3[$i]);
+				}
+
+				//part of sex recive promotion and go in to store
+				for ($i=1; $i <= $day1 ; $i++) { 
+					if ($i < 10) {
+						$day2 = "0".$i;
+					}else{
+						$day2 = $i;
+					}
+					$sqlreciveinstoreage1[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' ;";
+					$data['reinage1d'.$i] = $this->db->query($sqlreciveinstoreage1[$i]);
+					$sqlreciveinstoreage2[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reinage2d'.$i] = $this->db->query($sqlreciveinstoreage2[$i]);
+					$sqlreciveinstoreage3[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reinage3d'.$i] = $this->db->query($sqlreciveinstoreage3[$i]);
+					$sqlreciveinstoreage4[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reinage4d'.$i] = $this->db->query($sqlreciveinstoreage4[$i]);
+					$sqlreciveinstoreage5[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['reinage5d'.$i] = $this->db->query($sqlreciveinstoreage5[$i]);
+				}
+
+
+				//part of sex recive promotion and go into store
+				for ($i=1; $i <= $day1 ; $i++) { 
+					if ($i < 10) {
+						$day2 = "0".$i;
+					}else{
+						$day2 = $i;
+					}
+
+					$sqlreciveinsex1[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = 'male' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' and sensoro_type = '2' ;";
+					$data['reinsex1d'.$i] = $this->db->query($sqlreciveinsex1[$i]);
+					$sqlreciveinsex2[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = 'female' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' and sensoro_type = '2' ;";
+					$data['reinsex2d'.$i] = $this->db->query($sqlreciveinsex2[$i]);
+					$sqlreciveinsex3[$i] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = null and info_log_date like '".$yearre."-".$mo1."-".$day2."%' and sensoro_type = '2' ;";
+					$data['reinsex3d'.$i] = $this->db->query($sqlreciveinsex3[$i]);
+				}
+
+				//part of age use qr code
+				for ($i=1; $i <= $day1 ; $i++) { 
+					if ($i < 10) {
+						$day2 = "0".$i;
+					}else{
+						$day2 = $i;
+					}
+					$sqlqrage1[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' ;";
+					$data['qrage1d'.$i] = $this->db->query($sqlqrage1[$i]);
+					$sqlqrage2[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['qrage2d'.$i] = $this->db->query($sqlqrage2[$i]);
+					$sqlqrage3[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['qrage3d'.$i] = $this->db->query($sqlqrage3[$i]);
+					$sqlqrage4[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['qrage4d'.$i] = $this->db->query($sqlqrage4[$i]);
+					$sqlqrage5[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$yearre."-".$mo1."-".$day2."%';";
+					$data['qrage5d'.$i] = $this->db->query($sqlqrage5[$i]);
+				}
+
+
+				//part of sex use qr code
+				for ($i=1; $i <= $day1 ; $i++) { 
+					if ($i < 10) {
+						$day2 = "0".$i;
+					}else{
+						$day2 = $i;
+					}
+
+					$sqlqrsex1[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and sex = 'male' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' and sensoro_type = '2' ;";
+					$data['qrsex1d'.$i] = $this->db->query($sqlqrsex1[$i]);
+					$sqlqrsex2[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and sex = 'female' and info_log_date like '".$yearre."-".$mo1."-".$day2."%' and sensoro_type = '2' ;";
+					$data['qrsex2d'.$i] = $this->db->query($sqlqrsex2[$i]);
+					$sqlqrsex3[$i] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and sex = null and info_log_date like '".$yearre."-".$mo1."-".$day2."%' and sensoro_type = '2' ;";
+					$data['qrsex3d'.$i] = $this->db->query($sqlqrsex3[$i]);
+				}
+				//part of age recive promotion 
+				// $sqlreciveage1[$i] = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' ;";
+				// $data['reage1'] = $this->db->query($sqlreciveage1);
+				// $sqlreciveage2 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31';";
+				// $data['reage2'] = $this->db->query($sqlreciveage2);
+				// $sqlreciveage3 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31';";
+				// $data['reage3'] = $this->db->query($sqlreciveage3);
+				// $sqlreciveage4 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31';";
+				// $data['reage4'] = $this->db->query($sqlreciveage4);
+				// $sqlreciveage5 = "select * from info_log join user on info_log.fb_id = user.fb_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31';";
+				// $data['reage5'] = $this->db->query($sqlreciveage5);
 
 				$this->load->view("statisticsowner",$data);
 			// }else{
@@ -73,7 +188,7 @@ class Statisticsowner extends CI_Controller{
 
 	
 	public function repro($infoid){
-		$
+		
 	}
 
 
