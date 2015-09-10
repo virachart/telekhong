@@ -271,9 +271,9 @@
                                 </div>
                             </div>
                         </div>
+
+                        
                         <!-- /.row -->
-                        
-                        
                         <div class="row" style=" margin-top: 40px;">
                             <div class="col-lg-6">
                                 <div class="panel panel-green">
