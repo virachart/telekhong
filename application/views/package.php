@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <?php //include_once 't.php';?>
 <html lang="en">
@@ -237,7 +236,7 @@
                                 echo "<p> Description : ".$r['package_descrip']."</p>";  
                                 echo "<p> Price : ".$r['price']." ฿</p>";      
                                 echo "</div>";
-                                echo anchor("package/del/".$r["package_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                                echo anchor("package/del/".$r["package_id"], "<button type='button' class='btn btn-danger pull-right'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                 echo "</div>
                             </div>
                         </div>";
@@ -309,22 +308,26 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title" >Create New Package</h4>
                         </div>
-                        <div class="modal-body"style="padding:50px 50px;">
+                        <div class="modal-body"style="padding:25px 25px;">
                             <?php 
                             echo form_open('package/add');
                             ?>
-                            <div class="col-sm-4">Package Name :</div><div class="col-sm-4"><input type="text" name="name" /></div><br><hr>
-                            <div class="col-sm-4">Description :</div><div class="col-sm-4"><textarea name="desc"></textarea></div><br><hr>
-                            <div class="col-sm-4">Upload Limits :</div><div class="col-sm-4"><input type="text" name="upload"/></div><br><hr>
-                            <div class="col-sm-4">Price :</div><div class="col-sm-4"><input type="text" name="price"/></div><br><hr>
+                            <div class="col-sm-4">Package Name :</div><div class="col-sm-8"><div class="col-sm-12"><input class="form-control" type="text" name="name" style="width:150px;"/></div></div><br>
+                            <div class="col-sm-12">&nbsp</div>
+                            <div class="col-sm-4">Description :</div><div class="col-sm-8"><div class="col-sm-12"><textarea class="form-control" name="desc" style="width:200px;height:100px"></textarea></div></div><br>
+                            <div class="col-sm-12">&nbsp</div>
+                            <div class="col-sm-4">Upload Limits :</div><div class="col-sm-8"><div class="col-sm-4"><input class="form-control" type="number" name="upload" min="12" max="48" style="width:70px;"/></div>/ Year</div><br>
+                            <div class="col-sm-12">&nbsp</div>
+                            <div class="col-sm-4">Price :</div><div class="col-sm-8"><div class="col-sm-5"><input class="form-control" type="number" name="price" min="1000" max="5000" style="width:100px;"/></div>Bath. / Month</div><br>
 
-                            <div class="modal-footer">
-                            <input class="btn btn-success" type="submit" name="btsave" value="Create"> &nbsp
+                            <div class="modal-footer" style="margin-top:220px;">
+                            
                             <?php 
                                 echo anchor("package", "<button type='button' class='btn btn-danger'>Cancle</button>");
                                 
                                 echo form_close();
-                                ?>
+                                ?>&nbsp
+                            <input class="btn btn-success" type="submit" name="btsave" value="Create"> 
                             </div>
                         </div>
 

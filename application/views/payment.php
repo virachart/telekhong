@@ -206,7 +206,22 @@
                 End of agreement : 12 / 1 / 2015<br>
                 </div>
                 <div class="col-lg-6">
-                <img src="<?=base_url()?>assets/image/ipsb_06.png" class="img-rounded" alt="" height="30%">
+
+                <Form method="post" action="https://www.paysbuy.com/paynow.aspx?lang=e"> 
+                    <input type="Hidden" Name="psb" value="psb"/> 
+                    <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
+                    
+                    <!-- inv is Some String text from paysbuy-->
+                    <input Type="Hidden" Name="inv" value="tele0001"/> 
+                    <input Type="Hidden" Name="itm" value="Service Charge"/> 
+                    
+                    <!-- amt is Store Package Charge--> 
+                    <input Type="Hidden" Name="amt" value="1"/>
+                    
+                    <!-- Redirect Web Controller-->
+                    <input Type="Hidden" Name="postURL" value="http://telekhong.me/index.php/checkpayment"/> 
+                    <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
+                </Form >
                 
                 </div>
             </div>
