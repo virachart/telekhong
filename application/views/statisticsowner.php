@@ -33,7 +33,6 @@
     </head>
 
     <body>
-    
 
         <div id="wrapper">
 
@@ -217,38 +216,14 @@
                                 <?php echo form_close(); ?>
                             </div>
                         </div>
-                        <script type="text/javascript">
-                            // $(function () {
-                            //     $('#myTab a:last').tab('show');
-                            // })
 
-                            // $('ul.tabbable a').on('shown.bs.tab', function (e) {
-                            //     var types = $(this).attr("data-identifier");
-                            //     var typesArray = types.split(",");
-                            //     $.each(typesArray, function (key, value) {
-                            //         eval(value + ".redraw()");
-                            //     })
-                            // });
-
-                            // $('#myTab a').click(function (e) {
-                            //   e.preventDefault();
-                            //   $(this).tab('show');
-                            // })
-
-                            // $('#myTab li:eq(2) a').tab('show');
-
-                            // $('a[data-toggle="tab"]').click('shown', function (e) {
-                            //   e.target // activated tab
-                            //   e.relatedTarget // previous tab
-                            // })
-                        </script>
 
 
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
-                            <ul class="nav nav-tabs" id="myTab">
+                            <ul class="nav nav-tabs">
                                 <li class="active"><a href="#tab1" data-toggle="tab">User Received</a></li>
                                 <li><a href="#tab2" data-toggle="tab">Received and come to Store</a></li>
-                                <li><a href="#tab3" data-toggle="tab" id="tab3">First QR Code</a></li>
+                                <li><a href="#tab3" data-toggle="tab">First QR Code</a></li>
                                 <li><a href="#tab4" data-toggle="tab">Second or more QR Code</a></li>
                                 <li><a href="#tab5" data-toggle="tab">General Graph</a></li>
                             </ul>
@@ -350,6 +325,8 @@
                                     </div>
                                     <!-- end line graph sex range use qr code -->
                                 </div>
+            <!-- end tab3 -->
+            <!-- begin tab4 -->
                                 <div class="tab-pane" id="tab4">
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range agian qr code -->
@@ -378,8 +355,9 @@
                                         </div>
                                     </div>
                                     <!-- end line graph sex range agian qr code -->
-                                    
                                 </div>
+            <!-- end tab4 -->
+            <!-- begin tab5 -->
                                 <div class="tab-pane" id="tab5">
                                     <!-- /.row -->
                                     <div class="row" style=" margin-top: 40px;">
@@ -479,6 +457,7 @@
                                     <!-- /.row .........................-->
 
                                 </div>
+            <!-- end tab5 -->
                             </div>
                         </div>
 
