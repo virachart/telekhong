@@ -106,7 +106,7 @@ class Auth extends CI_CONTROLLER{
 				$ownerid = array('ownerid' => $dataOwner['owner_id']);
 				$this->session->set_userdata($ownerid);
 				// echo $this->session->userdata('ownerid');
-				redirect(base_url('index.php/dashboardowner'));
+				redirect(base_url('index.php/store'));
 			}
 		}
 	}

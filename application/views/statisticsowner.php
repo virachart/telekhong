@@ -205,16 +205,7 @@
                     <div class="row">
                         <div class="col-lg-2">
                             <h2 class="page-header">All Chart in </h2></div>
-                            <div class="dropdown col-lg-6">
-                                <?php echo form_open()?>
-
-                                <select onchange="this.form.action='<?php echo site_url('statistics')?>/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;" >
-                                    <option hidden><?php //echo $year; ?></option>
-                                    <option value="">2015</option>
-                                    <option value="ye14">2014</option>
-                                </select>
-                                <?php echo form_close(); ?>
-                            </div>
+                            
                         </div>
 
 
@@ -230,6 +221,19 @@
                             <div class="tab-content">
             <!-- begin tab1 -->
                                 <div class="tab-pane active" id="tab1">
+
+                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
+                                        <?php echo form_open()?>
+                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/re/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
+                                            <option hidden><?php echo $maxinfo; ?></option>
+                                            <?php
+                                            foreach ($rs as $r) {
+                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                        <?php echo form_close(); ?>
+                                    </div>
                                 
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
@@ -265,6 +269,19 @@
             <!-- begin tab2 -->
                                 <div class="tab-pane" id="tab2">
 
+                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
+                                        <?php echo form_open()?>
+                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/rein/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
+                                            <option hidden><?php echo $maxinfo; ?></option>
+                                            <?php
+                                            foreach ($rs as $r) {
+                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                        <?php echo form_close(); ?>
+                                    </div>
+
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
                                     <div class="col-lg-12" >
@@ -297,6 +314,18 @@
             <!-- begin tab3 -->
                                 <div class="tab-pane" id="tab3">
 
+                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
+                                        <?php echo form_open()?>
+                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/qr/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
+                                            <option hidden><?php echo $maxinfo; ?></option>
+                                            <?php
+                                            foreach ($rs as $r) {
+                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                        <?php echo form_close(); ?>
+                                    </div>
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
                                     <div class="col-lg-12" >
@@ -328,6 +357,19 @@
             <!-- end tab3 -->
             <!-- begin tab4 -->
                                 <div class="tab-pane" id="tab4">
+
+                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
+                                        <?php echo form_open()?>
+                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/qrag/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
+                                            <option hidden><?php echo $maxinfo; ?></option>
+                                            <?php
+                                            foreach ($rs as $r) {
+                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
+                                            }
+                                            ?>
+                                        </select>
+                                        <?php echo form_close(); ?>
+                                    </div>
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range agian qr code -->
                                     <div class="col-lg-12" >
