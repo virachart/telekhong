@@ -189,7 +189,7 @@
                 <div class="col-lg-12">
                     <div class="col-lg-9">
                         <h1 class="page-header">
-                            Information Store  <small>Package 1</small>
+                            SIT Store  <small>Package Gold</small>
                         </h1>
                     </div>
                 <div>
@@ -276,12 +276,12 @@
                 <!-- /.row -->
                 
                     <div class="col-lg-12">
-                        <div class="col-lg-5">
+                        <div class="col-lg-5" style="width:472px;">
                         <div class="panel panel-primary" >    
                             <div class="panel-heading">
                                 <h3 class="panel-title">sale 20 % for this month !!</h3>
                             </div>
-                            <div class="panel-body">
+                            <div class="panel-body" style="min-height: 760px; max-height: 760px;">
                                 <img class="img-thumbnail" src="http://placehold.it/420x420"  alt="">
                             <div class="col-sm-12" style="margin-top:12px">
                                     
@@ -300,11 +300,18 @@
                                     <td>Expire Date :&nbsp</td> 
                                     <td><input type="text" name="edate" class="form-control"/></td>
                                 </tr>
+                                <tr><td>&nbsp</td></tr>
+                                <tr>
+                                    <td>QR Code :&nbsp</td> 
+                                    <td><input type="text" name="qrcode" class="form-control" style="width:50px;"/></td>
+                                </tr>
                                 
                                         
                             </table>
                             <br>
+                            
                             <button type="button" class="btn btn-danger btn-default pull-right"data-toggle="modal" data-target="#myModal" style="text-align:right;">Delete</button>
+                            <button type="button" class="btn btn-primary btn-default pull-right" data-toggle="modal" data-target="#myModal2" style="margin-right:20px;">+ New Upload</button>
                             </div>
                                     <div class="modal fade" id="myModal" role="dialog">
                                         <div class="modal-dialog">
@@ -327,13 +334,13 @@
                             </div>
                         </div>  
                     
-                        <div class="col-lg-7">
+                        <div class="col-lg-7" style="width:660px;">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Information Log</h3>
                             </div>
                        
-                            <div class="panel-body">
+                            <div class="panel-body" style="min-height: 760px; max-height: 760px;overflow-y: scroll;">
 
                                 <div  class="list-group">
                                     <a href="#" class="list-group-item">
@@ -360,6 +367,15 @@
                                         <span class="badge"style="margin-top :35px">1 month ago</span>
                                         <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
                                     </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge"style="margin-top :35px">1 month ago</span>
+                                        <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
+                                    </a>
+                                    <a href="#" class="list-group-item">
+                                        <span class="badge"style="margin-top :35px">1 month ago</span>
+                                        <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
+                                    </a>
+
                                 </div>
                                 <!--<div class="text-right">
                                     <a href="<?=base_url()?>infolog">View all information <i class="fa fa-arrow-circle-right"></i></a>
@@ -372,26 +388,6 @@
             
                
                     <center><div class="col-lg-12">
-                        
-                            
-            
-                    
-                    <div   class="col-lg-4 "></div>
-                    <div   class="col-lg-4 " style="margin-top:20px;">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Upload Information</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="col-sm-4">
-                                <img class="img-thumbnail" src="http://placehold.it/75x75" alt="">
-                            </div>
-                            <div class="col-sm-8">
-                                Upload your New Information.
-                            </div>
-                            <div class="col-sm-12">
-                                <button type="button" class="btn btn-primary btn-default pull-right" data-toggle="modal" data-target="#myModal2">Upload</button>
-                            
                                 <div class="modal fade" id="myModal2" role="dialog">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -464,19 +460,8 @@
                                         </div>
                                         </div>
                                     </div>
-                                </div>
-
+                                </div>                        
                             </div>
-                        </div>
-                        </div>
-                    </div>
-
-                    
-                        
-                    
-                    
-                        
-                    </div>
                     </center>
                 
                 
