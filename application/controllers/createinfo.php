@@ -79,8 +79,8 @@ class Createinfo extends CI_Controller{
 				rename($data['full_path'], $newname);
 				$sqlupdate = "UPDATE info SET info_pic ='".$newname."' WHERE info_id = '".$infoid."'";
 				$this->db->query($sqlupdate);
-				$this->session->unset_userdata('storeid');
-				redirect("thankyou");
+				// $this->session->unset_userdata('storeid');
+				redirect("store");
 			}else{
 				$this->index();
 			}

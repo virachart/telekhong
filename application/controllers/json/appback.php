@@ -9,7 +9,7 @@ class Appback extends CI_Controller{
 	}
 
 	public function index(){
-		
+		echo "index";
 	}
 
 	public function findinfo(){
@@ -92,7 +92,12 @@ class Appback extends CI_Controller{
 
 	public function storedetail(){
 		$arsend = null;
-		$id = $this->input->post("store_id");
+		if ($this->input->get("storeid") != null) {
+			$id = $this->input->get("storeid");
+		}else{
+			$id = $this->input->post("storeid");
+		}
+		// $id = $this->input->get("storeid");
 		// $arJsStore = json_decode($jsStore);
 		// $id = $arJsStore->store_id;
 
@@ -104,16 +109,21 @@ class Appback extends CI_Controller{
 				"address"=>$dataStore['address'],
 				"tel"=>$dataStore['tel'],
 				"opentime"=>$dataStore['open_time'],
-				"pic"=>$dataStore['picture_store']
+				"pic"=>$dataStore['picture_store'],
+				"id"=>$id
 				);
 		}else{
 			$arsend = array("detail"=>null,
 				"address"=>null,
 				"tel"=>null,
 				"opentime"=>null,
-				"pic"=>null
+				"pic"=>null,
+				"id"=>$id
 				);
 		}
+		$st = (string)$id;
+		// write_file('./test.txt', $st."test");
+		
 		$this->output
         			->set_content_type('application/json')
         			->set_output(json_encode($arsend));

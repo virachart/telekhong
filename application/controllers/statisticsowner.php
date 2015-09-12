@@ -9,12 +9,14 @@ class Statisticsowner extends CI_Controller{
 	public function index(){
 		if($this->session->userdata('id') != null){
 			// if($this->session->userdata('storeid') != null){
-				// $id = $this->session->userdata('storeid');
-				$id = "6";
+				$id = $this->session->userdata('storeid');
+				// $id = "6";
 				// $arsq = array('store_id' => $id);
 				$arsq = array('store_id' => $id);
 				$data['rs'] = $this->db->select("*")->from("info")->where($arsq)->get()->result_array();
-
+				if ($data['rs'] != null) {
+					
+				
 				$y = date("Y");
 				$nowdate = date("Y-m-d");
 
@@ -58,11 +60,19 @@ class Statisticsowner extends CI_Controller{
 				$sqlMax = "SELECT MAX(info_id) AS maxinfo , info_name from info where store_id = '".$id."'; ";
 				$maxinfo = $this->db->query($sqlMax);
 				$infoid = $maxinfo->row_array();
+				echo "<pre>";
+				print_r($infoid);
+				echo "</pre>";
+
 				$maxid = $infoid['maxinfo'];
 				$sqlMaxname = "SELECT info_name from info where info_id = '".$maxid."'; ";
 				$queryname = $this->db->query($sqlMaxname);
 				$infoname = $queryname->row_array();
-				$data['maxinfo'] = $infoname['info_name'];
+				echo "<pre>";
+				print_r($infoname);
+				echo "</pre>";
+
+				// $data['maxinfo'] = $infoname['info_name'];
 	//->>change here			
 				// $maxid = "1";
 
@@ -341,8 +351,11 @@ class Statisticsowner extends CI_Controller{
 			// }else{
 			// 	redirect("storeowner");
 			// }
-		}else{
-			redirect("auth");
+			}else{
+				echo "testtt";
+			}
+		// }else{
+			// redirect("auth");
 		}
 	}
 

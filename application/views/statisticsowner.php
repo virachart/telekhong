@@ -208,15 +208,18 @@
                             
                         </div>
 
+                        <script type="text/javascript">
+                             
+                        </script>
 
 
                         <div class="tabbable"> <!-- Only required for left/right tabs -->
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab1" data-toggle="tab">User Received</a></li>
-                                <li><a href="#tab2" data-toggle="tab">Received and come to Store</a></li>
-                                <li><a href="#tab3" data-toggle="tab">First QR Code</a></li>
-                                <li><a href="#tab4" data-toggle="tab">Second or more QR Code</a></li>
-                                <li><a href="#tab5" data-toggle="tab">General Graph</a></li>
+                            <ul class="nav nav-tabs" id="myTabs">
+                                <li class="active" id="a"><a href="#tab1" data-toggle="tab">User Received</a></li>
+                                <li id="b"><a href="#tab2" data-toggle="tab">Received and come to Store</a></li>
+                                <li id="c"><a href="#tab3" data-toggle="tab">First QR Code</a></li>
+                                <li id="d"><a href="#tab4" data-toggle="tab">Second or more QR Code</a></li>
+                                <li id="e"><a href="#tab5" data-toggle="tab">General Graph</a></li>
                             </ul>
                             <div class="tab-content">
             <!-- begin tab1 -->
@@ -555,7 +558,7 @@
         <!-- start -->
         <script type="text/javascript">
     // Flot Pie Chart with Tooltips
-            $(function() {
+            $('#e a').click(function() {
 
                 var data = [{
                     label: " > 18 year old",
@@ -615,7 +618,7 @@
 
 <script type="text/javascript">
     // Flot Pie Chart with Tooltips
-    $(function() {
+    $('#e a').click(function() {
 
         var data = [{
             label: " Male",
@@ -666,12 +669,14 @@
 
 <!-- start use qr again line chart age -->
 <script type="text/javascript">
+    var dataqrag =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
         element: 'morris-line-chart-age-qrag',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
+        
         data: [<?php 
                 if ($day >= 1) {
                     echo "{da: '".$year."-".$month."-01',";
@@ -1042,7 +1047,6 @@
                         e: ".$countqragage5d31."}";
                 };
             ?>
-        
 
          ],
         // The name of the data record attribute that contains x-visitss.
@@ -1057,12 +1061,18 @@
         smooth: false,
         resize: true
     });
+
+    $('#d a').click(function(){
+        dataqrag.redraw();
+    });
 </script>
 <!-- end use qr again line chart age -->
 
 
+
 <!-- start use qr again line chart sex -->
 <script type="text/javascript">
+$('#d a').click(function() {
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1392,12 +1402,14 @@
         smooth: false,
         resize: true
     });
+});
 </script>
 <!-- end use qr again line chart sex -->
 
 
 <!-- start use qr line chart age -->
 <script type="text/javascript">
+$('#c a').click(function() {
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1789,12 +1801,14 @@
         smooth: false,
         resize: true
     });
+});
 </script>
 <!-- end use qr line chart age -->
 
 
 <!-- start use qr line chart sex -->
 <script type="text/javascript">
+$('#c a').click(function() {
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2124,6 +2138,7 @@
         smooth: false,
         resize: true
     });
+});
 </script>
 <!-- end use qr line chart sex -->
 
@@ -2131,6 +2146,7 @@
 
 <!-- start recive and into store line chart age -->
 <script type="text/javascript">
+$('#b a').click(function() {
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2522,12 +2538,14 @@
         smooth: false,
         resize: true
     });
+});
 </script>
 <!-- end recive and into store line chart age -->
 
 
 <!-- start recive and into store line chart sex -->
 <script type="text/javascript">
+$('#b a').click(function() {
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2857,6 +2875,7 @@
         smooth: false,
         resize: true
     });
+});
 </script>
 <!-- end recive and into store line chart sex -->
 
@@ -2864,6 +2883,8 @@
 
 <!-- start recive promotion line chart age -->
 <script type="text/javascript">
+$('#a a').click(function() {
+
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3255,12 +3276,15 @@
         smooth: false,
         resize: true
     });
+});
 </script>
 <!-- end recive promotion line chart age -->
 
 
 <!-- start recive promotion line chart sex -->
 <script type="text/javascript">
+$('#a a').click(function() {
+    
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3590,6 +3614,7 @@
         smooth: false,
         resize: true
     });
+});
 </script>
 <!-- end recive promotion line chart sex -->
 

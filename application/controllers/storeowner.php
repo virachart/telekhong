@@ -24,7 +24,7 @@ class Storeowner extends CI_Controller{
 	public function del($id){
 		$sqlupdate = "UPDATE store SET status_store_id ='4' WHERE store_id = '".$id."'";
 		$this->db->query($sqlupdate);
-		redirect("storeowner","refresh");
+		redirect("store");
 		
 	}
 
