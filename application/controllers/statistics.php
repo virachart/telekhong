@@ -16,6 +16,16 @@ class Statistics extends CI_Controller{
 
 	
 	public function ye14(){
+		$sqlStore = "Select * from store";
+		$data['store'] = $this->db->query($sqlStore);
+		$sqlUser = "Select * from user";
+		$data['user'] = $this->db->query($sqlUser);
+		$sqlOwner = "Select * from owner";
+		$data['owner'] = $this->db->query($sqlOwner);
+		$sqlSensoro = "Select * from sensoro";
+		$data['sensoro'] = $this->db->query($sqlSensoro);
+
+		
 		$y = "2014";
 		// month usesr data
 		$sqlUser12 = "SELECT * FROM user WHERE user_date like '".$y."-12%'";
@@ -117,7 +127,20 @@ class Statistics extends CI_Controller{
 
 
 	public function ye15(){
+		$sqlStore = "Select * from store";
+		$data['store'] = $this->db->query($sqlStore);
+		$sqlUser = "Select * from user";
+		$data['user'] = $this->db->query($sqlUser);
+		$sqlOwner = "Select * from owner";
+		$data['owner'] = $this->db->query($sqlOwner);
+		$sqlSensoro = "Select * from sensoro";
+		$data['sensoro'] = $this->db->query($sqlSensoro);
+
+
 		$y = "2015";
+		
+
+
 		// month usesr data
 		$sqlUser12 = "SELECT * FROM user WHERE user_date like '".$y."-12%'";
 		$data['user12'] = $this->db->query($sqlUser12);

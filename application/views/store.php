@@ -24,6 +24,22 @@
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
+    <!-- jQuery -->
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.ui.widget.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.iframe-transport.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.fileupload.js"></script>  
+    <script src="<?=base_url()?>assets/js/script.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -209,51 +225,146 @@
 
                 <!-- Page Heading -->
                 <div class="col-lg-12">
-                    <div class="col-lg-9">
+                    <div class="col-lg-7">
                         <h1 class="page-header">
                             <?php echo $rs['store_name']; ?>  <small>(Package <?php echo $rs['package_name']; ?>)</small>
                         </h1>
                     </div>
                 <div>
-                    <div class="col-lg-3"style="margin-top :45px">
+                    <div class="col-lg-4"style="margin-top :45px">
+                            <button type="button" class="btn btn-warning btn-default " data-toggle="modal" data-target="#myModal5">Activate Beacon</button>
                             <button type="button" class="btn btn-warning btn-default " data-toggle="modal" data-target="#myModal3">Change Package</button>
                             <?php
                                 echo anchor("storeowner/del/".$this->session->userdata("storeid"), "<button type='button' class='btn btn-danger pull-right' data-toggle='modal' data-target='#myModal'>Delete Store</button>");
                             ?>
                             <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>    -->
                     </div>
+
+    <script type="text/javascript">
+        $('#acti').live("click",function(){
+            if ($("#ref1").val() == "" ) {
+                $("#ref1").focus();
+            }
+            if ($("#ref2").val() == "" ) {
+                $("#ref2").focus();
+            }
+            $.ajax({
+                url:"store/activate",
+                type: "POST",
+                cache: false,
+                data: "ref1="+$("#ref1").val()+"&ref2="+$("#ref2").val(),
+                dataType:"JSON",
+                success:function(res){
+                    console.log(JSON.stringify(res));
+                    if (res.status == "ok") {
+                        var textstatus = "<h2> Activate Success. Thank You. </h2> ";
+                        var textdetail = "<table><tr><td>UUID : </td><td>"+res.uuid+"</td></tr><tr><td>Major : </td><td>"+res.major+"</td></tr><tr><td>Minor : </td><td>"+res.minor+"</td></tr></table>";
+                        $("#status").html(textstatus);
+                        $("#detailsen").html(textdetail);
+                    }else{
+                        var textstatus = "<h2> Activate Not Success. Please Try Agian. </h2> ";
+                        $("#status").html(textstatus);
+                    }
+                },
+                error:function(err){
+                    console.log("error : "+err);
+                },
+            });
+        });
+        
+    </script>
     
       <!-- Modal content-->
+      <!-- modal of activate beacon -->
+    <div class="modal fade" id="myModal5" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Activate Beacon</h4>
+                </div>
+                <div class="modal-body"style="padding:50px 50px;">
+
+                    <table>
+                        <tr>
+                            <td align="center">Code Ref. 1 : </td>
+                            <td align="center"><input type="text" id="ref1" name="ref1" placeholder="Code Ref.1"></td>
+                        </tr>
+                        <tr>
+                            <td align="center">Code Ref. 2 : </td>
+                            <td align="center"><input type="text" id="ref2" name="ref2" placeholder="Code Ref.2"></td>
+                        </tr>
+                    </table>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal6" id="acti" data-dismiss="modal">Activate</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- modal of activate status -->
+    <div class="modal fade" id="myModal6" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Activate Beacon Status</h4>
+                </div>
+                <div class="modal-body"style="padding:50px 50px;">
+                    <div class="col-xs-8" id="status">
+                        
+                    </div>
+                    <div class="col-xs-2"></div>
+                    <div class="col-xs-8" id="detailsen">
+                        
+                    </div>
+                    <div class="col-xs-2"></div>
+
+
+                </div>
+                <div >
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 
       
-      <div class="modal fade" id="myModal3" role="dialog">
-            <div class="modal-dialog">
-                            <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                <h4 class="modal-title" >Change Package</h4>
-                            </div>
-                            <div class="modal-body"style="padding:50px 50px;">
-          
-                            <div class="col-sm-12">Select your new package :</div><br><hr>
-                            
-                            <div class="col-sm-12"><center>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 1</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 2</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 3</label>
-                                <label class="radio-inline"><input type="radio" name="optradio" value="">Package 4</label>
-                                </center></div><br>
-                            
-          
-                            </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Change</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                        </div>
-                        
-                        </div>
-                        </div>
-                        </div>
+    <div class="modal fade" id="myModal3" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Change Package</h4>
+                </div>
+                <div class="modal-body"style="padding:50px 50px;">
+
+                    <div class="col-sm-12">Select your new package :</div><br><hr>
+
+                    <div class="col-sm-12"><center>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 1</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 2</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 3</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 4</label>
+                    </center></div><br>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Change</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
                 <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
     
@@ -340,7 +451,7 @@
                                 <h3 class="panel-title"> sale 20 % for this month !!</h3>
                             </div>
                             <div class="panel-body" style="min-height: 760px; max-height: 760px;" >
-                                <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" >
+                                <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" style="width:420px;height:420px" >
                             <div class="col-sm-12" style="margin-top:12px">
                                     
                             <table >
@@ -577,20 +688,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="<?=base_url()?>assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
-    <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script>
-    <script src="<?=base_url()?>assets/js/jquery.ui.widget.js"></script>
-    <script src="<?=base_url()?>assets/js/jquery.iframe-transport.js"></script>
-    <script src="<?=base_url()?>assets/js/jquery.fileupload.js"></script>  
-    <script src="<?=base_url()?>assets/js/script.js"></script>
+    
 
     
 </body>

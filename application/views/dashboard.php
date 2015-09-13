@@ -205,9 +205,9 @@
                           <div class="small-box bg-aqua">
                             <div class="inner">
                               <h3><?php
-                                $numStore = $store->num_rows();
-                                echo $numStore;?></h3>
-                                <p>Store</p>
+                                $numuser = $user->num_rows();
+                                echo $numuser;?></h3>
+                                <p>User</p>
                             </div>
                             <div class="icon">
                               <i class="fa fa-shopping-cart"></i>
@@ -220,9 +220,9 @@
                       <div class="small-box bg-green">
                         <div class="inner">
                           <h3><?php
-                            $numSen = $sensoro->num_rows();
-                            echo $numSen;?></h3>
-                            <p>Sensoro</p>
+                                $numowner = $owner->num_rows();
+                                echo $numowner;?></h3>
+                            <p>Owner</p>
                         </div>
                         <div class="icon">
                           <i class="ion ion-stats-bars"></i>
@@ -235,12 +235,12 @@
                   <div class="small-box bg-yellow">
                     <div class="inner">
                       <h3><?php
-                        $numUser = $user->num_rows();
-                        echo $numUser;?></h3>
-                        <p>Users</p>
+                            $numStore = $store->num_rows();
+                            echo $numStore;?></h3>
+                        <p>Store</p>
                     </div>
                     <div class="icon">
-                      <i class="ion ion-person"></i>
+                      <i class="glyphicon glyphicon-ok-circle"></i>
                   </div>
                   
               </div>
@@ -250,12 +250,12 @@
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php
-                    $numOwn = $owner->num_rows();
-                    echo $numOwn;?></h3>
-                    <p>Store Owners</p>
+                    $numsen12 = $sen12->num_rows();
+                    echo $numsen12;?></h3>
+                    <p>Beacon In Stock</p>
                 </div>
-                <div class="icon">
-                  <i class="ion ion-person-add"></i>
+                <div class="icon" style="margin-top: 25 px">
+                  <i class="glyphicon glyphicon-exclamation-sign"></i>
               </div>
               
           </div>
@@ -263,24 +263,100 @@
   </div>
 
 <div class="row">
-    <div class="col-lg-2">
-        <h2 class="page-header">All Chart in </h2></div>
-        
-        <!-- /.row -->
-        <div class="col-lg-12" >
-            <div class="panel panel-red">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> User Graph </h3>
-                </div>
-                <div class="panel-body">
-                    <div id="morris-line-chart"></div>
-                    <div class="text-right">
-                        <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <?php
+        function check_port($port) {
+            $conn = @fsockopen("10.4.43.99", $port, $errno, $errstr, 0.2);
+            if ($conn) {
+            fclose($conn);
+            return true;
+            }
+        }
 
+        function server_report() {
+            $report = array();
+            $svcs = array(
+            '22'=>'SSH',
+            '80'=>'HTTP',
+            '3306'=>'MySQL');
+            foreach ($svcs as $port=>$service) {
+            $report[$service] = check_port($port);
+            }
+            return $report;
+        }
+
+        $report = server_report();
+    ?>
+
+
+    <table width="15%">
+        <tr bgcolor="pink">
+        <td><b>Service</b></td>
+        <td><b>Status</b></td>
+        </tr>
+        
+        <tr>
+        <td><b>SSH / SFTP</b></td>
+        <td><?php echo $report['SSH'] ? "<font color='red'>Online</font>" : "Offline"; ?></td>
+        </tr>
+        
+        <tr>
+        <td><b>HTTP</b></td>
+        <td><?php echo $report['HTTP'] ? "<font color='red'>Online</font>" : "Offline"; ?></td>
+        </tr>
+        
+        <tr>
+        <td><b>MySQL</b></td>
+        <td><?php echo $report['MySQL'] ? "<font color='red'>Online</font>" : "Offline"; ?></td>
+        </tr>
+    </table>
+
+                                        <div class="row" style=" margin-top: 40px;">
+                                        <div class="col-lg-6">
+                                            <div class="panel panel-green">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age of Becon Chart </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="flot-chart">
+                                                        <div class="flot-chart-content" id="flot-pie-chart"></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h4>Age Range Chart</h4>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <td> < 6 month</td>
+                                                                <td> 6 - 12 month</td>
+                                                                <td> > 12 month</td>
+                                                                <td>Total</td>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><?php $pa1 = $sen6->num_rows(); echo $pa1; ?></td>
+                                                                <td><?php $pa2 = $sen12->num_rows(); echo $pa2; ?></td>
+                                                                <td><?php $pa3 = $senover->num_rows(); echo $pa3; ?></td>
+                                                                <td><?php $pa = $pa1+$pa2+$pa3; echo $pa; ?></td>
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>                                 
+                                        </div>
+
+                                    </div>
+<?php $a = $sen6->num_rows();?>
+<?php $b = $sen12->num_rows();?>
+<?php $c = $senover->num_rows();?>
         
     <div><br></div>
     <center><div class="row">
@@ -321,280 +397,90 @@
 <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
 <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
 <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
-<script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script>
+<!-- <script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script> -->
 
 <script type="text/javascript">
+    // Flot Pie Chart with Tooltips
     $(function() {
 
-    // Area Chart
-    Morris.Area({
-        element: 'morris-area-chart',
-        data: [{
-            period: '2010 Q1',
-            iphone: 2666,
-            ipad: null,
-            itouch: 2647
-        }, {
-            period: '2010 Q2',
-            iphone: 2778,
-            ipad: 2294,
-            itouch: 2441
-        }, {
-            period: '2010 Q3',
-            iphone: 4912,
-            ipad: 1969,
-            itouch: 2501
-        }, {
-            period: '2010 Q4',
-            iphone: 3767,
-            ipad: 3597,
-            itouch: 5689
-        }, {
-            period: '2011 Q1',
-            iphone: 6810,
-            ipad: 1914,
-            itouch: 2293
-        }, {
-            period: '2011 Q2',
-            iphone: 5670,
-            ipad: 4293,
-            itouch: 1881
-        }, {
-            period: '2011 Q3',
-            iphone: 4820,
-            ipad: 3795,
-            itouch: 1588
-        }, {
-            period: '2011 Q4',
-            iphone: 15073,
-            ipad: 5967,
-            itouch: 5175
-        }, {
-            period: '2012 Q1',
-            iphone: 10687,
-            ipad: 4460,
-            itouch: 2028
-        }, {
-            period: '2012 Q2',
-            iphone: 8432,
-            ipad: 5713,
-            itouch: 1791
-        }],
-        xkey: 'period',
-        ykeys: ['iphone', 'ipad', 'itouch'],
-        labels: ['iPhone', 'iPad', 'iPod Touch'],
-        pointSize: 2,
-        hideHover: 'auto',
-        resize: true
-    });
+    var data = [{
+        label: " < 6 month",
+        data: <?php echo $a;?>
+    }, {
+        label: " 6 - 12 month",
+        data: <?php echo $b;?>
+    }, {
+        label: " > 12 month",
+        data: <?php echo $c;?>
+    }];
 
-    // Donut Chart
-    Morris.Donut({
-        element: 'morris-donut-chart',
-        data: [{
-            label: "Download Sales",
-            value: 12
-        }, {
-            label: "In-Store Sales",
-            value: 30
-        }, {
-            label: "Mail-Order Sales",
-            value: 20
-        }],
-        resize: true
+    var plotObj = $.plot($("#flot-pie-chart"), data, {
+        series: {
+            pie: {
+                show: true
+            }
+        },
+        grid: {
+            hoverable: true
+        },
+        tooltip: true,
+        tooltipOpts: {
+            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+            shifts: {
+                x: 20,
+                y: 0
+            },
+            defaultTheme: false
+        }
     });
-
-    // Bar Chart
-    Morris.Bar({
-        element: 'morris-bar-chart',
-        data: [{
-            device: 'iPhone',
-            geekbench: 136
-        }, {
-            device: 'iPhone 3G',
-            geekbench: 137
-        }, {
-            device: 'iPhone 3GS',
-            geekbench: 275
-        }, {
-            device: 'iPhone 4',
-            geekbench: 380
-        }, {
-            device: 'iPhone 4S',
-            geekbench: 655
-        }, {
-            device: 'iPhone 5',
-            geekbench: 1571
-        }],
-        xkey: 'device',
-        ykeys: ['geekbench'],
-        labels: ['Geekbench'],
-        barRatio: 0.4,
-        xLabelAngle: 35,
-        hideHover: 'auto',
-        resize: true
-    });
-
 
 });
-</script>
 
-<script type="text/javascript">
-    var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
-    // Line Chart
-    Morris.Line({
-        // ID of the element in which to draw the chart.
-        element: 'morris-line-chart',
-        // Chart data records -- each entry in this array corresponds to a point on
-        // the chart.
-        data: [
-        // month 1
-        <?php
-        $z = date("n");
-        if ($z >= 1) {
-            echo "{
-            M: '2015-01',
-            visits: ";
-            echo $user1->num_rows();
-            echo "}, ";
-        };?> 
-        
-        // month 2
-        <?php
-        if ($z >= 2) {
-            echo "{
-            M: '2015-02',
-            visits: ";
-            $numUser = $user2->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
-        // month 3
-        <?php
-        if ($z >= 3) {
-            echo "{
-            M: '2015-03',
-            visits: ";
-            $numUser = $user3->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
-        // month 4
-        <?php
-        if ($z >= 4) {
-            echo "{
-            M: '2015-04',
-            visits: ";
-            $numUser = $user4->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
-        // month 5
-        <?php
-        if ($z >= 5) {
-            echo "{
-            M: '2015-05',
-            visits: ";
-            $numUser = $user5->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
-        // month 6
-        <?php
-        if ($z >= 6) {
-            echo "{
-            M: '2015-06',
-            visits: ";
-            $numUser = $user6->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-        
-        // month 7
-        <?php
-        if ($z >= 7) {
-            echo "{
-            M: '2015-07',
-            visits: ";
-            $numUser = $user7->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
-        // month 8
-        <?php
-        if ($z >= 8) {
-            echo "{
-            M: '2015-08',
-            visits: ";
-            $numUser = $user8->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-         
-        // month 9
-        <?php
-        if ($z >= 9) {
-            echo "{
-            M: '2015-09',
-            visits: ";
-            $numUser = $user9->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-        // month 10
-        <?php
-        if ($z >= 10) {
-            echo "{
-            M: '2015-10',
-            visits: ";
-            $numUser = $user10->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?> 
-        // month 11
-        <?php
-        if ($z >= 11) {
-            echo "{
-            M: '2015-11',
-            visits: ";
-            $numUser = $user11->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
-        // month 12
-        <?php
-        if ($z >= 12) {
-            echo "{
-            M: '2015-12',
-            visits: ";
-            $numUser = $user12->num_rows();
-            echo $numUser;
-            echo "}, ";
-        };?>
-        //end of value 12 month
-        ],
-        // The name of the data record attribute that contains x-visitss.
-        xkey: 'M',
-        // A list of names of data record attributes that contain y-visitss.
-        ykeys: ['visits'],
-        // Labels for the ykeys -- will be displayed when you hover over the
-        // chart.
-        labels: ['2015'],
 
-        xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
-        var month = months[x.getMonth()];
-        return month;
-        },
-        // Disables line smoothing
-        smooth: false,
-        resize: true
-    });
-</script>
+            // $(function() {
+            //     var data = [{
+            //         label: " < 6 month",
+            //         data :
+            //         <?php
+            //         echo $sen6->num_rows();
+            //         ?>
+            //     }, {
+            //         label: " 6 - 12 month",
+            //         data :
+            //         <?php
+            //         echo $sen12->num_rows();
+            //         ?>
+            //     }, {
+            //         label: " > 12 month",
+            //         data :
+            //         <?php
+            //         echo $senover->num_rows();
+            //         ?>
+            //     }];
+
+            //     var plotObj = $.plot($("#flot-pie-chart-sensoro"), data, {
+            //         series: {
+            //             pie: {
+            //                 show: true
+            //             }
+            //         },
+            //         grid: {
+            //             hoverable: true
+            //         },
+            //         tooltip: true,
+            //         tooltipOpts: {
+            //         content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+            //         shifts: {
+            //             x: 20,
+            //             y: 0
+            //         },
+            //         defaultTheme: false
+            //     }
+            // });
+            // });
+
+
+        </script>
 
 </body>
 

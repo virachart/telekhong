@@ -22,6 +22,12 @@
 
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>assets/css/AdminLTE.min.css" rel="stylesheet">
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <link href="<?=base_url()?>assets/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom Fonts -->
+    <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -200,6 +206,72 @@
                         </div>
                     </div>
                     <!-- /.row -->
+
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-lg-3 col-xs-6">
+                          <!-- small box -->
+                          <div class="small-box bg-aqua">
+                            <div class="inner">
+                              <h3><?php
+                                $numStore = $store->num_rows();
+                                echo $numStore;?></h3>
+                                <p>Store</p>
+                            </div>
+                            <div class="icon">
+                              <i class="fa fa-shopping-cart"></i>
+                          </div>
+                          
+                      </div>
+                  </div><!-- ./col -->
+                  <div class="col-lg-3 col-xs-6">
+                      <!-- small box -->
+                      <div class="small-box bg-green">
+                        <div class="inner">
+                          <h3><?php
+                            $numSen = $sensoro->num_rows();
+                            echo $numSen;?></h3>
+                            <p>Sensoro</p>
+                        </div>
+                        <div class="icon">
+                          <i class="ion ion-stats-bars"></i>
+                      </div>
+                      
+                  </div>
+              </div><!-- ./col -->
+              <div class="col-lg-3 col-xs-6">
+                  <!-- small box -->
+                  <div class="small-box bg-yellow">
+                    <div class="inner">
+                      <h3><?php
+                        $numUser = $user->num_rows();
+                        echo $numUser;?></h3>
+                        <p>Users</p>
+                    </div>
+                    <div class="icon">
+                      <i class="ion ion-person"></i>
+                  </div>
+                  
+              </div>
+          </div><!-- ./col -->
+          <div class="col-lg-3 col-xs-6">
+              <!-- small box -->
+              <div class="small-box bg-red">
+                <div class="inner">
+                  <h3><?php
+                    $numOwn = $owner->num_rows();
+                    echo $numOwn;?></h3>
+                    <p>Store Owners</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-person-add"></i>
+              </div>
+              
+          </div>
+      </div><!-- ./col -->
+  </div>
+
+                    
 
                     <!-- Flot Charts -->
                     <div class="row">

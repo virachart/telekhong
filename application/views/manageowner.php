@@ -227,6 +227,7 @@
                                 <thead>
                                     <tr>
                                         <td>No.</td>
+                                        <td>Name</td>
                                         <td>Owner Email</td>
                                         <td>Owner Tel</td>
                                         <td>Status</td>
@@ -244,6 +245,7 @@
                                             foreach ($rs as $r) {
                                                 echo "<tr>";
                                                 echo "<td>".$no."</td>";
+                                                echo "<td>".$r['fb_name']."</td>";
                                                 echo "<td>".$r['owner_email']."</td>";
                                                 echo "<td>".$r['owner_tel']."</td>";
                                                 echo "<td>".$r['status_owner']."</td>";

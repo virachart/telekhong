@@ -200,10 +200,10 @@
                 <div class="col-lg-12">
                 <div class="col-lg-3" >
 
-             Your Package is : Gold<br>
-                Service Charge : 2000 / Month<br>
-                Service start in : 12 / 1 / 2015<br>
-                End of agreement : 12 / 1 / 2015<br>
+                Your Package is : <?php echo $storedetail['package_name']; ?><br>
+                Service Charge : <?php echo $storedetail['price']; ?> / Month<br>
+                Service start in : <?php echo substr($firstday['date'],0,10); ?><br>
+                End of agreement : <?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?><br>
                 </div>
                 <div class="col-lg-6">
 
@@ -211,8 +211,17 @@
                     <input type="Hidden" Name="psb" value="psb"/> 
                     <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
                     
+                    <?php
+                        $store = $storedetail['store_id'];
+                        if ($store <10) {
+                            $store = "00".$store;
+                        }elseif ($store < 100) {
+                            $store = "0".$store;
+                        }
+                    ?>
+
                     <!-- inv is Some String text from paysbuy-->
-                    <input Type="Hidden" Name="inv" value="tele0001"/> 
+                    <input Type="Hidden" Name="inv" value="<?php echo "pack".$store."".$storedetail['price']."";?>"/> 
                     <input Type="Hidden" Name="itm" value="Service Charge"/> 
                     
                     <!-- amt is Store Package Charge--> 
@@ -245,7 +254,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
+
+                                    <?php 
+                                        $i = 1;
+                                        foreach ($payment as $r) {
+                                        echo "<tr>";
+                                        echo "<td>".$i."</td>";
+                                        echo "<td>".$r['amount']."</td>";
+                                        echo "<td>".substr($r['date'],0,10)."</td>";
+                                        echo "<td>".substr($r['date'],11,8)."</td>";
+                                        echo "</tr>";
+                                        $i++;
+                                        }
+                                    ?>
+                                    <!-- <tr>
                                         <td>7</td>
                                         <td>2000</td>
                                         <td>12/7/58</td>
@@ -292,7 +314,7 @@
                                         <td>2500</td>
                                         <td>12/1/58</td>
                                         <td>13:50</td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>

@@ -90,7 +90,28 @@ class Store extends CI_Controller{
 
 	}
 
-	
+	public function activate(){
+		$ref1 = $this->input->post("ref1");
+		$ref2 = $this->input->post("ref2");
+		$storeid = "8";
+		// $storeid = $this->session->userdata('storeid');
+		$sqlcheckref = "select * from sensoro where sensoro_code1 = '".$ref1."' and sensoro_code2 = '".$ref2."' ";
+		$rs = $this->db->query($sqlcheckref)->row_array();
+		if ($rs != null) {
+			$aractivate = array('store_id' => $storeid);
+			$this->db->where('sensoro_id', $rs['sensoro_id']);
+			$this->db->update('sensoro', $aractivate);
+			$sqlgetsen = "select * from sensoro where sensoro_id = '".$rs['sensoro_id']."' ";
+			$data = $this->db->query($sqlgetsen)->row_array();
+			$arsend = array('uuid' => $data['uuid'] ,
+							'major' => $data['major'] ,
+							'minor' => $data['minor'] ,
+							'status' => 'ok' ); 
+		}else{
+			$arsend = array('status' => 'no' );
+		}
+		echo json_encode($arsend);
+	}
 
 }
 

@@ -25,7 +25,7 @@ class Manageowner extends CI_Controller{
 			$data['num2'] = $this->db->query($sqluserav);
 			$data['num3'] = $this->db->query($sqluserbl);
 			$data['num4'] = $this->db->query($sqluserba);
-			$data['rs'] = $this->db->select("*")->from("owner")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+			$data['rs'] = $this->db->select("*")->from("owner")->join("user","owner.fb_id=user.fb_id")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 			
 			$this->load->view("manageowner",$data);
 		}else{
