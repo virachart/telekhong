@@ -106,26 +106,47 @@
                         </li>
                     </ul>
                 </li>
+
+                <style type="text/css">
+                    .not-active {
+                       pointer-events: none;
+                       cursor: default;
+                    }
+
+                </style>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Store 1 <span class="label label-success "style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 2 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 3 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 4 <span class="label label-warning"style="margin-left :50px">Blocked</span></a>
-                        </li>
+                        <?php
+                        if ($allstore == null) {
+                            echo "<li><center> You have only 1 store.</center> </li>";
+                        }else{
+                            foreach ($allstore as $r) {
+                                $sta = "";
+                                if ($r['status_store_id']=="1") {
+
+                                }else{
+                                    $sta = "class='not-active'";
+                                }
+                                echo "<li ".$sta.">
+                                <a href='";
+                                echo site_url("store/selectst/".$r['store_id']);
+                                echo "'> ".substr($r['store_name'],0,13); 
+                                    if ($r['status_store_id']=="1" ) {
+                                        echo "<span class='label label-success' style='float : right;'>Avaliable</span></a>
+                                    </li>";
+                                }elseif ($r['status_store_id']=="2" ) {
+                                    echo "<span class='label label-warning' style='float : right;'>Blocked</span></a>
+                                </li>";    
+                            }elseif ($r['status_store_id']=="3" ) {
+                                echo "<span class='label label-danger' style='float : right;'>Ban</span></a>
+                            </li>";    
+                            }
+                            }
+                        }
+
+                ?>
                         
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -183,19 +204,23 @@
 
         <div id="page-wrapper">
         
+        
             <div class="container-fluid">
 
                 <!-- Page Heading -->
                 <div class="col-lg-12">
                     <div class="col-lg-9">
                         <h1 class="page-header">
-                            SIT Store  <small>Package Gold</small>
+                            <?php echo $rs['store_name']; ?>  <small>(Package <?php echo $rs['package_name']; ?>)</small>
                         </h1>
                     </div>
                 <div>
                     <div class="col-lg-3"style="margin-top :45px">
                             <button type="button" class="btn btn-warning btn-default " data-toggle="modal" data-target="#myModal3">Change Package</button>
-                            <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>   
+                            <?php
+                                echo anchor("storeowner/del/".$this->session->userdata("storeid"), "<button type='button' class='btn btn-danger pull-right' data-toggle='modal' data-target='#myModal'>Delete Store</button>");
+                            ?>
+                            <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>    -->
                     </div>
     
       <!-- Modal content-->
@@ -258,8 +283,12 @@
                                <div class="col-md-12"><h4>Limit of your package in this period </h4></div> 
                             </li>
                             <div class="progress">
-                     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                    60 / 100
+                     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php $up = $rs['upload']; echo $up;?>" aria-valuemin="0" aria-valuemax="<?php $lim=$rs['upload_limit']; echo $lim;?>" style="width: <?php $cal=($up/$lim)*100; if($cal==0) echo "3"; else echo $cal; ?>%;">
+                    <?php 
+                       
+                        echo $up." / ".$lim; 
+                        
+                        ?>
                     </div>
                     </div>
                         </ol>
@@ -269,7 +298,36 @@
                 
                 <!-- /.row -->
                 
-                    
+                    <script type="text/javascript">
+                        function getedit(id){
+                            edit=false;
+                            infoid=id;
+                            $.ajax({
+                                url:"store/showinfo/"+id,
+                                type: "POST",
+                                dataType:"json",
+                                success:function(res){
+                                    console.log(JSON.stringify(res));
+                                    var textname = "<h3 class='panel-title'> "+res.info_name+"</h3>";
+                                    var textpic = "<?=base_url();?>images/info/"+res.info_pic;
+                                    var textbutton = "<a href='<?=base_url();?>index.php/storeowner/del/"+res.info_id+"' onclick='javascript:return confirm('Do you want to delete?');'><button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button></a>";
+                                    $("#info_detail").html(textname);
+                                    $("#infopic").attr("src",textpic);
+                                    $("#des").attr("value",res.info_descrip);
+                                    $("#begin").attr("value",res.info_begin_date);
+                                    $("#expire").attr("value",res.info_expire_date);
+                                    $("#qr").attr("value",res.qr);
+                                    $("#infodel").html(textbutton);
+
+                                },
+                                error:function(err){
+                                    console.log("error : "+err);
+                                },
+                            });
+                        }
+
+
+                    </script>
                 
                 
          
@@ -277,41 +335,52 @@
                 
                     <div class="col-lg-12">
                         <div class="col-lg-5" style="width:472px;">
-                        <div class="panel panel-primary" >    
-                            <div class="panel-heading">
-                                <h3 class="panel-title">sale 20 % for this month !!</h3>
+                        <div class="panel panel-primary">    
+                            <div class="panel-heading" id="info_detail">
+                                <h3 class="panel-title"> sale 20 % for this month !!</h3>
                             </div>
-                            <div class="panel-body" style="min-height: 760px; max-height: 760px;">
-                                <img class="img-thumbnail" src="http://placehold.it/420x420"  alt="">
+                            <div class="panel-body" style="min-height: 760px; max-height: 760px;" >
+                                <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" >
                             <div class="col-sm-12" style="margin-top:12px">
                                     
                             <table >
                                 <tr>
                                     <td>Description :&nbsp</td> 
-                                    <td><textarea name="des" rows="3" class="form-control" style="width:250px;"></textarea></td>
+                                    <td><textarea name="des" rows="3" class="form-control" style="width:250px;" id="des" disabled></textarea></td>
                                 </tr>
                                 <tr><td>&nbsp</td></tr>
                                 <tr>
                                     <td>Begin Date :&nbsp</td>
-                                    <td><input type="text" name="bdate" class="form-control"/></td>
+                                    <td><input type="text" name="bdate" class="form-control" id="begin" disabled/></td>
                                 </tr>
                                 <tr><td>&nbsp</td></tr>
                                 <tr>
                                     <td>Expire Date :&nbsp</td> 
-                                    <td><input type="text" name="edate" class="form-control"/></td>
+                                    <td><input type="text" name="edate" class="form-control" id="expire" disabled/></td>
                                 </tr>
                                 <tr><td>&nbsp</td></tr>
                                 <tr>
                                     <td>QR Code :&nbsp</td> 
-                                    <td><input type="text" name="qrcode" class="form-control" style="width:50px;"/></td>
+                                    <td><input type="text" name="qrcode" class="form-control" style="width:50px;" id="qr" disabled/></td>
                                 </tr>
                                 
                                         
                             </table>
                             <br>
-                            
-                            <button type="button" class="btn btn-danger btn-default pull-right"data-toggle="modal" data-target="#myModal" style="text-align:right;">Delete</button>
-                            <button type="button" class="btn btn-primary btn-default pull-right" data-toggle="modal" data-target="#myModal2" style="margin-right:20px;">+ New Upload</button>
+                            <?php
+                                $amount = $lim - $up;
+                                if ($amount < 1) {
+                                    $dis = "disabled";
+                                }else{
+                                    $dis = null;
+                                }
+
+                                echo anchor("storeowner/addinfo/".$this->session->userdata('storeid'), "<button type='button' class='btn btn-primary btn-default pull-right' style='margin-right:20px;margin-left:10px;' ".$dis." >+ New Upload</button>");
+                                // echo anchor("storeowner/del/".$this->session->userdata('storedel'), "<button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                            ?>
+                            <!-- <a href="<?=base_url();?>index.php/storeowner/addinfo/6"><button type="button" class="btn btn-primary btn-default pull-right" style="margin-right:20px;margin-left:10px;">+ New Upload</button></a> -->
+                            <span id="infodel"></span>
+                            <!-- <a href="<?=base_url();?>index.php/storeowner/del" onclick="javascript:return confirm('Do you want to delete?');"><button type="button" class="btn btn-danger btn-default pull-right" style="text-align:right;">Delete</button></a> -->
                             </div>
                                     <div class="modal fade" id="myModal" role="dialog">
                                         <div class="modal-dialog">
@@ -343,7 +412,25 @@
                             <div class="panel-body" style="min-height: 760px; max-height: 760px;overflow-y: scroll;">
 
                                 <div  class="list-group">
-                                    <a href="#" class="list-group-item">
+
+                                <?php
+                                    if ($info != null) {
+                                        foreach ($info as $key => $r) {
+                                            echo "<a href='javascript:void(0);' onclick='getedit(".$r['info_id'].")' class='list-group-item'>
+                                                <img class='img-thumbnail' src='".base_url()."images/info/".$r['info_pic']."' width='75px' height='75px' alt=''> ".$r['info_name']."
+                                                </a>";
+
+                                        }
+
+                                        
+                                        
+                                    }else{
+                                        echo "<center><h2> --- No Information ---</h2> </center>";
+                                    }
+
+                                ?>
+
+                                    <!-- <a href="#" class="list-group-item">
                                         <span class="badge" style="margin-top :35px">just now</span>
                                         <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 50 %
                                     </a>
@@ -374,7 +461,7 @@
                                     <a href="#" class="list-group-item">
                                         <span class="badge"style="margin-top :35px">1 month ago</span>
                                         <img class="img-thumbnail" src="http://placehold.it/75x75" alt=""> sale 20 %
-                                    </a>
+                                    </a> -->
 
                                 </div>
                                 <!--<div class="text-right">
@@ -504,6 +591,7 @@
     <script src="<?=base_url()?>assets/js/jquery.iframe-transport.js"></script>
     <script src="<?=base_url()?>assets/js/jquery.fileupload.js"></script>  
     <script src="<?=base_url()?>assets/js/script.js"></script>
+
     
 </body>
 
