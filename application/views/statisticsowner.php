@@ -32,7 +32,9 @@
 
     </head>
 
-    <body>
+    <body onload="showtab1()">
+
+    
 
         <div id="wrapper">
 
@@ -219,17 +221,18 @@
 
 
 
-                        <div class="tabbable"> <!-- Only required for left/right tabs -->
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#tab1" data-toggle="tab">User Received</a></li>
-                                <li><a href="#tab2" data-toggle="tab">Received and come to Store</a></li>
-                                <li><a href="#tab3" data-toggle="tab">First QR Code</a></li>
-                                <li><a href="#tab4" data-toggle="tab">Second or more QR Code</a></li>
-                                <li><a href="#tab5" data-toggle="tab">General Graph</a></li>
+                        <div class="tabbable" > <!-- Only required for left/right tabs -->
+                            <ul class="nav nav-tabs" id="mytab">
+                                <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()">General Graph</a></li>
+                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()">User Received</a></li>
+                                <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()">Received and come to Store</a></li>
+                                <li ><a href="#tab4" data-toggle="tab" onclick="showtab4()">First QR Code</a></li>
+                                <li ><a href="#tab5" data-toggle="tab" onclick="showtab5()">Second or more QR Code</a></li>     
                             </ul>
-                            <div class="tab-content">
-            <!-- begin tab1 -->
-                                <div class="tab-pane active" id="tab1">
+                            <div class="tab-content ">
+
+            <!-- begin tab2 -->
+                                <div class=" active" id="tab2" >
                                 
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
@@ -261,9 +264,9 @@
 
 
                                 </div>
-            <!-- end tab1   -->
-            <!-- begin tab2 -->
-                                <div class="tab-pane" id="tab2">
+            <!-- end tab2   -->
+            <!-- begin tab3 -->
+                                <div class=" active" id="tab3" >
 
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
@@ -293,9 +296,9 @@
                                     </div>
                                     <!-- end line graph sex range use qr code -->
                                 </div>
-            <!-- end tab2 -->
-            <!-- begin tab3 -->
-                                <div class="tab-pane" id="tab3">
+            <!-- end tab3 -->
+            <!-- begin tab4 -->
+                                <div class="active" id="tab4" >
 
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
@@ -325,9 +328,10 @@
                                     </div>
                                     <!-- end line graph sex range use qr code -->
                                 </div>
-            <!-- end tab3 -->
-            <!-- begin tab4 -->
-                                <div class="tab-pane" id="tab4">
+            <!-- end tab4 -->
+            <!-- begin tab5 -->
+                                <div class="active" id="tab5">
+
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range agian qr code -->
                                     <div class="col-lg-12" >
@@ -335,7 +339,7 @@
                                             <div class="panel-heading">
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Graph </h3>
                                             </div>
-                                            <div class="panel-body">
+                                            <div class="panel-body" >
                                                 <div id="morris-line-chart-age-qrag"></div>
                                             </div>
                                         </div>
@@ -356,9 +360,10 @@
                                     </div>
                                     <!-- end line graph sex range agian qr code -->
                                 </div>
-            <!-- end tab4 -->
-            <!-- begin tab5 -->
-                                <div class="tab-pane" id="tab5">
+            <!-- end tab5 -->
+
+            <!-- begin tab1 -->
+                                <div class=" active" id="tab1" >
                                     <!-- /.row -->
                                     <div class="row" style=" margin-top: 40px;">
                                         <div class="col-lg-6">
@@ -457,7 +462,8 @@
                                     <!-- /.row .........................-->
 
                                 </div>
-            <!-- end tab5 -->
+            <!-- end tab1 -->
+            
                             </div>
                         </div>
 
@@ -511,10 +517,68 @@
 
         <!-- pie chart package -->
         <!-- start -->
+        <!-- pie chart package -->
+        <!-- start -->
+        <style>
+        .show{
+        display:block;
+        }
+
+        .closetab{
+        display:none;
+        }
+        </style>
+        <script>
+
+        function showtab1(){
+            $('#tab1').css("display","block"); 
+            $('#tab2').css("display","none");
+            $('#tab3').css("display","none");
+            $('#tab4').css("display","none");
+            $('#tab5').css("display","none");
+        }
+
+        function showtab2(){
+            $('#tab2').css("display","block"); 
+            $('#tab1').css("display","block");
+            $('#tab3').css("display","none");
+            $('#tab4').css("display","none");
+            $('#tab5').css("display","none");
+        }
+
+        function showtab3(){
+            $('#tab3').css("display","block"); 
+            $('#tab1').css("display","block");
+            $('#tab2').css("display","none");
+            $('#tab4').css("display","none");
+            $('#tab5').css("display","none");
+        }
+
+        function showtab4(){
+            $('#tab4').css("display","block"); 
+            $('#tab1').css("display","block");
+            $('#tab3').css("display","none");
+            $('#tab2').css("display","none");
+            $('#tab5').css("display","none");
+        }
+
+        function showtab5(){
+            $('#tab5').css("display","block"); 
+            $('#tab2').css("display","none");
+            $('#tab3').css("display","none");
+            $('#tab4').css("display","none");
+            $('#tab1').css("display","block");
+        }
+
+
+
+        </script>
+
         <script type="text/javascript">
     // Flot Pie Chart with Tooltips
-            $(function() {
-
+    
+            $('#tab1').ready(function() {
+ 
                 var data = [{
                     label: " > 18 year old",
                     <?php
@@ -566,15 +630,16 @@
                     defaultTheme: false
                 }
             });
-
-            });
+        
+            
+    });
 
         </script>
 
 <script type="text/javascript">
     // Flot Pie Chart with Tooltips
-    $(function() {
-
+    
+    $('#tab1').ready(function() { 
         var data = [{
             label: " Male",
             <?php
@@ -614,7 +679,7 @@
             defaultTheme: false
         }
     });
-
+        
     });
 
 </script>
@@ -624,6 +689,12 @@
 
 <!-- start use qr again line chart age -->
 <script type="text/javascript">
+    var tab5;
+
+    $('document').ready(function(){
+        
+    tab5 =
+
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1013,7 +1084,14 @@
         // Disables line smoothing
         colors: ['Red','blue','green','yellow','gray'],
         smooth: false,
-        resize: true
+        resize: true,
+            defaultTheme: false
+    });
+});
+    
+    $('#tab5').ready(function(){
+        tab5.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
     });
 </script>
 <!-- end use qr again line chart age -->
@@ -1021,6 +1099,12 @@
 
 <!-- start use qr again line chart sex -->
 <script type="text/javascript">
+var tab5;
+
+    $('document').ready(function(){
+    tab5 =
+    
+
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1350,12 +1434,22 @@
         smooth: false,
         resize: true
     });
+
+});
+$('#tab5').ready(function(){
+        tab5.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
+    });
 </script>
 <!-- end use qr again line chart sex -->
 
 
 <!-- start use qr line chart age -->
 <script type="text/javascript">
+var tab4;
+
+    $('document').ready(function(){
+    tab4 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1747,12 +1841,22 @@
         smooth: false,
         resize: true
     });
+
+});
+$('#tab4').ready(function(){
+        tab4.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
+    });
 </script>
 <!-- end use qr line chart age -->
 
 
 <!-- start use qr line chart sex -->
 <script type="text/javascript">
+var tab4;
+
+    $('document').ready(function(){
+    tab4 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2082,6 +2186,13 @@
         smooth: false,
         resize: true
     });
+
+});
+
+$('#tab4').ready(function(){
+        tab4.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
+    });
 </script>
 <!-- end use qr line chart sex -->
 
@@ -2089,6 +2200,11 @@
 
 <!-- start recive and into store line chart age -->
 <script type="text/javascript">
+
+var tab3;
+
+    $('document').ready(function(){
+    tab3 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2480,12 +2596,21 @@
         smooth: false,
         resize: true
     });
+});
+$('#tab3').ready(function(){
+        tab3.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
+    });
 </script>
 <!-- end recive and into store line chart age -->
 
 
 <!-- start recive and into store line chart sex -->
 <script type="text/javascript">
+var tab3;
+
+    $('document').ready(function(){
+    tab3 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2815,6 +2940,11 @@
         smooth: false,
         resize: true
     });
+});
+$('#tab3').ready(function(){
+        tab3.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
+    });
 </script>
 <!-- end recive and into store line chart sex -->
 
@@ -2822,6 +2952,10 @@
 
 <!-- start recive promotion line chart age -->
 <script type="text/javascript">
+var tab2;
+
+    $('document').ready(function(){
+    tab2 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3213,12 +3347,21 @@
         smooth: false,
         resize: true
     });
+});
+$('#tab2').ready(function(){
+        tab2.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
+    });
 </script>
 <!-- end recive promotion line chart age -->
 
 
 <!-- start recive promotion line chart sex -->
 <script type="text/javascript">
+var tab2;
+
+    $('document').ready(function(){
+    tab2 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3547,6 +3690,11 @@
         colors: ['Red','blue','green'],
         smooth: false,
         resize: true
+    });
+});
+$('#tab2').click(function(){
+        tab2.redraw();
+        $('#morris-line-chart-age-qrag svg').css('width','100%');
     });
 </script>
 <!-- end recive promotion line chart sex -->
