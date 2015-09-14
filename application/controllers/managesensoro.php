@@ -39,38 +39,40 @@ class Managesensoro extends CI_Controller{
 		}
 	}
 
-	public function del($id){
-		$this->db->delete("store",array("store_id"=>$id));
-		redirect("managestore","refresh");
-		exit();
+	public function getdetail(){
+		$senid = $this->input->post("id"); 
+		$sqlgetdetail = "select * from sensoro join store on sensoro.store_id = store.store_id where sensoro_id = '".$senid."' ";
+		$data = $this->db->query($sqlgetdetail)->row_array();
+		$arsend = array('senid' => $data['sensoro_id'] ,
+						'store' => $data['store_id'] ,
+						'major' => $data['major'] ,
+						'minor' => $data['minor'] ,
+						'type' => $data['sensoro_type'] ,
+						'statusid' => $data['status_sensoro_id']  );
+		echo json_encode($arsend);
 	}
 
-	public function edit($id){
-		if ($this->input->post("btsave")!=null) {
-			
-			$storeid = $this->input->post("id");
-			$name = $this->input->post("name");
-			$detail = $this->input->post("detail");
-			$address = $this->input->post("address");
-			$tel = $this->input->post("tel");
-			$open = $this->input->post("open");
-			$status = $this->input->post("status");
-			$sqlupdate = "UPDATE store SET store_name ='".$name."', detail ='".$detail."', address ='".$address."' , tel ='".$tel."' , open_time ='".$open."' , status_store_id ='".$status."' WHERE store_id = '".$storeid."'";
-			$this->db->query($sqlupdate);
-			redirect("managestore","refresh");
-			exit();
-		}
+	public function del($id){
+		$this->db->delete("sensoro",array("sensoro_id"=>$id));
+		redirect("managesensoro","refresh");
+	}
 
-		$sql = "Select * from store where store_id = '$id'";
-		$rs = $this->db->query($sql);
-		if ($rs->num_rows()==0) {
-			$data['rs'] = array();
-		}else{
-			$data['rs'] = $rs->row_array();
-		}
+	public function edit(){
+		$senid = $this->input->post("senid");
+		$storeid = $this->input->post("storeid");
+		$type = $this->input->post("type");
+		$status = $this->input->post("status");
+		$sqlupdate = "UPDATE sensoro SET store_id = '".$storeid."' , sensoro_type = '".$type."' , status_sensoro_id = '".$status."' WHERE sensoro_id = '".$senid."'";
+		$this->db->query($sqlupdate);
+		redirect("managesensoro","refresh");
+	}
 
-		$this->load->view("editstore",$data);
-
+	public function change(){
+		$senid = $this->input->post("senid");
+		$day = $this->input->post("day");
+		$sqlupdate = "UPDATE sensoro SET sensoro_date = '".$day."' WHERE sensoro_id = '".$senid."'";
+		$this->db->query($sqlupdate);
+		redirect("managesensoro","refresh");
 	}
 
 
@@ -113,43 +115,44 @@ class Managesensoro extends CI_Controller{
 	}
 
 	public function add(){
-		if ($this->input->post("btsave")!=NULL) {
-			$uuid = $this->input->post("uuid");
-			$major = $this->input->post("major");
-			$minor = $this->input->post("minor");
-			$type = $this->input->post("type");
+		$uuid = $this->input->post("uuid");
+		$major = $this->input->post("major");
+		$minor = $this->input->post("minor");
+		$type = $this->input->post("type");
+		$rancode1 = random_string('alnum', 10);
+		$strcode1 = strtolower($rancode1);
+		$rancode2 = random_string('alnum', 7);
+		$strcode2 = strtolower($rancode2);
+		echo $uuid;
+		echo $major;
+		echo $minor;
+		echo $type;
+		//check code1
+		$sqlChCode = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
+		$rsChCode = $this->db->query($sqlChCode);
+		while ($rsChCode->num_rows != 0) {
 			$rancode1 = random_string('alnum', 10);
-			$strcode1 = strtolower($rancode1);
-			$rancode2 = random_string('alnum', 7);
-			$strcode2 = strtolower($rancode2);
-			//check code1
+			$strcode1 = strtolower($ranqr);
 			$sqlChCode = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
 			$rsChCode = $this->db->query($sqlChCode);
-			while ($rsChCode->num_rows != 0) {
-				$rancode1 = random_string('alnum', 10);
-				$strcode1 = strtolower($ranqr);
-				$sqlChCode = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
-				$rsChCode = $this->db->query($sqlChCode);
-			}
-			//check code2
-			$sqlChCode2 = "SELECT * FROM sensoro where sensoro_code2 ='".$strcode2."' ";
+		}
+		//check code2
+		$sqlChCode2 = "SELECT * FROM sensoro where sensoro_code2 ='".$strcode2."' ";
+		$rsChCode2 = $this->db->query($sqlChCode2);
+		while ($rsChCode2->num_rows != 0) {
+			$rancode2 = random_string('alnum', 7);
+			$strcode2 = strtolower($ranqr);
+			$sqlChCode2 = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
 			$rsChCode2 = $this->db->query($sqlChCode2);
-			while ($rsChCode2->num_rows != 0) {
-				$rancode2 = random_string('alnum', 7);
-				$strcode2 = strtolower($ranqr);
-				$sqlChCode2 = "SELECT * FROM sensoro where sensoro_code1 ='".$strcode1."' ";
-				$rsChCode2 = $this->db->query($sqlChCode2);
-			}
-			//insert to sensoro table
-			$sql = "INSERT INTO `sensoro` (`uuid`, `major`, `minor`, `sensoro_code1`, `sensoro_code2`, `store_id`, `sensoro_type`) VALUES ('".$uuid."', '".$major."', '".$minor."', '".$strcode1."', '".$strcode2."', '6', '".$type."');";
-			$this->db->query($sql);
-			
+		}
+		//insert to sensoro table
+		$sql = "INSERT INTO `sensoro` (`uuid`, `major`, `minor`, `sensoro_code1`, `sensoro_code2`, `store_id`, `sensoro_type`) VALUES ('".$uuid."', '".$major."', '".$minor."', '".$strcode1."', '".$strcode2."', '6', '".$type."');";
+		$this->db->query($sql);
+		echo $this->db->last_query();
+
+		$this->index();
 
 			// INSERT INTO `telekhong`.`sensoro` (`uuid`, `major`, `minor`, `sensoro_code1`, `sensoro_code2`, `store_id`, `sensoro_type`) VALUES ('2345878o7t', '34', '34', '1234', '3124', '6', '1');
-			
-			redirect("managesensoro");
-			
-		 }redirect("createsensoro");
 	}
 
 }

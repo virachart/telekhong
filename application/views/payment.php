@@ -207,7 +207,7 @@
                 </div>
                 <div class="col-lg-6">
 
-                <Form method="post" action="https://www.paysbuy.com/paynow.aspx?lang=e"> 
+                <Form method="post" action="https://www.paysbuy.com/paynow.aspx"> 
                     <input type="Hidden" Name="psb" value="psb"/> 
                     <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
                     
@@ -228,7 +228,7 @@
                     <input Type="Hidden" Name="amt" value="1"/>
                     
                     <!-- Redirect Web Controller-->
-                    <input Type="Hidden" Name="postURL" value="http://telekhong.me/index.php/checkpayment"/> 
+                    <input Type="Hidden" Name="postURL" value="http://telekhong.me/index.php/payment/checkpayment"/> 
                     <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
                 </Form >
                 
