@@ -207,15 +207,20 @@
                     <div class="row">
                         <div class="col-lg-2">
                             <h2 class="page-header">All Chart in </h2></div>
-                            
+                            <div class="dropdown col-lg-6">
+                                <?php echo form_open()?>
+
+                                <select onchange="this.form.action='<?php echo site_url('statistics')?>/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;" >
+                                    <option hidden><?php //echo $year; ?></option>
+                                    <option value="">2015</option>
+                                    <option value="ye14">2014</option>
+                                </select>
+                                <?php echo form_close(); ?>
+                            </div>
                         </div>
 
-                        <script type="text/javascript">
-                             
-                        </script>
 
 
-<<<<<<< HEAD
                         <div class="tabbable" > <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs" id="mytab">
                                 <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()">General Graph</a></li>
@@ -228,32 +233,6 @@
 
             <!-- begin tab2 -->
                                 <div class=" active" id="tab2" >
-=======
-                        <div class="tabbable"> <!-- Only required for left/right tabs -->
-                            <ul class="nav nav-tabs" id="myTabs">
-                                <li class="active" id="a"><a href="#tab1" data-toggle="tab">User Received</a></li>
-                                <li id="b"><a href="#tab2" data-toggle="tab">Received and come to Store</a></li>
-                                <li id="c"><a href="#tab3" data-toggle="tab">First QR Code</a></li>
-                                <li id="d"><a href="#tab4" data-toggle="tab">Second or more QR Code</a></li>
-                                <li id="e"><a href="#tab5" data-toggle="tab">General Graph</a></li>
-                            </ul>
-                            <div class="tab-content">
-            <!-- begin tab1 -->
-                                <div class="tab-pane active" id="tab1">
-
-                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
-                                        <?php echo form_open()?>
-                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/re/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
-                                            <option hidden><?php echo $maxinfo; ?></option>
-                                            <?php
-                                            foreach ($rs as $r) {
-                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                        <?php echo form_close(); ?>
-                                    </div>
->>>>>>> origin/master
                                 
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
@@ -289,19 +268,6 @@
             <!-- begin tab3 -->
                                 <div class=" active" id="tab3" >
 
-                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
-                                        <?php echo form_open()?>
-                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/rein/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
-                                            <option hidden><?php echo $maxinfo; ?></option>
-                                            <?php
-                                            foreach ($rs as $r) {
-                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                        <?php echo form_close(); ?>
-                                    </div>
-
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
                                     <div class="col-lg-12" >
@@ -334,18 +300,6 @@
             <!-- begin tab4 -->
                                 <div class="active" id="tab4" >
 
-                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
-                                        <?php echo form_open()?>
-                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/qr/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
-                                            <option hidden><?php echo $maxinfo; ?></option>
-                                            <?php
-                                            foreach ($rs as $r) {
-                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                        <?php echo form_close(); ?>
-                                    </div>
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range use qr code -->
                                     <div class="col-lg-12" >
@@ -374,29 +328,10 @@
                                     </div>
                                     <!-- end line graph sex range use qr code -->
                                 </div>
-<<<<<<< HEAD
             <!-- end tab4 -->
             <!-- begin tab5 -->
                                 <div class="active" id="tab5">
 
-=======
-            <!-- end tab3 -->
-            <!-- begin tab4 -->
-                                <div class="tab-pane" id="tab4">
-
-                                    <div class="dropdown col-lg-6" style="margin-top : 20px;">
-                                        <?php echo form_open()?>
-                                        <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/qrag/'+this.value;this.form.submit()" class="form-control" style="width : 300px;background-color : #286090;color:#fff;" >
-                                            <option hidden><?php echo $maxinfo; ?></option>
-                                            <?php
-                                            foreach ($rs as $r) {
-                                                echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
-                                            }
-                                            ?>
-                                        </select>
-                                        <?php echo form_close(); ?>
-                                    </div>
->>>>>>> origin/master
                                     <div class="col-lg-12" style="height : 30px"></div>
                                     <!-- start line graph age range agian qr code -->
                                     <div class="col-lg-12" >
@@ -588,67 +523,51 @@
         .show{
         display:block;
         }
-
         .closetab{
         display:none;
         }
         </style>
         <script>
-
         function showtab1(){
-            $('#tab1').css("display","block"); 
+            $('#tab1').css("visibility","visible"); 
             $('#tab2').css("display","none");
             $('#tab3').css("display","none");
             $('#tab4').css("display","none");
             $('#tab5').css("display","none");
         }
-
         function showtab2(){
             $('#tab2').css("display","block"); 
-            $('#tab1').css("display","block");
+            $('#tab1').css("visibility","hidden");
             $('#tab3').css("display","none");
             $('#tab4').css("display","none");
             $('#tab5').css("display","none");
         }
-
         function showtab3(){
             $('#tab3').css("display","block"); 
-            $('#tab1').css("display","block");
+            $('#tab1').css("visibility","hidden");
             $('#tab2').css("display","none");
             $('#tab4').css("display","none");
             $('#tab5').css("display","none");
         }
-
         function showtab4(){
             $('#tab4').css("display","block"); 
-            $('#tab1').css("display","block");
+            $('#tab1').css("visibility","hidden");
             $('#tab3').css("display","none");
             $('#tab2').css("display","none");
             $('#tab5').css("display","none");
         }
-
         function showtab5(){
             $('#tab5').css("display","block"); 
             $('#tab2').css("display","none");
             $('#tab3').css("display","none");
             $('#tab4').css("display","none");
-            $('#tab1').css("display","block");
+            $('#tab1').css("visibility","hidden");
         }
-
-
-
         </script>
 
         <script type="text/javascript">
     // Flot Pie Chart with Tooltips
-<<<<<<< HEAD
-    
-            $('#tab1').ready(function() {
  
-=======
-            $('#e a').click(function() {
-
->>>>>>> origin/master
                 var data = [{
                     label: " > 18 year old",
                     <?php
@@ -680,7 +599,6 @@
                     echo $age5->num_rows();
                     ?>
                 }];
-
                 var plotObj = $.plot($("#flot-pie-chart-age"), data, {
                     series: {
                         pie: {
@@ -702,19 +620,12 @@
             });
         
             
-    });
 
         </script>
 
 <script type="text/javascript">
     // Flot Pie Chart with Tooltips
-<<<<<<< HEAD
     
-    $('#tab1').ready(function() { 
-=======
-    $('#e a').click(function() {
-
->>>>>>> origin/master
         var data = [{
             label: " Male",
             <?php
@@ -734,7 +645,6 @@
             echo $unkn->num_rows();
             ?>
         }];
-
         var plotObj = $.plot($("#flot-pie-chart-sex"), data, {
             series: {
                 pie: {
@@ -754,8 +664,6 @@
             defaultTheme: false
         }
     });
-        
-    });
 
 </script>
 <!-- end pie chart package -->
@@ -764,23 +672,13 @@
 
 <!-- start use qr again line chart age -->
 <script type="text/javascript">
-<<<<<<< HEAD
-    var tab5;
-
-    $('document').ready(function(){
-        
-    tab5 =
-
-=======
-    var dataqrag =
->>>>>>> origin/master
+    
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
         element: 'morris-line-chart-age-qrag',
         // Chart data records -- each entry in this array corresponds to a point on
         // the chart.
-        
         data: [<?php 
                 if ($day >= 1) {
                     echo "{da: '".$year."-".$month."-01',";
@@ -1151,7 +1049,7 @@
                         e: ".$countqragage5d31."}";
                 };
             ?>
-
+        
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -1166,33 +1064,14 @@
         resize: true,
             defaultTheme: false
     });
-});
-    
-    $('#tab5').ready(function(){
-        tab5.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
 
-    $('#d a').click(function(){
-        dataqrag.redraw();
-    });
 </script>
 <!-- end use qr again line chart age -->
 
 
-
 <!-- start use qr again line chart sex -->
 <script type="text/javascript">
-<<<<<<< HEAD
-var tab5;
-
-    $('document').ready(function(){
-    tab5 =
     
-
-=======
-$('#d a').click(function() {
->>>>>>> origin/master
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1508,7 +1387,6 @@ $('#d a').click(function() {
                 };
             ?>
         
-
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -1522,30 +1400,13 @@ $('#d a').click(function() {
         smooth: false,
         resize: true
     });
-<<<<<<< HEAD
 
-});
-$('#tab5').ready(function(){
-        tab5.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
-=======
-});
->>>>>>> origin/master
 </script>
 <!-- end use qr again line chart sex -->
 
 
 <!-- start use qr line chart age -->
 <script type="text/javascript">
-<<<<<<< HEAD
-var tab4;
-
-    $('document').ready(function(){
-    tab4 =
-=======
-$('#c a').click(function() {
->>>>>>> origin/master
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1923,7 +1784,6 @@ $('#c a').click(function() {
                 };
             ?>
         
-
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -1937,30 +1797,13 @@ $('#c a').click(function() {
         smooth: false,
         resize: true
     });
-<<<<<<< HEAD
 
-});
-$('#tab4').ready(function(){
-        tab4.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
-=======
-});
->>>>>>> origin/master
 </script>
 <!-- end use qr line chart age -->
 
 
 <!-- start use qr line chart sex -->
 <script type="text/javascript">
-<<<<<<< HEAD
-var tab4;
-
-    $('document').ready(function(){
-    tab4 =
-=======
-$('#c a').click(function() {
->>>>>>> origin/master
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2276,7 +2119,6 @@ $('#c a').click(function() {
                 };
             ?>
         
-
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -2290,17 +2132,7 @@ $('#c a').click(function() {
         smooth: false,
         resize: true
     });
-<<<<<<< HEAD
 
-});
-
-$('#tab4').ready(function(){
-        tab4.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
-=======
-});
->>>>>>> origin/master
 </script>
 <!-- end use qr line chart sex -->
 
@@ -2308,15 +2140,6 @@ $('#tab4').ready(function(){
 
 <!-- start recive and into store line chart age -->
 <script type="text/javascript">
-<<<<<<< HEAD
-
-var tab3;
-
-    $('document').ready(function(){
-    tab3 =
-=======
-$('#b a').click(function() {
->>>>>>> origin/master
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2694,7 +2517,6 @@ $('#b a').click(function() {
                 };
             ?>
         
-
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -2708,28 +2530,13 @@ $('#b a').click(function() {
         smooth: false,
         resize: true
     });
-});
-<<<<<<< HEAD
-$('#tab3').ready(function(){
-        tab3.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
-=======
->>>>>>> origin/master
+
 </script>
 <!-- end recive and into store line chart age -->
 
 
 <!-- start recive and into store line chart sex -->
 <script type="text/javascript">
-<<<<<<< HEAD
-var tab3;
-
-    $('document').ready(function(){
-    tab3 =
-=======
-$('#b a').click(function() {
->>>>>>> origin/master
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3045,7 +2852,6 @@ $('#b a').click(function() {
                 };
             ?>
         
-
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -3059,14 +2865,7 @@ $('#b a').click(function() {
         smooth: false,
         resize: true
     });
-});
-<<<<<<< HEAD
-$('#tab3').ready(function(){
-        tab3.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
-=======
->>>>>>> origin/master
+
 </script>
 <!-- end recive and into store line chart sex -->
 
@@ -3074,15 +2873,6 @@ $('#tab3').ready(function(){
 
 <!-- start recive promotion line chart age -->
 <script type="text/javascript">
-<<<<<<< HEAD
-var tab2;
-
-    $('document').ready(function(){
-    tab2 =
-=======
-$('#a a').click(function() {
-
->>>>>>> origin/master
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3460,7 +3250,6 @@ $('#a a').click(function() {
                 };
             ?>
         
-
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -3474,29 +3263,13 @@ $('#a a').click(function() {
         smooth: false,
         resize: true
     });
-});
-<<<<<<< HEAD
-$('#tab2').ready(function(){
-        tab2.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
-=======
->>>>>>> origin/master
+
 </script>
 <!-- end recive promotion line chart age -->
 
 
 <!-- start recive promotion line chart sex -->
 <script type="text/javascript">
-<<<<<<< HEAD
-var tab2;
-
-    $('document').ready(function(){
-    tab2 =
-=======
-$('#a a').click(function() {
-    
->>>>>>> origin/master
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3812,7 +3585,6 @@ $('#a a').click(function() {
                 };
             ?>
         
-
          ],
         // The name of the data record attribute that contains x-visitss.
         xkey: 'da',
@@ -3826,14 +3598,7 @@ $('#a a').click(function() {
         smooth: false,
         resize: true
     });
-});
-<<<<<<< HEAD
-$('#tab2').click(function(){
-        tab2.redraw();
-        $('#morris-line-chart-age-qrag svg').css('width','100%');
-    });
-=======
->>>>>>> origin/master
+
 </script>
 <!-- end recive promotion line chart sex -->
 
