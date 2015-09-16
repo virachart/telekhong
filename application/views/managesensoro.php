@@ -275,20 +275,23 @@
                 <div class="modal-body"style="padding:50px 50px;">
 
                     <table>
-                        <tr style="padding-top : 20px">
+                        <tr >
                             <td align="center">UUID : </td>
                             <td align="center"><textarea class="form-control" name="uuid" id="uuid" rows="3" style="width:400px" placeholder="UUID"></textarea></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Major : </td>
                             <td align="center"><input type="text" name="major" id="major" class="form-control" placeholder="Major" style="width:200px"></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Minor : </td>
                             <td align="center"><input type="text" name="minor" id="minor" class="form-control" placeholder="Minor" style="width:200px"></td>
                         </tr>
-                        <tr style="padding-top : 20px">
-                            <td align="center">Type of Work : </td>
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
+                            <td align="center">Type of Work :</td>
                             <td align="center">
                                 <select class="form-control" name="type" id="type" style="width:300px ;">  
                                     <option value="1">Type 1 : Use for send information</option>
@@ -319,23 +322,27 @@
                 <div class="modal-body"style="padding:50px 50px;">
 
                     <table>
-                        <tr style="padding-top : 20px">
+                        <tr >
                             <td align="center">Sensoro ID : </td>
                             <td align="center"><input type="text" id="senid" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Major : </td>
                             <td align="center"><input type="text" id="majordetail" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Minor : </td>
                             <td align="center"><input type="text" id="minordetail" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Store ID : </td>
                             <td align="center"><input type="text" id="store" class="form-control" style="width:200px" value=""></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Type of Work : </td>
                             <td align="center">
                                 <select class="form-control" name="type" id="typedetail" style="width:300px ;">  
@@ -344,8 +351,9 @@
                                 </select>
                             </td>
                         </tr>
-                        <tr style="padding-top : 20px">
-                            <td align="center">Status Sensoro : </td>
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
+                            <td align="center">Status Sensoro : &nbsp</td>
                             <td align="center">
                                 <select class="form-control" name="type" id="statusdetail" style="width:300px ;">  
                                     <option id="status1" value="1" selected="">Avaliable</option>
@@ -377,20 +385,23 @@
                 <div class="modal-body"style="padding:50px 50px;">
 
                     <table>
-                        <tr style="padding-top : 20px">
+                        <tr >
                             <td align="center">Sensoro ID : </td>
                             <td align="center"><input type="text" id="senidbatt" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Major : </td>
                             <td align="center"><input type="text" id="majorbatt" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Minor : </td>
                             <td align="center"><input type="text" id="minorbatt" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
-                            <td align="center">Changed Date : </td>
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
+                            <td align="center">Changed Date : &nbsp</td>
                             <td align="center"><input type="date" id="changebatt" class="form-control" placeholder="Text input" style="width:200px"></td>
                         </tr>
                         
@@ -476,8 +487,8 @@
                         <center><h2>All Sensoro</h2></center>
                         <div class="table-responsive">
                             <table class="table  table-hover">
-                                <div class="input-group">
-                                        <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#myModal1">Create Sensoro + </button>
+                                <div class="input-group" style="margin-bottom:20px">
+                                        <button type='button' class='btn btn-primary col-sm-2' data-toggle="modal" data-target="#myModal1" >Create Sensoro + </button>
                                    
                                     
                                     <form action="<?php echo site_url('managestore/search');?>" method = "post">
