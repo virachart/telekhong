@@ -68,10 +68,16 @@ class Auth extends CI_CONTROLLER{
 			// echo "user";
 		}else{
 			// echo "admin";
-				$this->session->set_userdata($me);
-				$arad = array('admin' => "adminpass");
-				$this->session->set_userdata($arad);
-				redirect(base_url('index.php/statistics'));
+			$sqlOwner = "Select * from owner where fb_id = ".$id;
+			$rs2 = $this->db->query($sqlOwner);
+			$dataOwner = $rs2->row_array();
+			$this->session->set_userdata($me);
+			$ownerid = array('ownerid' => $dataOwner['owner_id']);
+			$this->session->set_userdata($ownerid);
+			$this->session->set_userdata($me);
+			$arad = array('admin' => "adminpass");
+			$this->session->set_userdata($arad);
+			redirect(base_url('index.php/statistics'));
 			}
 		}
 	
