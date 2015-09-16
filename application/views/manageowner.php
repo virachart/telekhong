@@ -20,6 +20,14 @@
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+        <!-- jQuery -->
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+        <!-- Morris Charts JavaScript -->
+    <script src="<?=base_url()?>assets/js/script.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -211,6 +219,95 @@
                 <ol class="breadcrumb"><li>-------------------------------</li></ol>
             </div>
         </div>
+
+        <!-- script create beacon -->
+                <script type="text/javascript">
+                    
+                    // edit beacon
+                    $('#edit').live("click",function(){
+                        $.ajax({
+                            url:"manageowner/edit",
+                            type: "POST",
+                            cache: false,
+                            data: "id="+$("#ownerid").val()+"&email="+$("#owneremail").val()+"&tel="+$("#ownertel").val()+"&status="+$("#ownerstatus").val(),
+                        });
+                        location.reload("managesensoro");
+                    });
+
+                     // show edit detail
+                    function showdetail(id){
+                        $.ajax({
+                            url:"manageowner/getdetail",
+                            type: "POST",
+                            cache: false,
+                            data: "id="+id,
+                            dataType:"JSON",
+                            success:function(res){
+                                console.log(JSON.stringify(res));
+                                $("#ownerid").attr("value",res.ownerid);
+                                $("#ownername").attr("value",res.name);
+                                $("#owneremail").attr("value",res.email);
+                                $("#ownertel").attr("value",res.tel);
+                                $("#ownerstatus").attr("value",res.status);
+                                
+                            },
+                            error:function(err){
+                                console.log("error : "+err);
+                            },
+                        });
+                    };
+
+                </script>
+
+
+
+<!-- Modal content-->
+      <!-- modal of create beacon -->
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Edit Owner</h4>
+                </div>
+                <div class="modal-body"style="padding:50px 50px;">
+
+                    <table>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Owner ID : </td>
+                            <td align="center"><input type="text" name="ownerid" id="ownerid" class="form-control" style="width:200px" value="" disabled></td>
+                        </tr>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Name : </td>
+                            <td align="center"><input type="text" name="ownername" id="ownername" class="form-control" style="width:200px" value="" disabled></td>
+                        </tr>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Email : </td>
+                            <td align="center"><input type="text" name="owneremail" id="owneremail" class="form-control" style="width:200px" value=""></td>
+                        </tr>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Tel : </td>
+                            <td align="center"><input type="text" name="ownertel" id="ownertel" class="form-control" style="width:200px" value=""></td>
+                        </tr>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Status : </td>
+                            <td align="center"><input type="text" name="ownerstatus" id="ownerstatus" class="form-control" style="width:200px" value=""></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id='edit' data-dismiss="modal">Edit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end modal of create beacon -->
+
+
+
+
                 <div class="row">
                     <div class="col-lg-12">
                         <center><h2>All Owner</h2></center>
@@ -261,7 +358,7 @@
                                                 echo "<td>".$r['status_owner']."</td>";
                                                 echo "<td>".$r['owner_date']."</td>";
                                                 echo "<td align= center>";
-                                                echo anchor("manageowner/edit/".$r["owner_id"], "<button type='button' class='btn btn-warning'>Edit</button>");
+                                                echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["owner_id"].")' data-toggle='modal' data-target='#myModal1'>Edit</button>";
                                                 echo "&nbsp";
                                                 echo anchor("manageowner/del/".$r["owner_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
@@ -414,11 +511,7 @@
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="<?=base_url()?>assets/js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 
 </body>
 

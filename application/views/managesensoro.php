@@ -263,7 +263,7 @@
 
                 </script>
 
-                <!-- Modal content-->
+<!-- Modal content-->
       <!-- modal of create beacon -->
     <div class="modal fade" id="myModal1" role="dialog">
         <div class="modal-dialog">

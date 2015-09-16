@@ -33,6 +33,19 @@ class Manageowner extends CI_Controller{
 		}
 	}
 
+
+	public function getdetail(){
+		$id = $this->input->post("id"); 
+		$sqlgetdetail = "select * from owner join user on owner.fb_id = user.fb_id where owner_id = '".$id."' ";
+		$data = $this->db->query($sqlgetdetail)->row_array();
+		$arsend = array('ownerid' => $data['owner_id'] ,
+						'name' => $data['fb_name'] ,
+						'email' => $data['owner_email'] ,
+						'tel' => $data['owner_tel'] ,
+						'status' => $data['status_owner'] );
+		echo json_encode($arsend);
+	}
+
 	public function del($id){
 		$this->db->delete("owner",array("owner_id"=>$id));
 		redirect("manageowner","refresh");
@@ -40,7 +53,7 @@ class Manageowner extends CI_Controller{
 	}
 
 	public function edit($id){
-		if ($this->input->post("btsave")!=null) {
+		
 			
 			$ownerid = $this->input->post("id");
 			$email = $this->input->post("email");
@@ -49,18 +62,9 @@ class Manageowner extends CI_Controller{
 			$sqlupdate = "UPDATE owner SET owner_email ='".$email."', owner_tel ='".$tel."', status_owner ='".$status."' WHERE owner_id = '".$ownerid."'";
 			$this->db->query($sqlupdate);
 			redirect("manageowner","refresh");
-			exit();
-		}
+		
 
-		$sql = "Select * from owner where owner_id = '$id'";
-		$rs = $this->db->query($sql);
-		if ($rs->num_rows()==0) {
-			$data['rs'] = array();
-		}else{
-			$data['rs'] = $rs->row_array();
-		}
-
-		$this->load->view("editowner",$data);
+		
 
 	}
 

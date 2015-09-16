@@ -20,6 +20,16 @@
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
+    <!-- jQuery -->
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?=base_url()?>assets/js/script.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -204,6 +214,82 @@
                 </div>
                 
             </div>
+
+            <script type="text/javascript">
+                    // edit beacon
+                    $('#edituser').live("click",function(){
+                        $.ajax({
+                            url:"manageuser/edit",
+                            type: "POST",
+                            cache: false,
+                            data: "fbid="+$("#fbid").val()+"&fbname="+$("#fbname").val()+"&sex="+$("#sex").val(),
+                        });
+                        location.reload("manageuser");
+                    });
+
+                    
+                        // show edit detail
+                    function showdetail(id){
+                        $.ajax({
+                            url:"manageuser/getdetail",
+                            type: "POST",
+                            cache: false,
+                            data: "id="+id,
+                            dataType:"JSON",
+                            success:function(res){
+                                console.log(JSON.stringify(res));
+                                $("#fbid").attr("value",res.fbid);
+                                $("#fbname").attr("value",res.fbname);
+                                $("#sex").attr("value",res.sex);
+                            },
+                            error:function(err){
+                                console.log("error : "+err);
+                            },
+                        });
+                    };
+
+                    
+                </script>
+
+
+<!-- Modal content-->
+      <!-- modal of edit user -->
+    <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Edit User</h4>
+                </div>
+                <div class="modal-body"style="padding:50px 50px;">
+
+                    <table>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Facebook ID : </td>
+                            <td align="center"><input type="text" name="fbid" id="fbid" class="form-control" style="width:200px" value="" disabled></td>
+                        </tr>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Facebook Name : </td>
+                            <td align="center"><input type="text" name="fbname" id="fbname" class="form-control" style="width:200px" value=""></td>
+                        </tr>
+                        <tr style="padding-top : 20px">
+                            <td align="center">Gender : </td>
+                            <td align="center"><input type="text" name="sex" id="sex" class="form-control" style="width:200px" value=""></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id='edituser' data-dismiss="modal">Edit</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- end modal of edit user -->
+
+
+
             <div class="row">
              <div class="col-lg-12 " style=" margin-top: 20px;" >
                 <ol class="breadcrumb"><li>-------------------------------</li></ol>
@@ -253,7 +339,7 @@
                                                 echo "<td>".$r['sex']."</td>";
                                                 echo "<td>".$r['user_date']."</td>";
                                                 echo "<td align= center>";
-                                                echo anchor("manageuser/edit/".$r["fb_id"], "<button type='button' class='btn btn-warning'>Edit</button>");
+                                                echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["fb_id"].")' data-toggle='modal' data-target='#myModal1'>Edit</button>";
                                                 echo "&nbsp";
                                                 echo anchor("manageuser/del/".$r["fb_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
@@ -263,94 +349,7 @@
                                         }
                                      ?>
 
-                                    <!-- <tr>
-                                        <td>1</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>
-                                        <button type="button" class="btn btn-warning">Edit</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-                                    </tr> -->
+                                    
                                 </tbody>
                             </table>
                             <?php

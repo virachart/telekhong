@@ -29,6 +29,17 @@ class Manageuser extends CI_Controller{
 	}
 
 
+	public function getdetail(){
+		$fbid = $this->input->post("id"); 
+		$sqlgetdetail = "select * from user where fb_id = '".$fbid."' ";
+		$data = $this->db->query($sqlgetdetail)->row_array();
+		$arsend = array('fbid' => $data['fb_id'] ,
+						'fbname' => $data['fb_name'] ,
+						'sex' => $data['sex'] );
+		echo json_encode($arsend);
+	}
+
+
 	public function del($id){
 		$this->db->delete("user",array("fb_id"=>$id));
 		redirect("manageuser","refresh");
@@ -36,7 +47,7 @@ class Manageuser extends CI_Controller{
 	}
 
 	public function edit($id){
-		if ($this->input->post("btsave")!=null) {
+		
 			
 			$fbid = $this->input->post("fbid");
 			$fbname = $this->input->post("fbname");
@@ -44,19 +55,7 @@ class Manageuser extends CI_Controller{
 			$sqlupdate = "UPDATE user SET fb_name ='".$fbname."', sex ='".$sex."' WHERE fb_id = '".$fbid."'";
 			$this->db->query($sqlupdate);
 			redirect("manageuser","refresh");
-			exit();
-		}
-
-		$sql = "Select * from user where fb_id = '$id'";
-		$rs = $this->db->query($sql);
-		if ($rs->num_rows()==0) {
-			$data['rs'] = array();
-		}else{
-			$data['rs'] = $rs->row_array();
-		}
-
-		$this->load->view("edituser",$data);
-
+			
 	}
 
 	public function search(){
