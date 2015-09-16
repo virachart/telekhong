@@ -139,7 +139,7 @@
                         }else{
                             foreach ($allstore as $r) {
                                 $sta = "";
-                                if ($r['status_store_id']=="1") {
+                                if ($r['status_store_id']=="1" && $r['expire_date'] != null) {
 
                                 }else{
                                     $sta = "class='not-active'";
