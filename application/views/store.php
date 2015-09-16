@@ -162,6 +162,10 @@
                         }
 
                 ?>
+                        <li class="divider"></li>
+                            <li>
+                                <a href="<?=base_url()?>index.php/createstore">+ Create Store</a>
+                            </li>
                         
                     </ul>
                 </li>
@@ -178,14 +182,12 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                            <a href="<?=base_url()?>index.php/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                        </li>
+                    
                         <li class="active">
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
                         <li>
-                            <a href="<?=base_url()?>index.php/statistics"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                            <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
@@ -198,18 +200,9 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
-                                    <a href="<?=base_url()?>index.php/manageuser">Manage User</a>
-                                </li>
-                                <li  class="active">
-                                    <a href="<?=base_url()?>index.php/manageowner">Manage Owner</a>
-                                </li>
-                                <li>
                                     <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
                                 </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/package"><i class="fa fa-fw fa-arrows-v"></i> Package</a>
                         </li>
 
                     </ul>
@@ -231,12 +224,14 @@
                         </h1>
                     </div>
                 <div>
-                    <div class="col-lg-4"style="margin-top :45px">
-                            <button type="button" class="btn btn-warning btn-default " data-toggle="modal" data-target="#myModal5">Activate Beacon</button>
-                            <button type="button" class="btn btn-warning btn-default " data-toggle="modal" data-target="#myModal3">Change Package</button>
+                    <div class="col-lg-5"style="margin-top :45px">
+                            
+                            
                             <?php
                                 echo anchor("storeowner/del/".$this->session->userdata("storeid"), "<button type='button' class='btn btn-danger pull-right' data-toggle='modal' data-target='#myModal'>Delete Store</button>");
                             ?>
+                            <button type="button" class="btn btn-warning pull-right " data-toggle="modal" data-target="#myModal3" style="margin-right:10px">Change Package</button>
+                            <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Beacon</button>
                             <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>    -->
                     </div>
 
@@ -472,7 +467,7 @@
                                 <tr><td>&nbsp</td></tr>
                                 <tr>
                                     <td>QR Code :&nbsp</td> 
-                                    <td><input type="text" name="qrcode" class="form-control" style="width:50px;" id="qr" disabled/></td>
+                                    <td><input type="text" name="qrcode" class="form-control" style="width:120px;" id="qr" disabled/></td>
                                 </tr>
                                 
                                         

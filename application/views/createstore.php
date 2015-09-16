@@ -58,38 +58,12 @@
 
                 <!-- store Open Time -->
                 <div class="col-lg-6" style="text-align:right;" >Open Time :</div>
-                <div class="col-lg-6">
-                    <select class="form-control" name="opho" style="width:70px ; display : inline;">
-                        <?php 
-                        for ($x = 0; $x <= 23; $x++) {
-                            echo "<option value='".$x."'>".$x."</option>";
-                        } 
-                        ?>
-                    </select>
-                    :
-                    <select class="form-control" name="opmi" style="width:70px ; display : inline;">
-                        <?php 
-                        for ($x = 0; $x <= 59; $x++) {
-                            echo "<option value='".$x."'>".$x."</option>";
-                        } 
-                        ?>
-                    </select>
-                     To 
-                     <select class="form-control" name="clho" style="width:70px ; display : inline;">
-                        <?php 
-                        for ($x = 0; $x <= 23; $x++) {
-                            echo "<option value='".$x."'>".$x."</option>";
-                        } 
-                        ?>
-                    </select>
-                    :
-                    <select class="form-control" name="clmi" style="width:70px ; display : inline;">
-                        <?php 
-                        for ($x = 0; $x <= 59; $x++) {
-                            echo "<option value='".$x."'>".$x."</option>";
-                        } 
-                        ?>
-                    </select>
+                <div class="col-lg-1">
+                    <input type="time" name="opti" class="form-control " style="width:120px;">
+                </div>
+                <div class="col-lg-1" style="text-align:center">to</div>
+                <div class="col-lg-2.5">
+                    <input type="time" name="clti" class="form-control col-sm-1" style="width:120px">
                 </div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
