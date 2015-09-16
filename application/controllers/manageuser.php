@@ -66,6 +66,7 @@ class Manageuser extends CI_Controller{
 			
 			
 			if ($name != null) {
+				$find = $this->input->post("selectsearch");
 				$this->load->library("pagination");
 				$config['base_url'] = base_url()."index.php/manageuser";
 				$config['per_page'] = 10;
@@ -80,8 +81,13 @@ class Manageuser extends CI_Controller{
 				$this->pagination->initialize($config);
 				$sqluser = "Select * from user";
 				$data['num'] = $this->db->query($sqluser);
-				$data['rs'] = $this->db->select("*")->from("user")->like("fb_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 				
+				if ($find == "fb_id") {
+					$data['rs'] = $this->db->select("*")->from("user")->like("fb_id",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
+				if ($find == "fb_name") {
+					$data['rs'] = $this->db->select("*")->from("user")->like("fb_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
 				// echo $this->db->last_query();
 				$this->load->view("manageuser",$data);
 				// print_r($data['rs']);

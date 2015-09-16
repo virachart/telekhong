@@ -71,6 +71,9 @@ class Manageowner extends CI_Controller{
 			// echo $name;
 			
 			if ($name != null) {
+				$find = $this->input->post("selectsearch");
+				
+
 				$this->load->library("pagination");
 				$config['base_url'] = base_url()."index.php/manageowner";
 				$config['per_page'] = 10;
@@ -89,7 +92,16 @@ class Manageowner extends CI_Controller{
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
-				$data['rs'] = $this->db->select("*")->from("owner")->like("owner_email",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				if ($find == "owner_name") {
+					$data['rs'] = $this->db->select("*")->from("owner")->join("user","owner.fb_id=user.fb_id")->like("owner_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
+				if ($find == "owner_email") {
+					$data['rs'] = $this->db->select("*")->from("owner")->join("user","owner.fb_id=user.fb_id")->like("owner_email",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
+				if ($find == "owner_tel") {
+					$data['rs'] = $this->db->select("*")->from("owner")->join("user","owner.fb_id=user.fb_id")->like("owner_tel",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
+				// echo $this->db->last_query();
 				
 				// echo $this->db->last_query();
 				$this->load->view("manageowner",$data);

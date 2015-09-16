@@ -215,6 +215,12 @@
                             <table class="table  table-hover">
                                 <div class="input-group">
                                     <form action="<?php echo site_url('manageqr/search');?>" method = "post">
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="store_name" checked="checked"> Store Name
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="info_name"> Information Name
+                                    </label>
                                     <input type="text" name="searchqr" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Store Name">
                                     <div class="input-group-btn">
                                         <input class="btn btn-default" type="submit" name="btsave" value="Search">

@@ -223,6 +223,12 @@
                                     <button type="button" class="btn btn-primary">Create Store +
                                     </button>
                                     <form action="<?php echo site_url('managestore/search');?>" method = "post">
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="owner_name" checked="checked"> Owner Name
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="store_name"> Store Name
+                                    </label>
                                     <input type="text" name="searchst" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Store Name">
                                     <div class="input-group-btn">
                                         <input class="btn btn-default" type="submit" name="btsave" value="Search">
@@ -234,6 +240,7 @@
                                     <tr>
                                         <td>No.</td>
                                         <td>Store Name</td>
+                                        <td>Owner Name</td>
                                         <td>Telephone</td>
                                         <td>Expire Date</td>
                                         <td>Register Date</td>
@@ -251,6 +258,7 @@
                                                 echo "<tr>";
                                                 echo "<td>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
+                                                echo "<td>".$r['fb_name']."</td>";
                                                 echo "<td>".$r['tel']."</td>";
                                                 echo "<td>".$r['expire_date']."</td>";
                                                 echo "<td>".$r['store_date']."</td>";

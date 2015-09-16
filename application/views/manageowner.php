@@ -217,8 +217,18 @@
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div class="input-group">
+
                                     <form action="<?php echo site_url('manageowner/search');?>" method = "post">
-                                    <input type="text" name="searchow" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Owner Email">
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="owner_name" checked="checked"> Name
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="owner_email"> E-Mail
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="owner_tel"> Tel
+                                    </label>
+                                    <input type="text" name="searchow" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search">
                                     <div class="input-group-btn">
                                         <input class="btn btn-default" type="submit" name="btsave" value="Search">
                                      </div>

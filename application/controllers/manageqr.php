@@ -50,6 +50,7 @@ class Manageqr extends CI_Controller{
 
 			
 			if ($name != null) {
+				$find = $this->input->post("selectsearch");
 				$this->load->library("pagination");
 				$config['base_url'] = base_url()."index.php/manageqr";
 				$config['per_page'] = 10;
@@ -61,8 +62,13 @@ class Manageqr extends CI_Controller{
 				$this->pagination->initialize($config);
 				$sqlqr = "Select * from qr";
 				$data['num1'] = $this->db->query($sqlqr);
-				$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->like("store_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
-				
+			
+				if ($find == "store_name") {
+					$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->like("store_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
+				if ($find == "info_name") {
+					$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->like("info_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
 				// echo $this->db->last_query();
 				$this->load->view("manageqr",$data);
 				// print_r($data['rs']);

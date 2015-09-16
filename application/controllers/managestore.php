@@ -25,7 +25,7 @@ class Managestore extends CI_Controller{
 			$data['num2'] = $this->db->query($sqluserav);
 			$data['num3'] = $this->db->query($sqluserbl);
 			$data['num4'] = $this->db->query($sqluserba);
-			$data['rs'] = $this->db->select("*")->from("store")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+			$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 			
 			$this->load->view("managestore",$data);
 		}else{
@@ -74,6 +74,7 @@ class Managestore extends CI_Controller{
 			// echo $name;
 			
 			if ($name != null) {
+				$find = $this->input->post("selectsearch");
 				$this->load->library("pagination");
 				$config['base_url'] = base_url()."index.php/managestore";
 				$config['per_page'] = 10;
@@ -92,8 +93,14 @@ class Managestore extends CI_Controller{
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
-				$data['rs'] = $this->db->select("*")->from("store")->like("store_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 				
+
+				if ($find == "owner_name") {
+					$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->like("fb_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
+				if ($find == "store_name") {
+					$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->like("store_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				}
 				// echo $this->db->last_query();
 				$this->load->view("managestore",$data);
 				// print_r($data['rs']);

@@ -216,7 +216,13 @@
                             <table class="table  table-hover">
                                 <div class="input-group">
                                 <form action="<?php echo site_url('manageuser/search');?>" method = "post">
-                                    <input type="text" name="searchfb" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Facebook Name">
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="fb_id" checked="checked"> Facebook ID
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="selectsearch" id="cat1" value="fb_name"> Facebook Name
+                                    </label>
+                                    <input type="text" name="searchfb" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search">
                                     <div class="input-group-btn">
                                         <input class="btn btn-default" type="submit" name="btsave" value="Search">
                                      </div>
