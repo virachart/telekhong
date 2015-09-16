@@ -70,7 +70,7 @@ class Createinfo extends CI_Controller{
 
 			$sqlUpdateStoreUpload = "UPDATE store SET upload ='".$uploadplus."' WHERE store_id = '".$id."'";
 
-			$config['upload_path'] = "images/";
+			$config['upload_path'] = "images/info";
 			$config['allowed_types'] = "jpg|gif|png";
 			$this->load->library("upload",$config);
 			if ($this->upload->do_upload("picture")) { // if upload don't have problem

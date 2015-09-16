@@ -228,7 +228,7 @@
                     <input Type="Hidden" Name="amt" value="1"/>
                     
                     <!-- Redirect Web Controller-->
-                    <input Type="Hidden" Name="postURL" value="http://telekhong.me/index.php/payment/checkpayment"/> 
+                    <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
                     <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
                 </Form >
                 
