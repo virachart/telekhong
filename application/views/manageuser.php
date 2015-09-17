@@ -264,15 +264,17 @@
                 <div class="modal-body"style="padding:50px 50px;">
 
                     <table>
-                        <tr style="padding-top : 20px">
+                        <tr >
                             <td align="center">Facebook ID : </td>
                             <td align="center"><input type="text" name="fbid" id="fbid" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
-                            <td align="center">Facebook Name : </td>
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
+                            <td align="center">Facebook Name : &nbsp</td>
                             <td align="center"><input type="text" name="fbname" id="fbname" class="form-control" style="width:200px" value=""></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Gender : </td>
                             <td align="center"><input type="text" name="sex" id="sex" class="form-control" style="width:200px" value=""></td>
                         </tr>
@@ -302,18 +304,26 @@
                             <table class="table  table-hover">
                                 <div class="input-group">
                                 <form action="<?php echo site_url('manageuser/search');?>" method = "post">
-                                    <label>
-                                        <input type="radio" name="selectsearch" id="cat1" value="fb_id" checked="checked"> Facebook ID
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="selectsearch" id="cat1" value="fb_name"> Facebook Name
-                                    </label>
-                                    <input type="text" name="searchfb" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search">
-                                    <div class="input-group-btn">
-                                        <input class="btn btn-default" type="submit" name="btsave" value="Search">
+                                    
+                                    <div class="col-lg-12">
+                                        
+                                        <div class="input-group-btn">
+                                            <input class="btn btn-default pull-right" type="submit" name="btsave" value="Search">
+                                            <input type="text" name="searchfb" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search Input">
+
+                                        </div>
                                      </div>
+                                     <div class="col-lg-12">
+                                        
+                                        <label class="pull-right">
+                                            <input type="radio" name="selectsearch" id="cat1" value="fb_name"> Facebook Name
+                                        </label>
+                                        <label class="pull-right">
+                                            <input type="radio" name="selectsearch" id="cat1" value="fb_id" checked="checked"> Facebook ID &nbsp
+                                        </label>
+                                    </div>
                                      </form>
-                                </div>
+                                    
                                 <thead>
                                     <tr>
                                         <td>No.</td>

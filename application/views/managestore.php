@@ -217,22 +217,31 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <center><h2>All Store</h2></center>
+                        <br>
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div class="input-group">
-                                    <button type="button" class="btn btn-primary">Create Store +
+                                    <button type="button" class="btn btn-primary col-lg-2">Create Store +
                                     </button>
                                     <form action="<?php echo site_url('managestore/search');?>" method = "post">
-                                    <label>
-                                        <input type="radio" name="selectsearch" id="cat1" value="owner_name" checked="checked"> Owner Name
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="selectsearch" id="cat1" value="store_name"> Store Name
-                                    </label>
-                                    <input type="text" name="searchst" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Store Name">
-                                    <div class="input-group-btn">
-                                        <input class="btn btn-default" type="submit" name="btsave" value="Search">
-                                     </div>
+                                    <div class="col-lg-10 pull-right" >
+                                        <div class="input-group-btn">
+                                        
+                                            <input class="btn btn-default pull-right" type="submit" name="btsave" value="Search">
+                                          <input type="text" name="searchst" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search Input">
+                                         </div>
+                                       
+                                        
+                                    </div>
+                                     <div class="col-lg-12">
+                                        <label class="pull-right">
+                                            <input type="radio" name="selectsearch" id="cat1" value="store_name"> Store Name
+                                        </label>
+                                        <label class="pull-right">
+                                            <input type="radio" name="selectsearch" id="cat1" value="owner_name" checked="checked"> Owner Name &nbsp
+                                        </label>
+                                        
+                                    </div>
                                      </form>
 
                                 </div>

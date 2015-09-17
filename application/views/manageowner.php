@@ -273,23 +273,27 @@
                 <div class="modal-body"style="padding:50px 50px;">
 
                     <table>
-                        <tr style="padding-top : 20px">
-                            <td align="center">Owner ID : </td>
+                        <tr >
+                            <td align="center">Owner ID : &nbsp</td>
                             <td align="center"><input type="text" name="ownerid" id="ownerid" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Name : </td>
                             <td align="center"><input type="text" name="ownername" id="ownername" class="form-control" style="width:200px" value="" disabled></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Email : </td>
                             <td align="center"><input type="text" name="owneremail" id="owneremail" class="form-control" style="width:200px" value=""></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Tel : </td>
                             <td align="center"><input type="text" name="ownertel" id="ownertel" class="form-control" style="width:200px" value=""></td>
                         </tr>
-                        <tr style="padding-top : 20px">
+                        <tr><td>&nbsp</td></tr>
+                        <tr >
                             <td align="center">Status : </td>
                             <td align="center"><input type="text" name="ownerstatus" id="ownerstatus" class="form-control" style="width:200px" value=""></td>
                         </tr>
@@ -316,20 +320,26 @@
                                 <div class="input-group">
 
                                     <form action="<?php echo site_url('manageowner/search');?>" method = "post">
-                                    <label>
-                                        <input type="radio" name="selectsearch" id="cat1" value="owner_name" checked="checked"> Name
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="selectsearch" id="cat1" value="owner_email"> E-Mail
-                                    </label>
-                                    <label>
-                                        <input type="radio" name="selectsearch" id="cat1" value="owner_tel"> Tel
-                                    </label>
-                                    <input type="text" name="searchow" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search">
+                                    <div class="col-lg-12">
                                     <div class="input-group-btn">
-                                        <input class="btn btn-default" type="submit" name="btsave" value="Search">
-                                     </div>
-                                     </form>
+                                            <input class="btn btn-default pull-right" type="submit" name="btsave" value="Search">
+                                        <input type="text" name="searchow" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search Input">
+                                        </div>
+                                    
+                                        
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <label class="pull-right">
+                                            <input type="radio" name="selectsearch" id="cat1" value="owner_tel"> Tel &nbsp
+                                        </label>
+                                        <label class="pull-right">
+                                            <input type="radio" name="selectsearch" id="cat1" value="owner_email"> E-Mail &nbsp
+                                        </label>
+                                        <label class="pull-right">
+                                            <input type="radio" name="selectsearch" id="cat1" value="owner_name" checked="checked"> Name &nbsp
+                                        </label>
+                                    </div>
+                                    </form>
                                 </div>
                                 <thead>
                                     <tr>
