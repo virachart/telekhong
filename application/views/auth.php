@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>login facebook</title>
 </head>
-<body>
+<body >
     
     <!-- Core bootstrap js -->
     
@@ -163,10 +163,9 @@ a:active {
 body {
       position: relative; 
   }
-  #home {padding-top:50px;height:720px;color: #fff; background-color: #303030;}
-  #about {padding-top:50px;height:720px;color: #fff; background-color: #909090;}
-  #policy {padding-top:50px;height:720px;color: #303030; background-color: #E0E0E0;}
-
+  #home {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg7.jpg") ;}
+  #about {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg6.jpg") ;}
+  #policy {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/background2.jpg") ;}
 </style>
 <style>
             /* jssor slider arrow navigator skin 05 css */
@@ -281,6 +280,22 @@ body {
                     width /**/: 72px;
                     height /**/: 72px;
                 }
+                #jumbo {
+                /* all other browsers */
+                background: none;
+                text-align: center;
+                margin-top: 60px;
+                -webkit-animation: fadein 3s;
+                }
+                #jumbo2 {
+                /* all other browsers */
+                
+                -webkit-animation: fadein 5s;
+                }
+                @-webkit-keyframes fadein {
+                   from { opacity: 0; }
+                   to   { opacity: 1; }
+                }
         </style>
 
 	
@@ -312,21 +327,12 @@ body {
 
 
 
-<div id="home" class="container-fluid">
-    <video width="1066px" height="480" autoplay style="margin-left:186px" id="video1">
-        <source src="<?=base_url()?>video/testvideo.mp4" type="video/mp4">
-    </video><br>
-    <button class="glyphicon glyphicon-play btn btn-warning"onclick="playPause()" style="margin-left:662px;margin-top:30px"> Play/Pause</button>
-    <script> 
-        var myVideo = document.getElementById("video1"); 
-
-        function playPause() { 
-            if (myVideo.paused) 
-                myVideo.play(); 
-            else 
-                myVideo.pause(); 
-        } 
-    </script> 
+<div id="home" class="container-fluid ">
+    <div class="jumbotron" id="jumbo">
+        <h1>WELCOME</h1><br>
+        <h2 id="jumbo2">"<span style="color:#FF6600;">Telekhong</span> Everything jingabell "</h2>
+    </div>
+    <br>
 </div>
 <div id="about" class="container-fluid">
   <h1 style="margin-left:40px">About Us</h1>
@@ -383,17 +389,15 @@ body {
             <!-- Thumbnail Item Skin End -->
         </div>
     </div>
-    <div class="col-lg-4" style="margin-left:60px">
-        <h1 class="col-lg-5" style="text-align:right">What is <h1 class="col-lg-7" style="color:#FF3300;text-align:left">"Telekhong"</h1></h1>
-        <p>Telekhong Description (ยังไม่คิดคำอธิบาย)
-            ------------------------------------------------------
-            ---------------------------------------------------------</p>
+    <div class="col-lg-4" style="margin-left:60px;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;">
+        <h1 >What is "<span style="color:#FF6600;">Telekhong</span>"</h1>
+        <p>Telekhong Description (ยังไม่คิดคำอธิบาย)</p>
     </div>
 </div>
 <div id="policy" class="container-fluid">
   <center><h1>Policy</h1></center>
     <div class="col-lg-3"></div>
-    <div class="col-lg-6" style="overflow-y: scroll;height:520px;background-color:#fff;margin-top:20px;border-radius: 10px;border-color:#FF6600;border-style: solid;">
+    <div class="col-lg-6" style="overflow-y: scroll;height:520px;background-color:#fff;margin-top:20px;border-radius: 10px;border-color:#FF6600;border-style: solid;color:#303030;">
         <h2>นโยบาย ของ Telekhong</h2> 
         <p><b>บทนำ</b></p>
 <ul>
