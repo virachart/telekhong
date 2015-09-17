@@ -522,7 +522,12 @@
                                 <?php
                                     if ($info != null) {
                                         foreach ($info as $key => $r) {
+                                            $year = substr($r['info_date'],0,4);
+                                            $month = substr($r['info_date'],5,2);
+                                            $day = substr($r['info_date'],8,2);
+                                            $dayshow = $day."-".$month."-".$year;
                                             echo "<a href='javascript:void(0);' onclick='getedit(".$r['info_id'].")' class='list-group-item'>
+                                                <span class='badge' style='margin-top :20px'>".$dayshow."</span>
                                                 <img class='img-thumbnail' src='".base_url()."images/info/".$r['info_pic']."' width='75px' height='75px' alt=''> ".$r['info_name']."
                                                 </a>";
 
