@@ -9,7 +9,7 @@ class Managesensoro extends CI_Controller{
 	public function index(){
 		if($this->session->userdata('admin') != null){
 			$this->load->library("pagination");
-			$config['base_url'] = base_url()."index.php/managesensoro";
+			$config['base_url'] = base_url()."index.php/managesensoro/index";
 			$config['per_page'] = 10;
 			$config['total_rows'] = $this->db->count_all("sensoro");
 
@@ -83,7 +83,7 @@ class Managesensoro extends CI_Controller{
 			
 			if ($name != null) {
 				$this->load->library("pagination");
-				$config['base_url'] = base_url()."index.php/managestore";
+				$config['base_url'] = base_url()."index.php/managestore/search";
 				$config['per_page'] = 10;
 				$sqlnumrow = "select * from store where store_name like '%".$name."%'";
 				$e = $this->db->query($sqlnumrow);

@@ -9,8 +9,8 @@ class Manageqr extends CI_Controller{
 	public function index(){
 		if($this->session->userdata('id') != null){
 			$this->load->library("pagination");
-			$config['base_url'] = base_url()."index.php/manageqr";
-			$config['per_page'] = 10;
+			$config['base_url'] = base_url()."index.php/manageqr/index";
+			$config['per_page'] = 5;
 			$config['total_rows'] = $this->db->count_all("qr");
 
 			$config['full_tag_open'] = "<div class = 'pagination'>";
