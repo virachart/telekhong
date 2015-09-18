@@ -163,6 +163,12 @@ class Store extends CI_Controller{
 		$this->db->update('store', $dataupdate); 
 	}
 
+	public function delinfo($id){
+		$this->db->where('info_id', $id);
+		$this->db->delete('info'); 
+		redirect("store"); 
+	}
+
 	public function showinfo($id){
 		$rs = $this->db->where("info_id",$id)->get("info")->row_array();
 		$rss = $this->db->where("info_id",$id)->get("qr")->row_array();

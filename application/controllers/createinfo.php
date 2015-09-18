@@ -26,17 +26,13 @@ class Createinfo extends CI_Controller{
 			$cat = $this->input->post('cat');
 			// begin date
 			$beda = $this->input->post('beda');
-			$bemo = $this->input->post('bemo');
-			$beye = $this->input->post('beye');
 			// expire date 
 			$exda = $this->input->post('exda');
-			$exmo = $this->input->post('exmo');
-			$exye = $this->input->post('exye');
 			
 			$qr = $this->input->post('qr');
 
-			$begindate = $beye."-".$bemo."-".$beda;
-			$expiredate = $exye."-".$exmo."-".$exda;
+			$begindate = $beda;
+			$expiredate = $exda;
 
 			$id = $this->session->userdata('storeid');
 

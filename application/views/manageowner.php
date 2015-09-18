@@ -220,96 +220,8 @@
             </div>
         </div>
 
-        <!-- script create beacon -->
-                <script type="text/javascript">
-                    
-                    // edit beacon
-                    $('#edit').live("click",function(){
-                        $.ajax({
-                            url:"manageowner/edit",
-                            type: "POST",
-                            cache: false,
-                            data: "id="+$("#ownerid").val()+"&email="+$("#owneremail").val()+"&tel="+$("#ownertel").val()+"&status="+$("#ownerstatus").val(),
-                        });
-                        location.reload("managesensoro");
-                    });
-
-                     // show edit detail
-                    function showdetail(id){
-                        $.ajax({
-                            url:"manageowner/getdetail",
-                            type: "POST",
-                            cache: false,
-                            data: "id="+id,
-                            dataType:"JSON",
-                            success:function(res){
-                                console.log(JSON.stringify(res));
-                                $("#ownerid").attr("value",res.ownerid);
-                                $("#ownername").attr("value",res.name);
-                                $("#owneremail").attr("value",res.email);
-                                $("#ownertel").attr("value",res.tel);
-                                $("#ownerstatus").attr("value",res.status);
-                                
-                            },
-                            error:function(err){
-                                console.log("error : "+err);
-                            },
-                        });
-                    };
-
-                </script>
-
-
-
-<!-- Modal content-->
-      <!-- modal of create beacon -->
-    <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Edit Owner</h4>
-                </div>
-                <div class="modal-body"style="padding:50px 50px;">
-
-                    <table>
-                        <tr >
-                            <td align="center">Owner ID : &nbsp</td>
-                            <td align="center"><input type="text" name="ownerid" id="ownerid" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Name : </td>
-                            <td align="center"><input type="text" name="ownername" id="ownername" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Email : </td>
-                            <td align="center"><input type="text" name="owneremail" id="owneremail" class="form-control" style="width:200px" value=""></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Tel : </td>
-                            <td align="center"><input type="text" name="ownertel" id="ownertel" class="form-control" style="width:200px" value=""></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Status : </td>
-                            <td align="center"><input type="text" name="ownerstatus" id="ownerstatus" class="form-control" style="width:200px" value=""></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id='edit' data-dismiss="modal">Edit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end modal of create beacon -->
-
-
+       
+                
 
 
                 <div class="row">
@@ -326,6 +238,22 @@
                                         <input type="text" name="searchow" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search Input">
                                         </div>
                                     
+                                    <script type="text/javascript">
+
+                                         // show edit detail
+                                        function edit(id){
+                                            // alert($("#ownerid"+id).val()+"-"+$("#owneremail"+id).val()+"-"+$("#ownertel"+id).val()+"-"+$("#ownerstatus"+id).val());
+                                            $.ajax({
+                                                url:"<?php echo site_url("manageowner/edit");?>",
+                                                type: "POST",
+                                                cache: false,
+                                                data: "id="+$("#ownerid"+id).val()+"&email="+$("#owneremail"+id).val()+"&tel="+$("#ownertel"+id).val()+"&status="+$("#ownerstatus"+id).val(),
+                                                
+                                            });
+                                            location.reload("manageowner");
+                                        };
+
+                                    </script>
                                         
                                     </div>
                                     <div class="col-lg-12">
@@ -368,11 +296,66 @@
                                                 echo "<td>".$r['status_owner']."</td>";
                                                 echo "<td>".$r['owner_date']."</td>";
                                                 echo "<td align= center>";
-                                                echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["owner_id"].")' data-toggle='modal' data-target='#myModal1'>Edit</button>";
+                                                // echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["owner_id"].")' data-toggle='modal' data-target='#myModal1'>Edit</button>";
+                                                echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['owner_id']."'  >";
+                                                echo "Edit";
+                                                echo "</button>";
                                                 echo "&nbsp";
                                                 echo anchor("manageowner/del/".$r["owner_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
+                                                echo "<td>";
+                                                echo "<div class='modal fade' id='myModal".$r['owner_id']."' role='dialog'>
+                                                    <div class='modal-dialog'>
+                                                        <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <button type='button' class='close' data-dismiss='modal'></button>
+                                                                <h4 class='modal-title' >Edit Owner</h4>
+                                                            </div>
+                                                            <div class='modal-body'style='padding:50px 50px;'>
+
+                                                                <table>
+                                                                    <tr >
+                                                                        <td align='center'>Owner ID : &nbsp</td>
+                                                                        <td align='center'><input type='text' name='ownerid' id='ownerid".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['owner_id']."' disabled></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Name : </td>
+                                                                        <td align='center'><input type='text' name='ownername' id='ownername".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['fb_name']."' disabled></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Email : </td>
+                                                                        <td align='center'><input type='text' name='owneremail' id='owneremail".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['owner_email']."'></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Tel : </td>
+                                                                        <td align='center'><input type='text' name='ownertel' id='ownertel".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['owner_tel']."'></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Status : </td>
+                                                                        <td align='center'><input type='text' name='ownerstatus' id='ownerstatus".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['status_owner']."'></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class='modal-footer'>
+                                                                <button type='button' class='btn btn-default' onclick='edit(".$r['owner_id'].")' data-dismiss='modal'>Edit</button>
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                                echo "</td>";
+
+
                                                 echo "</tr>";
+
+
+
+
                                                 $no++;
                                             }
                                         }

@@ -8,13 +8,46 @@ class Managesensoro extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('admin') != null){
-			$this->load->library("pagination");
-			$config['base_url'] = base_url()."index.php/managesensoro/index";
-			$config['per_page'] = 10;
-			$config['total_rows'] = $this->db->count_all("sensoro");
+			// $this->load->library("pagination");
+			// $config['base_url'] = base_url()."index.php/managesensoro/index";
+			// $config['per_page'] = 5;
+			// $config['total_rows'] = $this->db->count_all("sensoro");
 
-			$config['full_tag_open'] = "<div class = 'pagination'>";
-			$config['full_tag_close'] = "</div>";
+			// $config['full_tag_open'] = "<div class = 'pagination'>";
+			// $config['full_tag_close'] = "</div>";
+			// $this->pagination->initialize($config);
+
+			$config['base_url'] = base_url()."index.php/managesensoro/index";
+			$config['per_page'] = 5;
+			//count_all(); -> count data in table
+			$counttable = $this->db->count_all("sensoro");
+			$config['total_rows'] = $counttable;
+
+			//out side
+			$config['full_tag_open'] = "<ul class='pagination'>";
+				
+				$config['first_tag_open'] = '<li>';
+				$config['first_tag_close'] = '</li>';
+
+   				$config['last_tag_open'] = '<li>';
+   				$config['last_tag_close'] = '</li>';
+
+				$config['prev_tag_open'] = '<li>';
+				$config['prev_tag_close'] = '</li>';
+
+				//current page
+				$config['cur_tag_open'] = "<li class='active'><a>";
+				$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+				
+				//another page
+				$config['num_tag_open'] = "<li>";
+				$config['num_tag_close'] = "</li>";
+
+				$config['next_tag_open'] = '<li>';
+				$config['next_tag_close'] = '</li>';
+
+			$config['full_tag_close'] = "</ul";
+
 			$this->pagination->initialize($config);
 
 			$sqluser = "Select * from sensoro";
@@ -29,7 +62,12 @@ class Managesensoro extends CI_Controller{
 			$data['num4'] = $this->db->query($sqluserba);
 			$data['num5'] = $this->db->query($sqluserty1);
 			$data['num6'] = $this->db->query($sqluserty2);
-			$data['rs'] = $this->db->select("*")->from("sensoro a")->join("store b","a.store_id = b.store_id")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+			$data['rs'] = $this->db->select("*")
+							->from("sensoro a")
+							->join("store b","a.store_id = b.store_id")
+							->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
+
+			// $data['rs'] = $this->db->select("*")->from("sensoro a")->join("store b","a.store_id = b.store_id")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 			
 			$this->load->view("managesensoro",$data);
 		}elseif ($this->session->userdata('id') != null) {
@@ -64,7 +102,6 @@ class Managesensoro extends CI_Controller{
 		$status = $this->input->post("status");
 		$sqlupdate = "UPDATE sensoro SET store_id = '".$storeid."' , sensoro_type = '".$type."' , status_sensoro_id = '".$status."' WHERE sensoro_id = '".$senid."'";
 		$this->db->query($sqlupdate);
-		redirect("managesensoro","refresh");
 	}
 
 	public function change(){
@@ -72,7 +109,6 @@ class Managesensoro extends CI_Controller{
 		$day = $this->input->post("day");
 		$sqlupdate = "UPDATE sensoro SET sensoro_date = '".$day."' WHERE sensoro_id = '".$senid."'";
 		$this->db->query($sqlupdate);
-		redirect("managesensoro","refresh");
 	}
 
 
@@ -82,15 +118,6 @@ class Managesensoro extends CI_Controller{
 			// echo $name;
 			
 			if ($name != null) {
-				$this->load->library("pagination");
-				$config['base_url'] = base_url()."index.php/managestore/search";
-				$config['per_page'] = 10;
-				$sqlnumrow = "select * from store where store_name like '%".$name."%'";
-				$e = $this->db->query($sqlnumrow);
-				$config['total_rows'] = $e->num_rows();
-				$config['full_tag_open'] = "<div class = 'pagination'>";
-				$config['full_tag_close'] = "</div>";
-				$this->pagination->initialize($config);
 
 				$sqluser = "Select * from store";
 				$sqluserav = "Select * from store where status_store_id = '1'";
@@ -100,7 +127,7 @@ class Managesensoro extends CI_Controller{
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
-				$data['rs'] = $this->db->select("*")->from("store")->like("store_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				$data['rs'] = $this->db->select("*")->from("store")->like("store_name",$name)->get()->result_array();
 				
 				// echo $this->db->last_query();
 				$this->load->view("managestore",$data);

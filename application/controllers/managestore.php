@@ -8,14 +8,60 @@ class Managestore extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('id') != null){
-			$this->load->library("pagination");
+			// $this->load->library("pagination");
+			// $config['base_url'] = base_url()."index.php/managestore/index";
+			// $config['per_page'] = 10;
+			// $config['total_rows'] = $this->db->count_all("store");
+
+			// $config['full_tag_open'] = "<div class = 'pagination'>";
+			// $config['full_tag_close'] = "</div>";
+			// $this->pagination->initialize($config);
+
+			// $sqluser = "Select * from store";
+			// $sqluserav = "Select * from store where status_store_id = '1'";
+			// $sqluserbl = "Select * from store where status_store_id = '2'";
+			// $sqluserba = "Select * from store where status_store_id = '3'";
+			// $data['num1'] = $this->db->query($sqluser);
+			// $data['num2'] = $this->db->query($sqluserav);
+			// $data['num3'] = $this->db->query($sqluserbl);
+			// $data['num4'] = $this->db->query($sqluserba);
+			// $data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+			
+			// $this->load->view("managestore",$data);
+
 			$config['base_url'] = base_url()."index.php/managestore/index";
 			$config['per_page'] = 10;
-			$config['total_rows'] = $this->db->count_all("store");
+			//count_all(); -> count data in table
+			$counttable = $this->db->count_all("store");
+			$config['total_rows'] = $counttable;
 
-			$config['full_tag_open'] = "<div class = 'pagination'>";
-			$config['full_tag_close'] = "</div>";
+			//out side
+			$config['full_tag_open'] = "<ul class='pagination'>";
+				
+				$config['first_tag_open'] = '<li>';
+				$config['first_tag_close'] = '</li>';
+
+   				$config['last_tag_open'] = '<li>';
+   				$config['last_tag_close'] = '</li>';
+
+				$config['prev_tag_open'] = '<li>';
+				$config['prev_tag_close'] = '</li>';
+
+				//current page
+				$config['cur_tag_open'] = "<li class='active'><a>";
+				$config['cur_tag_close'] = "<span class='sr-only'></span></a></li>";
+				
+				//another page
+				$config['num_tag_open'] = "<li>";
+				$config['num_tag_close'] = "</li>";
+
+				$config['next_tag_open'] = '<li>';
+				$config['next_tag_close'] = '</li>';
+
+			$config['full_tag_close'] = "</ul";
+
 			$this->pagination->initialize($config);
+
 
 			$sqluser = "Select * from store";
 			$sqluserav = "Select * from store where status_store_id = '1'";
@@ -25,9 +71,15 @@ class Managestore extends CI_Controller{
 			$data['num2'] = $this->db->query($sqluserav);
 			$data['num3'] = $this->db->query($sqluserbl);
 			$data['num4'] = $this->db->query($sqluserba);
-			$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
-			
+			$data['rs'] = $this->db->select("*")
+							->from("store")
+							->join("owner","store.owner_id=owner.owner_id")
+							->join("user","owner.fb_id=user.fb_id")
+							->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
+							
 			$this->load->view("managestore",$data);
+
+
 		}else{
 			redirect("auth");
 		}
@@ -40,31 +92,17 @@ class Managestore extends CI_Controller{
 		redirect("managestore","refresh");
 	}
 
-	public function edit($id){
-		if ($this->input->post("btsave")!=null) {
+	public function edit(){
 			
-			$storeid = $this->input->post("id");
-			$name = $this->input->post("name");
-			$detail = $this->input->post("detail");
-			$address = $this->input->post("address");
-			$tel = $this->input->post("tel");
-			$open = $this->input->post("open");
-			$status = $this->input->post("status");
-			$sqlupdate = "UPDATE store SET store_name ='".$name."', detail ='".$detail."', address ='".$address."' , tel ='".$tel."' , open_time ='".$open."' , status_store_id ='".$status."' WHERE store_id = '".$storeid."'";
-			$this->db->query($sqlupdate);
-			redirect("managestore","refresh");
-			exit();
-		}
-
-		$sql = "Select * from store where store_id = '$id'";
-		$rs = $this->db->query($sql);
-		if ($rs->num_rows()==0) {
-			$data['rs'] = array();
-		}else{
-			$data['rs'] = $rs->row_array();
-		}
-
-		$this->load->view("editstore",$data);
+		$storeid = $this->input->post("id");
+		$name = $this->input->post("name");
+		$detail = $this->input->post("detail");
+		$address = $this->input->post("address");
+		$tel = $this->input->post("tel");
+		$open = $this->input->post("open");
+		$status = $this->input->post("status");
+		$sqlupdate = "UPDATE store SET store_name ='".$name."', detail ='".$detail."', address ='".$address."' , tel ='".$tel."' , open_time ='".$open."' , status_store_id ='".$status."' WHERE store_id = '".$storeid."'";
+		$this->db->query($sqlupdate);
 
 	}
 
@@ -76,15 +114,7 @@ class Managestore extends CI_Controller{
 			
 			if ($name != null) {
 				$find = $this->input->post("selectsearch");
-				$this->load->library("pagination");
-				$config['base_url'] = base_url()."index.php/managestore";
-				$config['per_page'] = 10;
-				$sqlnumrow = "select * from store where store_name like '%".$name."%'";
-				$e = $this->db->query($sqlnumrow);
-				$config['total_rows'] = $e->num_rows();
-				$config['full_tag_open'] = "<div class = 'pagination'>";
-				$config['full_tag_close'] = "</div>";
-				$this->pagination->initialize($config);
+				
 
 				$sqluser = "Select * from store";
 				$sqluserav = "Select * from store where status_store_id = '1'";
@@ -97,10 +127,10 @@ class Managestore extends CI_Controller{
 				
 
 				if ($find == "owner_name") {
-					$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->like("fb_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+					$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->like("fb_name",$name)->get()->result_array();
 				}
 				if ($find == "store_name") {
-					$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->like("store_name",$name)->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+					$data['rs'] = $this->db->select("*")->from("store")->join("owner","store.owner_id=owner.owner_id")->join("user","owner.fb_id=user.fb_id")->like("store_name",$name)->get()->result_array();
 				}
 				// echo $this->db->last_query();
 				$this->load->view("managestore",$data);

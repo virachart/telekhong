@@ -259,7 +259,7 @@
                                                 echo "<td>".$r['info_name']."</td>";
                                                 echo "<td>".$r['catagory']."</td>";
                                                 echo "<td>";
-                                                echo anchor("manageowner/del/".$r["owner_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                                                echo anchor("manageqr/del/".$r["qr_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
                                                 echo "</tr>";
                                                 $no++;

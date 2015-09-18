@@ -265,7 +265,7 @@
 
 <!-- Modal content-->
       <!-- modal of create beacon -->
-    <div class="modal fade" id="myModal1" role="dialog">
+    <div class="modal fade" id="myModalcre1" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -311,167 +311,33 @@
     </div>
     <!-- end modal of create beacon -->
 
-    <!-- modal of edit beacon -->
-    <div class="modal fade" id="myModal2" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Edit Beacon</h4>
-                </div>
-                <div class="modal-body"style="padding:50px 50px;">
-
-                    <table>
-                        <tr >
-                            <td align="center">Sensoro ID : </td>
-                            <td align="center"><input type="text" id="senid" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Major : </td>
-                            <td align="center"><input type="text" id="majordetail" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Minor : </td>
-                            <td align="center"><input type="text" id="minordetail" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Store ID : </td>
-                            <td align="center"><input type="text" id="store" class="form-control" style="width:200px" value=""></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Type of Work : </td>
-                            <td align="center">
-                                <select class="form-control" name="type" id="typedetail" style="width:300px ;">  
-                                    <option id="type1" value="1" selected="">Type 1 : Use for send information</option>
-                                    <option id="type2" value="2" selected="">Type 2 : Use for check customer</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Status Sensoro : &nbsp</td>
-                            <td align="center">
-                                <select class="form-control" name="type" id="statusdetail" style="width:300px ;">  
-                                    <option id="status1" value="1" selected="">Avaliable</option>
-                                    <option id="status2" value="2" selected="">Block</option>
-                                    <option id="status3" value="3" selected="">Ban</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id='edit' data-dismiss="modal">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end modal edit beacon   -->
-
-        <!-- modal of change batt beacon -->
-    <div class="modal fade" id="myModal3" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Change Battery Beacon</h4>
-                </div>
-                <div class="modal-body"style="padding:50px 50px;">
-
-                    <table>
-                        <tr >
-                            <td align="center">Sensoro ID : </td>
-                            <td align="center"><input type="text" id="senidbatt" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Major : </td>
-                            <td align="center"><input type="text" id="majorbatt" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Minor : </td>
-                            <td align="center"><input type="text" id="minorbatt" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Changed Date : &nbsp</td>
-                            <td align="center"><input type="date" id="changebatt" class="form-control" placeholder="Text input" style="width:200px"></td>
-                        </tr>
-                        
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id='change' data-dismiss="modal">Save</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end modal change batt beacon   -->
-
+   
 
                 <script type="text/javascript">
-                        // show edit detail
-                    function showdetail(id){
-                        $.ajax({
-                            url:"managesensoro/getdetail",
-                            type: "POST",
-                            cache: false,
-                            data: "id="+id,
-                            dataType:"JSON",
-                            success:function(res){
-                                console.log(JSON.stringify(res));
-                                $("#senid").attr("value",res.senid);
-                                $("#majordetail").attr("value",res.major);
-                                $("#minordetail").attr("value",res.minor);
-                                $("#store").attr("value",res.store);
-                                if (res.type == "1") {
-                                    $("#type1").attr("selected","selected");
-                                }else{
-                                    $("#type2").attr("selected","selected");
-                                }
-                                if (res.statusid == "1") {
-                                    $("#status1").attr("selected","selected");
-                                }if (res.statusid == "2") {
-                                    $("#status2").attr("selected","selected");
-                                }if (res.statusid == "3") {
-                                    $("#status3").attr("selected","selected");
-                                }
-                            },
-                            error:function(err){
-                                console.log("error : "+err);
-                            },
-                        });
-                    };
+                 // show edit detail
+                function edit(id){
+                    // alert($("#ownerid"+id).val()+"-"+$("#owneremail"+id).val()+"-"+$("#ownertel"+id).val()+"-"+$("#ownerstatus"+id).val());
+                    $.ajax({
+                        url:"<?php echo site_url("managesensoro/edit");?>",
+                        type: "POST",
+                        cache: false,
+                        data: "senid="+$("#senid"+id).val()+"&storeid="+$("#store"+id).val()+"&type="+$("#typedetail"+id).val()+"&status="+$("#statusdetail"+id).val(),
+                        
+                    });
+                    location.reload("managesensoro");
+                };
 
-                    // show batt detail
-                    function showdetailbatt(id){
-                        $.ajax({
-                            url:"managesensoro/getdetail",
-                            type: "POST",
-                            cache: false,
-                            data: "id="+id,
-                            dataType:"JSON",
-                            success:function(res){
-                                console.log(JSON.stringify(res));
-                                $("#senidbatt").attr("value",res.senid);
-                                $("#majorbatt").attr("value",res.major);
-                                $("#minorbatt").attr("value",res.minor);
-                            },
-                            error:function(err){
-                                console.log("error : "+err);
-                            },
-                        });
-                    };
-
+                function editbatt(id){
+                    // alert($("#ownerid"+id).val()+"-"+$("#owneremail"+id).val()+"-"+$("#ownertel"+id).val()+"-"+$("#ownerstatus"+id).val());
+                    $.ajax({
+                        url:"<?php echo site_url("managesensoro/change");?>",
+                        type: "POST",
+                        cache: false,
+                        data: "senid="+$("#senidbatt"+id).val()+"&day="+$("#changebatt"+id).val(),
+                        
+                    });
+                    location.reload("managesensoro");
+                };
                     
                 </script>
 
@@ -488,7 +354,7 @@
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div class="input-group" style="margin-bottom:20px">
-                                        <button type='button' class='btn btn-primary col-sm-2' data-toggle="modal" data-target="#myModal1" >Create Sensoro + </button>
+                                        <button type='button' class='btn btn-primary col-sm-2' data-toggle="modal" data-target="#myModalcre1" >Create Sensoro + </button>
                                    
                                     
                                     <form action="<?php echo site_url('managestore/search');?>" method = "post">
@@ -529,12 +395,152 @@
                                                 echo "<td>".substr($r['sensoro_date'],0,10)."</td>";
                                                 echo "<td>".$r['status_sensoro_id']."</td>";
                                                 echo "<td align= center>";
-                                                echo "<button type='button' class='btn btn-success' onclick='showdetailbatt(".$r["sensoro_id"].")' data-toggle='modal' data-target='#myModal3' >Change Battery</button>";
+                                                // echo "<button type='button' class='btn btn-success' onclick='showdetailbatt(".$r["sensoro_id"].")' data-toggle='modal' data-target='#myModal3' >Change Battery</button>";
+                                                echo "<button type='button' class='btn btn-success'  data-toggle='modal' data-target='#myModalbatt".$r['sensoro_id']."'  >";
+                                                echo "Change Battery";
+                                                echo "</button>";
                                                 echo "&nbsp";
-                                                echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["sensoro_id"].")' data-toggle='modal' data-target='#myModal2' >Edit</button>";
+                                                // echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["sensoro_id"].")' data-toggle='modal' data-target='#myModal2' >Edit</button>";
+                                                echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['sensoro_id']."'  >";
+                                                echo "Edit";
+                                                echo "</button>";
                                                 echo "&nbsp";
                                                 echo anchor("managesensoro/del/".$r["sensoro_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
+                                                echo "<td>";
+
+                                                 // <!-- modal of edit beacon -->
+                                                echo "<div class='modal fade' id='myModal".$r['sensoro_id']."' role='dialog'>
+                                                        <div class='modal-dialog'>
+                                                            <div class='modal-content'>
+                                                                <div class='modal-header'>
+                                                                    <button type='button' class='close' data-dismiss='modal'></button>
+                                                                    <h4 class='modal-title' >Edit Beacon</h4>
+                                                                </div>
+                                                                <div class='modal-body'style='padding:50px 50px;'>
+
+                                                                    <table>
+                                                                        <tr >
+                                                                            <td align='center'>Sensoro ID : </td>
+                                                                            <td align='center'><input type='text' id='senid".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['sensoro_id']."' disabled></td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Major : </td>
+                                                                            <td align='center'><input type='text' id='majordetail".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['major']."' disabled></td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Minor : </td>
+                                                                            <td align='center'><input type='text' id='minordetail".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['minor']."' disabled></td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Store ID : </td>
+                                                                            <td align='center'><input type='text' id='store".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['store_id']."'></td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Type of Work : </td>
+                                                                            <td align='center'>
+                                                                                <select class='form-control' name='type' id='typedetail".$r['sensoro_id']."' style='width:300px ;'> ";
+                                                                                $se1 = "";
+                                                                                $se2 = "";
+                                                                                if ($r['sensoro_type'] == 1) {
+                                                                                    $se1 = "selected";
+                                                                                }else{
+                                                                                    $se2 = "selected";
+                                                                                }
+
+                                                                                $sta1 = "";
+                                                                                $sta2 = "";
+                                                                                $sta3 = "";
+                                                                                if ($r['status_sensoro_id'] == 1) {
+                                                                                    $sta1 = "selected";
+                                                                                }elseif ($r['status_sensoro_id'] == 2) {
+                                                                                    $sta2 = "selected";
+                                                                                }else{
+                                                                                    $sta3 = "selected";
+                                                                                }
+
+                                                                                echo  "<option id='type1' value='1' ".$se1.">Type 1 : Use for send information</option>
+                                                                                    <option id='type2' value='2' ".$se2.">Type 2 : Use for check customer</option>
+                                                                                </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Status Sensoro : &nbsp</td>
+                                                                            <td align='center'>
+                                                                                <select class='form-control' name='type' id='statusdetail".$r['sensoro_id']."' style='width:300px ;'>  
+                                                                                    <option id='status1' value='1' ".$sta1.">Avaliable</option>
+                                                                                    <option id='status2' value='2' ".$sta2.">Block</option>
+                                                                                    <option id='status3' value='3' ".$sta3.">Ban</option>
+                                                                                </select>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </div>
+                                                                <div class='modal-footer'>
+                                                                    <button type='button' class='btn btn-default' onclick='edit(".$r['sensoro_id'].")' data-dismiss='modal'>Save</button>
+                                                                    
+                                                                    <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>";
+
+                                                    // <!-- end modal edit beacon   -->
+
+
+
+                                                    // <!-- modal of change batt beacon -->
+                                                    echo "<div class='modal fade' id='myModalbatt".$r['sensoro_id']."' role='dialog'>
+                                                        <div class='modal-dialog'>
+                                                            <div class='modal-content'>
+                                                                <div class='modal-header'>
+                                                                    <button type='button' class='close' data-dismiss='modal'></button>
+                                                                    <h4 class='modal-title' >Change Battery Beacon</h4>
+                                                                </div>
+                                                                <div class='modal-body'style='padding:50px 50px;'>
+
+                                                                    <table>
+                                                                        <tr >
+                                                                            <td align='center'>Sensoro ID : </td>
+                                                                            <td align='center'><input type='text' id='senidbatt".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['sensoro_id']."' disabled></td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Major : </td>
+                                                                            <td align='center'><input type='text' id='majorbatt".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['major']."' disabled></td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Minor : </td>
+                                                                            <td align='center'><input type='text' id='minorbatt".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['minor']."' disabled></td>
+                                                                        </tr>
+                                                                        <tr><td>&nbsp</td></tr>
+                                                                        <tr >
+                                                                            <td align='center'>Changed Date : &nbsp</td>
+                                                                            <td align='center'><input type='date' id='changebatt".$r['sensoro_id']."' class='form-control' placeholder='Text input' style='width:200px'></td>
+                                                                        </tr>
+                                                                        
+                                                                    </table>
+                                                                </div>
+                                                                <div class='modal-footer'>
+                                                                    <button type='button' class='btn btn-default' onclick='editbatt(".$r['sensoro_id'].")' data-dismiss='modal'>Save</button>
+                                                                    <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>";
+                                                    // <!-- end modal change batt beacon   -->
+
+                                                echo "</td>";
+
+
                                                 echo "</tr>";
                                                 $no++;
                                             }

@@ -454,7 +454,7 @@
                                     console.log(JSON.stringify(res));
                                     var textname = "<h3 class='panel-title'> "+res.info_name+"</h3>";
                                     var textpic = "<?=base_url();?>images/info/"+res.info_pic;
-                                    var textbutton = "<a href='<?=base_url();?>index.php/storeowner/del/"+res.info_id+"' onclick='javascript:return confirm('Do you want to delete?');'><button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button></a>";
+                                    var textbutton = "<a href='<?=base_url();?>index.php/store/delinfo/"+res.info_id+"' onclick='javascript:return confirm('Do you want to delete?');'><button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button></a>";
                                     $("#info_detail").html(textname);
                                     $("#infopic").attr("src",textpic);
                                     $("#des").attr("value",res.info_descrip);

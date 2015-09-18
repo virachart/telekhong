@@ -133,14 +133,14 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('first_name');?> <b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                        
-                        <li>
-                            <a href="<?php echo site_url("auth/logout");?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
-                        </li>
-                    </ul>
-                </li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('first_name');?> <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a href="<?php echo site_url("auth/logout");?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            </li>
+                        </ul>
+                    </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -215,88 +215,16 @@
                 
             </div>
 
-            <script type="text/javascript">
-                    // edit beacon
-                    $('#edituser').live("click",function(){
-                        $.ajax({
-                            url:"manageuser/edit",
-                            type: "POST",
-                            cache: false,
-                            data: "fbid="+$("#fbid").val()+"&fbname="+$("#fbname").val()+"&sex="+$("#sex").val(),
-                        });
-                        location.reload("manageuser");
-                    });
+            
 
-                    
-                        // show edit detail
-                    function showdetail(id){
-                        $.ajax({
-                            url:"manageuser/getdetail",
-                            type: "POST",
-                            cache: false,
-                            data: "id="+id,
-                            dataType:"JSON",
-                            success:function(res){
-                                console.log(JSON.stringify(res));
-                                $("#fbid").attr("value",res.fbid);
-                                $("#fbname").attr("value",res.fbname);
-                                $("#sex").attr("value",res.sex);
-                            },
-                            error:function(err){
-                                console.log("error : "+err);
-                            },
-                        });
-                    };
-
-                    
-                </script>
-
-
-<!-- Modal content-->
-      <!-- modal of edit user -->
-    <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Edit User</h4>
-                </div>
-                <div class="modal-body"style="padding:50px 50px;">
-
-                    <table>
-                        <tr >
-                            <td align="center">Facebook ID : </td>
-                            <td align="center"><input type="text" name="fbid" id="fbid" class="form-control" style="width:200px" value="" disabled></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Facebook Name : &nbsp</td>
-                            <td align="center"><input type="text" name="fbname" id="fbname" class="form-control" style="width:200px" value=""></td>
-                        </tr>
-                        <tr><td>&nbsp</td></tr>
-                        <tr >
-                            <td align="center">Gender : </td>
-                            <td align="center"><input type="text" name="sex" id="sex" class="form-control" style="width:200px" value=""></td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id='edituser' data-dismiss="modal">Edit</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- end modal of edit user -->
 
 
 
             <div class="row">
-             <div class="col-lg-12 " style=" margin-top: 20px;" >
-                <ol class="breadcrumb"><li>-------------------------------</li></ol>
+                <div class="col-lg-12 " style=" margin-top: 20px;" >
+                    <ol class="breadcrumb"><li>-------------------------------</li></ol>
+                </div>
             </div>
-        </div>
                 <div class="row">
                     <div class="col-lg-12">
                         <center><h2>All User</h2></center>
@@ -323,6 +251,21 @@
                                         </label>
                                     </div>
                                      </form>
+
+                                     <script type="text/javascript">
+                                            // show edit detail
+                                        function edit(id){
+                                            $.ajax({
+                                                url:"<?php echo site_url("manageuser/edit");?>",
+                                                type: "POST",
+                                                cache: false,
+                                                data: "fbid="+$("#fbid"+id).val()+"&fbname="+$("#fbname"+id).val()+"&sex="+$("#sex"+id).val(),
+                                            });
+                                            location.reload("manageowner");
+                                        };
+
+                                        
+                                    </script>
                                     
                                 <thead>
                                     <tr>
@@ -349,11 +292,55 @@
                                                 echo "<td>".$r['sex']."</td>";
                                                 echo "<td>".$r['user_date']."</td>";
                                                 echo "<td align= center>";
-                                                echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["fb_id"].")' data-toggle='modal' data-target='#myModal1'>Edit</button>";
+                                                //echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["fb_id"].")' data-toggle='modal' data-target='#myModal1'>Edit</button>";
+                                                echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['fb_id']."'  >";
+                                                echo "Edit";
+                                                echo "</button>";
                                                 echo "&nbsp";
                                                 echo anchor("manageuser/del/".$r["fb_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
+                                                
+
+                                                //modal
+                                                echo "<td>";
+                                                echo "<div class='modal fade' style='display:none;' id='myModal".$r['fb_id']."' role='dialog'>
+                                                    <div class='modal-dialog'>
+                                                        <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <button type='button' class='close' data-dismiss='modal'></button>
+                                                                <h4 class='modal-title' >Edit User</h4>
+                                                            </div>
+                                                            <div class='modal-body' style='padding:50px 50px;'>
+
+                                                                <table>
+                                                                    <tr >
+                                                                        <td align='center'>Facebook ID : </td>
+                                                                        <td align='center'><input type='text' name='fbid' id='fbid".$r['fb_id']."' class='form-control' style='width:200px' value='".$r['fb_id']."' disabled></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Facebook Name : &nbsp</td>
+                                                                        <td align='center'><input type='text' name='fbname' id='fbname".$r['fb_id']."' class='form-control' style='width:200px' value='".$r['fb_name']."'></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Gender : </td>
+                                                                        <td align='center'><input type='text' name='sex' id='sex".$r['fb_id']."' class='form-control' style='width:200px' value='".$r['sex']."'></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class='modal-footer'>
+                                                                <button type='button' class='btn btn-default' onclick='edit(".$r['fb_id'].")' data-dismiss='modal'>Edit</button>
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                                echo "</td>";
                                                 echo "</tr>";
+
+
                                                 $no++;
                                             }
                                         }

@@ -244,6 +244,23 @@
                                     </div>
                                      </form>
 
+                                     <script type="text/javascript">
+
+                                         // show edit detail
+                                        function edit(id){
+                                            // alert($("#ownerid"+id).val()+"-"+$("#owneremail"+id).val()+"-"+$("#ownertel"+id).val()+"-"+$("#ownerstatus"+id).val());
+                                            $.ajax({
+                                                url:"<?php echo site_url("managestore/edit");?>",
+                                                type: "POST",
+                                                cache: false,
+                                                data: "id="+$("#storeid"+id).val()+"&name="+$("#storename"+id).val()+"&detail="+$("#detail"+id).val()+"&address="+$("#address"+id).val()+"&tel="+$("#storetel"+id).val()+"&open="+$("#open"+id).val()+"&status="+$("#status"+id).val(),
+                                                
+                                            });
+                                            location.reload("managestore");
+                                        };
+
+                                    </script>
+
                                 </div>
                                 <thead>
                                     <tr>
@@ -272,10 +289,71 @@
                                                 echo "<td>".$r['expire_date']."</td>";
                                                 echo "<td>".$r['store_date']."</td>";
                                                 echo "<td align= center>";
-                                                echo anchor("managestore/edit/".$r["store_id"], "<button type='button' class='btn btn-warning'>Edit</button>");
+                                                // echo anchor("managestore/edit/".$r["store_id"], "<button type='button' class='btn btn-warning'>Edit</button>");
+                                                echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['store_id']."'  >";
+                                                echo "Edit";
+                                                echo "</button>";
                                                 echo "&nbsp";
                                                 echo anchor("managestore/del/".$r["store_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
+                                                echo "<td>";
+                                                echo "<div class='modal fade' id='myModal".$r['store_id']."' role='dialog'>
+                                                    <div class='modal-dialog'>
+                                                        <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <button type='button' class='close' data-dismiss='modal'></button>
+                                                                <h4 class='modal-title' >Edit Store</h4>
+                                                            </div>
+                                                            <div class='modal-body'style='padding:50px 50px;'>
+
+                                                                <table>
+                                                                    <tr >
+                                                                        <td align='center'>Store ID : &nbsp</td>
+                                                                        <td align='center'><input type='text' name='storeid' id='storeid".$r['store_id']."' class='form-control' style='width:200px' value='".$r['store_id']."' disabled></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Store Name : </td>
+                                                                        <td align='center'><input type='text' name='storename' id='storename".$r['store_id']."' class='form-control' style='width:200px' value='".$r['store_name']."' ></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr>
+                                                                        <td align='center'>Store Detail : </td>
+                                                                        <td align='center'><textarea name='detail' id='detail".$r['store_id']."'>".$r['detail']."</textarea></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr>
+                                                                        <td align='center'>Address : </td>
+                                                                        <td align='center'><textarea name='address' id='address".$r['store_id']."'>".$r['address']."</textarea></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Telephone : </td>
+                                                                        <td align='center'><input type='text' name='ownertel' id='storetel".$r['store_id']."' class='form-control' style='width:200px' value='".$r['tel']."'></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Open Time : </td>
+                                                                        <td align='center'><input type='text' name='open' id='open".$r['store_id']."' class='form-control' style='width:200px' value='".$r['open_time']."'></td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='center'>Status : </td>
+                                                                        <td align='center'><input type='text' name='ownerstatus' id='status".$r['store_id']."' class='form-control' style='width:200px' value='".$r['status_store_id']."'></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class='modal-footer'>
+                                                                <button type='button' class='btn btn-default' onclick='edit(".$r['store_id'].")' data-dismiss='modal'>Edit</button>
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                                echo "</td>";
+
+
                                                 echo "</tr>";
                                                 $no++;
                                             }
