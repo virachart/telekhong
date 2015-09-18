@@ -228,7 +228,7 @@
                 <Form method="post" action="https://www.paysbuy.com/paynow.aspx"> 
                     
                     <p class="col-lg-6">You can choose more than 1 period :</p>
-                    <select class="form-control col-lg-12" style="width:50px" onchange="payment()" id="priod">
+                    <select class="form-control col-lg-12" style="width:70px" onchange="payment()" id="priod">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
