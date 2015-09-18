@@ -20,6 +20,15 @@
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
+<!-- jQuery -->
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?=base_url()?>assets/js/script.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,6 +39,15 @@
 </head>
 
 <body>
+
+    <script>
+    function payment(){
+                var month = $("#priod").val();
+                var p = <?php echo $storedetail['price']+0;?>;
+                var total = p*month ;
+                $("#price").attr("value",total);
+        }
+    </script>
 
     <div id="wrapper">
 
@@ -208,6 +226,27 @@
                 <div class="col-lg-6">
 
                 <Form method="post" action="https://www.paysbuy.com/paynow.aspx"> 
+                    
+                    <p class="col-lg-6">You can choose more than 1 period :</p>
+                    <select class="form-control col-lg-12" style="width:50px" onchange="payment()" id="priod">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        
+                    </select>
+
+                    <div class="col-lg-12" style="height:10px;"></div>
+                    <p class="col-lg-4">Click this for payment :</p>
+                    <div class="col-lg-6">
                     <input type="Hidden" Name="psb" value="psb"/> 
                     <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
                     
@@ -225,11 +264,12 @@
                     <input Type="Hidden" Name="itm" value="Service Charge"/> 
                     
                     <!-- amt is Store Package Charge--> 
-                    <input Type="Hidden" Name="amt" value="1"/>
+                    <input Type="Hidden" Name="amt" value="1" id="price"/>
                     
                     <!-- Redirect Web Controller-->
                     <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
                     <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
+                    </div>
                 </Form >
                 
                 </div>
@@ -240,10 +280,11 @@
             </div>
         </div>
                 <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Payment Logs</h2>
+                    <div class="col-lg-12">
+                        <h2 style="text-align:center;">Payment Logs</h2>
+                        <br>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
+                            <table class="table table-bordered table-hover" style="text-align:center">
                                 <thead>
                                     <tr>
                                         <td>Period</td>
