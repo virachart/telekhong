@@ -123,6 +123,26 @@
                     </ul>
                 </li>
 
+                <?php
+                    $dissta = "";
+                    $dismanage = "";
+                    $disdelete = "";
+                    $disupload = "";
+                    $stastore = $this->session->userdata('statuspack');
+                    if ($stastore == 1) {
+                        $dissta = "style = 'display : none' ";
+                        $dismanage = "style = 'display : none'";
+                    }elseif ($stastore == 5) {
+                        $dissta = "class = 'disabled'";
+                        $dismanage = "class = 'disabled'";
+                        $disdelete = "disabled";
+                        $disupload = "disabled";
+                    }
+
+                ?>
+
+
+
                 <style type="text/css">
                     .not-active {
                        pointer-events: none;
@@ -186,7 +206,7 @@
                         <li class="active">
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
-                        <li>
+                        <li <?php echo $dissta;?>>
                             <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li>
@@ -196,7 +216,7 @@
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
                         </li>
                         
-                        <li>
+                        <li <?php echo $dismanage; ?>>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
@@ -227,9 +247,8 @@
                     <div class="col-lg-5"style="margin-top :45px">
                             
                             
-                            <?php
-                                echo anchor("storeowner/del/".$this->session->userdata("storeid"), "<button type='button' class='btn btn-danger pull-right' data-toggle='modal' data-target='#myModal'>Delete Store</button>");
-                            ?>
+                            <button type='button' class='btn btn-danger pull-right' data-toggle='modal' data-target='#myModal' <?php echo $disdelete;?> >Delete Store</button>
+                            
                             <button type="button" class="btn btn-warning pull-right " data-toggle="modal" data-target="#myModal3" style="margin-right:10px">Change Package</button>
                             <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Beacon</button>
                             <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>    -->
@@ -360,10 +379,27 @@
             </div>
         </div>
     </div>
-                <div class="modal fade" id="myModal" role="dialog">
-                <div class="modal-dialog">
+                
+                <script type="text/javascript">
+                    function delstore(id){
+                        $.ajax({
+                            url:"store/del",
+                            type: "POST",
+                            cache: false,
+                            data: "id="+id,
+                            dataType:"JSON"
+                            
+                        });
+                        location.reload("store");
+                    };
+
+
+
+                </script>
     
       <!-- Modal content-->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
                 <div class="modal-content">
                  <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -373,7 +409,9 @@
                     <p>This store was deleted , Are you sure ?</p>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+                    
+                    <button type='button' class='btn btn-default' data-dismiss='modal' onclick="delstore(<?php echo $this->session->userdata('storeid'); ?>)" <?php echo $disdelete; ?>>Yes</button>
+                    
                     <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
                     </div>
                 </div>
@@ -481,7 +519,7 @@
                                     $dis = null;
                                 }
 
-                                echo anchor("storeowner/addinfo/".$this->session->userdata('storeid'), "<button type='button' class='btn btn-primary btn-default pull-right' style='margin-right:20px;margin-left:10px;' ".$dis." >+ New Upload</button>");
+                                echo anchor("storeowner/addinfo/".$this->session->userdata('storeid'), "<button type='button' class='btn btn-primary btn-default pull-right' style='margin-right:20px;margin-left:10px;' ".$dis."".$disupload." >+ New Upload</button>");
                                 // echo anchor("storeowner/del/".$this->session->userdata('storedel'), "<button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                             ?>
                             <!-- <a href="<?=base_url();?>index.php/storeowner/addinfo/6"><button type="button" class="btn btn-primary btn-default pull-right" style="margin-right:20px;margin-left:10px;">+ New Upload</button></a> -->

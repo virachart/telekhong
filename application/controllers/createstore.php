@@ -8,7 +8,11 @@ class Createstore extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('id') != null){
-			$this->load->view("createstore","refresh");
+			if($this->session->userdata('ownerid') != null){
+				$this->load->view("createstore","refresh");
+			}else{
+				redirect("regis");
+			}
 		}else{
 			redirect("auth");
 		}

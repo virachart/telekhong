@@ -7,7 +7,18 @@ class Regis extends CI_Controller{
 	}
 
 	public function index(){
-		$this->load->view("regis");
+		if ($this->session->userdata('id') != null) {
+			$sqlchowner = "Select * from owner where fb_id = '".$id."' ";
+			$rschowner = $this->db->query($sqlchowner)->row_array();
+			if ($rschowner->num_rows() != null) {
+				$this->session->set_userdata("ownerid",$rschowner['owner_id']);
+			}else{
+				$this->load->view("regis");
+			}
+		}else{
+			redirect("auth");
+		}
+		
 
 	}
 
@@ -38,7 +49,7 @@ class Regis extends CI_Controller{
 			redirect("createstore");
 			
 		 }
-		$this->load->view("auth");
+		$this->index();
 
 	}
 

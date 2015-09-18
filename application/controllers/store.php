@@ -8,55 +8,159 @@ class Store extends CI_Controller{
 
 	public function index(){
 		if($this->session->userdata('id') != null){
-			// $ownerid = $this->session->userdata('ownerid');
-			$ownerid = 5;
-			$sqlfindstore = "select MIN(store_id) AS store_id from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
-			$rsfindstore = $this->db->query($sqlfindstore);
-			$arfindstore = $rsfindstore->row_array();
-			$storeid = $arfindstore['store_id'];
-			$sqlgetstore = "select * from store join package on store.package_id = package.package_id
-			 where store_id = '".$storeid."' ";
-			$rsgetstore = $this->db->query($sqlgetstore);
-			$data['rs'] = $rsgetstore->row_array();
-			foreach ($data as $r) {
-				$storeid = $r['store_id'];
-			};
-			$arstoreid = array('storeid' => $storeid );
-			$this->session->set_userdata($arstoreid);
+			if ($this->session->userdata('ownerid') != null) {
+				$ownerid = $this->session->userdata('ownerid');
+				// $ownerid = 5;
+				// $sqlfindstore = "select MIN(store_id) AS store_id from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
+				$sqlchstore = "select * from store where owner_id = '".$ownerid."' ";
+				$rsfindstore = $this->db->query($sqlchstore)->result_array();
 
-			$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
-			$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+				$numcheck = 0;
+				if ($rsfindstore == null) {
+					redirect("createstore");
+				}else{
+					foreach ($rsfindstore as $r) {
+						if ($r['status_store_id'] != 1 && $numcheck != 0) {
+							$numcheck = 10;
+						}else{
+							$numcheck = 11;
+						}
+					}
 
-			$sqlgetinfo = "select * from info where store_id = '".$storeid."' ";
-			$data['info'] = $this->db->query($sqlgetinfo)->result_array();
+				}
 
-			$this->load->view("store",$data);
-		// }else{
-		// 	redirect("auth");
+				// get min store id
+				$sqlfindminstore = "select MIN(store_id) AS store_id from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
+				$rsfindstore = $this->db->query($sqlfindminstore)->row_array();
+				
+				if ($rsfindstore == null) {
+					redirect("createstore");
+				}else{
+					$pay = 0;
+
+					$storeid = $rsfindstore['store_id'];
+
+					//get store and package info
+					$sqlgetstore = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
+					$rsstorepay = $this->db->query($sqlgetstore)->row_array();
+					$data['rs'] = $this->db->query($sqlgetstore)->row_array();
+
+					if ($rsstorepay['expire_date'] != null) {
+						$pay = 1;
+					}
+					
+					//get store id set in session
+					$arstoreid = array('storeid' => $storeid );
+					$this->session->set_userdata($arstoreid);
+
+					//show all store
+					$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+					$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+
+					//show info log
+					$sqlgetinfo = "select * from info where store_id = '".$storeid."' ";
+					$data['info'] = $this->db->query($sqlgetinfo)->result_array();
+
+					if ($numcheck == 10) {
+						$this->session->set_userdata("statuspack", "5");
+					}elseif ($pay == 0) {
+						$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
+						$data['storedetail'] = $this->db->query($sqlgetst)->row_array();
+						$this->load->view("selectpayment",$data);
+					}elseif ($rsstorepay['package_id'] == 1) {
+						$this->session->set_userdata("statuspack", "1");
+					}elseif ($rsstorepay['package_id'] == 2) {
+						$this->session->set_userdata("statuspack", "2");
+					}elseif ($rsstorepay['package_id'] == 3) {
+						$this->session->set_userdata("statuspack", "3");
+					}
+
+					$this->load->view("store",$data);
+				}
+			
+			}else{
+				// login but don't have owner id
+				redirect("regis");
+			}
+			
+		}else{
+			redirect("auth");
 		}
 
 	}
 
 	public function selectst($id){
-		// $ownerid = $this->session->userdata('ownerid');
-		$ownerid = 5;
+		$this->session->unset_userdata('statuspack');
 		$this->session->unset_userdata('storeid');
-		$sqlchoosestore = "select * from store join package on store.package_id = package.package_id
-			 where store_id = '".$id."'";
-		$rsgetstore = $this->db->query($sqlchoosestore);
-		$data['rs'] = $rsgetstore->row_array();
+		$ownerid = $this->session->userdata('ownerid');
 
-		$arstoreid = array('storeid' => $id );
-		$this->session->set_userdata($arstoreid);
-		$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$id."' ";
-		$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+		$pay = 0;
+
+		$storeid = $id;
+
+		//get store and package info
+		$sqlgetstore = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
+		$rsstorepay = $this->db->query($sqlgetstore)->row_array();
+		$data['rs'] = $this->db->query($sqlgetstore)->row_array();
+
+		if ($rsstorepay['expire_date'] != null) {
+			$pay = 1;
+		}
 		
-		$sqlgetinfo = "select * from info where store_id = '".$id."' ";
+		//get store id set in session
+		$arstoreid = array('storeid' => $storeid );
+		$this->session->set_userdata($arstoreid);
+
+		//show all store
+		$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+		$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+
+		//show info log
+		$sqlgetinfo = "select * from info where store_id = '".$storeid."' ";
 		$data['info'] = $this->db->query($sqlgetinfo)->result_array();
 
+		if ($pay == 0) {
+			$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
+			$data['storedetail'] = $this->db->query($sqlgetst)->row_array();
+			$this->load->view("selectpayment",$data);
+		}elseif ($rsstorepay['package_id'] == 1) {
+			$this->session->set_userdata("statuspack", "1");
+		}elseif ($rsstorepay['package_id'] == 2) {
+			$this->session->set_userdata("statuspack", "2");
+		}elseif ($rsstorepay['package_id'] == 3) {
+			$this->session->set_userdata("statuspack", "3");
+		}
+
 		$this->load->view("store",$data);
+				
 
 
+
+		// $ownerid = 5;
+		// $this->session->unset_userdata('storeid');
+		// $sqlchoosestore = "select * from store join package on store.package_id = package.package_id
+		// 	 where store_id = '".$id."'";
+		// $rsgetstore = $this->db->query($sqlchoosestore);
+		// $data['rs'] = $rsgetstore->row_array();
+
+		// $arstoreid = array('storeid' => $id );
+		// $this->session->set_userdata($arstoreid);
+		// $sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$id."' ";
+		// $data['allstore'] = $this->db->query($sqlallstore)->result_array();
+		
+		// $sqlgetinfo = "select * from info where store_id = '".$id."' ";
+		// $data['info'] = $this->db->query($sqlgetinfo)->result_array();
+
+		// $this->load->view("store",$data);
+
+
+	}
+
+	public function del(){
+		$id = $this->input->post("id");
+		$dataupdate = array('status_store_id' => "4");
+		$this->db->where('store_id', $id);
+		$this->db->update('store', $dataupdate); 
 	}
 
 	public function showinfo($id){
@@ -112,6 +216,9 @@ class Store extends CI_Controller{
 		}
 		echo json_encode($arsend);
 	}
+
+
+	
 
 }
 

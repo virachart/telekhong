@@ -34,9 +34,10 @@ class Managestore extends CI_Controller{
 	}
 
 	public function del($id){
-		$this->db->delete("store",array("store_id"=>$id));
+		$data = array('status_store_id' => "4");
+		$this->db->where('store_id', $id);
+		$this->db->update('mytable', $data); 
 		redirect("managestore","refresh");
-		exit();
 	}
 
 	public function edit($id){
