@@ -7,32 +7,16 @@ class Manageuser extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('admin') != null){
-			/*
-			$this->load->library("pagination");
-			$config['base_url'] = base_url()."index.php/manageuser/index";
-			$config['per_page'] = 10;
-			$config['total_rows'] = $this->db->count_all("user");
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('admin') != null) {
+				$config['base_url'] = base_url()."index.php/manageuser/index";
+				$config['per_page'] = 10;
+				//count_all(); -> count data in table
+				$counttable = $this->db->count_all("user");
+				$config['total_rows'] = $counttable;
 
-			$config['full_tag_open'] = "<div class = 'pagination'>";
-			$config['full_tag_close'] = "</div>";
-			$this->pagination->initialize($config);
-
-			$sqluser = "Select * from user";
-			$data['num'] = $this->db->query($sqluser);
-			$data['rs'] = $this->db->select("*")->from("user")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
-			
-			$this->load->view("manageuser",$data);
-			*/
-			//pagination
-			$config['base_url'] = base_url()."index.php/manageuser/index";
-			$config['per_page'] = 10;
-			//count_all(); -> count data in table
-			$counttable = $this->db->count_all("user");
-			$config['total_rows'] = $counttable;
-
-			//out side
-			$config['full_tag_open'] = "<ul class='pagination'>";
+				//out side
+				$config['full_tag_open'] = "<ul class='pagination'>";
 				
 				$config['first_tag_open'] = '<li>';
 				$config['first_tag_close'] = '</li>';
@@ -54,23 +38,25 @@ class Manageuser extends CI_Controller{
 				$config['next_tag_open'] = '<li>';
 				$config['next_tag_close'] = '</li>';
 
-			$config['full_tag_close'] = "</ul";
+				$config['full_tag_close'] = "</ul";
 
-			$this->pagination->initialize($config);
-
-
-			$sqluser = "Select * from user";
-			$data['num'] = $this->db->query($sqluser);
-			$data['rs'] = $this->db->select("*")
-							->from("user")
-							->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
-
-			$this->load->view("manageuser",$data);
+				$this->pagination->initialize($config);
 
 
+				$sqluser = "Select * from user";
+				$data['num'] = $this->db->query($sqluser);
+				$data['rs'] = $this->db->select("*")
+								->from("user")
+								->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
+
+				$this->load->view("manageuser",$data);
+			}else{
+				redirect("store");
+			}
 		}else{
-			redirect("auth");
+			redirect('auth');
 		}
+
 	}
 
 

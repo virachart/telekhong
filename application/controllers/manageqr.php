@@ -7,30 +7,22 @@ class Manageqr extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('id') != null){
-			// $this->load->library("pagination");
-			// $config['base_url'] = base_url()."index.php/manageqr/index";
-			// $config['per_page'] = 5;
-			// $config['total_rows'] = $this->db->count_all("qr");
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('admin') != null) {
+				$config['base_url'] = base_url()."index.php/manageqr/index";
+				$config['per_page'] = 5;
+				//count_all(); -> count data in table
+				$counttable = $this->db->count_all("qr");
+				$config['total_rows'] = $counttable;
 
-			// $config['full_tag_open'] = "<div class = 'pagination'>";
-			// $config['full_tag_close'] = "</div>";
-			// $this->pagination->initialize($config);
-
-			$config['base_url'] = base_url()."index.php/manageqr/index";
-			$config['per_page'] = 5;
-			//count_all(); -> count data in table
-			$counttable = $this->db->count_all("qr");
-			$config['total_rows'] = $counttable;
-
-			//out side
-			$config['full_tag_open'] = "<ul class='pagination'>";
-				
+				//out side
+				$config['full_tag_open'] = "<ul class='pagination'>";
+					
 				$config['first_tag_open'] = '<li>';
 				$config['first_tag_close'] = '</li>';
 
-   				$config['last_tag_open'] = '<li>';
-   				$config['last_tag_close'] = '</li>';
+				$config['last_tag_open'] = '<li>';
+				$config['last_tag_close'] = '</li>';
 
 				$config['prev_tag_open'] = '<li>';
 				$config['prev_tag_close'] = '</li>';
@@ -46,27 +38,23 @@ class Manageqr extends CI_Controller{
 				$config['next_tag_open'] = '<li>';
 				$config['next_tag_close'] = '</li>';
 
-			$config['full_tag_close'] = "</ul";
+				$config['full_tag_close'] = "</ul";
 
-			$this->pagination->initialize($config);
+				$this->pagination->initialize($config);
 
-			$sqluser = "Select * from qr where status_qr_id = '1'";
-			$data['num1'] = $this->db->query($sqluser);
-			$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where("status_qr_id !=","2")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				$sqluser = "Select * from qr where status_qr_id = '1'";
+				$data['num1'] = $this->db->query($sqluser);
+				$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where("status_qr_id !=","2")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 			
-// 			SELECT *
-// FROM (qr INNER JOIN info ON qr.info_id = info.info_id) 
-// INNER JOIN store ON qr.store_id = store.store_id;
-
-			// var_dump($data['rs']);
-			// echo "<br>";
-			// echo "<pre>";
-			// print_r($data['rs']);
-			// echo "</pre>";
-			$this->load->view("manageqr",$data);
+				$this->load->view("manageqr",$data);
+			}else{
+				redirect("store");
+			}
 		}else{
-			redirect("auth");
+			redirect('auth');
 		}
+
+		
 	}
 
 	public function del($id){

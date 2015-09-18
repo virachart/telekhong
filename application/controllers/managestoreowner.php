@@ -1,5 +1,5 @@
 <?php
-class Thankyou extends CI_Controller{
+class Managestoreowner extends CI_Controller{
 
 	public function main(){
 
@@ -7,9 +7,12 @@ class Thankyou extends CI_Controller{
 	}
 
 	public function index(){
-		
-		$this->load->view("thankyou");
-			
+		$this->load->view("managestoreowner");
+
 	}
+
+	
+
 }
+
 ?>

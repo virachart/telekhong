@@ -1,5 +1,5 @@
 <?php
-class Createsensoro extends CI_Controller{
+class Profile extends CI_Controller{
 
 	public function main(){
 
@@ -7,8 +7,12 @@ class Createsensoro extends CI_Controller{
 	}
 
 	public function index(){
-		$this->load->view("createsensoro");
+		$this->load->view("profile");
+
 	}
 
+	
+
 }
+
 ?>
