@@ -13,6 +13,10 @@
 
     <title>Telekhong</title>
 
+<link type="text/css" href="css/bootstrap.min.css" />
+        <link  href="<?=base_url()?>assets/css/bootstrap-timepicker.min.css" />
+        <script src="<?=base_url()?>assets/js/jquery-1.9.1.min.js"></script>
+        <script  src="<?=base_url()?>assets/js/bootstrap-timepicker.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -58,12 +62,22 @@
 
                 <!-- store Open Time -->
                 <div class="col-lg-6" style="text-align:right;" >Open Time :</div>
-                <div class="col-lg-1">
-                    <input type="time" name="opti" class="form-control " style="width:120px;">
+                <div class="col-lg-2">
+                    <div class="input-group bootstrap-timepicker timepicker">
+                        <input id="timepicker1" type="text" class="form-control input-small" name="opti" placeholder="Put HH:MM & click-->" >
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-time"></i>
+                    </span>
+                </div>
                 </div>
                 <div class="col-lg-1" style="text-align:center">to</div>
-                <div class="col-lg-2.5">
-                    <input type="time" name="clti" class="form-control col-sm-1" style="width:120px">
+                <div class="col-lg-2">
+                    <div class="input-group bootstrap-timepicker timepicker">
+                        <input id="timepicker2" type="text" class="form-control input-small" name="clti" placeholder="Put HH:MM & click-->" >
+                    <span class="input-group-addon">
+                        <i class="glyphicon glyphicon-time"></i>
+                    </span>
+                </div>
                 </div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
@@ -92,6 +106,7 @@
                        <option value="4">Package 4 : 4000B/month</option>
                    </select>
                </div>
+               
                <div class="col-lg-12" style="text-align:center;margin-top:40px; margin-down: 30px" >
 
                 <?php echo anchor("dashboardowner", "<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
@@ -104,6 +119,27 @@
 
             <div>
              <br>
+             <script type="text/javascript">
+                $('#timepicker1').timepicker({
+                    minuteStep: 1,
+                    template: 'modal',
+                    appendWidgetTo: 'body',
+                    showSeconds: false,
+                    showMeridian: false,
+                    defaultTime: false
+                });
+            
+           
+                $('#timepicker2').timepicker({
+                    minuteStep: 1,
+                    template: 'modal',
+                    appendWidgetTo: 'body',
+                    showSeconds: false,
+                    showMeridian: false,
+                    defaultTime: false
+                });
+            
+            </script>
          </div>
 
          <center>
