@@ -14,7 +14,7 @@ class Profile extends CI_Controller{
 				$data['getuser'] = $this->db->query($sqlgetdata)->row_array();
 				$this->load->view("profile",$data);
 			}else{
-				redirect("auth");
+				redirect("regis");
 			}
 		}else{
 			redirect("auth");

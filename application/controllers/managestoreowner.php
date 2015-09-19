@@ -7,11 +7,25 @@ class Managestoreowner extends CI_Controller{
 	}
 
 	public function index(){
-		$storeid = $this->session->userdata("storeid");
-		$sqlgetstore = "select * from store where store_id = '".$storeid."' ";
-		$data['store'] = $this->db->query($sqlgetstore)->row_array();
+		if ($this->session->userdata('id') != null ) {
+			if ($this->session->userdata('ownerid') != null ) {
+				if ($this->session->userdata('storeid') != null ) {
+					$storeid = $this->session->userdata("storeid");
+					$sqlgetstore = "select * from store where store_id = '".$storeid."' ";
+					$data['store'] = $this->db->query($sqlgetstore)->row_array();
 
-		$this->load->view("managestoreowner",$data);
+					$this->load->view("managestoreowner",$data);
+					
+				}else{
+					redirect("store");
+				}	
+			}else{
+				redirect("regis");
+			}
+		}else{
+			redirect("auth");
+		}
+		
 
 	}
 
