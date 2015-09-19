@@ -50,7 +50,7 @@ class Createstore extends CI_Controller{
 				// echo "testtt";
 			if ($this->upload->do_upload("picture")) { // if upload don't have problem
 				$data = $this->upload->data();
-
+				
 				// $newname = $storeid.$data['file_ext'];
 				$newname = $data['file_name'];
 				// rename($data['full_path'], $newname);
