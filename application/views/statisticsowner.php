@@ -227,7 +227,7 @@
                         <div class="tabbable" > <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs" id="mytab">
                                 <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()">General Graph</a></li>
-                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()">User Received</a></li>
+                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab1">User Received</a></li>
                                 <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()">Received and come to Store</a></li>
                                 <li ><a href="#tab4" data-toggle="tab" onclick="showtab4()">First QR Code</a></li>
                                 <li ><a href="#tab5" data-toggle="tab" onclick="showtab5()">Second or more QR Code</a></li>     
@@ -532,7 +532,7 @@
         </style>
         <script>
         function showtab1(){
-            $('#tab1').css("visibility","visible"); 
+            $('#tab1').css("display","block");
             $('#tab2').css("display","none");
             $('#tab3').css("display","none");
             $('#tab4').css("display","none");
@@ -540,21 +540,21 @@
         }
         function showtab2(){
             $('#tab2').css("display","block"); 
-            $('#tab1').css("visibility","hidden");
+            $('#tab1').css("display","none");
             $('#tab3').css("display","none");
             $('#tab4').css("display","none");
             $('#tab5').css("display","none");
         }
         function showtab3(){
             $('#tab3').css("display","block"); 
-            $('#tab1').css("visibility","hidden");
+            $('#tab1').css("display","none");
             $('#tab2').css("display","none");
             $('#tab4').css("display","none");
             $('#tab5').css("display","none");
         }
         function showtab4(){
             $('#tab4').css("display","block"); 
-            $('#tab1').css("visibility","hidden");
+            $('#tab1').css("display","none");
             $('#tab3').css("display","none");
             $('#tab2').css("display","none");
             $('#tab5').css("display","none");
@@ -564,7 +564,7 @@
             $('#tab2').css("display","none");
             $('#tab3').css("display","none");
             $('#tab4').css("display","none");
-            $('#tab1').css("visibility","hidden");
+            $('#tab1').css("display","none");
         }
         </script>
 

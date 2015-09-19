@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>login facebook</title>
+	<title>Telekhong.Me</title>
 </head>
 <body >
     
@@ -163,9 +163,12 @@ a:active {
 body {
       position: relative; 
   }
-  #home {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg7.jpg") ;}
-  #about {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg6.jpg") ;}
-  #policy {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/background2.jpg") ;}
+  #home {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg7.jpg") ;background-size: 100% 100%;
+    background-repeat: no-repeat;}
+  #about {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg6.jpg") ;background-size: 100% 100%;
+    background-repeat: no-repeat;}
+  #policy {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/background2.jpg") ;background-size: 100% 100%;
+    background-repeat: no-repeat;}
 </style>
 <style>
             /* jssor slider arrow navigator skin 05 css */
@@ -319,7 +322,7 @@ body {
         
       </div>
         <ul class="nav navbar-right top-nav" >
-            <li style="margin-top:7px"><button type="button" class="btn btn-primary" ><a href="<?php echo site_url("auth/login");?>">Sign up or Sign in</a></button></li>
+            <a href="<?php echo site_url("auth/login");?>"><img src="<?=base_url()?>images/icon/facebook-login.png" alt="HTML5 Icon" style="width:162px;height:35px;margin-top:7px"></a>
         </ul>
     </div>
   </div>
@@ -330,7 +333,7 @@ body {
 <div id="home" class="container-fluid ">
     <div class="jumbotron" id="jumbo">
         <h1>WELCOME</h1><br>
-        <h2 id="jumbo2">"<span style="color:#FF6600;">Telekhong</span> Everything jingabell "</h2>
+        <h2 id="jumbo2">"<span style="color:#FF6600;"> Telekhong</span> Everything jingabell "</h2>
     </div>
     <br>
 </div>
@@ -392,6 +395,99 @@ body {
     <div class="col-lg-4" style="margin-left:60px;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;">
         <h1 >What is "<span style="color:#FF6600;">Telekhong</span>"</h1>
         <p>Telekhong Description (ยังไม่คิดคำอธิบาย)</p>
+        <p><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1" style="margin-right:10px">View Package</button></p>
+
+        <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Package Info</h4>
+                </div>
+                <div class="modal-body">
+
+                    <table style="width:100%;color:#000000">
+                <tr>
+                    <th colspan="2" style="width:10%">Package</th>
+                    <td>Copper</td>
+                    <td>Silver</td>
+                    <td>Gold</td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Upload Limit</th>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>15</td>       
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Beacon Use</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th rowspan="6" style="width:10%">Statistics</th>
+
+                </tr>
+                <tr>
+                    <td >General</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Info Receive</td>      
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Come to Store</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >QR Buy</td>      
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Come back again</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Service Charge</th>
+                    <td>1,200 x 12 Month</td>
+                    <td>2,000 x 12 Month</td>
+                    <td>3,000 x 12 Month</td>
+                </tr>
+            </table>
+            
+            <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+                text-align: center;    
+            }
+            </style>
+
+
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+        </div>
     </div>
 </div>
 <div id="policy" class="container-fluid">
