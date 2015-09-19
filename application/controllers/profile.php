@@ -7,12 +7,18 @@ class Profile extends CI_Controller{
 	}
 
 	public function index(){
-
-		$ownerid = $this->session->userdata('ownerid');
-		$sqlgetdata = "select * from owner join user on owner.fb_id = user.fb_id where owner_id = '".$ownerid."' ";
-		$data['getuser'] = $this->db->query($sqlgetdata)->row_array();
-		$this->load->view("profile",$data);
-
+		if ($this->session->userdata('id') != null ) {
+			if ($this->session->userdata('ownerid') != null ) {
+				$ownerid = $this->session->userdata('ownerid');
+				$sqlgetdata = "select * from owner join user on owner.fb_id = user.fb_id where owner_id = '".$ownerid."' ";
+				$data['getuser'] = $this->db->query($sqlgetdata)->row_array();
+				$this->load->view("profile",$data);
+			}else{
+				redirect("auth");
+			}
+		}else{
+			redirect("auth");
+		}
 	}
 
 	public function edit($id){
