@@ -259,7 +259,7 @@
         
         <div class="col-lg-12" style="text-align:center;margin-top:30px; margin-down: 30px" >
 
-            <?php echo anchor("storeowner", "<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
+            <?php echo anchor("store", "<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
             <input class="btn btn-success" type="submit" name="btsave" value="Create" style="margin-left: 30px">
 
         </div>		

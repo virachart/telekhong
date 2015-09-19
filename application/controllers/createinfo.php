@@ -7,15 +7,15 @@ class Createinfo extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('id') != null){
-			if($this->session->userdata('storeid') != null){
+		// if($this->session->userdata('id') != null){
+			// if($this->session->userdata('storeid') != null){
 				$this->load->view("createinfo");
-			}else{
-				redirect("storeowner");
-			}
-		}else{
-			redirect("auth");
-		}
+			// }else{
+				// redirect("storeowner");
+			// }
+		// }else{
+			// redirect("auth");
+		// }
 	}
 
 
@@ -35,6 +35,7 @@ class Createinfo extends CI_Controller{
 			$expiredate = $exda;
 
 			$id = $this->session->userdata('storeid');
+			// $id = 6;
 
 			$sqlInsert = "INSERT INTO info (`info_name`, `info_descrip`, `info_begin_date`, `info_expire_date`, `catagory`, `store_id`) VALUES ('".$infoname."', '".$desc."', '".$begindate."', '".$expiredate."', '".$cat."', '".$id."');"; 
 			$this->db->query($sqlInsert);
@@ -44,6 +45,7 @@ class Createinfo extends CI_Controller{
 			$rsInfoid = $this->db->query($sqlInfoid);
 			$dataInfoid = $rsInfoid->row_array();
 			$infoid = $dataInfoid['info_id'];
+			// echo $infoid;
 
 			if ($qr != null) {
 				$ranqr = random_string('alnum', 15);
@@ -53,28 +55,33 @@ class Createinfo extends CI_Controller{
 				while ($rsChCode->num_rows != 0) {
 					$ranqr = random_string('alnum', 15);
 					$strqr = strtolower($ranqr);
-					$sqlChCode = "SELECT * FROM qr where code ='".$strqr."' ";
+					$sqlChCode = "select * FROM qr where code ='".$strqr."' ";
 					$rsChCode = $this->db->query($sqlChCode);
 				}
 				$sqlInsertQr = "INSERT INTO qr (`code`, `info_id`, `store_id`) VALUES ('".$strqr."', '".$infoid."', '".$id."');"; 
 			}
 
-			$sqlGetUp = "SELECT upload from store where store_id = '".$id."' ";
-			$rsGetUp = $this->db->query($sqlGetUp);
-			$dataGetUp = $rsGetUp->row_array();
+			$sqlGetUp = "select * from store where store_id = '".$id."' ";
+			$dataGetUp = $this->db->query($sqlGetUp)->row_array();
+			// $dataGetUp = $rsGetUp->row_array();
 			$uploadplus = $dataGetUp['upload']+1;
+			// echo $uploadplus;
 
-			$sqlUpdateStoreUpload = "UPDATE store SET upload ='".$uploadplus."' WHERE store_id = '".$id."'";
+			$sqlUpdateStoreUpload = "update store SET upload ='".$uploadplus."' WHERE store_id = '".$id."'";
+			$this->db->query($sqlUpdateStoreUpload);
+			
 
-			$config['upload_path'] = "images/info";
-			$config['allowed_types'] = "jpg|gif|png";
+			$config['upload_path'] = 'images/info';
+			$config['allowed_types'] = 'jpg|gif|png';
+			$config['max_size'] = "25360"; // KB
 			$this->load->library("upload",$config);
 			if ($this->upload->do_upload("picture")) { // if upload don't have problem
 				$data = $this->upload->data();
-				$newname = $infoid.$data['file_ext'];
-				rename($data['full_path'], $newname);
-				$sqlupdate = "UPDATE info SET info_pic ='".$newname."' WHERE info_id = '".$infoid."'";
+				$newname = $data['file_name'];
+				// rename($data['full_path'], $newname);
+				$sqlupdate = "update info SET info_pic ='".$newname."' WHERE info_id = '".$infoid."'";
 				$this->db->query($sqlupdate);
+				// echo $this->db->last_query();
 				// $this->session->unset_userdata('storeid');
 				redirect("store");
 			}else{
