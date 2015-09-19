@@ -58,7 +58,7 @@ class Store extends CI_Controller{
 					$data['allstore'] = $this->db->query($sqlallstore)->result_array();
 
 					//show info log
-					$sqlgetinfo = "select * from info where store_id = '".$storeid."' ";
+					$sqlgetinfo = "select * from info where store_id = '".$storeid."' order by info_date DESC ";
 					$data['info'] = $this->db->query($sqlgetinfo)->result_array();
 
 					if ($numcheck == 10) {
