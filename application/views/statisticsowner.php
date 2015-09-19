@@ -207,7 +207,7 @@
                     <div class="row">
                         <div class="col-lg-2">
                             <h2 class="page-header">All Chart in </h2></div>
-                            <div class="dropdown col-lg-6">
+                            <div class="dropdown col-lg-6" style="margin-top:3%">
                                 <?php echo form_open()?>
 
                                 <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/otherinfo/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;" >
@@ -226,11 +226,11 @@
 
                         <div class="tabbable" > <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs" id="mytab">
-                                <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()">General Graph</a></li>
-                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab1">User Received</a></li>
-                                <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()">Received and come to Store</a></li>
-                                <li ><a href="#tab4" data-toggle="tab" onclick="showtab4()">First QR Code</a></li>
-                                <li ><a href="#tab5" data-toggle="tab" onclick="showtab5()">Second or more QR Code</a></li>     
+                                <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()" id="mytab1">General Graph</a></li>
+                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab2">User Received</a></li>
+                                <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()" id="mytab3">Received and come to Store</a></li>
+                                <li ><a href="#tab4" data-toggle="tab" onclick="showtab4()" id="mytab4">First QR Code</a></li>
+                                <li ><a href="#tab5" data-toggle="tab" onclick="showtab5()" id="mytab5">Second or more QR Code</a></li>     
                             </ul>
                             <div class="tab-content ">
 
@@ -570,7 +570,7 @@
 
         <script type="text/javascript">
     // Flot Pie Chart with Tooltips
- 
+            $('#mytab1').click(function (){
                 var data = [{
                     label: " > 18 year old",
                     <?php
@@ -620,14 +620,69 @@
                     },
                     defaultTheme: false
                 }
-            });
+            }); 
+        });
+        
+        $('#tab1').ready(function (){
+                var data = [{
+                    label: " > 18 year old",
+                    <?php
+                    echo "data: ";
+                    echo $age1->num_rows();
+                    ?>
+                }, {
+                    label: " 18-25 year old",
+                    <?php
+                    echo "data: ";
+                    echo $age2->num_rows();
+                    ?>
+                }, {
+                    label: " 26-35 year old",
+                    <?php
+                    echo "data: ";
+                    echo $age3->num_rows();
+                    ?>
+                }, {
+                    label: " 36-50 year old",
+                    <?php
+                    echo "data: ";
+                    echo $age4->num_rows();
+                    ?>
+                },{
+                    label: " > 50 year old",
+                    <?php
+                    echo "data: ";
+                    echo $age5->num_rows();
+                    ?>
+                }];
+                var plotObj = $.plot($("#flot-pie-chart-age"), data, {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        hoverable: true
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                    content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                    shifts: {
+                        x: 20,
+                        y: 0
+                    },
+                    defaultTheme: false
+                }
+            }); 
+        });
+       
         
             
         </script>
 
 <script type="text/javascript">
     // Flot Pie Chart with Tooltips
-    
+    $('#mytab1').click(function (){
         var data = [{
             label: " Male",
             <?php
@@ -666,6 +721,48 @@
             defaultTheme: false
         }
     });
+});
+
+    $('#tab1').ready(function (){
+        var data = [{
+            label: " Male",
+            <?php
+            echo "data: ";
+            echo $male->num_rows();
+            ?>
+        }, {
+            label: " Female",
+            <?php
+            echo "data: ";
+            echo $female->num_rows();
+            ?>
+        }, {
+            label: " Unknown",
+            <?php
+            echo "data: ";
+            echo $unkn->num_rows();
+            ?>
+        }];
+        var plotObj = $.plot($("#flot-pie-chart-sex"), data, {
+            series: {
+                pie: {
+                    show: true
+                }
+            },
+            grid: {
+                hoverable: true
+            },
+            tooltip: true,
+            tooltipOpts: {
+            content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+            shifts: {
+                x: 20,
+                y: 0
+            },
+            defaultTheme: false
+        }
+    });
+});
 </script>
 <!-- end pie chart package -->
 
@@ -673,7 +770,8 @@
 
 <!-- start use qr again line chart age -->
 <script type="text/javascript">
-    
+$('#tab5').ready(function (){    
+    var tab5 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1065,13 +1163,19 @@
         resize: true,
             defaultTheme: false
     });
+$('#mytab5').click(function(){
+        tab5.redraw();
+    });
+});
 </script>
 <!-- end use qr again line chart age -->
 
 
 <!-- start use qr again line chart sex -->
 <script type="text/javascript">
-    
+
+$('#tab5').ready(function (){   
+    var tab5=
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1400,12 +1504,19 @@
         smooth: false,
         resize: true
     });
+$('#mytab5').click(function(){
+        tab5.redraw();
+    });
+});
+    
 </script>
 <!-- end use qr again line chart sex -->
 
 
 <!-- start use qr line chart age -->
 <script type="text/javascript">
+$('#tab4').ready(function (){
+    var tab4 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -1796,12 +1907,18 @@
         smooth: false,
         resize: true
     });
+    $('#mytab4').click(function(){
+        tab4.redraw();
+    });
+});
 </script>
 <!-- end use qr line chart age -->
 
 
 <!-- start use qr line chart sex -->
 <script type="text/javascript">
+$('#tab4').ready(function (){
+    var tab4 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2130,6 +2247,10 @@
         smooth: false,
         resize: true
     });
+    $('#mytab4').click(function(){
+        tab4.redraw();
+    });
+});
 </script>
 <!-- end use qr line chart sex -->
 
@@ -2137,6 +2258,8 @@
 
 <!-- start recive and into store line chart age -->
 <script type="text/javascript">
+$('#tab3').ready(function (){
+    var tab3 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2527,12 +2650,18 @@
         smooth: false,
         resize: true
     });
+    $('#mytab3').click(function(){
+        tab3.redraw();
+    });
+});
 </script>
 <!-- end recive and into store line chart age -->
 
 
 <!-- start recive and into store line chart sex -->
 <script type="text/javascript">
+$('#tab3').ready(function (){
+    var tab3 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -2861,6 +2990,10 @@
         smooth: false,
         resize: true
     });
+    $('#mytab3').click(function(){
+        tab3.redraw();
+    });
+});
 </script>
 <!-- end recive and into store line chart sex -->
 
@@ -2868,6 +3001,8 @@
 
 <!-- start recive promotion line chart age -->
 <script type="text/javascript">
+$('#tab2').ready(function (){
+    var tab2 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3258,12 +3393,18 @@
         smooth: false,
         resize: true
     });
+    $('#mytab2').click(function(){
+        tab2.redraw();
+    });
+});
 </script>
 <!-- end recive promotion line chart age -->
 
 
 <!-- start recive promotion line chart sex -->
 <script type="text/javascript">
+$('#tab2').ready(function (){
+    var tab2 =
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -3592,6 +3733,10 @@
         smooth: false,
         resize: true
     });
+    $('#mytab2').click(function(){
+        tab2.redraw();
+    });
+});
 </script>
 <!-- end recive promotion line chart sex -->
 
