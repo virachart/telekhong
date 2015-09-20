@@ -110,28 +110,7 @@
                         </li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Store 1 <span class="label label-success "style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 2 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 3 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 4 <span class="label label-warning"style="margin-left :50px">Blocked</span></a>
-                        </li>
-                        
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
+                
                 <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('first_name');?> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -144,43 +123,37 @@
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li>
+                    <ul class="nav navbar-nav side-nav">
+                        <li >
                             <a href="<?=base_url()?>index.php/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                         </li>
+                        
                         <li >
-                            <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
-                        </li>
-                        <li>
                             <a href="<?=base_url()?>index.php/statistics"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
-                        </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
                         </li>
                         
                         <li>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
-                                <li>
+                                <li class="active">
                                     <a href="<?=base_url()?>index.php/manageuser">Manage User</a>
                                 </li>
-                                <li>
+                                <li >
                                     <a href="<?=base_url()?>index.php/manageowner">Manage Owner</a>
                                 </li>
-                                <li class="active">
+                                <li>
+                                    <a href="<?=base_url()?>index.php/managestore">Manage Store</a>
+                                </li>
+                                <li>
                                     <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
+                                </li>
+                                <li>
+                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Beacon</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/package"><i class="fa fa-fw fa-arrows-v"></i> Package</a>
-                        </li>
-
                     </ul>
-            </div>
+                </div>
             <!-- /.navbar-collapse -->
         </nav>
 

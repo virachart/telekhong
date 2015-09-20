@@ -20,7 +20,6 @@
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-
 <!-- jQuery -->
     <script src="<?=base_url()?>assets/js/jquery.js"></script>
 
@@ -47,6 +46,10 @@
                 var total = p*month ;
                 $("#price").attr("value",total);
         }
+    function changepackage(){
+        var total = $("#p3").val();
+        $("#price").attr("value",total);
+    }
     </script>
 
     <div id="wrapper">
@@ -118,26 +121,70 @@
                         </li>
                     </ul>
                 </li>
+                <?php
+                    $dissta = "";
+                    $dismanage = "";
+                    $disdelete = "";
+                    $disupload = "";
+                    $stastore = $this->session->userdata('statuspack');
+                    if ($stastore == 1) {
+                        $dissta = "style = 'display : none' ";
+                        $dismanage = "style = 'display : none'";
+                    }elseif ($stastore == 5) {
+                        $dissta = "class = 'disabled'";
+                        $dismanage = "class = 'disabled'";
+                        $disdelete = "disabled";
+                        $disupload = "disabled";
+                    }
+
+                ?>
+
+
+
+                <style type="text/css">
+                    .not-active {
+                       pointer-events: none;
+                       cursor: default;
+                    }
+
+                </style>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Store 1 <span class="label label-success "style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 2 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 3 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 4 <span class="label label-warning"style="margin-left :50px">Blocked</span></a>
-                        </li>
-                        
+                        <?php
+                        if ($allstore == null) {
+                            echo "<li><center> You must have at least 1 store.</center> </li>";
+                        }else{
+                            foreach ($allstore as $r) {
+                                $sta = "";
+                                if ($r['status_store_id']=="1" && $r['expire_date'] != null) {
+
+                                }else{
+                                    $sta = "class='not-active'";
+                                }
+                                echo "<li ".$sta.">
+                                <a href='";
+                                echo site_url("store/selectst/".$r['store_id']);
+                                echo "'> ".substr($r['store_name'],0,13); 
+                                    if ($r['status_store_id']=="1" ) {
+                                        echo "<span class='label label-success' style='float : right;'>Avaliable</span></a>
+                                    </li>";
+                                }elseif ($r['status_store_id']=="2" ) {
+                                    echo "<span class='label label-warning' style='float : right;'>Blocked</span></a>
+                                </li>";    
+                            }elseif ($r['status_store_id']=="3" ) {
+                                echo "<span class='label label-danger' style='float : right;'>Ban</span></a>
+                            </li>";    
+                            }
+                            }
+                        }
+
+                ?>
                         <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
+                            <li>
+                                <a href="<?=base_url()?>index.php/createstore">+ Create Store</a>
+                            </li>
+                        
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -153,14 +200,12 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                            <a href="<?=base_url()?>index.php/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                        </li>
+                    
                         <li >
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/statistics"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                        <li <?php echo $dissta;?>>
+                            <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li class="active">
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
@@ -169,26 +214,16 @@
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
                         </li>
                         
-                        <li>
+                        <li <?php echo $dismanage; ?>>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
-                                    <a href="<?=base_url()?>index.php/manageuser">Manage User</a>
-                                </li>
-                                <li>
-                                    <a href="<?=base_url()?>index.php/manageowner">Manage Owner</a>
-                                </li>
-                                <li>
-                                    <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
+                                    <a href="<?=base_url()?>index.php/manageqrowner">Manage QRCode</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/package"><i class="fa fa-fw fa-arrows-v"></i> Package</a>
-                        </li>
 
                     </ul>
-                    
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -218,10 +253,13 @@
                 <div class="col-lg-12">
                 <div class="col-lg-3" >
 
-                Your Package is : <?php echo $storedetail['package_name']; ?><br>
-                Service Charge : <?php echo $storedetail['price']; ?> / Month<br>
-                Service start in : <?php echo substr($firstday['date'],0,10); ?><br>
-                End of agreement : <?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?><br>
+                Your Package is : <span style="font-size: 14px" class="label label-primary label-as-badge"><?php echo $storedetail['package_name']; ?></span><br>
+                <br>
+                Service Charge : <span style="font-size: 14px" class="label label-warning label-as-badge"><?php echo $storedetail['price']; ?> / Month</span><br>
+                <br>
+                Service start in : <span style="font-size: 14px" class="label label-success label-as-badge"><?php echo substr($firstday['date'],0,10); ?></span><br>
+                <br>
+                End of agreement : <span style="font-size: 14px" class="label label-info label-as-badge"><?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?></span><br>
                 </div>
                 <div class="col-lg-6">
 
@@ -270,6 +308,35 @@
                     <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
                     <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
                     </div>
+                    <button type="button" class="btn btn-warning pull-right " data-toggle="modal" data-target="#myModal3" style="margin-right:10px">Change Package</button>
+                    <div class="modal fade" id="myModal3" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Change Package</h4>
+                </div>
+                <div class="modal-body"style="padding:50px 50px;">
+
+                    <div class="col-sm-12">Select your new package :</div><br><hr>
+
+                    <div class="col-sm-12"><center>
+                        <label class="radio-inline"><input type="radio" id="p3" name="optradio" value="1200">Package Copper</label>
+                        <label class="radio-inline"><input type="radio" id="p3" name="optradio" value="2000">Package Silver</label>
+                        <label class="radio-inline"><input type="radio" id="p3" name="optradio" value="3000">Package Gold</label>
+                        
+                    </center></div><br>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="changepackage();">Change</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
                 </Form >
                 
                 </div>
@@ -386,10 +453,7 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="<?=base_url()?>assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+    
 
 </body>
 

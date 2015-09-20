@@ -50,7 +50,6 @@
 </head>
 
 <body>
-
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -155,7 +154,7 @@
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
-                            echo "<li><center> You have only 1 store.</center> </li>";
+                            echo "<li><center> You must have at least 1 store.</center> </li>";
                         }else{
                             foreach ($allstore as $r) {
                                 $sta = "";
@@ -220,7 +219,7 @@
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
                                 <li>
-                                    <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
+                                    <a href="<?=base_url()?>index.php/manageqrowner">Manage QRCode</a>
                                 </li>
                             </ul>
                         </li>
@@ -249,7 +248,7 @@
                             
                             <button type='button' class='btn btn-danger pull-right' data-toggle='modal' data-target='#myModal' <?php echo $disdelete;?> >Delete Store</button>
                             
-                            <button type="button" class="btn btn-warning pull-right " data-toggle="modal" data-target="#myModal3" style="margin-right:10px">Change Package</button>
+                             <a href="<?=base_url()?>index.php/managestoreowner"><button type="button" class="btn btn-warning pull-right "  style="margin-right:10px">Edit Store</button></a>
                             <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Beacon</button>
                             <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>    -->
                     </div>
@@ -348,38 +347,7 @@
             </div>
         </div>
     </div>
-
-
-      
-    <div class="modal fade" id="myModal3" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Change Package</h4>
-                </div>
-                <div class="modal-body"style="padding:50px 50px;">
-
-                    <div class="col-sm-12">Select your new package :</div><br><hr>
-
-                    <div class="col-sm-12"><center>
-                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 1</label>
-                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 2</label>
-                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 3</label>
-                        <label class="radio-inline"><input type="radio" name="optradio" value="">Package 4</label>
-                    </center></div><br>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Change</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-                
+ 
                 <script type="text/javascript">
                     function delstore(id){
                         $.ajax({
@@ -478,16 +446,16 @@
                 <!-- /.row -->
                 
                     <div class="col-lg-12">
-                        <div class="col-lg-5" style="width:472px;">
+                        <div class="col-lg-5" style="width:50%;">
                         <div class="panel panel-primary">    
                             <div class="panel-heading" id="info_detail">
                                 <h3 class="panel-title"> sale 20 % for this month !!</h3>
                             </div>
-                            <div class="panel-body" style="min-height: 760px; max-height: 760px;" >
+                            <div class="panel-body" style="min-height: 760px; max-height: 760px;text-align:center" >
                                 <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" style="width:420px;height:420px" >
                             <div class="col-sm-12" style="margin-top:12px">
                                     
-                            <table >
+                            <table align="center">
                                 <tr>
                                     <td>Description :&nbsp</td> 
                                     <td><textarea name="des" rows="3" class="form-control" style="width:250px;" id="des" disabled></textarea></td>
@@ -547,7 +515,7 @@
                             </div>
                         </div>  
                     
-                        <div class="col-lg-7" style="width:660px;">
+                        <div class="col-lg-7" style="width:50%;">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Information Log</h3>
@@ -556,7 +524,7 @@
                             <div class="panel-body" style="min-height: 760px; max-height: 760px;overflow-y: scroll;">
 
                                 <div  class="list-group">
-
+                                
                                 <?php
                                     if ($info != null) {
                                         foreach ($info as $key => $r) {
@@ -565,7 +533,7 @@
                                             $day = substr($r['info_date'],8,2);
                                             $dayshow = $day."-".$month."-".$year;
                                             echo "<a href='javascript:void(0);' onclick='getedit(".$r['info_id'].")' class='list-group-item'>
-                                                <span class='badge' style='margin-top :20px'>".$dayshow."</span>
+                                                <span class='badge' style='margin-top :1%'>".$dayshow."</span>
                                                 <img class='img-thumbnail' src='".base_url()."images/info/".$r['info_pic']."' width='75px' height='75px' alt=''> ".$r['info_name']."
                                                 </a>";
 

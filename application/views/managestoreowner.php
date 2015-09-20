@@ -26,6 +26,7 @@
     <?php 
         echo form_open_multipart("managestoreowner/edit/");
     ?>
+    <div style="margin-top:40px">
     <table align="center">
         <tr>
             <td>Strore Name : &nbsp</td>
@@ -58,11 +59,10 @@
         </tr>
         <tr>
             <td>&nbsp</td> 
-                <td ><span>to</span>
-                </td>
+                
         </tr>
         <tr>
-            <td>&nbsp</td> 
+            <td>Closetime : </td> 
                 <td class="input-group bootstrap-timepicker timepicker">
                 <input id="timepicker2" type="text" class="form-control input-small" name="clti" value="<?php echo substr($store['open_time'], 8,5); ?>">
                 <span class="input-group-addon">
@@ -81,10 +81,12 @@
         </tr>
         <tr><td>&nbsp</td></tr> 
         </table>
+        </div>
         <div class="col-lg-4"></div>
         <div class="col-lg-4" style="text-align:center" >
-            <div class="col-lg-6 "><?php echo anchor("store","<button type='button' style='width:70px' class='btn btn-default'>Cancle</button>"); ?></div>
-            <div class="col-lg-6 "><input class="btn btn-primary" style="width:70px" type="submit" name="btsave" value="Save"> </div> 
+            <?php echo anchor("store","<button type='button' style='width:70px' class='btn btn-default'>Cancle</button>"); ?>
+           &nbsp&nbsp &nbsp&nbsp
+           <input class="btn btn-primary" style="width:70px" type="submit" name="btsave" value="Save"> 
             
         </div>
     

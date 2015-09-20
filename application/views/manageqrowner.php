@@ -30,6 +30,18 @@
 </head>
 
 <body>
+<style>
+      tr:nth-child(even) {
+    background-color:#FAEDD9;
+
+}
+hr { border: 1px solid;
+    color: #2D6AA5;
+    margin-top: 50px;
+    width: 80%;
+}
+
+</style>
 
     <div id="wrapper">
 
@@ -100,26 +112,73 @@
                         </li>
                     </ul>
                 </li>
+                <?php
+                    $dissta = "";
+                    $dismanage = "";
+                    $disdelete = "";
+                    $disupload = "";
+                    $stastore = $this->session->userdata('statuspack');
+                    if ($stastore == 1) {
+                        $dissta = "style = 'display : none' ";
+                        $dismanage = "style = 'display : none'";
+                    }elseif ($stastore == 5) {
+                        $dissta = "class = 'disabled'";
+                        $dismanage = "class = 'disabled'";
+                        $disdelete = "disabled";
+                        $disupload = "disabled";
+                    }
+
+                ?>
+
+
+
+                <style type="text/css">
+                    .not-active {
+                       pointer-events: none;
+                       cursor: default;
+                   
+                    }
+                    .hr{
+                        color: #0066CC ;
+                    }
+                </style>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Store 1 <span class="label label-success "style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 2 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 3 <span class="label label-success"style="margin-left :50px">Avaliable</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Store 4 <span class="label label-warning"style="margin-left :50px">Blocked</span></a>
-                        </li>
-                        
+                        <?php
+                        if ($allstore == null) {
+                            echo "<li><center> You must have at least 1 store.</center> </li>";
+                        }else{
+                            foreach ($allstore as $r) {
+                                $sta = "";
+                                if ($r['status_store_id']=="1" && $r['expire_date'] != null) {
+
+                                }else{
+                                    $sta = "class='not-active'";
+                                }
+                                echo "<li ".$sta.">
+                                <a href='";
+                                echo site_url("store/selectst/".$r['store_id']);
+                                echo "'> ".substr($r['store_name'],0,13); 
+                                    if ($r['status_store_id']=="1" ) {
+                                        echo "<span class='label label-success' style='float : right;'>Avaliable</span></a>
+                                    </li>";
+                                }elseif ($r['status_store_id']=="2" ) {
+                                    echo "<span class='label label-warning' style='float : right;'>Blocked</span></a>
+                                </li>";    
+                            }elseif ($r['status_store_id']=="3" ) {
+                                echo "<span class='label label-danger' style='float : right;'>Ban</span></a>
+                            </li>";    
+                            }
+                            }
+                        }
+
+                ?>
                         <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
+                            <li>
+                                <a href="<?=base_url()?>index.php/createstore">+ Create Store</a>
+                            </li>
+                        
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -135,14 +194,12 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
-                            <a href="<?=base_url()?>index.php/dashboard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                        </li>
+                    
                         <li >
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/statistics"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                        <li <?php echo $dissta;?>>
+                            <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
@@ -151,25 +208,17 @@
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
                         </li>
                         
-                        <li>
+                        <li <?php echo $dismanage; ?>>
                             <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
                             <ul id="demo" class="collapse">
-                                <li>
-                                    <a href="<?=base_url()?>index.php/manageuser">Manage User</a>
-                                </li>
-                                <li>
-                                    <a href="<?=base_url()?>index.php/manageowner">Manage Owner</a>
-                                </li>
                                 <li class="active">
-                                    <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
+                                    <a href="<?=base_url()?>index.php/manageqrowner">Manage QRCode</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="<?=base_url()?>index.php/package"><i class="fa fa-fw fa-arrows-v"></i> Package</a>
-                        </li>
 
                     </ul>
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </nav>
@@ -198,16 +247,13 @@
                 <div class="col-lg-12">
                 <div class="col-lg-3" >
 
-                Total of QR Code is : <span class="badge"><?php echo $num1->num_rows(); ?></span> <br>
+                Total of QR Code is : <span class="badge progress-bar-success"><?php echo $num1->num_rows(); ?></span> <br>
                 
                 </div>
                 
             </div>
-            <div class="row">
-             <div class="col-lg-12 " style=" margin-top: 20px;" >
-                <ol class="breadcrumb"><li>-------------------------------</li></ol>
-            </div>
-        </div>
+            <hr >
+            
                 <div class="row">
                     <div class="col-lg-12">
                         <center><h2>All QR Code</h2></center>
@@ -217,11 +263,12 @@
                                     <form action="<?php echo site_url('manageqr/search');?>" method = "post">
                                     <input type="text" name="searchqr" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Store Name">
                                     <div class="input-group-btn">
-                                        <input class="btn btn-default" type="submit" name="btsave" value="Search">
+                                        <input class="btn btn-primary" style="margin-bottom:20px" type="submit" name="btsave" value="Search">
+
                                      </div>
                                      </form>
                                 </div>
-                                <thead>
+                                <thead style="background-color:#E6A340;color:#FFFFFF">
                                     <tr>
                                         <td>No.</td>
                                         <td>Store Name</td>
