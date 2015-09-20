@@ -81,14 +81,35 @@ class Payment extends CI_Controller{
 			}
 		}
 
-		
-
 			redirect("payment","refresh");
 		// $this->index();
 		
 	}
 
-	
+
+	public function checkpaymentchangepack(){
+		$result = $this->input->post("result");
+		$apcode = $this->input->post("apCode");
+		$amt = $this->input->post("amt")+0;
+		// $text = "result: ".$result." apcode: ".$apcode." amount: ".$amt;
+		$statuspay = substr($result,0,2);
+		$storepay = (int)substr($result,2,3);
+		$packchange = substr($result,5,1);
+		$amt = number_format($amt,2,".","");
+
+		// echo $statuspay;
+		// echo "<br>";
+		// echo $storepay;
+		// echo "<br>";
+		// echo $packchange;
+		// echo "<br>";
+		// echo $amt;
+		/* status result
+			00=Success
+			99=Fail
+			02=Process
+		*/
+	}
 
 }
 
