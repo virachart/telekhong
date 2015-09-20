@@ -13,26 +13,31 @@
 
     <title>Telekhong</title>
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.cropit.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="<?=base_url()?>assets/css/sb-admin.css" rel="stylesheet">
 
+    <!-- Morris Charts CSS -->
+    <link href="<?=base_url()?>assets/css/plugins/morris.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+    
     </head>
 
     <body>
-
+    
     <script>
     
     function bdateCheck() {
@@ -196,8 +201,32 @@
             </nav>
 
             <div id="page-wrapper">
+                <div class="container-fluid">
 
                 <center><h3>Create Information</h3></center><hr>
+                <style>
+                  .cropit-image-preview {
+                    background-color: #f8f8f8;
+                    background-size: cover;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    margin-top: 7px;
+                    width: 400px;
+                    height: 400px;
+                    cursor: move;
+                  }
+                  .cropit-image-background {
+                    opacity: .2;
+                    cursor: auto;
+                  }
+                  .image-size-label {
+                    margin-top: 10px;
+                  }
+                  input {
+                    display: block;
+                  }
+                  
+                </style>
 
                 <?php echo form_open_multipart("createinfo/create"); ?>
                 <!-- store name -->
@@ -246,15 +275,66 @@
         <!-- Info picture -->
         <div class="col-lg-6" style="text-align:right;" >Information Picture :</div>
         <div class="col-lg-6">
-            <input type="file" id="image" name="picture"  /> 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" >Image Upload</button>
+    <div class="modal fade" id="modal" role="dialog">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Image Upload</h4>
+                </div>
+                <div class="modal-body"style="padding:20px 50px 20px 50px;">
+                    <p style="text-align:center;color:red">You can upload image.jpg/.png/.gif/.jpeg only ! </p>
+                    <div class="image-editor" style="margin-left:50px">
+                        <input type="file" id="image" name="picture"class="cropit-image-input" onchange="enablebt();" >
+                        <div class="cropit-image-preview" ></div>
+                          <div class="image-size-label">
+                            Resize image
+                          </div>
+                        <input type="range" class="cropit-image-zoom-input" style="width:400px">
+                        <input type="hidden" name="image-data" class="hidden-image-data" />
+                    
+          
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="export btn btn-primary" disabled id="bt1" data-dismiss="modal">Upload</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+
+            </div>
         </div>
-         <div class="col-lg-12" style="margin-top:30px;"></div>
+    </div>
+                    <script>
+                      
+                        $('.image-editor').cropit();
+                        $('.export').click(function() {
+                          var imageData = $('.image-editor').cropit('export');
+                          $('.cropped').empty();
+                          $('.cropped').append('<img src="'+imageData+'" height="120" width="120">');
+                        });
+                      
+                    </script>
+            <div class="cropped" style="margin-top:10px;">
+
+            </div>
+            <script>
+            function enablebt(){
+                document.getElementById("bt1").disabled = false;
+
+            }
+            </script>
+    
+</div>
+         <div class="col-lg-12" style="margin-top:20px;"></div>
 
         <div class="col-lg-6" style="text-align:right;" >Do you want QR Code? :</div>
         <div class="col-lg-6">
-            <label>
-                <input type="checkbox" name="qr" value="1"> QR Code
-            </label>
+            
+                <span class="col-lg-1"><input type="checkbox" name="qr" value="1"></span> QR Code<br>
+            
+            
         </div>
         
         <div class="col-lg-12" style="text-align:center;margin-top:30px; margin-down: 30px" >
@@ -285,15 +365,10 @@
 
 </div>
 <!-- /#page-wrapper -->
-
+    </div>
 </div>
 <!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="<?=base_url()?>assets/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 
 
 </body>
