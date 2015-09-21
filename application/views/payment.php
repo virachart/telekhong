@@ -47,8 +47,18 @@
                 $("#price").attr("value",total);
         }
     function changepackage(){
-        var total = $("#p3").val();
-        $("#price").attr("value",total);
+        if($("#p1").prop("checked", true); ){
+            var total = $("#p1").val();
+            $("#price").attr("value",total);
+        
+        }else if($("#p2").prop("checked", true); ){
+            var total = $("#p2").val();
+            $("#price").attr("value",total);
+        
+        }else if($("#p3").prop("checked", true); ){
+            var total = $("#p3").val();
+            $("#price").attr("value",total);
+        }
     }
     </script>
 
@@ -321,8 +331,8 @@
                     <div class="col-sm-12">Select your new package :</div><br><hr>
 
                     <div class="col-sm-12"><center>
-                        <label class="radio-inline"><input type="radio" id="p3" name="optradio" value="1200">Package Copper</label>
-                        <label class="radio-inline"><input type="radio" id="p3" name="optradio" value="2000">Package Silver</label>
+                        <label class="radio-inline"><input type="radio" id="p1" name="optradio" value="1200">Package Copper</label>
+                        <label class="radio-inline"><input type="radio" id="p2" name="optradio" value="2000">Package Silver</label>
                         <label class="radio-inline"><input type="radio" id="p3" name="optradio" value="3000">Package Gold</label>
                         
                     </center></div><br>
