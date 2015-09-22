@@ -64,7 +64,7 @@
 		<tr><td>&nbsp</td></tr>
 		<tr>
 			<td> E-Mail : </td>
-			<td><input style="width:120%;" type="text" name="tel" id="tel" class="form-control" value="<?php echo $getuser['owner_email']; ?>"> </td>
+			<td><input style="width:120%;" type="text" name="email" id="email" class="form-control" value="<?php echo $getuser['owner_email']; ?>"> </td>
 		</tr>
 		<tr><td>&nbsp</td></tr>	
 		<tr><td>&nbsp</td></tr>	

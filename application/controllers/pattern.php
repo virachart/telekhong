@@ -1,5 +1,5 @@
 <?php
-class Contact extends CI_Controller{
+class Store extends CI_Controller{
 
 	public function main(){
 
@@ -11,7 +11,9 @@ class Contact extends CI_Controller{
 		if ($this->session->userdata('id') != null) {
 			if ($this->session->userdata('ownerid') != null) {
 				if ($this->session->userdata('storeid') != null) {
-					
+					if ($this->session->userdata('statuspack') == "1" ||
+						$this->session->userdata('statuspack') == "2" ||
+						$this->session->userdata('statuspack') == "3") {
 						//start show all store have all owner page
 						$ownerid = $this->session->userdata('ownerid');
 						$storeid = $this->session->userdata('storeid');
@@ -19,9 +21,11 @@ class Contact extends CI_Controller{
 						$data['allstore'] = $this->db->query($sqlallstore)->result_array();
 						//end show all store have all owner page
 
-						$this->load->view("contact.php",$data);
+						#....code here
 
-					
+					}else{
+						redirect('store');
+					}
 				}else{
 					redirect('store');
 				}
@@ -31,13 +35,11 @@ class Contact extends CI_Controller{
 		}else{
 			redirect('auth');
 		}
-
-		
+	
 
 	}
 
-	
+
 
 }
-
 ?>

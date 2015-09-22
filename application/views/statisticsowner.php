@@ -183,31 +183,40 @@
                 </li>
             </ul>
                     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-                    <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <!-- start script check permission owner -->
+                    <?php
+                        $dismanage = "";
+                        $disfirst = "";
+                        $dissecond = "";
+                        $stastore = $this->session->userdata('statuspack');
+                        if ($stastore == 2) {
+                            $disfirst = "style = 'display : none'";
+                            $dissecond = "style = 'display : none'";
+                            $dismanage = "style = 'display : none'";
+                        }
+
+                    ?>
+        <!-- end script check permission owner -->
+        
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     
                         <li >
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
-                        <li class="active" <?php echo $dissta;?> >
+                        <li  class="active">
                             <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
                         </li>
+                        <li <?php echo $dismanage; ?>>
+                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> Manage QRCode</a> 
+                        </li>
                         <li>
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
                         </li>
-                        
-                        <li <?php echo $dismanage; ?>>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo" class="collapse">
-                                <li>
-                                    <a href="<?=base_url()?>index.php/manageqrowner">Manage QRCode</a>
-                                </li>
-                            </ul>
-                        </li>
-
                     </ul>
                 </ul>
             </div>
@@ -262,8 +271,8 @@
                                 <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()" id="mytab1">General Graph</a></li>
                                 <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab2">User Received</a></li>
                                 <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()" id="mytab3">Received and come to Store</a></li>
-                                <li ><a href="#tab4" data-toggle="tab" onclick="showtab4()" id="mytab4">First QR Code</a></li>
-                                <li ><a href="#tab5" data-toggle="tab" onclick="showtab5()" id="mytab5">Second or more QR Code</a></li>     
+                                <li <?php echo $disfirst; ?>><a href="#tab4" data-toggle="tab" onclick="showtab4()" id="mytab4">First QR Code</a></li>
+                                <li <?php echo $dissecond; ?>><a href="#tab5" data-toggle="tab" onclick="showtab5()" id="mytab5">Second or more QR Code</a></li>     
                             </ul>
                             <div class="tab-content ">
 

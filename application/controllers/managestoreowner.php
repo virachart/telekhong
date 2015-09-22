@@ -7,25 +7,37 @@ class Managestoreowner extends CI_Controller{
 	}
 
 	public function index(){
-		if ($this->session->userdata('id') != null ) {
-			if ($this->session->userdata('ownerid') != null ) {
-				if ($this->session->userdata('storeid') != null ) {
-					$storeid = $this->session->userdata("storeid");
-					$sqlgetstore = "select * from store where store_id = '".$storeid."' ";
-					$data['store'] = $this->db->query($sqlgetstore)->row_array();
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('ownerid') != null) {
+				if ($this->session->userdata('storeid') != null) {
+					if ($this->session->userdata('statuspack') == "1" ||
+						$this->session->userdata('statuspack') == "2" ||
+						$this->session->userdata('statuspack') == "3") {
+						//start show all store have all owner page
+						$ownerid = $this->session->userdata('ownerid');
+						$storeid = $this->session->userdata('storeid');
+						$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+						$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+						//end show all store have all owner page
 
-					$this->load->view("managestoreowner",$data);
-					
+						$sqlgetstore = "select * from store where store_id = '".$storeid."' ";
+						$data['store'] = $this->db->query($sqlgetstore)->row_array();
+
+						$this->load->view("managestoreowner",$data);
+
+					}else{
+						redirect('store');
+					}
 				}else{
-					redirect("store");
-				}	
+					redirect('store');
+				}
 			}else{
-				redirect("regis");
+				redirect('regis');
 			}
 		}else{
-			redirect("auth");
+			redirect('auth');
 		}
-		
+
 
 	}
 

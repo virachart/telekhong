@@ -7,6 +7,7 @@ class Store extends CI_Controller{
 	}
 
 	public function index(){
+		
 		if($this->session->userdata('id') != null){
 			if ($this->session->userdata('ownerid') != null) {
 				$ownerid = $this->session->userdata('ownerid');

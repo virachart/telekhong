@@ -7,33 +7,36 @@ class Manageqrowner extends CI_Controller{
 	}
 
 	public function index(){
-		if($this->session->userdata('id') != null){
-			$this->load->library("pagination");
-			$config['base_url'] = base_url()."index.php/manageqr";
-			$config['per_page'] = 10;
-			$config['total_rows'] = $this->db->count_all("qr");
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('ownerid') != null) {
+				if ($this->session->userdata('storeid') != null) {
+					if ($this->session->userdata('statuspack') == "3") {
+						//start show all store have all owner page
+						$ownerid = $this->session->userdata('ownerid');
+						$storeid = $this->session->userdata('storeid');
+						$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+						$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+						//end show all store have all owner page
 
-			$config['full_tag_open'] = "<div class = 'pagination'>";
-			$config['full_tag_close'] = "</div>";
-			$this->pagination->initialize($config);
-
-			$sqluser = "Select * from qr";
-			$data['num1'] = $this->db->query($sqluser);
-			$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
-			
-// 			SELECT *
-// FROM (qr INNER JOIN info ON qr.info_id = info.info_id) 
-// INNER JOIN store ON qr.store_id = store.store_id;
-
-			// var_dump($data['rs']);
-			// echo "<br>";
-			// echo "<pre>";
-			// print_r($data['rs']);
-			// echo "</pre>";
-			$this->load->view("manageqrowner",$data);
+						$sqluser = "Select * from qr";
+						$data['num1'] = $this->db->query($sqluser);
+						$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where('a.store_id',$storeid)->get()->result_array();
+						$this->load->view("manageqrowner",$data);
+					}else{
+						redirect('store');
+					}
+				}else{
+					redirect('store');
+				}
+			}else{
+				redirect('regis');
+			}
 		}else{
-			redirect("auth");
+			redirect('auth');
 		}
+
+
+		
 	}
 
 	public function del($id){

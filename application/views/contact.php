@@ -100,23 +100,6 @@
                             </li>
                         </ul>
                     </li>
-                    <?php
-                    $dissta = "";
-                    $dismanage = "";
-                    $disdelete = "";
-                    $disupload = "";
-                    $stastore = $this->session->userdata('statuspack');
-                    if ($stastore == 1) {
-                        $dissta = "style = 'display : none' ";
-                        $dismanage = "style = 'display : none'";
-                    }elseif ($stastore == 5) {
-                        $dissta = "class = 'disabled'";
-                        $dismanage = "class = 'disabled'";
-                        $disdelete = "disabled";
-                        $disupload = "disabled";
-                    }
-
-                ?>
 
 
 
@@ -176,6 +159,27 @@
                     </ul>
                 </li>
             </ul>
+
+            <!-- start script check permission owner -->
+                    <?php
+                        $dissta = "";
+                        $dismanage = "";
+                        $disdelete = "";
+                        $disupload = "";
+                        $stastore = $this->session->userdata('statuspack');
+                        if ($stastore == 1) {
+                            $dissta = "style = 'display : none' ";
+                            $dismanage = "style = 'display : none'";
+                        }elseif ($stastore == 5) {
+                            $dissta = "class = 'disabled'";
+                            $dismanage = "class = 'disabled'";
+                            $disdelete = "disabled";
+                            $disupload = "disabled";
+                        }
+
+                    ?>
+        <!-- end script check permission owner -->
+        
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
@@ -189,19 +193,12 @@
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
                         </li>
+                        <li <?php echo $dismanage; ?>>
+                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> Manage QRCode</a> 
+                        </li>
                         <li class="active">
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
                         </li>
-                        
-                        <li <?php echo $dismanage; ?>>
-                            <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-wrench"></i> Manage <i class="fa fa-fw fa-caret-down"></i></a>
-                            <ul id="demo" class="collapse">
-                                <li>
-                                    <a href="<?=base_url()?>index.php/manageqrowner">Manage QRCode</a>
-                                </li>
-                            </ul>
-                        </li>
-
                     </ul>
                 </ul>
             </div>
