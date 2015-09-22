@@ -57,6 +57,7 @@ class Payment extends CI_Controller{
 		// $text = "result: ".$result." apcode: ".$apcode." amount: ".$amt;
 		$statuspay = substr($result,0,2);
 		$storepay = (int)substr($result,6,3);
+		$monthpay = (int)substr($result, 9,2);
 		$amt = number_format($amt,2,".","");
 
 		/* status result
@@ -81,11 +82,14 @@ class Payment extends CI_Controller{
 				$day = date("d");
 				$month = date("n");
 				$year = date("Y");
-				if ($month == 12) {
+				$month1 = $month + $monthpay;
+				if ($month1 > 12 ) {
 					$year ++;
+					$month1 = $month1 - 12;
 				}
-				$month1 = $month +1;
-				if ($day == 30 || $day == 31) {
+				
+				$chday = cal_days_in_month(CAL_GREGORIAN,$month1,$year);
+				if ($day > $chday) {
 					$day = cal_days_in_month(CAL_GREGORIAN,$month1,$year);
 				}
 
@@ -104,15 +108,14 @@ class Payment extends CI_Controller{
 				$yearex = (int)substr($ex,0,4);
 				$monthex = (int)substr($ex,5,2);
 				$dayex = (int)substr($ex,8,2);
-				$monthex += 1;
+				$monthex += $monthpay;
 				if ($monthex > 12) {
 					$monthex = $monthex - 12;
 					$yearex += 1;
 				}
 				$daynext = cal_days_in_month(CAL_GREGORIAN,$monthex,$yearex);
 				if ($dayex > $daynext) {
-					$dayex = $dayex - $daynext;
-					$monthex += 1;
+					$dayex = $daynext;
 				}
 				if ($monthex < 10) {
 					$monthex = "0".$monthex;
