@@ -39,14 +39,6 @@ class Regis extends CI_Controller{
 			$ownerid = array('ownerid' => $dataOwner['owner_id']);
 			$this->session->set_userdata($ownerid);
 
-		// 	// $email = $this->input->post("email");
-		// 	// $tel = $this->input->post("tel");
-		// 	// $id = $this->session->userdata($me['id']);
-			
-		// 	// $this->db->set("owner_email",$email);
-		// 	// $this->db->set("owner_tel",$tel);
-		// 	// $this->db->set("user_fb_id",$id);
-			// $this->db->insert("owner",$arr);
 			
 			redirect("createstore");
 			

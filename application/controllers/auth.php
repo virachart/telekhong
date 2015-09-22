@@ -77,7 +77,7 @@ class Auth extends CI_CONTROLLER{
 			$this->session->set_userdata($me);
 			$arad = array('admin' => "adminpass");
 			$this->session->set_userdata($arad);
-			redirect(base_url('index.php/statistics'));
+			redirect(base_url('index.php/dashboard'));
 			}
 		}
 	
