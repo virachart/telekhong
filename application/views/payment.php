@@ -39,26 +39,48 @@
 
 <body>
 
+    <?php
+        $store = $storedetail['store_id'];
+        if ($store <10) {
+            $store = "00".$store;
+        }elseif ($store < 100) {
+            $store = "0".$store;
+        }
+    ?>
     <script>
     function payment(){
                 var month = $("#priod").val();
                 var p = <?php echo $storedetail['price']+0;?>;
                 var total = p*month ;
+                var stoid = '<?php echo $store ?>';
+                if (month < 10) {
+                    month = '0'+month;
+                };
+                var setval = 'pack'+stoid+''+month;
+                $("#inv").attr("value",setval);
                 $("#price").attr("value",total);
         }
-    function changepackage(){
-        if($("#p1").prop("checked", true); ){
-            var total = $("#p1").val();
-            $("#price").attr("value",total);
-        
-        }else if($("#p2").prop("checked", true); ){
-            var total = $("#p2").val();
-            $("#price").attr("value",total);
-        
-        }else if($("#p3").prop("checked", true); ){
-            var total = $("#p3").val();
-            $("#price").attr("value",total);
+        function changepackage(){
+            var packprice = $("#package").val();
+            $("#price").attr("value",packprice);
         }
+        function showbutton(){
+            var pack = '<?php echo $storedetail['price'] ?>';
+            var stoidch = '<?php echo $store ?>';
+            if ($("#package").val() != pack) {
+                $("#pricebutton").css("display","block");
+                $("#pricebutton2").css("display","block");
+                if ($("#package").val() == 1200) {
+                    $("#inv2").attr("value",stoidch+""+1);
+                }else if ($("#package").val() == 2000) {
+                    $("#inv2").attr("value",stoidch+""+2);
+                }else if ($("#package").val() == 3000) {
+                    $("#inv2").attr("value",stoidch+""+3);
+                }
+            }else{
+                $("#pricebutton").css("display","none");
+                $("#pricebutton2").css("display","none");
+            };
     }
     </script>
 
@@ -254,99 +276,253 @@
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <div class="col-lg-3" >
-
-                Your Package is : <span style="font-size: 14px" class="label label-primary label-as-badge"><?php echo $storedetail['package_name']; ?></span><br>
-                <br>
-                Service Charge : <span style="font-size: 14px" class="label label-warning label-as-badge"><?php echo $storedetail['price']; ?> / Month</span><br>
-                <br>
-                Service start in : <span style="font-size: 14px" class="label label-success label-as-badge"><?php echo substr($firstday['date'],0,10); ?></span><br>
-                <br>
-                End of agreement : <span style="font-size: 14px" class="label label-info label-as-badge"><?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?></span><br>
-                </div>
-                <div class="col-lg-6">
-
-                <Form method="post" action="https://www.paysbuy.com/paynow.aspx"> 
-                    
-                    <p class="col-lg-6">You can choose more than 1 period :</p>
-                    <select class="form-control col-lg-12" style="width:70px" onchange="payment()" id="priod">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                        <option>11</option>
-                        <option>12</option>
-                        
-                    </select>
-
-                    <div class="col-lg-12" style="height:10px;"></div>
-                    <p class="col-lg-4">Click this for payment :</p>
-                    <div class="col-lg-6">
-                    <input type="Hidden" Name="psb" value="psb"/> 
-                    <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
-                    
-                    <?php
-                        $store = $storedetail['store_id'];
-                        if ($store <10) {
-                            $store = "00".$store;
-                        }elseif ($store < 100) {
-                            $store = "0".$store;
+                <div class="col-lg-4" >
+                    <style>
+                        table.table1 tr{
+                            
+                            padding: 5px;
+                            text-align: center; 
                         }
-                    ?>
+                        table.table1 td{
+                            
+                            padding: 5px;
+                            text-align: center; 
+                        }
 
-                    <!-- inv is Some String text from paysbuy-->
-                    <input Type="Hidden" Name="inv" value="<?php echo "pack".$store."".$storedetail['price']."";?>"/> 
-                    <input Type="Hidden" Name="itm" value="Service Charge"/> 
-                    
-                    <!-- amt is Store Package Charge--> 
-                    <input Type="Hidden" Name="amt" value="1" id="price"/>
-                    
-                    <!-- Redirect Web Controller-->
-                    <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
-                    <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
+                    </style>
+                    <table class="table1">
+                        <tr>
+                            <td>Your Package is :</td>
+                            <td><span style="font-size: 14px" class="label label-primary label-as-badge"><?php echo $storedetail['package_name']; ?></span></td>
+                        </tr>
+                        <tr>
+                            <td>Service Charge : </td>
+                            <td><span style="font-size: 14px" class="label label-warning label-as-badge"><?php echo $storedetail['price']; ?> / Month</span></td>
+                        </tr>
+                        <tr>
+                            <td>Service start in : </td>
+                            <td><span style="font-size: 14px" class="label label-success label-as-badge"><?php echo substr($firstday['date'],0,10); ?></span></td>
+                        </tr>
+                        <tr>
+                            <td>End of agreement : </td>
+                            <td><span style="font-size: 14px" class="label label-info label-as-badge"><?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?></span></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="col-lg-8">
+
+                <Form method="post" action="https://www.paysbuy.com/paynow.aspx">
+                <table class="table1"> 
+                   <tr>
+                        <td><p>You can change package here ! :</p></td>
+                        <td >
+                            <button type="button" style="width:140px;" class="btn btn-warning col-lg-4" data-toggle="modal" data-target="#myModal3" >Change Package</button>
+                            <div class="modal fade" id="myModal3" role="dialog">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal"></button>
+                                            <h4 class="modal-title" >Change Package</h4>
+                                        </div>
+                                        <div class="modal-body"style="padding:50px 50px;">
+                                            <style>
+                                        table.table3 th {
+                                        border: 1px solid black;
+                                        border-collapse: collapse;
+                                        padding: 5px;
+                                        text-align: center; 
+                                    }
+                                    table.table3 td {
+                                        border: 1px solid black;
+                                        border-collapse: collapse;
+                                        padding: 5px;
+                                        text-align: center; 
+                                    }
+                                    </style>
+                                            <table class="table3" style="width:100%;color:#000000">
+                                        <tr>
+                                            <th colspan="2" style="width:10%">Package</th>
+                                            <td>Copper</td>
+                                            <td>Silver</td>
+                                            <td>Gold</td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" style="width:10%">Upload Limit</th>
+                                            <td>5</td>
+                                            <td>10</td>
+                                            <td>15</td>       
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" style="width:10%">Beacon Use</th>
+                                            <td>1</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                        </tr>
+                                        <tr>
+                                            <th rowspan="6" style="width:10%">Statistics</th>
+
+                                        </tr>
+                                        <tr>
+                                            <td >General</td>
+                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td >Info Receive</td>      
+                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td >Come to Store</td>
+                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td >QR Buy</td>      
+                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <td >Come back again</td>
+                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                                        </tr>
+                                        <tr>
+                                            <th colspan="2" style="width:10%">Service Charge</th>
+                                            <td>1,200 x 12 Month</td>
+                                            <td>2,000 x 12 Month</td>
+                                            <td>3,000 x 12 Month</td>
+                                        </tr>
+                                    </table>
+
+                                            
+                                            <hr>
+                                            <div class="col-sm-3">Select your new package :</div>
+                                            
+                                            <?php 
+                                                $pachop1 = "";
+                                                $pachop2 = "";
+                                                $pachop3 = "";
+                                                $stpackid = $storedetail['package_id'];
+                                                if ($stpackid == 1) {
+                                                    $pachop1 = "selected";
+                                                }elseif ($stpackid == 2) {
+                                                    $pachop2 = "selected";
+                                                }elseif ($stpackid == 3) {
+                                                    $pachop3 = "selected";
+                                                }
+
+                                            ?>
+
+                                            
+
+
+                                            <div class="col-sm-6">
+                                                <select class="form-control " style="width:100px" onchange="showbutton()" id="package">
+                                                <option value="1200" <?php echo $pachop1;?> >Copper</option>
+                                                <option value="2000" <?php echo $pachop2;?> >Silver</option>
+                                                <option value="3000" <?php echo $pachop3;?> >Gold</option>
+                                                
+                                            </select>
+                                            </div>
+                                            
+                                            <div class="col-sm-5" id="pricebutton2" style="display:none;margin-top:30px;"><p>Click this for change package payment. ---></p></div>
+                                            <div class="col-sm-6">
+                                            <input Type="Hidden" Name="inv" id="inv2" value=""/> 
+                                            <input Type="Hidden" Name="itm" value="Service Charge"/> 
+                                            
+                                            <!-- amt is Store Package Charge--> 
+                                            <input Type="Hidden" Name="amt" value="" id="price"/>
+                                            
+                                            <!-- Redirect Web Controller-->
+                                            <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
+                                            <input type="image" style="display:none;margin-top:10px;" id="pricebutton" onclick="changepackage();" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
+                                            </div>
+                                                
+                                            
+
+
+                                        </div>
+                                        <div class="modal-footer" style="margin-top:70px;">
+                                            
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td rowspan="3" width="100px">&nbsp</td>
+
+                        <td rowspan="3" >
+                        <div class="panel panel-danger">
+
+                        <div class="panel-body">
+
+                            <input type="Hidden" Name="psb" value="psb"/> 
+                            <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
+                            
+                            
+                            <script type="text/javascript">
+                                window.onload=function(){
+                                    var stoid = '<?php echo $store ?>';
+                                    var setval = 'pack'+stoid+'01';
+                                    $("#inv").attr("value",setval);
+                                }
+                            </script>
+
+                            <!-- inv is Some String text from paysbuy-->
+                            <input Type="Hidden" Name="inv" id="inv" value=""/> 
+                            <input Type="Hidden" Name="itm" value="Service Charge"/> 
+                            
+                            <!-- amt is Store Package Charge--> 
+                            <input Type="Hidden" Name="amt" value="1" id="price"/>
+                            
+                            <!-- Redirect Web Controller-->
+                            <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
+                            <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
+                        </div>
                     </div>
-                    <button type="button" class="btn btn-warning pull-right " data-toggle="modal" data-target="#myModal3" style="margin-right:10px">Change Package</button>
-                    <div class="modal fade" id="myModal3" role="dialog">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Change Package</h4>
-                </div>
-                <div class="modal-body"style="padding:50px 50px;">
+                        </td>    
+                    </tr> 
+                    <tr>
 
-                    <div class="col-sm-12">Select your new package :</div><br><hr>
-
-                    <div class="col-sm-12"><center>
-                        <label class="radio-inline"><input type="radio" id="p1" name="optradio" value="1200">Package Copper</label>
-                        <label class="radio-inline"><input type="radio" id="p2" name="optradio" value="2000">Package Silver</label>
-                        <label class="radio-inline"><input type="radio" id="p3" name="optradio" value="3000">Package Gold</label>
+                        <td><p>You can choose more than 1 period :</p></td>
+                        <td>
+                            <select class="form-control col-lg-12" style="width:70px" onchange="payment()" id="priod">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
                         
-                    </center></div><br>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="changepackage();">Change</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
+                            </select>
+                        </td>    
+                            
+                    </tr>
+                    
+                </table>
+                     
                 </Form >
                 
                 </div>
             </div>
             <div class="row">
              <div class="col-lg-12 " style=" margin-top: 20px;" >
-                <ol class="breadcrumb"><li>You can pay between XX XX XX - XX XX XX </li></ol>
+                <ol class="breadcrumb"></ol>
             </div>
         </div>
                 <div class="row">
