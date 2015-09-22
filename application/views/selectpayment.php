@@ -53,7 +53,7 @@
                     ?>
 
                     <!-- inv is Some String text from paysbuy-->
-                    <input Type="Hidden" Name="inv" value="<?php echo "pack".$store."".$storedetail['price']."";?>"/> 
+                    <input Type="Hidden" Name="inv" value="<?php echo "pack".$store."01";?>"/> 
                     <input Type="Hidden" Name="itm" value="Service Charge"/> 
                     
                     <!-- amt is Store Package Charge--> 
