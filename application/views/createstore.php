@@ -99,11 +99,13 @@
                     <div class="col-lg-6" style="text-align:right;" >Package :</div>
                     <div class="col-lg-6">
                       <select class="form-control" name="pack" style="width:300px ;">
-                       
-                       <option value="1">Package 1 : 1000B/month</option>
-                       <option value="2">Package 2 : 2000B/month</option>
-                       <option value="3">Package 3 : 3000B/month</option>
-                       <option value="4">Package 4 : 4000B/month</option>
+
+                      <?php
+                        foreach ($pack as $r) {
+                            echo "<option value='".$r['package_id']."'>Package ".$r['package_name']." : ".$r['price']."B/month</option>";
+                        }
+                        
+                      ?>
                    </select>
                </div>
                

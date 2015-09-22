@@ -9,7 +9,9 @@ class Createstore extends CI_Controller{
 	public function index(){
 		if ($this->session->userdata('id') != null) {
 			if ($this->session->userdata('ownerid') != null) {
-				$this->load->view("createstore","refresh");
+				$sqlgetpack = "select * from package";
+				$data['pack'] = $this->db->query($sqlgetpack)->result_array();
+				$this->load->view("createstore",$data);
 			}else{
 				redirect('regis');
 			}
