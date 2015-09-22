@@ -98,7 +98,7 @@
 
                     <div class="col-lg-6" style="text-align:right;" >Package :</div>
                     <div class="col-lg-6">
-                      <select class="form-control" name="pack" style="width:300px ;">
+                      <select class="form-control col-lg-8" name="pack" style="width:300px ;">
 
                       <?php
                         foreach ($pack as $r) {
@@ -107,6 +107,101 @@
                         
                       ?>
                    </select>
+                   <div class="col-lg-1"></div>
+                   <button type="button" class="btn btn-info col-lg-3" data-toggle="modal" data-target="#myModal1" style="margin-right:10px;width:140px">Package Detail</button>
+                   <div class="modal fade" id="myModal1" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Package Detail</h4>
+                </div>
+                <div class="modal-body">
+
+                    <table style="width:100%;color:#000000">
+                <tr>
+                    <th colspan="2" style="width:10%">Package</th>
+                    <td>Copper</td>
+                    <td>Silver</td>
+                    <td>Gold</td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Upload Limit</th>
+                    <td>5</td>
+                    <td>10</td>
+                    <td>15</td>       
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Beacon Use</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th rowspan="6" style="width:10%">Statistics</th>
+
+                </tr>
+                <tr>
+                    <td >General</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Info Receive</td>      
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Come to Store</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >QR Buy</td>      
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Come back again</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Service Charge</th>
+                    <td>1,200 x 12 Month</td>
+                    <td>2,000 x 12 Month</td>
+                    <td>3,000 x 12 Month</td>
+                </tr>
+            </table>
+            
+            <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 5px;
+                text-align: center;    
+            }
+            </style>
+
+
+                </div>
+                <div class="modal-footer">
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        
+
                </div>
                
                <div class="col-lg-12" style="text-align:center;margin-top:40px; margin-down: 30px" >

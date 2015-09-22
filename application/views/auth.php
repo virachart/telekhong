@@ -339,7 +339,7 @@ body {
 </div>
 <div id="about" class="container-fluid">
   <h1 style="margin-left:40px">About Us</h1>
-  <div id="slider1_container" class="col-lg-8"style="position: relative; top: 20px; left: 10%; width: 800px;
+  <div id="slider1_container" class="col-lg-8"style="position: relative; top: 20px; left: 60px; width: 800px;
         height: 456px; background: #191919; overflow: hidden;">
 
         <!-- Loading Screen -->
@@ -392,7 +392,7 @@ body {
             <!-- Thumbnail Item Skin End -->
         </div>
     </div>
-    <div class="col-lg-4" style="margin-left:10%;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;">
+    <div class="col-lg-4" style="margin-left:60px;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;">
         <h1 >What is "<span style="color:#FF6600;">Telekhong</span>"</h1>
         <p>Telekhong Description (ยังไม่คิดคำอธิบาย)</p>
         <p><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1" style="margin-right:10px">View Package</button></p>
