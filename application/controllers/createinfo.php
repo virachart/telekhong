@@ -34,8 +34,8 @@ class Createinfo extends CI_Controller{
 			$begindate = $beda;
 			$expiredate = $exda;
 
-			$id = $this->session->userdata('storeid');
-			// $id = 6;
+			// $id = $this->session->userdata('storeid');
+			$id = 6;
 
 			$sqlInsert = "INSERT INTO info (`info_name`, `info_descrip`, `info_begin_date`, `info_expire_date`, `catagory`, `store_id`) VALUES ('".$infoname."', '".$desc."', '".$begindate."', '".$expiredate."', '".$cat."', '".$id."');"; 
 			$this->db->query($sqlInsert);

@@ -33,7 +33,7 @@
 
     </head>
 
-    <body onload="showtab1()">
+    <body>
 
     
 
@@ -205,28 +205,30 @@
                     <!-- /.row -->
 
                     <style>
-      .cropit-image-preview {
-        background-color: #f8f8f8;
-        background-size: cover;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        margin-top: 7px;
-        width: 400px;
-        height: 400px;
-        cursor: move;
-      }
-      .cropit-image-background {
-        opacity: .2;
-        cursor: auto;
-      }
-      .image-size-label {
-        margin-top: 10px;
-      }
-      input {
-        display: block;
-      }
-      
-    </style>
+                  .cropit-image-preview {
+                    background-color: #f8f8f8;
+                    background-size: cover;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    margin-top: 7px;
+                    width: 400px;
+                    height: 400px;
+                    cursor: move;
+                  }
+                  .cropit-image-background {
+                    opacity: .2;
+                    cursor: auto;
+                  }
+                  .image-size-label {
+                    margin-top: 10px;
+                  }
+                  input {
+                    display: block;
+                  }
+                  
+                </style>
+
+                    
   </head>
   <body>
     <script>
@@ -235,7 +237,10 @@
 
     }
     </script>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" >Image Upload</button>
+    <!-- Info picture -->
+        <div class="col-lg-6" style="text-align:right;" >Information Picture :</div>
+        <div class="col-lg-6">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" >Image Upload</button>
     <div class="modal fade" id="modal" role="dialog">
         <div class="modal-dialog ">
             <div class="modal-content">
@@ -246,14 +251,14 @@
                 <div class="modal-body"style="padding:20px 50px 20px 50px;">
                     <p style="text-align:center;color:red">You can upload image.jpg/.png/.gif/.jpeg only ! </p>
                     <div class="image-editor" style="margin-left:50px">
-                        <input type="file" class="cropit-image-input" onchange="enablebt();" >
+                        <input type="file" id="image"  name='picture' class="cropit-image-input" onchange="enablebt();" >
                         <div class="cropit-image-preview" ></div>
                           <div class="image-size-label">
                             Resize image
                           </div>
                         <input type="range" class="cropit-image-zoom-input" style="width:400px">
                         <input type="hidden" name="image-data" class="hidden-image-data" />
-                        
+                    
           
                     </div>
 
@@ -266,22 +271,47 @@
             </div>
         </div>
     </div>
+                    <script>
+                      
+                        $('.image-editor').cropit();
+                        $('.export').click(function() {
+                            var imageData = $('.image-editor').cropit('export');
+                            $('.cropped').empty();
+                            $('.cropped').append('<img src="'+imageData+'" height="120" width="120">');
+                            // $('#image').attr("src","<img src='"+imageData+"'  height='120' width='120'>");
+                            $('#result-data').attr("value",imageData);
+                            $.ajax({
+                                url:"<?php echo site_url("package/getpic");?>",
+                                type: "POST",
+                                cache: false,
+                                data: "data="+imageData,
+                                // dataType:"JSON",
+                                success:function(res){
+                                    console.log(res);
+                                    $("#image").attr("value",res.image);
+                                    
+                                },
+                                error:function(err){
+                                    console.log("error : "+err);
+                                }
+
+                            });
+                        });
+                      
+                    </script>
+            <div class="cropped" style="margin-top:10px;">
+
+            </div>
+            <script>
+            function enablebt(){
+                document.getElementById("bt1").disabled = false;
+
+            }
+            </script>
+            
     
-<div class="cropped" style="height:400px;width:400px;">
-
 </div>
-    <script>
-      $(function() {
-        $('.image-editor').cropit();
-        $('.export').click(function() {
-          var imageData = $('.image-editor').cropit('export');
-          $('.cropped').empty();
-          $('.cropped').append('<img src="'+imageData+'" height="100" width="100">');
-        });
-      });
-    </script>
-
-
+<input type="text" id="result-data" value="test">
 
 </body>
 

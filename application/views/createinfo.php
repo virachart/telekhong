@@ -286,7 +286,7 @@
                 <div class="modal-body"style="padding:20px 50px 20px 50px;">
                     <p style="text-align:center;color:red">You can upload image.jpg/.png/.gif/.jpeg only ! </p>
                     <div class="image-editor" style="margin-left:50px">
-                        <input type="file" id="image" name="picture"class="cropit-image-input" onchange="enablebt();" >
+                        <input type="file" id="image"  name='picture' class="cropit-image-input" onchange="enablebt();" >
                         <div class="cropit-image-preview" ></div>
                           <div class="image-size-label">
                             Resize image
@@ -313,6 +313,7 @@
                           var imageData = $('.image-editor').cropit('export');
                           $('.cropped').empty();
                           $('.cropped').append('<img src="'+imageData+'" height="120" width="120">');
+                          $('#image').attr("src","<img src='"+imageData+"'  height='120' width='120'>");
                         });
                       
                     </script>

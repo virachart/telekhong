@@ -55,6 +55,12 @@ class Payment extends CI_Controller{
 			$this->db->insert('payment_log',$arinsert);
 			$sqlgetstore = "select * from store where store_id = '".$storepay."' ";
 			$data = $this->db->query($sqlgetstore)->row_array();
+
+				// echo $yearex;
+				// echo "<br>";
+				// echo $monthex;
+				// echo "<br>";
+				// echo $dayex;
 			if ($data['expire_date'] == null) {
 				$day = date("d");
 				$month = date("n");
@@ -77,6 +83,31 @@ class Payment extends CI_Controller{
 				$arupdateexpire = array('expire_date' => $setdate);
 				$this->db->where("store_id",$storepay);
 				$this->db->update('store',$arupdateexpire);
+			}else{
+				$ex = $data['expire_date'];
+				$yearex = (int)substr($ex,0,4);
+				$monthex = (int)substr($ex,5,2);
+				$dayex = (int)substr($ex,8,2);
+				$monthex += 1;
+				if ($monthex > 12) {
+					$monthex = $monthex - 12;
+					$yearex += 1;
+				}
+				$daynext = cal_days_in_month(CAL_GREGORIAN,$monthex,$yearex);
+				if ($dayex > $daynext) {
+					$dayex = $dayex - $daynext;
+					$monthex += 1;
+				}
+				if ($monthex < 10) {
+					$monthex = "0".$monthex;
+				}
+				if ($dayex < 10) {
+					$dayex = "0".$dayex;
+				}
+				$setdateex = $yearex."-".$monthex."-".$dayex;
+				$arupdateex = array('expire_date' => $setdateex);
+				$this->db->where("store_id",$storepay);
+				$this->db->update('store',$arupdateex);
 
 			}
 		}
@@ -96,6 +127,41 @@ class Payment extends CI_Controller{
 		$storepay = (int)substr($result,2,3);
 		$packchange = substr($result,5,1);
 		$amt = number_format($amt,2,".","");
+
+		if ($statuspay == "00") {
+			$arinsert = array('amount' => $amt ,
+						  	  'store_id' => $storepay);
+			$this->db->insert('payment_log',$arinsert);
+			$sqlgetstore = "select * from store where store_id = '".$storepay."' ";
+			$data = $this->db->query($sqlgetstore)->row_array();
+
+			$dayex = date("d");
+			$monthex = date("n");
+			$yearex = date("Y");
+			if ($monthex == 12) {
+				$yearex ++;
+			}
+			$monthex = $monthex +1;
+			$daynext = cal_days_in_month(CAL_GREGORIAN,$monthex,$yearex);
+			if ($dayex > $daynext) {
+				$dayex = $dayex - $daynext;
+				$monthex += 1;
+			}
+
+			if ($monthex < 10) {
+				$monthex = "0".$monthex;
+			}
+			if ($dayex < 10) {
+				$dayex = "0".$dayex;
+			}
+			$setdate = $yearex."-".$monthex."-".$dayex;
+			$arupdateexpire = array('expire_date' => $setdate , 
+									'package_id' => $packchange);
+			$this->db->where("store_id",$storepay);
+			$this->db->update('store',$arupdateexpire);
+
+		}
+		redirect("payment","refresh");
 
 		// echo $statuspay;
 		// echo "<br>";
