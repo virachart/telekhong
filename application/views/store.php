@@ -150,7 +150,7 @@
 
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cart-plus"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
@@ -158,7 +158,7 @@
                         }else{
                             foreach ($allstore as $r) {
                                 $sta = "";
-                                if ($r['status_store_id']=="1" && $r['expire_date'] != null) {
+                                if ($r['status_store_id']=="1" ) {
 
                                 }else{
                                     $sta = "class='not-active'";
@@ -235,14 +235,11 @@
                 <div class="col-lg-12">
                     <div class="col-lg-7">
                         <h1 class="page-header">
-                            <?php echo $rs['store_name']; ?>  <small>(Package <?php echo $rs['package_name']; ?>)</small>
+                            <?php echo $rs['store_name']; ?>  <small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male"></i> follower 22&nbsp)</small>
                         </h1>
                     </div>
                 <div>
                     <div class="col-lg-5"style="margin-top :45px">
-                            
-                            
-                            <button type='button' class='btn btn-danger pull-right' data-toggle='modal' data-target='#myModal' <?php echo $disdelete;?> >Delete Store</button>
                             
                              <a href="<?=base_url()?>index.php/managestoreowner"><button type="button" class="btn btn-warning pull-right "  style="margin-right:10px">Edit Store</button></a>
                             <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Beacon</button>

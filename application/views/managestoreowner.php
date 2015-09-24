@@ -11,6 +11,7 @@
         <link  href="<?=base_url()?>assets/css/bootstrap-timepicker.min.css" />
         <script src="<?=base_url()?>assets/js/jquery-1.9.1.min.js"></script>
         <script  src="<?=base_url()?>assets/js/bootstrap-timepicker.min.js"></script>
+        <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -21,6 +22,21 @@
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <script type="text/javascript">
+                    function delstore(id){
+                        $.ajax({
+                            url:"<?php echo site_url("store/del");?>",
+                            type: "POST",
+                            cache: false,
+                            data: "id="+id,
+                            
+                        });
+                        $(location).attr('href','<?php echo site_url("store");?>')
+                    };
+
+
+
+    </script>
     <div id="page-wrapper">
     <center><h1>Edit Store</h1></center>
     <?php 
@@ -84,10 +100,31 @@
         </div>
         <div class="col-lg-4"></div>
         <div class="col-lg-4" style="text-align:center" >
+            <button type='button' class='btn btn-danger ' style="margin-right:30px" data-toggle='modal' data-target='#myModal'>Delete Store</button>
             <?php echo anchor("store","<button type='button' style='width:70px' class='btn btn-default'>Cancle</button>"); ?>
            &nbsp&nbsp &nbsp&nbsp
            <input class="btn btn-primary" style="width:70px" type="submit" name="btsave" value="Save"> 
-            
+        
+        <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                 <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm</h4>
+                    </div>
+                    <div class="modal-body">
+                    <p>This store was deleted , Are you sure ?</p>
+                    </div>
+                    <div class="modal-footer">
+                    
+                    <button type='button' class='btn btn-default' data-dismiss='modal' onclick="delstore(<?php echo $this->session->userdata('storeid'); ?>)" >Yes</button>
+                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    </div>
+                </div>
+      
+                </div>
+            </div>
         </div>
     
     <?php 
