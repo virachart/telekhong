@@ -57,6 +57,36 @@
             }
     }
 
+        function checkfield() {
+
+            if (mess.value == '') {
+                alert("Please input message topic.");
+                document.getElementById("mess").focus();
+                return false;
+            }else if (des.value == '') {
+                alert("Please input message description.");
+                document.getElementById("des").focus();
+                return false;
+            }else if (cata.value == '') {
+                alert("Please choose message catagory.");
+                document.getElementById("cata").focus();
+                return false;
+            }else if (beda.value == '') {
+                alert("Please input begin date.");
+                document.getElementById("beda").focus();
+                return false;
+            }else if (exda.value == '') {
+                alert("Please input expire date.");
+                document.getElementById("exda").focus();
+                return false;
+            }else if (document.getElementById("image").value == '') {
+                alert("Please upload store picture.");
+                 document.getElementById("image").focus();
+                return false;
+            }
+            return true;
+        }
+
     </script>
 
         <div id="wrapper">
@@ -83,7 +113,7 @@
             <div id="page-wrapper">
                 <div class="container-fluid">
 
-                <center><h3>Create Information</h3></center><hr>
+                <center><h3>Create Message</h3></center><hr>
                 <style>
                   .cropit-image-preview {
                     background-color: #f8f8f8;
@@ -108,22 +138,22 @@
                   
                 </style>
 
-                <?php echo form_open_multipart("createinfo/create"); ?>
+                <form action="<?php echo site_url();?>/createinfo/create" method="post" accept-charset="utf-8" enctype="multipart/form-data" onsubmit="javascript:return checkfield();">
                 <!-- store name -->
-                <div class="col-lg-6" style="text-align:right;" >Information Name :</div>
-                <div class="col-lg-6"><input type="text" name="name" class="form-control" placeholder="Information name" style="width:300px"></div>
+                <div class="col-lg-6" style="text-align:right;" >Topic :</div>
+                <div class="col-lg-6"><input type="text" name="name" class="form-control" placeholder="Message Topic" style="width:300px" id="mess"></div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- Information Description -->
                 <div class="col-lg-6" style="text-align:right;" >Description :</div>
-                <div class="col-lg-6"><textarea class="form-control" name="desc" rows="3" style="width:250px" placeholder="Description"></textarea></div>
+                <div class="col-lg-6"><textarea class="form-control" name="desc" rows="3" style="width:250px" placeholder="Description" id="des"></textarea></div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- Catagory -->
                 <div class="col-lg-6" style="text-align:right;" >Catagory :</div>
                 <div class="col-lg-6">
-                <select class="form-control" name="cat" style="width:300px ;">
-                    <option hidden>Select Catagory</option>
+                <select class="form-control" name="cat" style="width:300px ;" id="cata">
+                    <option hidden value="">Select Catagory</option>
                     <option value="food">Food</option>
                     <option value="fashion">Fashion</option>
                     <option value="sport">Sport</option>
@@ -153,7 +183,7 @@
         <div class="col-lg-12" style="margin-top:30px;"></div>
 
         <!-- Info picture -->
-        <div class="col-lg-6" style="text-align:right;" >Information Picture :</div>
+        <div class="col-lg-6" style="text-align:right;" >Picture :</div>
         <div class="col-lg-6">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" >Image Upload</button>
     <div class="modal fade" id="modal" role="dialog">
@@ -224,7 +254,7 @@
             <input class="btn btn-success" type="submit" name="btsave" value="Create" style="margin-left: 30px">
 
         </div>		
-        <?php echo form_close();?>
+        </form>
 
         <div>
            <br>
