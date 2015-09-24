@@ -50,6 +50,7 @@
 </head>
 
 <body>
+        
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -66,62 +67,7 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <!-- first name of user -->
-                                    
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong> Testttt </strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
-
+                
                 <?php
                     $dissta = "";
                     $dismanage = "";
@@ -150,7 +96,7 @@
 
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cart-plus"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
@@ -182,8 +128,8 @@
 
                 ?>
                         <li class="divider"></li>
-                            <li>
-                                <a href="<?=base_url()?>index.php/createstore">+ Create Store</a>
+                            <li style="text-align:center;">
+                                <a href="<?=base_url()?>index.php/createstore"> <i class="fa fa-plus-circle"></i> Create Store</a>
                             </li>
                         
                     </ul>
@@ -206,7 +152,7 @@
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
                         <li <?php echo $dissta;?>>
-                            <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                            <a href="<?=base_url()?>index.php/statisticsowner" ><i class="fa fa-fw fa-bar-chart-o" ></i> Statistics</a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
@@ -293,12 +239,13 @@
 
                     <table>
                         <tr>
-                            <td align="center">Code Ref. 1 : </td>
-                            <td align="center"><input type="text" id="ref1" name="ref1" placeholder="Code Ref.1"></td>
+                            <td align="center">Code Ref. 1 : &nbsp</td>
+                            <td align="center"><input type="text" id="ref1" class="form-control" name="ref1" placeholder="Code Ref.1"></td>
                         </tr>
+                        <tr><td>&nbsp</td></tr>
                         <tr>
-                            <td align="center">Code Ref. 2 : </td>
-                            <td align="center"><input type="text" id="ref2" name="ref2" placeholder="Code Ref.2"></td>
+                            <td align="center">Code Ref. 2 : &nbsp</td>
+                            <td align="center"><input type="text" id="ref2" class="form-control" name="ref2" placeholder="Code Ref.2"></td>
                         </tr>
                     </table>
 
@@ -530,12 +477,16 @@
                                                 <img class='img-thumbnail' src='".base_url()."images/info/".$r['info_pic']."' width='75px' height='75px' alt=''> ".$r['info_name']."
                                                 </a>";
 
+
                                         }
 
                                         
                                         
                                     }else{
                                         echo "<center><h2> --- No Information ---</h2> </center>";
+                                        echo '<script language="javascript">';
+                                        echo 'alert("Please upload at least 1 message for unlock statistics")';
+                                        echo '</script>';
                                     }
 
                                 ?>
