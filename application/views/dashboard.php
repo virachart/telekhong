@@ -122,13 +122,11 @@
             <div id="page-wrapper">
 
                 <div class="container-fluid">
-
+                    <h1>DashBoard</h1>
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">
-                                DashBoard
-                            </h1>
+                            
                             <ol class="breadcrumb">
                                 <li>
                                     <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>dashboard">Dashboard</a>
@@ -149,7 +147,7 @@
                                 <p>User</p>
                             </div>
                             <div class="icon">
-                              <i class="fa fa-shopping-cart"></i>
+                              <i class="ion ion-person"></i>
                           </div>
                           
                       </div>
@@ -164,7 +162,7 @@
                             <p>Owner</p>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-stats-bars"></i>
+                          <i class="ion ion-person-add"></i>
                       </div>
                       
                   </div>
@@ -179,7 +177,7 @@
                         <p>Store</p>
                     </div>
                     <div class="icon">
-                      <i class="glyphicon glyphicon-ok-circle"></i>
+                      <i class="fa fa-shopping-cart"></i>
                   </div>
                   
               </div>
@@ -189,12 +187,12 @@
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php
-                    $numsen12 = $sen12->num_rows();
-                    echo $numsen12;?></h3>
+                        $numsen12 = $sen12->num_rows();
+                        echo $numsen12;?></h3>
                     <p>Beacon In Stock</p>
                 </div>
-                <div class="icon" style="margin-top: 25 px">
-                  <i class="glyphicon glyphicon-exclamation-sign"></i>
+                <div class="icon" >
+                  <i class="fa fa-bullseye"></i>
               </div>
               
           </div>
@@ -227,58 +225,50 @@
     ?>
 
 
-    <table width="15%">
-        <tr bgcolor="pink">
-        <td><b>Service</b></td>
-        <td><b>Status</b></td>
-        </tr>
-        
-        <tr>
-        <td><b>SSH / SFTP</b></td>
-        <td><?php echo $report['SSH'] ? "<font color='red'>Online</font>" : "Offline"; ?></td>
-        </tr>
-        
-        <tr>
-        <td><b>HTTP</b></td>
-        <td><?php echo $report['HTTP'] ? "<font color='red'>Online</font>" : "Offline"; ?></td>
-        </tr>
-        
-        <tr>
-        <td><b>MySQL</b></td>
-        <td><?php echo $report['MySQL'] ? "<font color='red'>Online</font>" : "Offline"; ?></td>
-        </tr>
-    </table>
+    
 
-                                        <div class="row" style=" margin-top: 40px;">
-                                        <div class="col-lg-6">
+                                        <div class="row" style=" margin-top: 20px;">
+                                        <div class="col-lg-6" >
                                             <div class="panel panel-green">
                                                 <div class="panel-heading">
                                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age of Becon Chart </h3>
                                                 </div>
-                                                <div class="panel-body">
-                                                    <div class="flot-chart">
+                                                <div class="panel-body" >
+                                                    <div class="flot-chart" style="height:300px;width:500px;">
                                                         <div class="flot-chart-content" id="flot-pie-chart"></div>
                                                     </div>
 
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
+                                        <div >
                                             <div class="col-lg-6">
                                                 <h4>Age Range Chart</h4>
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered table-hover">
+                                                        <style>
+                                                            table.table1 th{
+                                                                background-color: #5EB85E;
+                                                                text-align: center;
+                                                                color: #ffffff;
+                                                            }
+                                                            table.table1 td{
+                                                                
+                                                                text-align: center;
+                                                            }
+                                                        </style>
+                                                    <table class="table table-bordered table-hover table1">
+
                                                         <thead>
                                                             <tr>
 
-                                                                <td> < 6 month</td>
-                                                                <td> 6 - 12 month</td>
-                                                                <td> > 12 month</td>
-                                                                <td>Total</td>
+                                                                <th> < 6 month</th>
+                                                                <th> 6 - 12 month</th>
+                                                                <th> > 12 month</th>
+                                                                <th>Total</th>
 
                                                             </tr>
                                                         </thead>
-                                                        <tbody>
+                                                        <tbody >
                                                             <tr>
                                                                 <td><?php $pa1 = $sen6->num_rows(); echo $pa1; ?></td>
                                                                 <td><?php $pa2 = $sen12->num_rows(); echo $pa2; ?></td>
@@ -288,6 +278,29 @@
                                                             </tr>
                                                         </tbody>
                                                     </table>
+                                                </div>
+                                                <div>
+                                                <table width="30%">
+                                                    <tr bgcolor="pink">
+                                                    <th><b>Service</b></th>
+                                                    <th><b>Status</b></th>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                    <td><b>SSH / SFTP</b></td>
+                                                    <td><?php echo $report['SSH'] ? "<font color='green'>Online</font>" : "<font color='red'>Offline</font>"; ?></td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                    <td><b>HTTP</b></td>
+                                                    <td><?php echo $report['HTTP'] ? "<font color='green'>Online</font>" : "<font color='red'>Offline</font>"; ?></td>
+                                                    </tr>
+                                                    
+                                                    <tr>
+                                                    <td><b>MySQL</b></td>
+                                                    <td><?php echo $report['MySQL'] ? "<font color='green'>Online</font>" : "<font color='red'>Offline</font>"; ?></td>
+                                                    </tr>
+                                                </table>   
                                                 </div>
                                             </div>                                 
                                         </div>

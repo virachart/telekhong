@@ -203,10 +203,10 @@
                           <h3><?php
                             $numSen = $sensoro->num_rows();
                             echo $numSen;?></h3>
-                            <p>Sensoro</p>
+                            <p>Beacon</p>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-stats-bars"></i>
+                          <i class="fa fa-bullseye"></i>
                       </div>
                       
                   </div>
@@ -291,7 +291,7 @@
                         <div class="col-lg-12" >
                             <div class="panel panel-red">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Sensoro Graph </h3>
+                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Beacon Graph </h3>
                                 </div>
                                 <div class="panel-body">
                                     <div id="morris-line-chart-sen"></div>
@@ -336,14 +336,32 @@
                                 <div class="col-lg-6">
                                     <h4>Package Chart</h4>
                                     <div class="table-responsive">
-                                        <table class="table table-bordered table-hover">
+                                        <style>
+                                            table.table1 th{
+                                            background-color: #5EB85E;
+                                            text-align: center;
+                                            color: #ffffff;
+                                            }
+                                            table.table1 td{    
+                                            text-align: center;
+                                            }
+                                        </style>
+                                        <table class="table table-bordered table-hover table1">
                                             <thead>
                                                 <tr>
 
+<<<<<<< HEAD
                                                     <td>Normal Package</td>
                                                     <td>Silver Package</td>
                                                     <td>Gold Package</td>
                                                     <td>Total</td>
+=======
+                                                    <th>Normal Package</th>
+                                                    <th>Gold Package</th>
+                                                    <th>Silver Package</th>
+                                                    <th>Platnum Package</th>
+                                                    <th>Total</th>
+>>>>>>> 9fd6d397b421637d7432b76388403e1d3e1534c1
 
                                                 </tr>
                                             </thead>
