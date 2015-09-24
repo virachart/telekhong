@@ -85,7 +85,7 @@
             <div id="page-wrapper">
                 <div class="container-fluid">
                 <h1>Create Owner Info</h1><br>
-<form name="info" action="<?php echo site_url("regis/add");?>" method="post" onsubmit="javascript:return check('info','email','tel');">
+	<form name="info" action="<?php echo site_url("regis/add");?>" method="post" onsubmit="javascript:return check('info','email','tel');">
 		<table>
 			<tr>
 				<td>Telephone Number : &nbsp</td>

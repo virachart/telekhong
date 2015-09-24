@@ -235,7 +235,7 @@
                 <div class="col-lg-12">
                     <div class="col-lg-7">
                         <h1 class="page-header">
-                            <?php echo $rs['store_name']; ?>  <small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male"></i> follower 22&nbsp)</small>
+                            <?php echo $rs['store_name']; ?>  <small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male"></i> follower <?php echo $follow->num_rows() ?>&nbsp)</small>
                         </h1>
                     </div>
                 <div>
