@@ -55,7 +55,7 @@
 					event.returnValue = false;
 					alert("Input Number Only");
 				}
-				else if(tele.length>10){
+				else if(tele.length>9){
 					event.returnValue = false;
 					alert("Your telephone number must not be over 10 digits");
 				}

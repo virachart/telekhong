@@ -78,7 +78,7 @@
                     event.returnValue = false;
                     alert("Input Number Only");
                 }
-                else if(tele.length>10){
+                else if(tele.length>9){
                     event.returnValue = false;
                     alert("Your telephone number must not be over 10 digits");
                 }
@@ -91,7 +91,7 @@
 
                 <center><h3>Create Store</h3></center><hr>
 
-                <form action="http://localhost/telekhong2/index.php/createstore/create" method="post" accept-charset="utf-8" enctype="multipart/form-data" onsubmit="javascript:return checkfield();">
+                <form action="<?php echo site_url();?>/createstore/create" method="post" accept-charset="utf-8" enctype="multipart/form-data" onsubmit="javascript:return checkfield();">
                 <!-- store name -->
                 <div class="col-lg-6" style="text-align:right;" >Store Name :</div>
                 <div class="col-lg-6"><input type="text" name="storename" class="form-control" placeholder="Store name" style="width:200px" id="stn"></div>

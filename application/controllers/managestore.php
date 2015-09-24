@@ -57,7 +57,7 @@ class Managestore extends CI_Controller{
 								->join("user","owner.fb_id=user.fb_id")
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
-								->group_by("owner.owner_id")
+								->group_by("sensoro.store_id")
 								->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
 								
 				$this->load->view("managestore",$data);
@@ -119,7 +119,7 @@ class Managestore extends CI_Controller{
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
 								->like("fb_name",$name)
-								->group_by("owner.owner_id")
+								->group_by("store.store_id")
 								->get()->result_array();
 				}
 				if ($find == "store_name") {
@@ -130,7 +130,7 @@ class Managestore extends CI_Controller{
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
 								->like("store_name",$name)
-								->group_by("owner.owner_id")
+								->group_by("store.store_id")
 								->get()->result_array();
 				}
 				// echo $this->db->last_query();
@@ -165,13 +165,10 @@ class Managestore extends CI_Controller{
 					->join("package","store.package_id = package.package_id")
 					->join("sensoro","store.store_id = sensoro.store_id","left")
 					->where("store.owner_id",$ownerid)
-					->group_by("owner.owner_id")
+					->group_by("sensoro.store_id")
 					->get()->result_array();
 		
-		// echo $this->db->last_query();
 		$this->load->view("managestore",$data);
-		// print_r($data['rs']);
-		// // exit();
 			
 	}
 

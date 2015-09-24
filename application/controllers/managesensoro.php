@@ -111,18 +111,26 @@ class Managesensoro extends CI_Controller{
 			
 			if ($name != null) {
 
-				$sqluser = "Select * from store";
-				$sqluserav = "Select * from store where status_store_id = '1'";
-				$sqluserbl = "Select * from store where status_store_id = '2'";
-				$sqluserba = "Select * from store where status_store_id = '3'";
+				$sqluser = "Select * from sensoro";
+				$sqluserav = "Select * from sensoro where status_sensoro_id = '1'";
+				$sqluserbl = "Select * from sensoro where status_sensoro_id = '2'";
+				$sqluserba = "Select * from sensoro where status_sensoro_id = '3'";
+				$sqluserty1 = "Select * from sensoro where sensoro_type = '1'";
+				$sqluserty2 = "Select * from sensoro where sensoro_type = '2'";
 				$data['num1'] = $this->db->query($sqluser);
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
-				$data['rs'] = $this->db->select("*")->from("store")->like("store_name",$name)->get()->result_array();
+				$data['num5'] = $this->db->query($sqluserty1);
+				$data['num6'] = $this->db->query($sqluserty2);
+				$data['rs'] = $this->db->select("*")
+								->from("sensoro")
+								->join("store","sensoro.store_id = store.store_id")
+								->like("store_name",$name)
+								->get()->result_array();
 				
 				// echo $this->db->last_query();
-				$this->load->view("managestore",$data);
+				$this->load->view("managesensoro",$data);
 				// print_r($data['rs']);
 				// // exit();
 			}else{
@@ -172,6 +180,32 @@ class Managesensoro extends CI_Controller{
 		$this->index();
 
 			// INSERT INTO `telekhong`.`sensoro` (`uuid`, `major`, `minor`, `sensoro_code1`, `sensoro_code2`, `store_id`, `sensoro_type`) VALUES ('2345878o7t', '34', '34', '1234', '3124', '6', '1');
+	}
+
+
+	public function searchsen($storeid){
+
+		$sqluser = "Select * from sensoro";
+		$sqluserav = "Select * from sensoro where status_sensoro_id = '1'";
+		$sqluserbl = "Select * from sensoro where status_sensoro_id = '2'";
+		$sqluserba = "Select * from sensoro where status_sensoro_id = '3'";
+		$sqluserty1 = "Select * from sensoro where sensoro_type = '1'";
+		$sqluserty2 = "Select * from sensoro where sensoro_type = '2'";
+		$data['num1'] = $this->db->query($sqluser);
+		$data['num2'] = $this->db->query($sqluserav);
+		$data['num3'] = $this->db->query($sqluserbl);
+		$data['num4'] = $this->db->query($sqluserba);
+		$data['num5'] = $this->db->query($sqluserty1);
+		$data['num6'] = $this->db->query($sqluserty2);
+		$data['rs'] = $this->db->select("*")
+						->from("sensoro")
+						->join("store","sensoro.store_id = store.store_id")
+						->where("sensoro.store_id",$storeid)
+						->get()->result_array();
+		
+		// echo $this->db->last_query();
+		$this->load->view("managesensoro",$data);
+			
 	}
 
 }
