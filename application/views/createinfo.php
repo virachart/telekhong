@@ -40,22 +40,14 @@
     
     <script>
     
-    function bdateCheck() {
-            var selectedDate = new Date (document.getElementById("beda").value)
-            var today = new Date();
-            var checkDate = today.setDate(today.getDate()-1);
-        if (selectedDate < checkDate) {
-            alert("Begin Date has invalid");
-            document.getElement
-        }
-    }
     function edateCheck(){
             var beginDate = new Date(document.getElementById("beda").value)
             var expireDate = new Date(document.getElementById("exda").value)
             if (beginDate > expireDate) {
                 alert("Expire Date has invalid");
+                $('#exda').val("0000-00-00");            
             }
-    }
+    };
 
         function checkfield() {
 
@@ -169,7 +161,7 @@
            <!-- Begin Date -->
            <div class="col-lg-6" style="text-align:right;" >Begin Date :</div>
            <div class="col-lg-6">
-            <input type="date" name="beda" id="beda" class="form-control" style="width:280px ; display : inline;" oninput="bdateCheck()">
+            <input type="date" name="beda" id="beda" class="form-control" style="width:280px ; display : inline;" >
         </div>
         <div class="col-lg-12" style="margin-top:30px;"></div>
 
@@ -177,7 +169,7 @@
         <!-- Expire Date -->
         <div class="col-lg-6" style="text-align:right;" >Expire Date :</div>
         <div class="col-lg-6">
-            <input type="date" name="exda" id="exda" class="form-control" style="width:280px ; display : inline;" oninput="edateCheck()">
+            <input type="date" name="exda" id="exda" class="form-control" style="width:280px ; display : inline;" oninput="edateCheck()" value="">
         </div>
         
         <div class="col-lg-12" style="margin-top:30px;"></div>
