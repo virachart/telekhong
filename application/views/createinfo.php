@@ -235,9 +235,9 @@
             <div class="col-lg-12">
             <div class="col-lg-12" style="margin-top: 40px">
                <ol class="breadcrumb">
-                 <li>You can contact us in this page </li>
-                 <li> facebook : www.facebook.com/promotion2you</li>
-                 <li> tel.08X-XXX-XXXX KingMongkutt's University of technology thonburi</li>
+                <li>You can contact us in this page </li>
+                <li> facebook : www.facebook.com/Telekhong</li>
+                <li> KingMongkutt's University of technology thonburi</li>
              </ol>
          </div>
      </div>

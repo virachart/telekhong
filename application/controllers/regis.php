@@ -7,19 +7,19 @@ class Regis extends CI_Controller{
 	}
 
 	public function index(){
-		if ($this->session->userdata('id') != null) {
-			$id = $this->session->userdata('id');
-			$sqlchowner = "Select * from owner where fb_id = '".$id."' ";
-			$rschowner = $this->db->query($sqlchowner)->row_array();
-			if ($rschowner != null) {
-				$this->session->set_userdata("ownerid",$rschowner['owner_id']);
-				redirect("store");
-			}else{
+		// if ($this->session->userdata('id') != null) {
+		// 	$id = $this->session->userdata('id');
+		// 	$sqlchowner = "Select * from owner where fb_id = '".$id."' ";
+		// 	$rschowner = $this->db->query($sqlchowner)->row_array();
+		// 	if ($rschowner != null) {
+		// 		$this->session->set_userdata("ownerid",$rschowner['owner_id']);
+		// 		redirect("store");
+		// 	}else{
 				$this->load->view("regis");
-			}
-		}else{
-			redirect("auth");
-		}
+		// 	}
+		// }else{
+		// 	redirect("auth");
+		// }
 		
 
 	}

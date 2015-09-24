@@ -29,6 +29,23 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <!-- jQuery -->
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
+    <!-- <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script> -->
+
+    <!-- Flot Charts JavaScript -->
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
 
     </head>
 
@@ -50,59 +67,7 @@
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                        <ul class="dropdown-menu message-dropdown">
-                            <li class="message-preview">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="pull-left">
-                                            <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                        </span>
-                                        <div class="media-body">
-                                            <h5 class="media-heading"><strong><?php session_name()?></strong>
-                                            </h5>
-                                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="pull-left">
-                                            <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                        </span>
-                                        <div class="media-body">
-                                            <h5 class="media-heading"><strong><?php session_name()?></strong>
-                                            </h5>
-                                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="message-preview">
-                                <a href="#">
-                                    <div class="media">
-                                        <span class="pull-left">
-                                            <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                        </span>
-                                        <div class="media-body">
-                                            <h5 class="media-heading"><strong><?php session_name()?></strong>
-                                            </h5>
-                                            <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="message-footer">
-                                <a href="#">Read All New Messages</a>
-                            </li>
-                        </ul>
-                    </li>
+                    
                     
 
                     
@@ -337,8 +302,8 @@
         <div class="col-lg-12">
             <ol class="breadcrumb">
                 <li>You can contact us in this page </li>
-                <li> facebook : www.facebook.com/promotion2you</li>
-                <li> tel.08X-XXX-XXXX KingMongkutt's University of technology thonburi</li>
+                <li> facebook : www.facebook.com/Telekhong</li>
+                <li> KingMongkutt's University of technology thonburi</li>
             </ol>
         </div>
     </div></center>
@@ -354,23 +319,7 @@
 
 <!-- /#wrapper -->
 
-<!-- jQuery -->
-<script src="<?=base_url()?>assets/js/jquery.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-
-<!-- Morris Charts JavaScript -->
-<script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
-<script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
-<!-- <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script> -->
-
-<!-- Flot Charts JavaScript -->
-<!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-<script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.js"></script>
-<script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-<script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
-<script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
 <!-- <script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script> -->
 
 <script type="text/javascript">

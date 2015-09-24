@@ -333,7 +333,7 @@ body {
 <div id="home" class="container-fluid ">
     <div class="jumbotron" id="jumbo">
         <h1>WELCOME</h1><br>
-        <h2 id="jumbo2">"<span style="color:#FF6600;"> Telekhong</span> Everything jingabell "</h2>
+        <h2 id="jumbo2">"<span style="color:#FF6600;"> Telekhong</span> Talk Everything "</h2>
     </div>
     <br>
 </div>

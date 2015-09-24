@@ -65,8 +65,8 @@ $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
 $db['te']['hostname'] = '10.4.43.99';
-$db['te']['username'] = 'root';
-$db['te']['password'] = 'lazinfirst';
+$db['te']['username'] = 'telekhongweb';
+$db['te']['password'] = 'seniorproject2015';
 $db['te']['database'] = 'telekhong';
 $db['te']['dbdriver'] = 'mysql';
 $db['te']['dbprefix'] = '';

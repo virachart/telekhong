@@ -341,9 +341,8 @@
                                                 <tr>
 
                                                     <td>Normal Package</td>
-                                                    <td>Gold Package</td>
                                                     <td>Silver Package</td>
-                                                    <td>Platnum Package</td>
+                                                    <td>Gold Package</td>
                                                     <td>Total</td>
 
                                                 </tr>
@@ -353,8 +352,7 @@
                                                     <td><?php $pa1 = $pack1->num_rows(); echo $pa1; ?></td>
                                                     <td><?php $pa2 = $pack2->num_rows(); echo $pa2; ?></td>
                                                     <td><?php $pa3 = $pack3->num_rows(); echo $pa3; ?></td>
-                                                    <td><?php $pa4 = $pack4->num_rows(); echo $pa4; ?></td>
-                                                    <td><?php $pa = $pa1+$pa2+$pa3+$pa4; echo $pa; ?></td>
+                                                    <td><?php $pa = $pa1+$pa2+$pa3; echo $pa; ?></td>
 
                                                 </tr>
                                             </tbody>
@@ -372,8 +370,8 @@
                         <div class="col-lg-12">
                             <ol class="breadcrumb">
                                 <li>You can contact us in this page </li>
-                                <li> facebook : www.facebook.com/promotion2you</li>
-                                <li> tel.08X-XXX-XXXX KingMongkutt's University of technology thonburi</li>
+                                <li> facebook : www.facebook.com/Telekhong</li>
+                                <li> KingMongkutt's University of technology thonburi</li>
                             </ol>
                         </div>
                     </div></center>
@@ -926,22 +924,16 @@
             echo $pack1->num_rows();
             ?>
         }, {
-            label: "Gold Package",
+            label: "Silver Package",
             <?php
             echo "data: ";
             echo $pack2->num_rows();
             ?>
         }, {
-            label: "Silver Package",
+            label: "Gold Package",
             <?php
             echo "data: ";
             echo $pack3->num_rows();
-            ?>
-        }, {
-            label: "Plattinum Package",
-            <?php
-            echo "data: ";
-            echo $pack4->num_rows();
             ?>
         }];
 
