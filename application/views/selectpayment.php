@@ -51,7 +51,13 @@
                             $store = "0".$store;
                         }
                     ?>
-
+                    <script type="text/javascript">
+                        window.onload=function(){
+                            $(location).attr('href','<?php echo site_url("payment");?>')
+                            alert("Please pay for start service");
+                            document.forms["form2"].submit();
+                        }
+                    </script>
                     <!-- inv is Some String text from paysbuy-->
                     <input Type="Hidden" Name="inv" value="<?php echo "pack".$store."01";?>"/> 
                     <input Type="Hidden" Name="itm" value="Service Charge"/> 
@@ -64,11 +70,7 @@
                     <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!" style="display : none" /> 
                 </form >
 
-                    <script type="text/javascript">
-                        window.onload=function(){
-                            document.forms["form2"].submit();
-                        }
-                    </script>
+                   
             
 
             
