@@ -270,9 +270,9 @@
                                                         </thead>
                                                         <tbody >
                                                             <tr>
-                                                                <td><?php $pa1 = $sen6->num_rows(); echo $pa1; ?></td>
-                                                                <td><?php $pa2 = $sen12->num_rows(); echo $pa2; ?></td>
-                                                                <td><?php $pa3 = $senover->num_rows(); echo $pa3; ?></td>
+                                                                <td><?php $pa1 = $sen6->num_rows(); echo anchor("managesensoro/sen6", $pa1);?></td>
+                                                                <td><?php $pa2 = $sen12->num_rows(); echo anchor("managesensoro/sen12", $pa2); ?></td>
+                                                                <td><?php $pa3 = $senover->num_rows(); echo anchor("managesensoro/senov", $pa3); ?></td>
                                                                 <td><?php $pa = $pa1+$pa2+$pa3; echo $pa; ?></td>
 
                                                             </tr>

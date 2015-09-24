@@ -304,14 +304,28 @@
                                             $no = $this->uri->segment(3)+1;
                                             // echo var_dump($rs);
                                             foreach ($rs as $r) {
+                                                $staown = "";
+                                                if ($r['status_sensoro_id'] == 1) {
+                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                }elseif ($r['status_sensoro_id'] == 2) {
+                                                    $staown = "<span class='label label-warning'>Blocked</span>";
+                                                }elseif ($r['status_sensoro_id'] == 3) {
+                                                    $staown = "<span class='label label-danger'>Baned</span>";
+                                                }
+                                                $sentype = "";
+                                                if ($r['sensoro_type'] == 1) {
+                                                    $sentype = "<span class='label label-primary'>Send</span>";
+                                                }elseif ($r['sensoro_type'] == 2) {
+                                                    $sentype = "<span class='label label-info'>Count</span>";
+                                                }
                                                 echo "<tr>";
                                                 echo "<td>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
                                                 echo "<td>".$r['major']."</td>";
                                                 echo "<td>".$r['minor']."</td>";
-                                                echo "<td>".$r['sensoro_type']."</td>";
+                                                echo "<td>".$sentype."</td>";
                                                 echo "<td>".substr($r['sensoro_date'],0,10)."</td>";
-                                                echo "<td>".$r['status_sensoro_id']."</td>";
+                                                echo "<td>".$staown."</td>";
                                                 echo "<td align= center>";
                                                 // echo "<button type='button' class='btn btn-success' onclick='showdetailbatt(".$r["sensoro_id"].")' data-toggle='modal' data-target='#myModal3' >Change Battery</button>";
                                                 echo "<button type='button' class='btn btn-success'  data-toggle='modal' data-target='#myModalbatt".$r['sensoro_id']."'  >";

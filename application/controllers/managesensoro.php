@@ -57,6 +57,7 @@ class Managesensoro extends CI_Controller{
 				$data['rs'] = $this->db->select("*")
 								->from("sensoro a")
 								->join("store b","a.store_id = b.store_id")
+								->order_by("sensoro_date")
 								->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
 				$this->load->view("managesensoro",$data);
 			
@@ -127,6 +128,7 @@ class Managesensoro extends CI_Controller{
 								->from("sensoro")
 								->join("store","sensoro.store_id = store.store_id")
 								->like("store_name",$name)
+								->order_by("sensoro_date")
 								->get()->result_array();
 				
 				// echo $this->db->last_query();
@@ -201,11 +203,235 @@ class Managesensoro extends CI_Controller{
 						->from("sensoro")
 						->join("store","sensoro.store_id = store.store_id")
 						->where("sensoro.store_id",$storeid)
+						->order_by("sensoro_date")
 						->get()->result_array();
 		
 		// echo $this->db->last_query();
 		$this->load->view("managesensoro",$data);
 			
+	}
+
+
+	public function sen6(){
+		$sqluser = "Select * from sensoro";
+		$sqluserav = "Select * from sensoro where status_sensoro_id = '1'";
+		$sqluserbl = "Select * from sensoro where status_sensoro_id = '2'";
+		$sqluserba = "Select * from sensoro where status_sensoro_id = '3'";
+		$sqluserty1 = "Select * from sensoro where sensoro_type = '1'";
+		$sqluserty2 = "Select * from sensoro where sensoro_type = '2'";
+		$data['num1'] = $this->db->query($sqluser);
+		$data['num2'] = $this->db->query($sqluserav);
+		$data['num3'] = $this->db->query($sqluserbl);
+		$data['num4'] = $this->db->query($sqluserba);
+		$data['num5'] = $this->db->query($sqluserty1);
+		$data['num6'] = $this->db->query($sqluserty2);
+
+		$y = date("Y");
+		$d = date("j");
+		$m = date("n");
+		$a = $m-6;
+		if ($a < 1) {
+			$m6 = 12+$a;
+			$y6 = $y - 1;
+		}else{
+			$m6 = $a;
+			$y6 = $y;
+		}
+		if ($m6 < 10) {
+			$m6 = "0".$m6;
+		}
+		$d6 = $d-1;
+		if ($d6 < 10) {
+			$d6 = "0".$d6;
+		}
+
+		if ($d < 10) {
+			$d = "0".$d;
+		}
+
+		
+		$y1 = $y-1;
+		if ($m < 10) {
+			$m1 = "0".$m;
+		}else{
+			$m1 = $m;
+		}
+
+		// count day of month
+		
+		$daymonth = cal_days_in_month(CAL_GREGORIAN,$m,$y1);
+		$dayover = $d-1;
+		$mov = $m;
+		$yov = $y1;
+		if ($dayover > $daymonth) {
+			$mov = $mov - 1;
+			$dayover = cal_days_in_month(CAL_GREGORIAN,$mov,$y1);;
+			
+			if ($mov == 0) {
+				$mov = "01";
+				$yov = $yov - 1;
+			}
+			
+		}
+		if ($dayover < 10) {
+			$dayover = "0".$dayover;
+		}
+		if ($mov < 10) {
+			$mov = "0".$mov;
+		}
+
+		$sqlsen6 = "select * from sensoro join store on sensoro.store_id = store.store_id where sensoro_date between '".$y6."-".$m6."-".$d6."' and '".$y."-".$m1."-".$d."'; ";
+		$data['rs'] = $this->db->query($sqlsen6)->result_array();
+		$this->load->view("managesensoro",$data);
+
+	}
+
+	public function sen12(){
+		$sqluser = "Select * from sensoro";
+		$sqluserav = "Select * from sensoro where status_sensoro_id = '1'";
+		$sqluserbl = "Select * from sensoro where status_sensoro_id = '2'";
+		$sqluserba = "Select * from sensoro where status_sensoro_id = '3'";
+		$sqluserty1 = "Select * from sensoro where sensoro_type = '1'";
+		$sqluserty2 = "Select * from sensoro where sensoro_type = '2'";
+		$data['num1'] = $this->db->query($sqluser);
+		$data['num2'] = $this->db->query($sqluserav);
+		$data['num3'] = $this->db->query($sqluserbl);
+		$data['num4'] = $this->db->query($sqluserba);
+		$data['num5'] = $this->db->query($sqluserty1);
+		$data['num6'] = $this->db->query($sqluserty2);
+
+		$y = date("Y");
+		$d = date("j");
+		$m = date("n");
+		$a = $m-6;
+		if ($a < 1) {
+			$m6 = 12+$a;
+			$y6 = $y - 1;
+		}else{
+			$m6 = $a;
+			$y6 = $y;
+		}
+		if ($m6 < 10) {
+			$m6 = "0".$m6;
+		}
+		$d6 = $d-1;
+		if ($d6 < 10) {
+			$d6 = "0".$d6;
+		}
+
+		if ($d < 10) {
+			$d = "0".$d;
+		}
+
+		
+		$y1 = $y-1;
+		if ($m < 10) {
+			$m1 = "0".$m;
+		}else{
+			$m1 = $m;
+		}
+
+		// count day of month
+		
+		$daymonth = cal_days_in_month(CAL_GREGORIAN,$m,$y1);
+		$dayover = $d-1;
+		$mov = $m;
+		$yov = $y1;
+		if ($dayover > $daymonth) {
+			$mov = $mov - 1;
+			$dayover = cal_days_in_month(CAL_GREGORIAN,$mov,$y1);;
+			
+			if ($mov == 0) {
+				$mov = "01";
+				$yov = $yov - 1;
+			}
+			
+		}
+		if ($dayover < 10) {
+			$dayover = "0".$dayover;
+		}
+		if ($mov < 10) {
+			$mov = "0".$mov;
+		}
+
+		$sqlsen12 = "select * from sensoro join store on sensoro.store_id = store.store_id  where sensoro_date between '".$y1."-".$m1."-".$d."' and '".$y6."-".$m6."-".$d."'; ";
+		$data['rs'] = $this->db->query($sqlsen12)->result_array();
+		$this->load->view("managesensoro",$data);
+
+	}
+
+	public function senov(){
+		$sqluser = "Select * from sensoro";
+		$sqluserav = "Select * from sensoro where status_sensoro_id = '1'";
+		$sqluserbl = "Select * from sensoro where status_sensoro_id = '2'";
+		$sqluserba = "Select * from sensoro where status_sensoro_id = '3'";
+		$sqluserty1 = "Select * from sensoro where sensoro_type = '1'";
+		$sqluserty2 = "Select * from sensoro where sensoro_type = '2'";
+		$data['num1'] = $this->db->query($sqluser);
+		$data['num2'] = $this->db->query($sqluserav);
+		$data['num3'] = $this->db->query($sqluserbl);
+		$data['num4'] = $this->db->query($sqluserba);
+		$data['num5'] = $this->db->query($sqluserty1);
+		$data['num6'] = $this->db->query($sqluserty2);
+
+		$y = date("Y");
+		$d = date("j");
+		$m = date("n");
+		$a = $m-6;
+		if ($a < 1) {
+			$m6 = 12+$a;
+			$y6 = $y - 1;
+		}else{
+			$m6 = $a;
+			$y6 = $y;
+		}
+		if ($m6 < 10) {
+			$m6 = "0".$m6;
+		}
+		$d6 = $d-1;
+		if ($d6 < 10) {
+			$d6 = "0".$d6;
+		}
+
+		if ($d < 10) {
+			$d = "0".$d;
+		}
+
+		
+		$y1 = $y-1;
+		if ($m < 10) {
+			$m1 = "0".$m;
+		}else{
+			$m1 = $m;
+		}
+
+		// count day of month
+		
+		$daymonth = cal_days_in_month(CAL_GREGORIAN,$m,$y1);
+		$dayover = $d-1;
+		$mov = $m;
+		$yov = $y1;
+		if ($dayover > $daymonth) {
+			$mov = $mov - 1;
+			$dayover = cal_days_in_month(CAL_GREGORIAN,$mov,$y1);;
+			
+			if ($mov == 0) {
+				$mov = "01";
+				$yov = $yov - 1;
+			}
+			
+		}
+		if ($dayover < 10) {
+			$dayover = "0".$dayover;
+		}
+		if ($mov < 10) {
+			$mov = "0".$mov;
+		}
+
+		$sqlsenover = "select * from sensoro join store on sensoro.store_id = store.store_id  where sensoro_date <= '".$yov."-".$mov."-".$dayover."' ; ";
+		$data['rs'] = $this->db->query($sqlsenover)->result_array();
+		$this->load->view("managesensoro",$data);
+
 	}
 
 }

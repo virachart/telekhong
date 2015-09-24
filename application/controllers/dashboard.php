@@ -50,6 +50,7 @@ class Dashboard extends CI_Controller{
 				}
 
 				// count day of month
+				
 				$daymonth = cal_days_in_month(CAL_GREGORIAN,$m,$y1);
 				$dayover = $d-1;
 				$mov = $m;

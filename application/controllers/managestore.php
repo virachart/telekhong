@@ -51,13 +51,13 @@ class Managestore extends CI_Controller{
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
-				$data['rs'] = $this->db->select("*,count(sensoro_id) AS sennum")
+				$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
 								->from("store")
 								->join("owner","store.owner_id=owner.owner_id")
 								->join("user","owner.fb_id=user.fb_id")
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
-								->group_by("sensoro.store_id")
+								->group_by("store.store_id")
 								->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
 								
 				$this->load->view("managestore",$data);
@@ -112,7 +112,7 @@ class Managestore extends CI_Controller{
 				
 
 				if ($find == "owner_name") {
-					$data['rs'] = $this->db->select("*,count(sensoro_id) AS sennum")
+					$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
 								->from("store")
 								->join("owner","store.owner_id=owner.owner_id")
 								->join("user","owner.fb_id=user.fb_id")
@@ -123,7 +123,7 @@ class Managestore extends CI_Controller{
 								->get()->result_array();
 				}
 				if ($find == "store_name") {
-					$data['rs'] = $this->db->select("*,count(sensoro_id) AS sennum")
+					$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
 								->from("store")
 								->join("owner","store.owner_id=owner.owner_id")
 								->join("user","owner.fb_id=user.fb_id")
@@ -158,7 +158,7 @@ class Managestore extends CI_Controller{
 		
 
 		
-		$data['rs'] = $this->db->select("*,count(sensoro_id) AS sennum")
+		$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
 					->from("store")
 					->join("owner","store.owner_id=owner.owner_id")
 					->join("user","owner.fb_id=user.fb_id")
