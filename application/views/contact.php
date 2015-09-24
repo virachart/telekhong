@@ -178,26 +178,25 @@
                     <div class="row">
                         <div class="col-lg-6">
 
-                            <form role="form">
+                            <?php 
+                                echo form_open('contact/sendmail');
+                            ?>
 
                                 <div class="form-group">
                                     <label>Topic</label>
-                                    <input class="form-control" placeholder="Enter topic">
-                                </div>
-
-                                <div class="form-group">
-                                    <label>File input (optional)</label>
-                                    <input type="file">
+                                    <input class="form-control" name="topic" placeholder="Enter topic">
                                 </div>
 
                                 <div class="form-group">
                                     <label>Enter detail</label>
-                                    <textarea class="form-control" rows="3"></textarea>
+                                    <textarea class="form-control" name="detail" rows="3"></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-default">Send</button>
 
-                            </form>
+                            <?php 
+                                echo form_close();
+                            ?>
 
                         </div>
 
