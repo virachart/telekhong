@@ -10,7 +10,7 @@ class Manageowner extends CI_Controller{
 		if ($this->session->userdata('id') != null) {
 			if ($this->session->userdata('admin') != null) {
 				$config['base_url'] = base_url()."index.php/manageowner/index";
-				$config['per_page'] = 5;
+				$config['per_page'] = 15;
 				//count_all(); -> count data in table
 				$counttable = $this->db->count_all("owner");
 				$config['total_rows'] = $counttable;
@@ -51,9 +51,11 @@ class Manageowner extends CI_Controller{
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
-				$data['rs'] = $this->db->select("*")
+				$data['rs'] = $this->db->select("*,count(store_id) AS storenum")
 								->from("owner")
 								->join("user","owner.fb_id=user.fb_id")
+								->join("store","owner.owner_id = store.owner_id","left")
+								->group_by("owner.owner_id")
 								->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
 								
 				$this->load->view("manageowner",$data);
@@ -67,17 +69,6 @@ class Manageowner extends CI_Controller{
 	}
 
 
-	public function getdetail(){
-		$id = $this->input->post("id"); 
-		$sqlgetdetail = "select * from owner join user on owner.fb_id = user.fb_id where owner_id = '".$id."' ";
-		$data = $this->db->query($sqlgetdetail)->row_array();
-		$arsend = array('ownerid' => $data['owner_id'] ,
-						'name' => $data['fb_name'] ,
-						'email' => $data['owner_email'] ,
-						'tel' => $data['owner_tel'] ,
-						'status' => $data['status_owner'] );
-		echo json_encode($arsend);
-	}
 
 	public function del($id){
 		$this->db->delete("owner",array("owner_id"=>$id));
@@ -112,13 +103,28 @@ class Manageowner extends CI_Controller{
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
 				if ($find == "owner_name") {
-					$data['rs'] = $this->db->select("*")->from("owner")->join("user","owner.fb_id=user.fb_id")->like("fb_name",$name)->get()->result_array();
+					$data['rs'] = $this->db->select("*,count(store_id) AS storenum")->from("owner")
+									->join("user","owner.fb_id=user.fb_id")
+									->join("store","owner.owner_id = store.owner_id","left")
+									->like("fb_name",$name)
+									->group_by("owner.owner_id")
+									->get()->result_array();
 				}
 				if ($find == "owner_email") {
-					$data['rs'] = $this->db->select("*")->from("owner")->join("user","owner.fb_id=user.fb_id")->like("owner_email",$name)->get()->result_array();
+					$data['rs'] = $this->db->select("*,count(store_id) AS storenum")->from("owner")
+									->join("user","owner.fb_id=user.fb_id")
+									->join("store","owner.owner_id = store.owner_id","left")
+									->like("owner_email",$name)
+									->group_by("owner.owner_id")
+									->get()->result_array();
 				}
 				if ($find == "owner_tel") {
-					$data['rs'] = $this->db->select("*")->from("owner")->join("user","owner.fb_id=user.fb_id")->like("owner_tel",$name)->get()->result_array();
+					$data['rs'] = $this->db->select("*,count(store_id) AS storenum")->from("owner")
+									->join("user","owner.fb_id=user.fb_id")
+									->join("store","owner.owner_id = store.owner_id","left")
+									->like("owner_tel",$name)
+									->group_by("owner.owner_id")
+									->get()->result_array();
 				}
 				// echo $this->db->last_query();
 				

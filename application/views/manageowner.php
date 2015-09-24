@@ -55,59 +55,7 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
+                
                 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('first_name');?> <b class="caret"></b></a>
@@ -261,15 +209,27 @@
                                             $no = $this->uri->segment(3)+1;
                                             // echo var_dump($rs);
                                             foreach ($rs as $r) {
+                                                $staown = "";
+                                                if ($r['status_owner'] == 1) {
+                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                }elseif ($r['status_owner'] == 2) {
+                                                    $staown = "<span class='label label-warning'>Blocked</span>";
+                                                }elseif ($r['status_owner'] == 3) {
+                                                    $staown = "<span class='label label-danger'>Baned</span>";
+                                                }
                                                 echo "<tr>";
                                                 echo "<td>".$no."</td>";
                                                 echo "<td>".$r['fb_name']."</td>";
                                                 echo "<td>".$r['owner_email']."</td>";
                                                 echo "<td>".$r['owner_tel']."</td>";
-                                                echo "<td>".$r['status_owner']."</td>";
+                                                echo "<td>".$staown."</td>";
                                                 echo "<td>".$r['owner_date']."</td>";
                                                 echo "<td align= center>";
                                                 // echo "<button type='button' class='btn btn-warning' onclick='showdetail(".$r["owner_id"].")' data-toggle='modal' data-target='#myModal1'>Edit</button>";
+                                                echo "<button type='button' class='btn btn-info'  data-toggle='modal' data-target='#myModaldetail".$r['owner_id']."'  >";
+                                                echo "Detail";
+                                                echo "</button>";
+                                                echo "&nbsp";
                                                 echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['owner_id']."'  >";
                                                 echo "Edit";
                                                 echo "</button>";
@@ -277,9 +237,58 @@
                                                 echo anchor("manageowner/del/".$r["owner_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
                                                 echo "<td>";
+                                                
+                                                echo "<div class='modal fade' id='myModaldetail".$r['owner_id']."' role='dialog'>
+                                                        <div class='modal-dialog'>
+                                                          <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <button type='button' class='close' data-dismiss='modal'></button>
+                                                                <h4 class='modal-title' >Owner Detail</h4>
+                                                            </div>
+                                                            <div class='modal-body'style='padding:50px 50px;'>
+
+                                                                <table style='margin : 0 auto;'>
+                                                                    <tr >
+                                                                        <td align='right'>Owner ID : &nbsp</td>
+                                                                        <td>".$r['owner_id']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Name : </td>
+                                                                        <td >".$r['fb_name']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Email : </td>
+                                                                        <td>".$r['owner_email']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Telephone : </td>
+                                                                        <td>".$r['owner_tel']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr>
+                                                                        <td align='right'>Status : </td>
+                                                                        <td>".$staown."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Number of Store : </td>
+                                                                        <td>".$r['storenum']." &nbsp ".anchor("managestore/searchstore/".$r["owner_id"], "<button type='button' class='btn btn-info'>Show all store</button>")." </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class='modal-footer'>
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>";
                                                 echo "<div class='modal fade' id='myModal".$r['owner_id']."' role='dialog'>
-                                                    <div class='modal-dialog'>
-                                                        <div class='modal-content'>
+                                                        <div class='modal-dialog'>
+                                                          <div class='modal-content'>
                                                             <div class='modal-header'>
                                                                 <button type='button' class='close' data-dismiss='modal'></button>
                                                                 <h4 class='modal-title' >Edit Owner</h4>
@@ -350,8 +359,8 @@
                     <div class="col-lg-12">
                     <ol class="breadcrumb">
                         <li>You can contact us in this page </li>
-                        <li> facebook : www.facebook.com/promotion2you</li>
-                        <li> tel.08X-XXX-XXXX KingMongkutt's University of technology thonburi</li>
+                        <li> facebook : www.facebook.com/Telekhong</li>
+                        <li> KingMongkutt's University of technology thonburi</li>
                     </ol>
                 </div>
                 </div></center>

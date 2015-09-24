@@ -186,6 +186,8 @@
                                         <td>Store Name</td>
                                         <td>Owner Name</td>
                                         <td>Telephone</td>
+                                        <td>Package</td>
+                                        <td>Status</td>
                                         <td>Expire Date</td>
                                         <td>Register Date</td>
                                     </tr>
@@ -199,15 +201,29 @@
                                             $no = $this->uri->segment(3)+1;
                                             // echo var_dump($rs);
                                             foreach ($rs as $r) {
+                                                $staown = "";
+                                                if ($r['status_store_id'] == 1) {
+                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                }elseif ($r['status_store_id'] == 2) {
+                                                    $staown = "<span class='label label-warning'>Blocked</span>";
+                                                }elseif ($r['status_store_id'] == 3) {
+                                                    $staown = "<span class='label label-danger'>Baned</span>";
+                                                }
                                                 echo "<tr>";
                                                 echo "<td>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
                                                 echo "<td>".$r['fb_name']."</td>";
                                                 echo "<td>".$r['tel']."</td>";
+                                                echo "<td>".$r['package_name']."</td>";
+                                                echo "<td>".$staown."</td>";
                                                 echo "<td>".$r['expire_date']."</td>";
-                                                echo "<td>".$r['store_date']."</td>";
+                                                echo "<td>".substr($r['store_date'], 0,10)."</td>";
                                                 echo "<td align= center>";
                                                 // echo anchor("managestore/edit/".$r["store_id"], "<button type='button' class='btn btn-warning'>Edit</button>");
+                                                echo "<button type='button' class='btn btn-info'  data-toggle='modal' data-target='#myModaldetail".$r['store_id']."'  >";
+                                                echo "Detail";
+                                                echo "</button>";
+                                                echo "&nbsp";
                                                 echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['store_id']."'  >";
                                                 echo "Edit";
                                                 echo "</button>";
@@ -215,6 +231,59 @@
                                                 echo anchor("managestore/del/".$r["store_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
                                                 echo "<td>";
+                                                echo "<div class='modal fade' id='myModaldetail".$r['store_id']."' role='dialog'>
+                                                        <div class='modal-dialog'>
+                                                          <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <button type='button' class='close' data-dismiss='modal'></button>
+                                                                <h4 class='modal-title' >Store Detail</h4>
+                                                            </div>
+                                                            <div class='modal-body'style='padding:50px 50px;'>
+
+                                                                <table style='margin : 0 auto;'>
+                                                                    <tr >
+                                                                        <td align='right'>Store ID : &nbsp</td>
+                                                                        <td>".$r['store_id']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Store Name : </td>
+                                                                        <td >".$r['store_name']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Owner Store : </td>
+                                                                        <td>".$r['fb_name']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Telephone : </td>
+                                                                        <td>".$r['tel']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Package : </td>
+                                                                        <td>".$r['package_name']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr>
+                                                                        <td align='right'>Status : </td>
+                                                                        <td>".$staown."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Number of Khong : </td>
+                                                                        <td>".$r['sennum']." &nbsp ".anchor("managesensoro/searchsen/".$r["store_id"], "<button type='button' class='btn btn-info'>Show all Khong</button>")." </td>
+                                                                    </tr>
+                                                                </table>
+                                                            </div>
+                                                            <div class='modal-footer'>
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>";
                                                 echo "<div class='modal fade' id='myModal".$r['store_id']."' role='dialog'>
                                                     <div class='modal-dialog'>
                                                         <div class='modal-content'>
