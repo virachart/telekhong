@@ -36,7 +36,54 @@
     </head>
 
     <body>
+        <script>
+        function checkfield() {
 
+            if (stn.value == '') {
+                alert("Please input store name.");
+                document.getElementById("stn").focus();
+                return false;
+            }else if (address.value == '') {
+                alert("Please input store address.");
+                document.getElementById("address").focus();
+                return false;
+            }else if (telnum.value == '') {
+                alert("Please input store telephone number.");
+                document.getElementById("telnum").focus();
+                return false;
+            }else if (timepicker1.value == '') {
+                alert("Please input store open time.");
+                document.getElementById("timepicker1").focus();
+                return false;
+            }else if (timepicker2.value == '') {
+                alert("Please input store close time.");
+                document.getElementById("timepicker2").focus();
+                return false;
+            }else if (des.value == '') {
+                alert("Please input store detail.");
+                document.getElementById("des").focus();
+                return false;
+            }else if (document.getElementById("image").value == '') {
+                alert("Please upload store picture.");
+                 document.getElementById("image").focus();
+                return false;
+            }
+            return true;
+        }
+        function numCheck(tel) {
+            var tele = document.getElementById("telnum").value; 
+            e_k=event.keyCode
+            //if (((e_k < 48) || (e_k > 57)) && e_k != 46 ) {
+            if (e_k != 13 && (e_k < 48) || (e_k > 57))  {
+                    event.returnValue = false;
+                    alert("Input Number Only");
+                }
+                else if(tele.length>10){
+                    event.returnValue = false;
+                    alert("Your telephone number must not be over 10 digits");
+                }
+        }          
+        </script>
 
             
 
@@ -44,20 +91,20 @@
 
                 <center><h3>Create Store</h3></center><hr>
 
-                <?php echo form_open_multipart("createstore/create"); ?>
+                <form action="http://localhost/telekhong2/index.php/createstore/create" method="post" accept-charset="utf-8" enctype="multipart/form-data" onsubmit="javascript:return checkfield();">
                 <!-- store name -->
                 <div class="col-lg-6" style="text-align:right;" >Store Name :</div>
-                <div class="col-lg-6"><input type="text" name="storename" class="form-control" placeholder="Store name" style="width:200px"></div>
+                <div class="col-lg-6"><input type="text" name="storename" class="form-control" placeholder="Store name" style="width:200px" id="stn"></div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- store address -->
                 <div class="col-lg-6" style="text-align:right;" >Address :</div>
-                <div class="col-lg-6"><textarea class="form-control" name="address" rows="3" style="width:250px" placeholder="Address"></textarea></div>
+                <div class="col-lg-6"><textarea class="form-control" name="address" rows="3" style="width:250px" placeholder="Address" id="address"></textarea></div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- store Tel -->
                 <div class="col-lg-6" style="text-align:right;" >Telephone Number :</div>
-                <div class="col-lg-6"><input type="text" name="tel" class="form-control" placeholder="0X-XXXX-XXXX" style="width:200px"></div>
+                <div class="col-lg-6"><input type="text" name="tel" class="form-control" placeholder="0X-XXXX-XXXX" style="width:200px" id="telnum" onkeypress= numCheck();></div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- store Open Time -->
@@ -83,13 +130,13 @@
 
                 <!-- store detail -->
                 <div class="col-lg-6" style="text-align:right;" >Store Detail :</div>
-                <div class="col-lg-6"><textarea class="form-control" name="detail" rows="3" style="width:250px" placeholder="Detail of Store"></textarea></div>
+                <div class="col-lg-6"><textarea class="form-control" name="detail" rows="3" style="width:250px" placeholder="Detail of Store" id="des"></textarea></div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- store picture -->
                 <div class="col-lg-6" style="text-align:right;" >Store Picture :</div>
                 <div class="form-group col-lg-6">
-                    <input type="file" id="image" name="picture">
+                    <input type="file" id="image" name="picture" >
                     <label>(Picture size less than 1024x1024 pixel is best size)</label>
                 </div>
                 <div class="col-lg-12" style="margin-top:30px;"></div>
@@ -98,7 +145,7 @@
 
                     <div class="col-lg-6" style="text-align:right;" >Package :</div>
                     <div class="col-lg-6">
-                      <select class="form-control col-lg-8" name="pack" style="width:300px ;">
+                    <select class="form-control col-lg-8" name="pack" style="width:300px ;">
 
                       <?php
                         foreach ($pack as $r) {
@@ -121,7 +168,7 @@
                     <table style="width:100%;color:#000000">
                 <tr>
                     <th colspan="2" style="width:10%">Package</th>
-                    <td>Copper</td>
+                    <td>Bronze</td>
                     <td>Silver</td>
                     <td>Gold</td>
                 </tr>
@@ -212,7 +259,7 @@
 
             </div>	
 
-            <?php echo form_close();?>
+            </form>
 
             <div>
              <br>

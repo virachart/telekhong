@@ -19,7 +19,48 @@
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 </head>
 <body>
+		<script type="text/javascript">
 
+		function check(form_id,email,tel) {
+			
+			
+			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+			var address = document.forms[form_id].elements[email].value;
+			var tele = document.forms[form_id].elements[tel].value;    
+		      
+				if(tele.length<1){
+					alert('Please input your Telephone number');
+					document.forms[form_id].elements[tel].focus();
+					return false;
+				}else if(address.length<1){
+					alert('Please input your email address');
+					document.forms[form_id].elements[email].focus();
+					return false;
+				}
+				else if(filter.test(address)==false){
+					alert('Invalid Email Address');
+					document.forms[form_id].elements[email].focus();
+
+					return false;
+				}
+				alert('This Email is ok');
+
+			}
+
+		function numCheck(form_id,tel) {
+			var tele = document.forms[form_id].elements[tel].value; 
+			e_k=event.keyCode
+			//if (((e_k < 48) || (e_k > 57)) && e_k != 46 ) {
+			if (e_k != 13 && (e_k < 48) || (e_k > 57))  {
+					event.returnValue = false;
+					alert("Input Number Only");
+				}
+				else if(tele.length>10){
+					event.returnValue = false;
+					alert("Your telephone number must not be over 10 digits");
+				}
+		}	
+		</script>
 	<div id="wrapper">
 
             <!-- Navigation -->
@@ -44,16 +85,16 @@
             <div id="page-wrapper">
                 <div class="container-fluid">
                 <h1>Create Owner Info</h1><br>
-<form action="<?php echo site_url("regis/add");?>" method="post">
+<form name="info" action="<?php echo site_url("regis/add");?>" method="post" onsubmit="javascript:return check('info','email','tel');">
 		<table>
 			<tr>
-				<td>Telephone Number : </td>
-				<td><input class="form-control" type="text" name="tel" value=""></td>
+				<td>Telephone Number : &nbsp</td>
+				<td><input class="form-control" type="text" name="tel" value="" onkeypress= numCheck('info','tel');></td>
 			</tr>
 			<tr><td>&nbsp</td></tr>
 			<tr>
 				<td>Email : </td>
-				<td><input class="form-control" type="text" name="email" value=""></td>
+				<td><input class="form-control" type="text" name="email" value="" id="email"></td>
 			</tr>
 			<tr><td>&nbsp</td></tr>
 		</table>

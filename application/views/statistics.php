@@ -349,20 +349,10 @@
                                         <table class="table table-bordered table-hover table1">
                                             <thead>
                                                 <tr>
-
-<<<<<<< HEAD
-                                                    <td>Normal Package</td>
-                                                    <td>Silver Package</td>
-                                                    <td>Gold Package</td>
-                                                    <td>Total</td>
-=======
                                                     <th>Normal Package</th>
                                                     <th>Gold Package</th>
                                                     <th>Silver Package</th>
-                                                    <th>Platnum Package</th>
                                                     <th>Total</th>
->>>>>>> 9fd6d397b421637d7432b76388403e1d3e1534c1
-
                                                 </tr>
                                             </thead>
                                             <tbody>
