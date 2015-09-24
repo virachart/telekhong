@@ -177,7 +177,7 @@ class Managesensoro extends CI_Controller{
 		//insert to sensoro table
 		$sql = "INSERT INTO `sensoro` (`uuid`, `major`, `minor`, `sensoro_code1`, `sensoro_code2`, `store_id`, `sensoro_type`) VALUES ('".$uuid."', '".$major."', '".$minor."', '".$strcode1."', '".$strcode2."', '6', '".$type."');";
 		$this->db->query($sql);
-		echo $this->db->last_query();
+		// echo $this->db->last_query();
 
 		$this->index();
 

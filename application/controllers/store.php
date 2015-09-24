@@ -75,6 +75,11 @@ class Store extends CI_Controller{
 					}elseif ($rsstorepay['package_id'] == 3) {
 						$this->session->set_userdata("statuspack", "3");
 					}
+					$data['follow'] = $this->db->select("*")
+										->from("follow")
+										->join("sensoro","follow.sensoro_id = sensoro.sensoro_id")
+										->join("store","sensoro.store_id = store.store_id")
+										->where('store_id',$storeid)->result_array();
 
 					$this->load->view("store",$data);
 				}
