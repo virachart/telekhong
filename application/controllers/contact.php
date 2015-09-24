@@ -42,12 +42,12 @@ class Contact extends CI_Controller{
 	public function sendmail(){
 		$emailuser = $this->session->userdata("email");
 
-		$config['protocol'] = 'sendmail';
-        $config['mailpath'] = '/usr/sbin/sendmail';
-        $config['charset'] = 'iso-8859-1';
-        $config['wordwrap'] = TRUE;
+		// $config['protocol'] = 'sendmail';
+  //       $config['mailpath'] = '/usr/sbin/sendmail';
+  //       $config['charset'] = 'iso-8859-1';
+  //       $config['wordwrap'] = TRUE;
 
-        $this->email->initialize($config);
+        // $this->email->initialize($config);
 
         $this->email->from($emailuser, 'Your Name');
         $this->email->to('firstza22@gmail.com');
