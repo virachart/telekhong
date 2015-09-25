@@ -392,10 +392,29 @@ body {
             <!-- Thumbnail Item Skin End -->
         </div>
     </div>
-    <div class="col-lg-4" style="margin-left:60px;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;">
+    <div class="col-lg-4" style="margin-left:60px;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;overflow-y: scroll;">
         <h1 >What is "<span style="color:#FF6600;">Telekhong</span>"</h1>
-        <p>Telekhong Description (ยังไม่คิดคำอธิบาย)</p>
-        <p><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1" style="margin-right:10px">View Package</button></p>
+        <p>Telekhong is message delivery service by passing intermediary device as name "<span style="color:#FF6600;">Khong</span>"</p>
+<p><span style="color:#FF6600;">What is this "Khong" ? :</span> Khong is iBeacon device  bluetooth 4.0. It works by  signal broadcasting around the area . When telekhong application come in area ( switch on bluetooth & 3g or wifi ) Khong will send a key to mobile application and application use a key to get message for show on application from telekhong server.</p>
+<p>Our services are divided into two groups of users.</p>
+<ul>
+<li><span style="color:#FF6600;">1.End user : </span>Receiver message , people who use application mobile (free)</li>
+<li><span style="color:#FF6600;">2.Store Owner : </span>sender message , people who registered (facebook account only) and create store on telekhong website ( Service charge )</li>
+</ul>
+<p>What is a benefit from registered with us?: </p>
+<ul>
+<li>1.broadcast message to many people.</li>
+<li>2.User statistics (for package silver & Gold)</li>
+<ul>
+<li><span style="color:#FF6600;">2.1 General :</span> Show ratio  of  people who use application (Group by age & gender).</li>
+<li><span style="color:#FF6600;">2.2 Message receive : </span>Show amount of people who received message and come to store.</li>
+<li><span style="color:#FF6600;">2.3 Come to store : </span>Show amount of people who received message and come to store.</li>
+<li><span style="color:#FF6600;">2.4 QR Buy :</span> Show amount of people who use qr code from message.</li>
+<li><span style="color:#FF6600;">2.5 Come back again :</span> Show amount of people who come to use qr code again. </li>
+    </ul>
+<li>3.Our service have 3 different package :&nbsp<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1" style="margin-right:10px">View Package</button></li>
+</ul>
+<p>How to payment ? : All store owner must have paysbuy account  for payment. Now It is only way for payment .</p>     
 
         <div class="modal fade" id="myModal1" role="dialog">
         <div class="modal-dialog modal-lg">
@@ -409,7 +428,7 @@ body {
                     <table style="width:100%;color:#000000">
                 <tr>
                     <th colspan="2" style="width:10%">Package</th>
-                    <td>Copper</td>
+                    <td>Bronze</td>
                     <td>Silver</td>
                     <td>Gold</td>
                 </tr>
@@ -420,7 +439,7 @@ body {
                     <td>15</td>       
                 </tr>
                 <tr>
-                    <th colspan="2" style="width:10%">Beacon Use</th>
+                    <th colspan="2" style="width:10%">Khong Use</th>
                     <td>1</td>
                     <td>2</td>
                     <td>2</td>
@@ -436,7 +455,7 @@ body {
                     <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
                 </tr>
                 <tr>
-                    <td >Info Receive</td>      
+                    <td >Message Receive</td>      
                     <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
                     <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
                     <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
@@ -494,13 +513,46 @@ body {
   <center><h1>Policy</h1></center>
     <div class="col-lg-3"></div>
     <div class="col-lg-6" style="overflow-y: scroll;height:520px;background-color:#fff;margin-top:20px;border-radius: 10px;border-color:#FF6600;border-style: solid;color:#303030;">
+        <h2>Telekhong policy</h2>
+
+<p><b>introduction</b></p>
+
+<ul>
+   <li><p>1. This policy is provide for all telekhong customer.</p></li>
+
+<li><p>2.Customer is person who want to use telekhong service.</p></li>
+
+<li><p>3. User is person who want to use telekhong application.</p></li>
+</ul>
+
+<p><b>Policy for service rent</b></p>
+<ul>
+<li><p>1. Customer can register on telekhong.me  website</p></li>
+
+<li><p>2. Customer can create store after registered and must payment on paysbuy website for unlock store.</p></li>
+
+<li><p>3.When a customer created store , we will sent "khong"  1-2  khongs for info broadcast</p></li>
+
+<li><p>4. "Khong" is the company's equipment do not wet and do not place them near heat.</p></li>
+
+<li><p>5. Customer should pay for service charge by package price per month per store.</p></li>
+
+<li><p>6.Package is a service level of telekhong service ,that have a 3 different level.</p></li>
+
+<li><p>7.Customer can login and register by facebook.com account only .</p></li>
+
+<li><p>8.We will lock customer's store when that store lack of payment more than 3 month.</p></li>
+
+<li><p>9. When a maturity of contract customer must give khong back to us if khong has broken or other damaged we will impound equipment cash pledge.</p></li>
+</ul>
+<br>
         <h2>นโยบาย ของ Telekhong</h2> 
         <p><b>บทนำ</b></p>
 <ul>
    <li><p>1.นโยบายนี้ จัดทำขึ้นเพื่อกลุ่มลูกค้าที่สมัครใช้บริการ Telekhong ทุกท่าน</p></li>
-   <li><p>2.Telekhong เป็นบริการส่งข่าวสาร ผ่านอุปกรณ์ ส่งสัญญาณ ibeacon สู่แอพลิเคชั่นบนมือถือระบบปฏิบัติการ ios ของผู้ใช้ ซึ่งจะเปิดให้กลุ่มลูกค้าสามารถสมัครใช้บริการได้ ผ่านเว็บไซต์ telekhong.me</p></li>
-   <li><p>3.ลูกค้า คือบุคคลหรือกลุ่มบุคคลที่ต้องการจะส่งข้อมูลข่าวสารใดๆผ่านทางบริการ telekhong</p></li>
-   <li><p>4.ผู้ใช้ คือ บุคคลที่่ใช้แอพลิเคชั่น telekhong ทุกคน</p></li>
+   
+   <li><p>2.ลูกค้า คือบุคคลหรือกลุ่มบุคคลที่ต้องการจะส่งข้อมูลข่าวสารใดๆผ่านทางบริการ telekhong</p></li>
+   <li><p>3.ผู้ใช้ คือ บุคคลที่่ใช้แอพลิเคชั่น telekhong ทุกคน</p></li>
 </ul>
 <p><b>นโยบายสำหรับผู้เช่าบริการ</b></p>
 <ul>
@@ -512,9 +564,8 @@ body {
     <li><p>5.เมื่อลูกค้าสร้างร้านค้าจะมีการเก็บค่าประกันอุปกรณ์ ibeacon. และลูกค้าต้องชำระค่าบริการ ทุกเดือน ตามราคาของ แต่ละ package</p></li>
     <li><p>6.package คือ ระดับ ของบริการต่างๆ ซึ่ง จะมีฟังก์ชั่น และราคาค่าบริการแตกต่างกันไป</p></li>
     <li><p>7.การล๊อคอิน สมัครสมาชิก ของลูกค้าและผู้ใช้ สามารถสมัครได้ผ่านช่องทางของ facebook เท่านั้น</p></li>
-    <li><p>8.ลูกค้าที่มีการสมัครใช้บริการตั้งแต่ระดับ silver ขึ้นไป สามารถดูข้อมูลสถิติ ของผู้ใช้ ซึ่งจะดึงข้อมูลของผู้ใช้บางส่วน จากการร้องขอผ่านทาง facebook </p></li>
-    <li><p>9.เมื่อลูกค้าขาดการชำระเงินครบ 3 เดือน บริษัทมีสิทธิ ปิดร้านของลูกค้านั้นๆ </p></li>
-    <li><p>10.ลูกค้าสามารถยกเลิกบริการได้ โดยนำอุปกรณ์ ibeacon คืนกับบริษัท หากอุปกรณ์ได้รับความเสียหาย หรือสูญหาย ทางบริษัทจะทำการยึดเงินประกันอุปกรณ์</p></li>
+    <li><p>8.เมื่อลูกค้าขาดการชำระเงินครบ 3 เดือน บริษัทมีสิทธิ ปิดร้านของลูกค้านั้นๆ </p></li>
+    <li><p>9.ลูกค้าสามารถยกเลิกบริการได้ โดยนำอุปกรณ์ ibeacon คืนกับบริษัท หากอุปกรณ์ได้รับความเสียหาย หรือสูญหาย ทางบริษัทจะทำการยึดเงินประกันอุปกรณ์</p></li>
 </ul>
     </div>
     <div class="col-lg-3"></div>
