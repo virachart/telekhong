@@ -143,6 +143,9 @@ class Store extends CI_Controller{
 			$this->session->set_userdata("statuspack", "3");
 		}
 
+		$sqlfollow = "select * from follow join sensoro on follow.sensoro_id = sensoro.sensoro_id where sensoro.store_id = '".$storeid."' ";
+					$data['follow'] = $this->db->query($sqlfollow);
+
 		$this->load->view("store",$data);
 				
 

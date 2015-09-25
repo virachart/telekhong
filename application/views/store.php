@@ -484,9 +484,12 @@
                                         
                                     }else{
                                         echo "<center><h2> --- No Information ---</h2> </center>";
-                                        echo '<script language="javascript">';
-                                        echo 'alert("Please upload at least 1 message for unlock statistics")';
-                                        echo '</script>';
+                                        $pack = $this->session->userdata('statuspack');
+                                        if ($pack == 2 || $pack == 3) {
+                                            echo '<script language="javascript">';
+                                            echo 'alert("Please upload at least 1 message for unlock statistics")';
+                                            echo '</script>';
+                                        }
                                     }
 
                                 ?>
