@@ -148,7 +148,7 @@
                                     <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Beacon</a>
+                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Khong</a>
                                 </li>
                             </ul>
                         </li>
@@ -203,7 +203,7 @@
                           <h3><?php
                             $numSen = $sensoro->num_rows();
                             echo $numSen;?></h3>
-                            <p>Beacon</p>
+                            <p>Khong</p>
                         </div>
                         <div class="icon">
                           <i class="fa fa-bullseye"></i>
@@ -291,7 +291,7 @@
                         <div class="col-lg-12" >
                             <div class="panel panel-red">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Beacon Graph </h3>
+                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Khong Graph </h3>
                                 </div>
                                 <div class="panel-body">
                                     <div id="morris-line-chart-sen"></div>

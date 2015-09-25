@@ -96,7 +96,7 @@
                                     <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
                                 </li>
                                 <li class="active">
-                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Beacon</a>
+                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Khong</a>
                                 </li>
                             </ul>
                         </li>
@@ -113,14 +113,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Manage Beacon
+                            Manage Khong
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>dashboard">Dashboard</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-table"></i> Manage Beacon                        
+                                <i class="fa fa-table"></i> Manage Khong                       
                              </li>
                         </ol>
                     </div>
@@ -133,8 +133,8 @@
                 Avaliable Store is :<span class="badge"><?php echo $num2->num_rows(); ?></span><br>
                 Blocked Store is : <span class="badge"><?php echo $num3->num_rows(); ?></span><br>
                 Ban Store is : <span class="badge"><?php echo $num4->num_rows(); ?></span><br>
-                Beacon Type 1 is : <span class="badge"><?php echo $num5->num_rows(); ?></span><br>
-                Beacon Type 2 is : <span class="badge"><?php echo $num6->num_rows(); ?></span><br>
+                Khong Type 1 is : <span class="badge"><?php echo $num5->num_rows(); ?></span><br>
+                Khong Type 2 is : <span class="badge"><?php echo $num6->num_rows(); ?></span><br>
                 
                 </div>
 
@@ -188,7 +188,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Create Beacon</h4>
+                    <h4 class="modal-title" >Create Khong</h4>
                 </div>
                 <div class="modal-body"style="padding:50px 50px;">
 
@@ -212,7 +212,7 @@
                             <td align="center">Type of Work :</td>
                             <td align="center">
                                 <select class="form-control" name="type" id="type" style="width:300px ;">  
-                                    <option value="1">Type 1 : Use for send information</option>
+                                    <option value="1">Type 1 : Use for send message</option>
                                     <option value="2">Type 2 : Use for check customer</option>
                                 </select>
                             </td>
@@ -268,11 +268,11 @@
         </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <center><h2>All Sensoro</h2></center>
+                        <center><h2>Total of Khong</h2></center>
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div class="input-group" style="margin-bottom:20px">
-                                        <button type='button' class='btn btn-primary col-sm-2' data-toggle="modal" data-target="#myModalcre1" >Create Sensoro + </button>
+                                        <button type='button' class='btn btn-primary col-sm-2' data-toggle="modal" data-target="#myModalcre1" >Create Khong + </button>
                                    
                                     
                                     <form action="<?php echo site_url('managestore/search');?>" method = "post">
@@ -289,7 +289,7 @@
                                         <td>Store Name</td>
                                         <td>Major</td>
                                         <td>Minor</td>
-                                        <td>Sensoro Type</td>
+                                        <td>Khong Type</td>
                                         <td>Battery Date</td>
                                         <td>Status</td>
                                         <td style="text-align: center">Action</td>
@@ -347,13 +347,13 @@
                                                             <div class='modal-content'>
                                                                 <div class='modal-header'>
                                                                     <button type='button' class='close' data-dismiss='modal'></button>
-                                                                    <h4 class='modal-title' >Edit Beacon</h4>
+                                                                    <h4 class='modal-title' >Edit Khong</h4>
                                                                 </div>
                                                                 <div class='modal-body'style='padding:50px 50px;'>
 
                                                                     <table>
                                                                         <tr >
-                                                                            <td align='center'>Sensoro ID : </td>
+                                                                            <td align='center'>Khong ID : </td>
                                                                             <td align='center'><input type='text' id='senid".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['sensoro_id']."' disabled></td>
                                                                         </tr>
                                                                         <tr><td>&nbsp</td></tr>
@@ -395,14 +395,14 @@
                                                                                     $sta3 = "selected";
                                                                                 }
 
-                                                                                echo  "<option id='type1' value='1' ".$se1.">Type 1 : Use for send information</option>
+                                                                                echo  "<option id='type1' value='1' ".$se1.">Type 1 : Use for send message</option>
                                                                                     <option id='type2' value='2' ".$se2.">Type 2 : Use for check customer</option>
                                                                                 </select>
                                                                             </td>
                                                                         </tr>
                                                                         <tr><td>&nbsp</td></tr>
                                                                         <tr >
-                                                                            <td align='center'>Status Sensoro : &nbsp</td>
+                                                                            <td align='center'>Status Khong : &nbsp</td>
                                                                             <td align='center'>
                                                                                 <select class='form-control' name='type' id='statusdetail".$r['sensoro_id']."' style='width:300px ;'>  
                                                                                     <option id='status1' value='1' ".$sta1.">Avaliable</option>
@@ -433,13 +433,13 @@
                                                             <div class='modal-content'>
                                                                 <div class='modal-header'>
                                                                     <button type='button' class='close' data-dismiss='modal'></button>
-                                                                    <h4 class='modal-title' >Change Battery Beacon</h4>
+                                                                    <h4 class='modal-title' >Change Battery Khong</h4>
                                                                 </div>
                                                                 <div class='modal-body'style='padding:50px 50px;'>
 
                                                                     <table>
                                                                         <tr >
-                                                                            <td align='center'>Sensoro ID : </td>
+                                                                            <td align='center'>Khong ID : </td>
                                                                             <td align='center'><input type='text' id='senidbatt".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['sensoro_id']."' disabled></td>
                                                                         </tr>
                                                                         <tr><td>&nbsp</td></tr>

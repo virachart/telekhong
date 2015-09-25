@@ -94,7 +94,7 @@
                                     <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Beacon</a>
+                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Khong</a>
                                 </li>
                             </ul>
                         </li>

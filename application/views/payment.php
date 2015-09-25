@@ -343,7 +343,7 @@
                                             <table class="table3" style="width:100%;color:#000000">
                                         <tr>
                                             <th colspan="2" style="width:10%">Package</th>
-                                            <td>Copper</td>
+                                            <td>Bronze</td>
                                             <td>Silver</td>
                                             <td>Gold</td>
                                         </tr>
@@ -354,7 +354,7 @@
                                             <td>15</td>       
                                         </tr>
                                         <tr>
-                                            <th colspan="2" style="width:10%">Beacon Use</th>
+                                            <th colspan="2" style="width:10%">Khong Use</th>
                                             <td>1</td>
                                             <td>2</td>
                                             <td>2</td>
@@ -370,7 +370,7 @@
                                             <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
                                         </tr>
                                         <tr>
-                                            <td >Info Receive</td>      
+                                            <td >Message Receive</td>      
                                             <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
                                             <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
                                             <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
@@ -425,7 +425,7 @@
 
                                             <div class="col-sm-6">
                                                 <select class="form-control " style="width:100px" onchange="showbutton()" id="package">
-                                                <option value="1200" <?php echo $pachop1;?> >Copper</option>
+                                                <option value="1200" <?php echo $pachop1;?> >Bronze</option>
                                                 <option value="2000" <?php echo $pachop2;?> >Silver</option>
                                                 <option value="3000" <?php echo $pachop3;?> >Gold</option>
                                                 

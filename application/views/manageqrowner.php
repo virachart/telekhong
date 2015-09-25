@@ -216,7 +216,7 @@ hr { border: 1px solid;
                                     <tr>
                                         <td>No.</td>
                                         <td>Store Name</td>
-                                        <td>Information Name</td>
+                                        <td>Message Name</td>
                                         <td>Catagory</td>
                                         <td>Action</td>
                                     </tr>

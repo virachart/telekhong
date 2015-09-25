@@ -109,7 +109,7 @@
                                     <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Beacon</a>
+                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Khong</a>
                                 </li>
                             </ul>
                         </li>
@@ -189,7 +189,7 @@
                   <h3><?php
                         $numsen12 = $sen12->num_rows();
                         echo $numsen12;?></h3>
-                    <p>Beacon In Stock</p>
+                    <p>Khong In Stock</p>
                 </div>
                 <div class="icon" >
                   <i class="fa fa-bullseye"></i>

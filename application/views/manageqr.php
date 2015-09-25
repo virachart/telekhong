@@ -86,7 +86,7 @@
                                     <a href="<?=base_url()?>index.php/manageqr">Manage QRCode</a>
                                 </li>
                                 <li>
-                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Beacon</a>
+                                    <a href="<?=base_url()?>index.php/managesensoro">Manage Khong</a>
                                 </li>
                             </ul>
                         </li>
@@ -147,7 +147,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                     <label class="pull-right">
-                                        <input type="radio" name="selectsearch" id="cat1" value="info_name"> Information Name
+                                        <input type="radio" name="selectsearch" id="cat1" value="info_name"> Message Name
                                     </label>
                                     <label class="pull-right">
                                         <input type="radio" name="selectsearch" id="cat1" value="store_name" checked="checked"> Store Name &nbsp
@@ -160,7 +160,7 @@
                                     <tr>
                                         <td>No.</td>
                                         <td>Store Name</td>
-                                        <td>Information Name</td>
+                                        <td>Message Name</td>
                                         <td>Catagory</td>
                                         <td>Action</td>
                                     </tr>

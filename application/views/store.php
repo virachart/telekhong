@@ -188,7 +188,7 @@
                     <div class="col-lg-5"style="margin-top :45px">
                             
                              <a href="<?=base_url()?>index.php/managestoreowner"><button type="button" class="btn btn-warning pull-right "  style="margin-right:10px">Edit Store</button></a>
-                            <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Beacon</button>
+                            <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Khong</button>
                             <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>    -->
                     </div>
 
@@ -233,7 +233,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Activate Beacon</h4>
+                    <h4 class="modal-title" >Activate Khong</h4>
                 </div>
                 <div class="modal-body"style="padding:50px 50px;">
 
@@ -266,7 +266,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Activate Beacon Status</h4>
+                    <h4 class="modal-title" >Activate Khong Status</h4>
                 </div>
                 <div class="modal-body"style="padding:50px 50px;">
                     <div class="col-xs-8" id="status">
@@ -442,7 +442,7 @@
                                                     <h4 class="modal-title">Confirm</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>This info was deleted , Are you sure ?</p>
+                                                    <p>This message was deleted , Are you sure ?</p>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
@@ -458,7 +458,7 @@
                         <div class="col-lg-7" style="width:50%;">
                         <div class="panel panel-green">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Information Log</h3>
+                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Message Log</h3>
                             </div>
                        
                             <div class="panel-body" style="min-height: 760px; max-height: 760px;overflow-y: scroll;">
@@ -544,7 +544,7 @@
                                         <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                            <h4 class="modal-title">Upload Information</h4>
+                                            <h4 class="modal-title">Upload Message</h4>
                                         </div>
                                         <div class="modal-body">
                                           <div class="col-lg-12" >  

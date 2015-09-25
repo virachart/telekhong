@@ -60,13 +60,13 @@
                 alert("Please input store telephone number.");
                 document.getElementById("telnum").focus();
                 return false;
-            }else if (timepicker1.value == '') {
+            }else if (time1.value == '') {
                 alert("Please input store open time.");
-                document.getElementById("timepicker1").focus();
+                document.getElementById("time1").focus();
                 return false;
-            }else if (timepicker2.value == '') {
+            }else if (time2.value == '') {
                 alert("Please input store close time.");
-                document.getElementById("timepicker2").focus();
+                document.getElementById("time2").focus();
                 return false;
             }else if (des.value == '') {
                 alert("Please input store detail.");
@@ -266,7 +266,7 @@
                     <td>15</td>       
                 </tr>
                 <tr>
-                    <th colspan="2" style="width:10%">Beacon Use</th>
+                    <th colspan="2" style="width:10%">Khong Use</th>
                     <td>1</td>
                     <td>2</td>
                     <td>2</td>
@@ -282,7 +282,7 @@
                     <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
                 </tr>
                 <tr>
-                    <td >Info Receive</td>      
+                    <td >Message Receive</td>      
                     <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
                     <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
                     <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
