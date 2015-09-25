@@ -231,7 +231,7 @@
                                         <div class="col-lg-6" >
                                             <div class="panel panel-green">
                                                 <div class="panel-heading">
-                                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age of Becon Chart </h3>
+                                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age of Khong Chart </h3>
                                                 </div>
                                                 <div class="panel-body" >
                                                     <div class="flot-chart" style="height:300px;width:500px;">

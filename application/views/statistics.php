@@ -349,9 +349,9 @@
                                         <table class="table table-bordered table-hover table1">
                                             <thead>
                                                 <tr>
-                                                    <th>Normal Package</th>
-                                                    <th>Gold Package</th>
+                                                    <th>Bronze Package</th>
                                                     <th>Silver Package</th>
+                                                    <th>Gold Package</th>
                                                     <th>Total</th>
                                                 </tr>
                                             </thead>
@@ -926,7 +926,7 @@
     $(function() {
 
         var data = [{
-            label: "Normal Package",
+            label: "Bronze Package",
             <?php
             echo "data: ";
             echo $pack1->num_rows();
