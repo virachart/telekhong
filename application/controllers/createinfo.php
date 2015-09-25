@@ -10,7 +10,7 @@ class Createinfo extends CI_Controller{
 		if ($this->session->userdata('id') != null) {
 			if ($this->session->userdata('ownerid') != null) {
 				if ($this->session->userdata('storeid') != null) {
-						//start show all store have all owner page
+		// 				start show all store have all owner page
 						$ownerid = $this->session->userdata('ownerid');
 						$storeid = $this->session->userdata('storeid');
 						$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
@@ -47,8 +47,8 @@ class Createinfo extends CI_Controller{
 			$begindate = $beda;
 			$expiredate = $exda;
 
-			// $id = $this->session->userdata('storeid');
-			$id = 6;
+			$id = $this->session->userdata('storeid');
+			// $id = 6;
 
 			$sqlInsert = "INSERT INTO info (`info_name`, `info_descrip`, `info_begin_date`, `info_expire_date`, `catagory`, `store_id`) VALUES ('".$infoname."', '".$desc."', '".$begindate."', '".$expiredate."', '".$cat."', '".$id."');"; 
 			$this->db->query($sqlInsert);
@@ -83,25 +83,22 @@ class Createinfo extends CI_Controller{
 			$sqlUpdateStoreUpload = "update store SET upload ='".$uploadplus."' WHERE store_id = '".$id."'";
 			$this->db->query($sqlUpdateStoreUpload);
 			
-
-			$config['upload_path'] = 'images/info';
-			$config['allowed_types'] = 'jpg|gif|png';
-			$config['max_size'] = "25360"; // KB
-			$this->load->library("upload",$config);
-			if ($this->upload->do_upload("picture")) { // if upload don't have problem
-				$data = $this->upload->data();
-				$newname = $data['file_name'];
-				// rename($data['full_path'], $newname);
+			$image_data = $this->input->post("image-data");
+			if ($image_data !=""){
+				$data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image_data));		
+				file_put_contents('images/info/info-'.$infoid.'.jpg', $data);
+				$newname = "info-".$infoid.".jpg";
 				$sqlupdate = "update info SET info_pic ='".$newname."' WHERE info_id = '".$infoid."'";
 				$this->db->query($sqlupdate);
-				// echo $this->db->last_query();
-				// $this->session->unset_userdata('storeid');
 				redirect("store");
+			}
+			
+			
 			}else{
 				$this->index();
 			}
 		
-		}
+		
 	
 	}
 }

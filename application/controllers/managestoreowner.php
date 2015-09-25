@@ -16,6 +16,8 @@ class Managestoreowner extends CI_Controller{
 						//start show all store have all owner page
 						$ownerid = $this->session->userdata('ownerid');
 						$storeid = $this->session->userdata('storeid');
+						// $ownerid = "5";
+						// $storeid = "6";
 						$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
 						$data['allstore'] = $this->db->query($sqlallstore)->result_array();
 						//end show all store have all owner page
@@ -48,6 +50,7 @@ class Managestoreowner extends CI_Controller{
 			$open = $opti." - ".$clti;
 
 			$storeid = $this->session->userdata("storeid");
+			// $storeid = "6";
 			$arstore=array(
 				"store_name"=>$this->input->post("name"),
 				"address"=>$this->input->post("address"),
@@ -58,14 +61,11 @@ class Managestoreowner extends CI_Controller{
 			$this->db->where("store_id",$storeid);
 			$this->db->update("store",$arstore);
 
-			$config['upload_path'] = 'images/store';
-			$config['allowed_types'] = "jpg|gif|png";
-			$config['max_size'] = "15360"; // KB
-			
-			$this->load->library("upload",$config);
-			if ($this->upload->do_upload("picture")) { // if upload don't have problem
-				$data = $this->upload->data();
-				$newname = $data['file_name'];
+			$image_data = $this->input->post("image-data");
+			if ($image_data !=""){
+				$dataimg = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image_data));		
+				file_put_contents('images/store/store-'.$storeid.'.jpg', $dataimg);
+				$newname = "store-".$storeid.".jpg";
 				$sqlupdate = "UPDATE store SET picture_store ='".$newname."' WHERE store_id = '".$storeid."'";
 				$this->db->query($sqlupdate);
 			}

@@ -33,6 +33,7 @@ class Createstore extends CI_Controller{
 			$detail = $this->input->post('detail');
 			$pack = $this->input->post('pack');
 			$id = $this->session->userdata('ownerid');
+			// $id = '5';
 			$opentime = $opti." - ".$clti;
 			$sqlInsert = "INSERT INTO store (`store_name`, `detail`, `address`, `tel`, `open_time`, `package_id`, `owner_id`) VALUES ('".$stname."', '".$detail."', '".$address."', '".$tel."', '".$opentime."', '".$pack."', '".$id."');";
 			$this->db->query($sqlInsert);
@@ -44,24 +45,13 @@ class Createstore extends CI_Controller{
 			$storeid = $dataStoreid['store_id'];
 			// echo $this->db->last_query();
 			// echo $storeid;
-
-			$config['upload_path'] = 'images/store';
-			$config['allowed_types'] = "jpg|gif|png";
-			$config['max_size'] = "15360"; // KB
-			
-			$this->load->library("upload",$config);
-			// print_r($config);
-				// echo "testtt";
-			if ($this->upload->do_upload("picture")) { // if upload don't have problem
-				$data = $this->upload->data();
-				
-				// $newname = $storeid.$data['file_ext'];
-				$newname = $data['file_name'];
-				// rename($data['full_path'], $newname);
+			$image_data = $this->input->post("image-data");
+			if ($image_data !=""){
+				$dataimg = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $image_data));		
+				file_put_contents('images/store/store-'.$storeid.'.jpg', $dataimg);
+				$newname = "store-".$storeid.".jpg";
 				$sqlupdate = "UPDATE store SET picture_store ='".$newname."' WHERE store_id = '".$storeid."'";
 				$this->db->query($sqlupdate);
-				// echo "testtt";
-				// echo $this->db->last_query();
 
 				$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
 				$data['storedetail'] = $this->db->query($sqlgetst)->row_array();

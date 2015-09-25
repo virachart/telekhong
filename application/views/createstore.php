@@ -13,10 +13,9 @@
 
     <title>Telekhong</title>
 
-<link type="text/css" href="css/bootstrap.min.css" />
-        <link  href="<?=base_url()?>assets/css/bootstrap-timepicker.min.css" />
-        <script src="<?=base_url()?>assets/js/jquery-1.9.1.min.js"></script>
-        <script  src="<?=base_url()?>assets/js/bootstrap-timepicker.min.js"></script>
+        <link type="text/css" href="css/bootstrap.min.css" />
+        <script src="<?=base_url()?>assets/js/jquery.js"></script>
+        <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -25,6 +24,16 @@
 
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.cropit.js"></script>
+    <!-- Bootstrap Core CSS -->
+    
+
+
+<!-- jQuery -->
+
+<!-- Bootstrap Core JavaScript -->
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -84,6 +93,29 @@
                 }
         }          
         </script>
+        <style>
+                      .cropit-image-preview {
+                        background-color: #f8f8f8;
+                        background-size: cover;
+                        border: 1px solid #ccc;
+                        border-radius: 3px;
+                        margin-top: 7px;
+                        width: 400px;
+                        height: 400px;
+                        cursor: move;
+                    }
+                    .cropit-image-background {
+                        opacity: .2;
+                        cursor: auto;
+                    }
+                    .image-size-label {
+                        margin-top: 10px;
+                    }
+                    input {
+                        display: block;
+                    }
+
+                </style>
 
             
 
@@ -109,23 +141,20 @@
 
                 <!-- store Open Time -->
                 <div class="col-lg-6" style="text-align:right;" >Open Time :</div>
+                
                 <div class="col-lg-2">
-                    <div class="input-group bootstrap-timepicker timepicker">
-                        <input id="timepicker1" type="text" class="form-control input-small" name="opti" placeholder="Put HH:MM & click-->" >
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-time"></i>
-                    </span>
+                    <div class="input-group ">
+                        <input id="time1" type="time" class="form-control input-small" name="opti"  >
+                    
                 </div>
                 </div>
                 <div class="col-lg-1" style="text-align:center">to</div>
                 <div class="col-lg-2">
-                    <div class="input-group bootstrap-timepicker timepicker">
-                        <input id="timepicker2" type="text" class="form-control input-small" name="clti" placeholder="Put HH:MM & click-->" >
-                    <span class="input-group-addon">
-                        <i class="glyphicon glyphicon-time"></i>
-                    </span>
+                    <div class="input-group ">
+                        <input id="time2" type="time" class="form-control input-small" name="clti" >
+                    
                 </div>
-                </div>
+                </div> 
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- store detail -->
@@ -134,15 +163,73 @@
                 <div class="col-lg-12" style="margin-top:30px;"></div>
 
                 <!-- store picture -->
-                <div class="col-lg-6" style="text-align:right;" >Store Picture :</div>
-                <div class="form-group col-lg-6">
-                    <input type="file" id="image" name="picture" >
-                    <label>(Picture size less than 1024x1024 pixel is best size)</label>
-                </div>
-                <div class="col-lg-12" style="margin-top:30px;"></div>
+                <div class="col-lg-6" style="text-align:right;" >Picture :</div>
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal" >Image Upload</button>
+                        <div class="modal fade" id="modal" role="dialog">
+                            <div class="modal-dialog ">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"></button>
+                                        <h4 class="modal-title" >Image Upload</h4>
+                                    </div>
+                                    <div class="modal-body"style="padding:20px 50px 20px 50px;">
+                                        <p style="text-align:center;color:red">You can upload image.jpg/.png/.gif/.jpeg only ! </p>
+                                        <div class="image-editor" style="margin-left:50px">
+                                            <input type="file" id="image"  name='picture' class="cropit-image-input" onchange="enablebt();" >
+                                            <div class="cropit-image-preview" ></div>
+                                            <div class="image-size-label">
+                                                Resize image
+                                            </div>
+                                            <input type="range" class="cropit-image-zoom-input" style="width:400px">
+                                            <input type="hidden" name="image-data" class="hidden-image-data" />
 
-                
 
+                                        </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="export btn btn-primary" disabled id="bt1" data-dismiss="modal">Upload</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                    </div>
+
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                        <script>
+
+                            $('.image-editor').cropit();
+                            $('.export').click(function() {
+                              var imageData = $('.image-editor').cropit('export');
+                              $('.cropped').empty();
+                              $('.cropped').append('<img src="'+imageData+'" height="120" width="120">');
+
+                          });
+                            $('form').submit(function() {
+                                // Move cropped image data to hidden input
+                                var imageData = $('.image-editor').cropit('export');
+                                $('.hidden-image-data').val(imageData);
+                                return true;
+                            });
+
+                        </script>
+                        <script>
+                            function enablebt(){
+                                document.getElementById("bt1").disabled = false;
+
+                            }
+                        </script>
+
+                    
+
+                    <div class="col-lg-12" style="margin-top:10px;"></div>
+                    <div class="col-lg-6"></div>
+                    <div class="col-lg-6">
+                    <div class="cropped"></div>
+                    </div>
+                    <div class="col-lg-12" style="margin-top:20px;"></div>
+                    <div class="col-lg-12">&nbsp</div>
                     <div class="col-lg-6" style="text-align:right;" >Package :</div>
                     <div class="col-lg-6">
                     <select class="form-control col-lg-8" name="pack" style="width:300px ;">
@@ -249,13 +336,13 @@
         </div>
         
 
-               </div>
                
-               <div class="col-lg-12" style="text-align:center;margin-top:40px; margin-down: 30px" >
+               
+               <div class="col-lg-12" style="text-align:center;margin-top:40px;" >
 
                 <?php echo anchor("store", "<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
                 <input class="btn btn-success" type="submit" name="btsave" value="Create & Pay" style="margin-left: 30px">
-
+            </div>
 
             </div>	
 
@@ -263,28 +350,10 @@
 
             <div>
              <br>
-             <script type="text/javascript">
-                $('#timepicker1').timepicker({
-                    minuteStep: 1,
-                    template: 'modal',
-                    appendWidgetTo: 'body',
-                    showSeconds: false,
-                    showMeridian: false,
-                    defaultTime: false
-                });
-            
-           
-                $('#timepicker2').timepicker({
-                    minuteStep: 1,
-                    template: 'modal',
-                    appendWidgetTo: 'body',
-                    showSeconds: false,
-                    showMeridian: false,
-                    defaultTime: false
-                });
-            
-            </script>
+             
          </div>
+
+        
 
          <center>
             <div class="row">
@@ -301,14 +370,6 @@
 
  </div>
  <!-- /#page-wrapper -->
-
-
-
-<!-- jQuery -->
-<script src="<?=base_url()?>assets/js/jquery.js"></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 
 
 </body>
