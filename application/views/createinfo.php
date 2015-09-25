@@ -242,14 +242,19 @@
                     <div class="col-lg-6">
                     <div class="cropped"></div>
                     </div>
-                    <div class="col-lg-12" style="margin-top:20px;"></div>
-                    <div class="col-lg-6" style="text-align:right;" >Do you want QR Code? :</div>
-                    <div class="col-lg-6">
+                    <?php 
+                        $packid = $this->session->userdata("statuspack");
+                        if ($packid == 3) {
+                            echo "<div class='col-lg-12' style='margin-top:20px;''></div>
+                                <div class='col-lg-6' style='text-align:right;' >Do you want QR Code? :</div>
+                                <div class='col-lg-6'>
+                                <span class='col-lg-1'><input type='checkbox' name='qr' value='1'></span> QR Code<br>
+                                </div>";
+                        }
+                    ?>
+                    
 
-                        <span class="col-lg-1"><input type="checkbox" name="qr" value="1"></span> QR Code<br>
-
-
-                    </div>
+                        
 
                     <div class="col-lg-12" style="text-align:center;margin-top:30px; margin-down: 30px" >
 
