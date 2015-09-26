@@ -145,7 +145,7 @@ class Managestore extends CI_Controller{
 		}
 	}
 
-	public function searchstore($ownerid){
+	public function searchstore($no,$ownerid){
 
 		$sqluser = "Select * from store";
 		$sqluserav = "Select * from store where status_store_id = '1'";
@@ -165,7 +165,7 @@ class Managestore extends CI_Controller{
 					->join("package","store.package_id = package.package_id")
 					->join("sensoro","store.store_id = sensoro.store_id","left")
 					->where("store.owner_id",$ownerid)
-					->group_by("sensoro.store_id")
+					->group_by("store.store_id")
 					->get()->result_array();
 		
 		$this->load->view("managestore",$data);
