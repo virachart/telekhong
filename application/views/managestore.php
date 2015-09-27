@@ -198,7 +198,12 @@
                                         {
                                             echo "<tr><td align='center'>---no data----</td></tr>";
                                         }else {
-                                            $no = $this->uri->segment(3)+1;
+                                            if ($this->session->userdata("no1") == null) {
+                                                $no = $this->uri->segment(3)+1;
+                                            }else{
+                                                $no = 1;
+                                            }
+                                            
                                             // echo var_dump($rs);
                                             foreach ($rs as $r) {
                                                 $staown = "";

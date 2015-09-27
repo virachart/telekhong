@@ -145,7 +145,7 @@ class Managestore extends CI_Controller{
 		}
 	}
 
-	public function searchstore($no,$ownerid){
+	public function searchstore($ownerid){
 
 		$sqluser = "Select * from store";
 		$sqluserav = "Select * from store where status_store_id = '1'";
@@ -155,6 +155,8 @@ class Managestore extends CI_Controller{
 		$data['num2'] = $this->db->query($sqluserav);
 		$data['num3'] = $this->db->query($sqluserbl);
 		$data['num4'] = $this->db->query($sqluserba);
+
+		$this->session->set_userdata("no1","1");
 		
 
 		
