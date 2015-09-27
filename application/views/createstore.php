@@ -143,14 +143,14 @@
                 <div class="col-lg-6" style="text-align:right;" >Open Time :</div>
                 
                 <div class="col-lg-2">
-                    <div class="input-group ">
+                    <div >
                         <input id="time1" type="time" class="form-control input-small" name="opti"  >
                     
                 </div>
                 </div>
                 <div class="col-lg-1" style="text-align:center">to</div>
                 <div class="col-lg-2">
-                    <div class="input-group ">
+                    <div >
                         <input id="time2" type="time" class="form-control input-small" name="clti" >
                     
                 </div>
@@ -189,7 +189,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="export btn btn-primary" disabled id="bt1" data-dismiss="modal">Upload</button>
+                                        <button type="button" class="export btn btn-primary" disabled id="bt1" data-dismiss="modal">Crop</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </div>
 
@@ -228,7 +228,7 @@
                     <div class="col-lg-6">
                     <div class="cropped"></div>
                     </div>
-                    <div class="col-lg-12" style="margin-top:20px;"></div>
+                    
                     <div class="col-lg-12">&nbsp</div>
                     <div class="col-lg-6" style="text-align:right;" >Package :</div>
                     <div class="col-lg-6">

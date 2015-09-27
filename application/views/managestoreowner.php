@@ -90,7 +90,7 @@
         <tr><td>&nbsp</td></tr> 
         <tr>
             <td>Opentime : </td>
-            <td class="input-group ">
+            <td >
                <input id="time1" type="time" class="form-control input-small" name="opti"  value="<?php $hhop=substr($store['open_time'], 0,2); $mmop=substr($store['open_time'], 3,2); echo $hhop.":".$mmop; ?>"> 
                 </td>
         </tr>
@@ -100,7 +100,7 @@
         </tr>
         <tr>
             <td>Closetime : </td> 
-                <td class="input-group">
+                <td >
                 <input id="time2" type="time" class="form-control input-small" name="clti" value="<?php $hhcl=substr($store['open_time'], 8,2); $mmcl=substr($store['open_time'], 11,2); echo $hhcl.":".$mmcl; ?>">
                 </td> 
                 
@@ -136,7 +136,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="export btn btn-primary" disabled id="bt1" data-dismiss="modal" onclick="hiddenpic()">Upload</button>
+                                        <button type="button" class="export btn btn-primary" disabled id="bt1" data-dismiss="modal" onclick="hiddenpic()">Crop</button>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                     </div>
 
