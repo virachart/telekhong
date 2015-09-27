@@ -129,7 +129,7 @@
                 <div class="col-lg-12">
                 <div class="col-lg-3" >
 
-                Total of User is : <span class="badge"><?php echo $num->num_rows(); ?></span> <br>
+                Total of User is : <span class="badge "><?php echo $num->num_rows(); ?></span> <br>
                 <br>
                 
                 </div>
@@ -172,8 +172,12 @@
                                         </label>
                                     </div>
                                      </form>
-
-                                     
+                                <style>
+                                .table th{
+                                    background-color: #2B68A5;
+                                    color: #ffffff;
+                                }
+                                </style>
                                     
                                 <thead>
                                     <tr>
@@ -195,7 +199,7 @@
                                             foreach ($rs as $r) {
                                                 $tr = "";
                                                 if (($no%2) == 1 ) {
-                                                    $tr = "class = 'warning' ";
+                                                    $tr = "class = 'info' ";
                                                 }
                                                 echo "<tr ".$tr.">";
                                                 echo "<td>".$no."</td>";
