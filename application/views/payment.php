@@ -100,59 +100,7 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
-                    </ul>
-                </li>
+                
                 <?php
                     $dissta = "";
                     $dismanage = "";
@@ -181,11 +129,11 @@
 
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
-                            echo "<li><center> You must have at least 1 store.</center> </li>";
+                            echo "<li><center>You must have at least 1 store.</center> </li>";
                         }else{
                             foreach ($allstore as $r) {
                                 $sta = "";
@@ -213,8 +161,8 @@
 
                 ?>
                         <li class="divider"></li>
-                            <li>
-                                <a href="<?=base_url()?>index.php/createstore">+ Create Store</a>
+                            <li style="text-align:center;">
+                                <a href="<?=base_url()?>index.php/createstore"> <i class="fa fa-plus-circle"></i> Create Store</a>
                             </li>
                         
                     </ul>
@@ -531,12 +479,19 @@
                         <br>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover" style="text-align:center">
-                                <thead>
+                                <style>
+                                .table th {
+                                    background-color: #47A347;
+                                    color: #ffffff;
+                                    text-align: center;
+                                }
+                                </style>
+                                <thead >
                                     <tr>
-                                        <td>Period</td>
-                                        <td>Amount</td>
-                                        <td>Date</td>
-                                        <td>Time</td>
+                                        <th>Period</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
 
                                     </tr>
                                 </thead>
