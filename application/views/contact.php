@@ -59,7 +59,7 @@
 
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-desktop"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
@@ -91,8 +91,8 @@
 
                 ?>
                         <li class="divider"></li>
-                            <li>
-                                <a href="<?=base_url()?>index.php/createstore">+ Create Store</a>
+                            <li style="text-align:center;">
+                                <a href="<?=base_url()?>index.php/createstore"> <i class="fa fa-plus-circle"></i> Create Store</a>
                             </li>
                         
                     </ul>
