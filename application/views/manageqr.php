@@ -156,13 +156,20 @@
                                     </div>
                                      </form>
                                 </div>
+                                <style>
+                                .table th{
+                                    background-color: #2B68A5;
+                                    color: #ffffff;
+                                    text-align: center;
+                                }
+                                </style>
                                 <thead>
                                     <tr>
-                                        <td>No.</td>
-                                        <td>Store Name</td>
-                                        <td>Message Name</td>
-                                        <td>Catagory</td>
-                                        <td>Action</td>
+                                        <th>No.</th>
+                                        <th>Store Name</th>
+                                        <th>Message Name</th>
+                                        <th>Catagory</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

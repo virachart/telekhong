@@ -283,16 +283,23 @@
                                      </form>
 
                                 </div>
+                                <style>
+                                .table th{
+                                    background-color: #2B68A5;
+                                    color: #ffffff;
+                                    text-align: center;
+                                }
+                                </style>
                                 <thead>
                                     <tr>
-                                        <td>No.</td>
-                                        <td>Store Name</td>
-                                        <td>Major</td>
-                                        <td>Minor</td>
-                                        <td>Khong Type</td>
-                                        <td>Battery Date</td>
-                                        <td>Status</td>
-                                        <td style="text-align: center">Action</td>
+                                        <th>No.</th>
+                                        <th>Store Name</th>
+                                        <th>Major</th>
+                                        <th>Minor</th>
+                                        <th>Khong Type</th>
+                                        <th>Battery Date</th>
+                                        <th>Status</th>
+                                        <th style="text-align: center">Action</td>
                                     </tr>
                                 </thead>
                                 <tbody>

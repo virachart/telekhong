@@ -190,14 +190,22 @@
                                     </div>
                                     </form>
                                 </div>
+                                <style>
+                                .table th{
+                                    background-color: #2B68A5;
+                                    color: #ffffff;
+                                    text-align: center;
+                                }
+                                </style>
                                 <thead>
                                     <tr>
-                                        <td>No.</td>
-                                        <td>Name</td>
-                                        <td>Owner Email</td>
-                                        <td>Owner Tel</td>
-                                        <td>Status</td>
-                                        <td>Register Date</td>
+                                        <th>No.</th>
+                                        <th>Name</th>
+                                        <th>Owner Email</th>
+                                        <th>Owner Tel</th>
+                                        <th>Status</th>
+                                        <th>Register Date</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

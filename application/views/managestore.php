@@ -178,18 +178,45 @@
                                         };
 
                                     </script>
+                                    <script>
+                                        function sortdate(){
+
+                                            if(sortval.value==2){
+                                                
+                                            }else if(sortval.value==3){
+
+                                            }else{
+
+                                            }
+
+                                        }
+                                    </script>
 
                                 </div>
+                                <style>
+                                .table th{
+                                    background-color: #2B68A5;
+                                    color: #ffffff;
+                                    text-align: center;
+                                }
+                                </style>
                                 <thead>
                                     <tr>
-                                        <td>No.</td>
-                                        <td>Store Name</td>
-                                        <td>Owner Name</td>
-                                        <td>Telephone</td>
-                                        <td>Package</td>
-                                        <td>Status</td>
-                                        <td>Expire Date</td>
-                                        <td>Register Date</td>
+                                        <th>No.</th>
+                                        <th>Store Name</th>
+                                        <th>Owner Name</th>
+                                        <th>Telephone</th>
+                                        <th>Package</th>
+                                        <th>Status</th>
+                                        <th>
+                                            <select id="sortval" onchange="sortdate()";>
+                                                <option value="1">Expire Date</option>
+                                                <option value="2">No Payment</option>
+                                                <option value="3">OutDated</option>
+                                            </select>
+                                        </th>
+                                        <th>Register Date</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
