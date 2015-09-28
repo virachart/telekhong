@@ -178,19 +178,6 @@
                                         };
 
                                     </script>
-                                    <script>
-                                        function sortdate(){
-
-                                            if(sortval.value==2){
-                                                
-                                            }else if(sortval.value==3){
-
-                                            }else{
-
-                                            }
-
-                                        }
-                                    </script>
 
                                 </div>
                                 <style>
@@ -208,12 +195,15 @@
                                         <th>Telephone</th>
                                         <th>Package</th>
                                         <th>Status</th>
-                                        <th style="display:none;">
-                                            <select id="sortval" onchange="sortdate()";>
-                                                <option value="1">Expire Date</option>
-                                                <option value="2">No Payment</option>
-                                                <option value="3">OutDated</option>
+                                        <th style="color:black">
+                                        <?php echo form_open()?>
+                                            <select id="sortval" onchange="this.form.action='<?php echo site_url('managestore')?>/'+this.value;this.form.submit()";>
+                                                <option hidden><?php echo $expire; ?></option>
+                                                <option value="index">Expire Date</option>
+                                                <option value="nopay">No Payment</option>
+                                                <option value="outdate">OutDated</option>
                                             </select>
+                                        <?php echo form_close(); ?>
                                         </th>
                                         <th>Register Date</th>
                                         <th>Action</th>
@@ -493,7 +483,9 @@
                                 </tbody>
                             </table>
                             <?php
-                                echo $this->pagination->create_links();
+                                if ($pagi == 1) {
+                                    echo $this->pagination->create_links();
+                                }
                             ?>
                         </div>
                     </div>

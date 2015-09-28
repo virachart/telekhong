@@ -59,7 +59,81 @@ class Managestore extends CI_Controller{
 								->join("sensoro","store.store_id = sensoro.store_id","left")
 								->group_by("store.store_id")
 								->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
-								
+				
+				$data['expire'] = "Expire Date";
+				$data['pagi'] = 1;
+				$this->load->view("managestore",$data);
+			}else{
+				redirect("store");
+			}
+		}else{
+			redirect('auth');
+		}
+
+	}
+
+	public function nopay(){
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('admin') != null) {
+				
+				$sqluser = "Select * from store";
+				$sqluserav = "Select * from store where status_store_id = '1'";
+				$sqluserbl = "Select * from store where status_store_id = '2'";
+				$sqluserba = "Select * from store where status_store_id = '3'";
+				$data['num1'] = $this->db->query($sqluser);
+				$data['num2'] = $this->db->query($sqluserav);
+				$data['num3'] = $this->db->query($sqluserbl);
+				$data['num4'] = $this->db->query($sqluserba);
+				$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
+								->from("store")
+								->join("owner","store.owner_id=owner.owner_id")
+								->join("user","owner.fb_id=user.fb_id")
+								->join("package","store.package_id = package.package_id")
+								->join("sensoro","store.store_id = sensoro.store_id","left")
+								->where("expire_date",null)
+								->group_by("store.store_id")->get()->result_array();
+				
+				$data['expire'] = "No Payment";
+				$data['pagi'] = 0;
+				$this->load->view("managestore",$data);
+			}else{
+				redirect("store");
+			}
+		}else{
+			redirect('auth');
+		}
+
+	}
+
+	public function outdate(){
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('admin') != null) {
+				$day = date("d");
+				$day += 1;
+				if ($day < 10 ) {
+					$day = "0".$day;
+				}
+				$date = date("Y-m-");
+				$date = $date.$day;
+				$sqluser = "Select * from store";
+				$sqluserav = "Select * from store where status_store_id = '1'";
+				$sqluserbl = "Select * from store where status_store_id = '2'";
+				$sqluserba = "Select * from store where status_store_id = '3'";
+				$data['num1'] = $this->db->query($sqluser);
+				$data['num2'] = $this->db->query($sqluserav);
+				$data['num3'] = $this->db->query($sqluserbl);
+				$data['num4'] = $this->db->query($sqluserba);
+				$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
+								->from("store")
+								->join("owner","store.owner_id=owner.owner_id")
+								->join("user","owner.fb_id=user.fb_id")
+								->join("package","store.package_id = package.package_id")
+								->join("sensoro","store.store_id = sensoro.store_id","left")
+								->where('expire_date <', $date)
+								->group_by("store.store_id")->get()->result_array();
+				
+				$data['expire'] = "OutDated";
+				$data['pagi'] = 0;
 				$this->load->view("managestore",$data);
 			}else{
 				redirect("store");
