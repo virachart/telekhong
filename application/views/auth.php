@@ -407,10 +407,10 @@ body {
 <li>2.User statistics (for package silver & Gold)</li>
 <ul>
 <li><span style="color:#FF6600;">2.1 General :</span> Show ratio  of  people who use application (Group by age & gender).</li>
-<li><span style="color:#FF6600;">2.2 Message receive : </span>Show amount of people who received message and come to store.</li>
-<li><span style="color:#FF6600;">2.3 Come to store : </span>Show amount of people who received message and come to store.</li>
+<li><span style="color:#FF6600;">2.2 Message receive : </span>Show amount of people who received message and came to store.</li>
+<li><span style="color:#FF6600;">2.3 Come to store : </span>Show amount of people who received message and came to store.</li>
 <li><span style="color:#FF6600;">2.4 QR Buy :</span> Show amount of people who use qr code from message.</li>
-<li><span style="color:#FF6600;">2.5 Come back again :</span> Show amount of people who come to use qr code again. </li>
+<li><span style="color:#FF6600;">2.5 Come back again :</span> Show amount of people who came to use qr code again. </li>
     </ul>
 <li>3.Our service have 3 different package :&nbsp<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1" style="margin-right:10px">View Package</button></li>
 </ul>
