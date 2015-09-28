@@ -208,7 +208,7 @@
                                         <th>Telephone</th>
                                         <th>Package</th>
                                         <th>Status</th>
-                                        <th>
+                                        <th style="display:none;">
                                             <select id="sortval" onchange="sortdate()";>
                                                 <option value="1">Expire Date</option>
                                                 <option value="2">No Payment</option>
