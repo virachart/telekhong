@@ -201,7 +201,7 @@
                 $("#ref2").focus();
             }
             $.ajax({
-                url:"store/activate",
+                url:"<?php echo site_url("store/activate");?>",
                 type: "POST",
                 cache: false,
                 data: "ref1="+$("#ref1").val()+"&ref2="+$("#ref2").val(),
@@ -268,20 +268,17 @@
                     <button type="button" class="close" data-dismiss="modal"></button>
                     <h4 class="modal-title" >Activate Khong Status</h4>
                 </div>
-                <div class="modal-body"style="padding:50px 50px;">
-                    <div class="col-xs-8" id="status">
-                        
+                <div class="modal-body"style="height: 100px; text-align: center;">
+                    <div class="col-xs-12" id="status">
+                        &nbsp
                     </div>
                     <div class="col-xs-2"></div>
-                    <div class="col-xs-8" id="detailsen">
-                        
-                    </div>
                     <div class="col-xs-2"></div>
 
 
                 </div>
-                <div >
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="float : right; margin-right : 20px">Close</button>
                 </div>
 
             </div>
@@ -355,7 +352,7 @@
                             edit=false;
                             infoid=id;
                             $.ajax({
-                                url:"store/showinfo/"+id,
+                                url:"<?php echo site_url("store/showinfo");?>/"+id,
                                 type: "POST",
                                 dataType:"json",
                                 success:function(res){
@@ -389,7 +386,7 @@
                         <div class="col-lg-5" style="width:50%;">
                         <div class="panel panel-primary">    
                             <div class="panel-heading" id="info_detail">
-                                <h3 class="panel-title"> </h3>
+                                <h3 class="panel-title"> &nbsp </h3>
                             </div>
                             <div class="panel-body" style="min-height: 760px; max-height: 760px;text-align:center" >
                                 <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" style="width:420px;height:420px" >

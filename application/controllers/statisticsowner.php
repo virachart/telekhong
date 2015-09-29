@@ -22,7 +22,7 @@ class Statisticsowner extends CI_Controller{
 
 						$id = $storeid;
 						// $id = "6";
-						$sqlgetstoreinfo = "select * from info where store_id = '".$id."' ";
+						$sqlgetstoreinfo = "select * from info where store_id = '".$id."' and info_status_id ='1'; ";
 						$data['rs'] = $this->db->query($sqlgetstoreinfo)->result_array();
 						if ($data['rs'] != null) {
 
@@ -64,7 +64,7 @@ class Statisticsowner extends CI_Controller{
 							// echo "</pre>";
 
 							//function recive promotion 
-							$sqlMax = "SELECT MAX(info_id) AS maxinfo , info_name from info where store_id = '".$id."'; ";
+							$sqlMax = "SELECT MAX(info_id) AS maxinfo , info_name from info where store_id = '".$id."' and info_status_id = '1'; ";
 							$maxinfo = $this->db->query($sqlMax);
 							$infoid = $maxinfo->row_array();
 							// echo "<pre>";
