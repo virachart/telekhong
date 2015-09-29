@@ -218,8 +218,8 @@ class Store extends CI_Controller{
 	public function activate(){
 		$ref1 = $this->input->post("ref1");
 		$ref2 = $this->input->post("ref2");
-		$storeid = "8";
-		// $storeid = $this->session->userdata('storeid');
+		// $storeid = "8";
+		$storeid = $this->session->userdata('storeid');
 		$sqlcheckref = "select * from sensoro where sensoro_code1 = '".$ref1."' and sensoro_code2 = '".$ref2."' ";
 		$rs = $this->db->query($sqlcheckref)->row_array();
 		if ($rs != null) {
