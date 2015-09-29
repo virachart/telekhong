@@ -215,10 +215,10 @@
                                         {
                                             echo "<tr><td align='center'>---no data----</td></tr>";
                                         }else {
-                                            if ($this->session->userdata("no1") == null) {
-                                                $no = $this->uri->segment(3)+1;
-                                            }else{
+                                            if ($no1 == "1") {
                                                 $no = 1;
+                                            }else{
+                                                $no = $this->uri->segment(3)+1;
                                             }
                                             
                                             // echo var_dump($rs);
@@ -231,7 +231,21 @@
                                                 }elseif ($r['status_store_id'] == 3) {
                                                     $staown = "<span class='label label-danger'>Baned</span>";
                                                 }
-                                                echo "<tr>";
+                                                $day = date("d");
+                                                $day += 1;
+                                                if ($day < 10 ) {
+                                                    $day = "0".$day;
+                                                }
+                                                $date = date("Y-m-");
+                                                $date = $date.$day;
+
+                                                 $stcolor = "";
+                                                if ($r['expire_date'] == null) {
+                                                    $stcolor = "class='warning'";
+                                                }elseif ($r['expire_date'] < $date) {
+                                                    $stcolor = "class='danger'";
+                                                }
+                                                echo "<tr ".$stcolor.">";
                                                 echo "<td>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
                                                 echo "<td>".$r['fb_name']."</td>";
@@ -293,9 +307,27 @@
                                                                         <td>".$staown."</td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
-                                                                    <tr >
-                                                                        <td align='right'>Number of Khong : </td>
-                                                                        <td>".$r['sennum']." &nbsp ".anchor("managesensoro/searchsen/".$r["store_id"], "<button type='button' class='btn btn-info'>Show all Khong</button>")." </td>
+                                                                    <tr>
+                                                                        <td align='right'>Expire Date : </td>
+                                                                        <td>".$r['expire_date']."</td>
+                                                                    </tr>";
+                                                                    $dispayment = "";
+                                                                    if ($r['expire_date'] == null) {
+                                                                        $dispayment = "disabled";
+                                                                    }
+                                                                    echo "<tr><td>&nbsp</td></tr>
+                                                                    <tr>
+                                                                        <td align='right'>Payment Log : </td>
+                                                                        <td>".anchor("managestore/showpayment/".$r["store_id"], "<button type='button' class='btn btn-warning' ".$dispayment." >Display Payment</button>")."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >";
+                                                                    $disaallkh = "";
+                                                                    if ($r['sennum'] == 0) {
+                                                                        $disaallkh = "disabled";
+                                                                    }
+                                                                    echo  "<td align='right'>Number of Khong : </td>
+                                                                        <td>".$r['sennum']." &nbsp ".anchor("managesensoro/searchsen/".$r["store_id"], "<button type='button' class='btn btn-info' ".$disaallkh." >Show all Khong</button>")." </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>

@@ -82,6 +82,9 @@ class Store extends CI_Controller{
 										->where('sensoro.store_id',$storeid)->get()->result_array();
 					$sqlfollow = "select * from follow join sensoro on follow.sensoro_id = sensoro.sensoro_id where sensoro.store_id = '".$storeid."' ";
 					$data['follow'] = $this->db->query($sqlfollow);
+
+					$sqlgetsensoro = "select * from sensoro where store_id = '".$storeid."' ";
+					$data['sensoro'] = $this->db->query($sqlgetsensoro)->result_array();
 					
 					// echo "<pre>";
 					// print_r($follow);

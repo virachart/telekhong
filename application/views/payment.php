@@ -210,14 +210,14 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Payment
+                            Payment of <?php echo $storedetail['store_name'] ?>
                         </h1>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-desktop"></i>  <a href="<?=base_url()?>store">store</a>
                             </li>
                             <li class="active">
-                                <i class="fa fa-table"></i> Payments
+                                <i class="fa fa-table"></i> Payments 
                             </li>
                         </ol>
                     </div>
@@ -490,6 +490,7 @@
                                     <tr>
                                         <th>Period</th>
                                         <th>Amount</th>
+                                        <th>Package</th>
                                         <th>Date</th>
                                         <th>Time</th>
 
@@ -503,6 +504,7 @@
                                         echo "<tr>";
                                         echo "<td>".$i."</td>";
                                         echo "<td>".$r['amount']."</td>";
+                                        echo "<td>".$r['detail']."</td>";
                                         echo "<td>".substr($r['date'],0,10)."</td>";
                                         echo "<td>".substr($r['date'],11,8)."</td>";
                                         echo "</tr>";

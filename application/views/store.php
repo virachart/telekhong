@@ -187,8 +187,9 @@
                 <div>
                     <div class="col-lg-5"style="margin-top :45px">
                             
-                             <a href="<?=base_url()?>index.php/managestoreowner"><button type="button" class="btn btn-warning pull-right "  style="margin-right:10px">Edit Store</button></a>
+                            <a href="<?=base_url()?>index.php/managestoreowner"><button type="button" class="btn btn-warning pull-right "  style="margin-right:10px">Edit Store</button></a>
                             <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Khong</button>
+                            <button type="button" class="btn btn-info pull-right " data-toggle="modal" data-target="#myModal7" style="margin-right:10px">Khong of Store</button>
                             <!-- <button type="button" class="btn btn-danger pull-right" data-toggle="modal" data-target="#myModal">Delete Store</button>    -->
                     </div>
 
@@ -276,6 +277,59 @@
                     <div class="col-xs-2"></div>
 
 
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" style="float : right; margin-right : 20px">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- modal of Khong -->
+    <div class="modal fade" id="myModal7" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"></button>
+                    <h4 class="modal-title" >Khong of store</h4>
+                </div>
+                <div class="modal-body"style=" text-align: center;height : 220px">
+                    <div class="col-xs-12" id="status">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>UUID</th>
+                                    <th>Major</th>
+                                    <th>Minor</th>
+                                    <th>Type of Work</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $no = 1;
+                                    foreach ($sensoro as $r) {
+                                        echo "<tr>";
+                                        echo "<td> ".$no." </td>";
+                                        echo "<td> ".$r['uuid']." </td>";
+                                        echo "<td> ".$r['major']." </td>";
+                                        echo "<td> ".$r['minor']." </td>";
+                                        if ($r['sensoro_type'] == 1) {
+                                            $typework = "Send Message";
+                                        }else{
+                                            $typework = "Count user in store";
+                                        }
+                                        echo "<td>".$typework."</td>";
+                                        echo "</tr>";
+                                        $no++;
+                                    }
+                                ?>
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal" style="float : right; margin-right : 20px">Close</button>

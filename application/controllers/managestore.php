@@ -57,9 +57,13 @@ class Managestore extends CI_Controller{
 								->join("user","owner.fb_id=user.fb_id")
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
+								->where("status_store_id !=" ,4 )
 								->group_by("store.store_id")
+								->order_by("expire_date asc")
 								->limit($config['per_page'],end($this->uri->segments))->get()->result_array();
 				
+
+				$data['no1'] = "";
 				$data['expire'] = "Expire Date";
 				$data['pagi'] = 1;
 				$this->load->view("managestore",$data);
@@ -84,15 +88,18 @@ class Managestore extends CI_Controller{
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
+				$arnopay = array('expire_date' => null ,
+								 'status_store_id !=' => 4);
 				$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
 								->from("store")
 								->join("owner","store.owner_id=owner.owner_id")
 								->join("user","owner.fb_id=user.fb_id")
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
-								->where("expire_date",null)
+								->where($arnopay)
 								->group_by("store.store_id")->get()->result_array();
 				
+				$data['no1'] = "";
 				$data['expire'] = "No Payment";
 				$data['pagi'] = 0;
 				$this->load->view("managestore",$data);
@@ -123,14 +130,18 @@ class Managestore extends CI_Controller{
 				$data['num2'] = $this->db->query($sqluserav);
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
+				$aroutdate = array('expire_date < ' => $date ,
+								 'status_store_id !=' => 4);
 				$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
 								->from("store")
 								->join("owner","store.owner_id=owner.owner_id")
 								->join("user","owner.fb_id=user.fb_id")
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
-								->where('expire_date <', $date)
+								->where($aroutdate)
 								->group_by("store.store_id")->get()->result_array();
+
+				$data['no1'] = "";
 				
 				$data['expire'] = "OutDated";
 				$data['pagi'] = 0;
@@ -147,7 +158,7 @@ class Managestore extends CI_Controller{
 	public function del($id){
 		$data = array('status_store_id' => "4");
 		$this->db->where('store_id', $id);
-		$this->db->update('mytable', $data); 
+		$this->db->update('store', $data); 
 		redirect("managestore","refresh");
 	}
 
@@ -184,6 +195,7 @@ class Managestore extends CI_Controller{
 				$data['num3'] = $this->db->query($sqluserbl);
 				$data['num4'] = $this->db->query($sqluserba);
 				
+				$data['no1'] = "";
 
 				if ($find == "owner_name") {
 					$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
@@ -192,6 +204,7 @@ class Managestore extends CI_Controller{
 								->join("user","owner.fb_id=user.fb_id")
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
+								->where("status_store_id !=" ,4 )
 								->like("fb_name",$name)
 								->group_by("store.store_id")
 								->get()->result_array();
@@ -203,6 +216,7 @@ class Managestore extends CI_Controller{
 								->join("user","owner.fb_id=user.fb_id")
 								->join("package","store.package_id = package.package_id")
 								->join("sensoro","store.store_id = sensoro.store_id","left")
+								->where("status_store_id !=" ,4 )
 								->like("store_name",$name)
 								->group_by("store.store_id")
 								->get()->result_array();
@@ -230,9 +244,10 @@ class Managestore extends CI_Controller{
 		$data['num3'] = $this->db->query($sqluserbl);
 		$data['num4'] = $this->db->query($sqluserba);
 
-		$this->session->set_userdata("no1","1");
+		$data['no1'] = "1";
 		
-
+		$arsearchstore = array('store.owner_id' => $ownerid ,
+								 'status_store_id !=' => 4);
 		
 		$data['rs'] = $this->db->select("*,store.store_id,count(sensoro_id) AS sennum")
 					->from("store")
@@ -240,12 +255,30 @@ class Managestore extends CI_Controller{
 					->join("user","owner.fb_id=user.fb_id")
 					->join("package","store.package_id = package.package_id")
 					->join("sensoro","store.store_id = sensoro.store_id","left")
-					->where("store.owner_id",$ownerid)
+					->where($arsearchstore)
 					->group_by("store.store_id")
 					->get()->result_array();
-		
+
+		$data['expire'] = "Expire Date";
+		$data['pagi'] = 0;
 		$this->load->view("managestore",$data);
 			
+	}
+
+	public function showpayment($storeid){
+		$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
+		$data['storedetail'] = $this->db->query($sqlgetst)->row_array();
+
+		$sqlgetpayment = "select * from store join payment_log on store.store_id = payment_log.store_id where payment_log.store_id = '".$storeid."' ";
+		$data['payment'] = $this->db->query($sqlgetpayment)->result_array();
+
+		$sqlgetdate = "select MIN(payment_id) AS id from payment_log where store_id = '".$storeid."' ";
+		$payid = $this->db->query($sqlgetdate)->row_array();
+
+		$sqlgetpromiss = "select * from payment_log where payment_id = '".$payid['id']."' ";
+		$data['firstday'] = $this->db->query($sqlgetpromiss)->row_array();
+
+		$this->load->view("showpayment" , $data);
 	}
 
 }

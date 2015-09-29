@@ -287,7 +287,7 @@ body {
                 /* all other browsers */
                 background: none;
                 text-align: center;
-                margin-top: 60px;
+                margin-top: 100px;
                 -webkit-animation: fadein 3s;
                 }
                 #jumbo2 {
@@ -331,8 +331,8 @@ body {
 
 
 <div id="home" class="container-fluid ">
-    <div class="jumbotron" id="jumbo">
-        <h1>WELCOME</h1><br>
+    <div style="text-align:center">
+        <img src="<?=base_url()?>images/icon/logo.jpg" style="width:180px;height:180px;border-radius:3px;" id= "jumbo"><br>
         <h2 id="jumbo2">"<span style="color:#FF6600;"> Telekhong</span> Talk Everything "</h2>
     </div>
     <br>

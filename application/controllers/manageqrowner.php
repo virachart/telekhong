@@ -18,9 +18,11 @@ class Manageqrowner extends CI_Controller{
 						$data['allstore'] = $this->db->query($sqlallstore)->result_array();
 						//end show all store have all owner page
 
-						$sqluser = "Select * from qr";
+						$sqluser = "Select * from qr where status_qr_id = '1'";
 						$data['num1'] = $this->db->query($sqluser);
-						$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where('a.store_id',$storeid)->get()->result_array();
+						$arselectqr = array('a.store_id' => $storeid ,
+											'a.status_qr_id' => '1' );
+						$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where($arselectqr)->get()->result_array();
 						$this->load->view("manageqrowner",$data);
 					}else{
 						redirect('store');
@@ -40,9 +42,10 @@ class Manageqrowner extends CI_Controller{
 	}
 
 	public function del($id){
-		$this->db->delete("qr",array("qr_id"=>$id));
+		$data = array('status_qr_id' => "2");
+		$this->db->where('qr_id', $id);
+		$this->db->update('qr', $data); 
 		redirect("manageqrowner","refresh");
-		exit();
 	}
 
 

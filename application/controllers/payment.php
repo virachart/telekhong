@@ -58,7 +58,10 @@ class Payment extends CI_Controller{
 		$statuspay = substr($result,0,2);
 		$storepay = (int)substr($result,6,3);
 		$monthpay = (int)substr($result, 9,2);
-		$amt = number_format($amt,2,".","");
+		$amto = number_format($amt,2,".","");
+		$amtmonth = $amt / $monthpay;
+		$sqlgetpackage = "select * from package where price = '".$amtmonth."' ";
+		$pack = $this->db->query($sqlgetpackage)->row_array();
 
 		/* status result
 			00=Success
@@ -67,8 +70,9 @@ class Payment extends CI_Controller{
 		*/
 		if ($statuspay == "00") {
 
-			$arinsert = array('amount' => $amt ,
-						  	  'store_id' => $storepay);
+			$arinsert = array('amount' => $amto ,
+						  	  'store_id' => $storepay,
+						  	  'detail' => $pack['package_name']);
 			$this->db->insert('payment_log',$arinsert);
 			$sqlgetstore = "select * from store where store_id = '".$storepay."' ";
 			$data = $this->db->query($sqlgetstore)->row_array();
@@ -145,11 +149,15 @@ class Payment extends CI_Controller{
 		$statuspay = substr($result,0,2);
 		$storepay = (int)substr($result,2,3);
 		$packchange = substr($result,5,1);
-		$amt = number_format($amt,2,".","");
+		$amto = number_format($amt,2,".","");
+
+		$sqlgetpackage = "select * from package where price = '".$amtmonth."' ";
+		$pack = $this->db->query($sqlgetpackage)->row_array();
 
 		if ($statuspay == "00") {
-			$arinsert = array('amount' => $amt ,
-						  	  'store_id' => $storepay);
+			$arinsert = array('amount' => $amto ,
+						  	  'store_id' => $storepay,
+						  	  'detail' => $pack['package_name']);
 			$this->db->insert('payment_log',$arinsert);
 			$sqlgetstore = "select * from store where store_id = '".$storepay."' ";
 			$data = $this->db->query($sqlgetstore)->row_array();
@@ -181,19 +189,6 @@ class Payment extends CI_Controller{
 
 		}
 		redirect("payment","refresh");
-
-		// echo $statuspay;
-		// echo "<br>";
-		// echo $storepay;
-		// echo "<br>";
-		// echo $packchange;
-		// echo "<br>";
-		// echo $amt;
-		/* status result
-			00=Success
-			99=Fail
-			02=Process
-		*/
 	}
 
 }
