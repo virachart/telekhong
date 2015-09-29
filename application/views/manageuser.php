@@ -186,6 +186,7 @@
                                         <th>Facebook Name</th>
                                         <th>Sex</th>
                                         <th>Register Date</th>
+                                        <th>Vote Admin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -207,7 +208,44 @@
                                                 echo "<td>".$r['fb_name']."</td>";
                                                 echo "<td>".$r['sex']."</td>";
                                                 echo "<td>".$r['user_date']."</td>";
-                                                
+                                                echo "<td> <button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModaladmin".$r['fb_id']."'  >";
+                                                echo "Vote To Admin";
+                                                echo "</button>";
+                                                echo "</td>";
+                                                echo "<td>";
+                                                echo "<div class='modal fade' id='myModaladmin".$r['fb_id']."' role='dialog'>
+                                                        <div class='modal-dialog'>
+                                                          <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <button type='button' class='close' data-dismiss='modal'></button>
+                                                                <h4 class='modal-title' >Confirm Vote Admin</h4>
+                                                            </div>
+                                                            <div class='modal-body'style='padding:50px 50px;'>
+
+                                                                <table style='margin : 0 auto;'>
+                                                                    <tr >
+                                                                        <td align='right'>FB ID : &nbsp</td>
+                                                                        <td>".$r['fb_id']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    <tr >
+                                                                        <td align='right'>Name : </td>
+                                                                        <td >".$r['fb_name']."</td>
+                                                                    </tr>
+                                                                    <tr><td>&nbsp</td></tr>
+                                                                    
+                                                                </table>
+                                                            </div>
+                                                            <div class='modal-footer'>";
+                                                                echo anchor("manageuser/addadmin/".$r["fb_id"], "<button type='button' class='btn btn-success'>Confirm</button>");
+                                                            echo " &nbsp<button type='button' class='btn btn-danger' data-dismiss='modal'>Cancle</button>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>";
+                                                echo "</td>";
+
                                                 echo "</tr>";
                                                 
                                                 $no++;

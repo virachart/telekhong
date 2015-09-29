@@ -110,6 +110,25 @@ class Manageuser extends CI_Controller{
 		}
 	}
 
+	public function addadmin($id){
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('admin') != null) {
+				$sqlgetuser = "select * from user where fb_id = '".$id."' ";
+				$data = $this->db->query($sqlgetuser)->row_array();
+				$arinsertadmin = array('name' => $data['fb_name'] ,
+										'fb_id' => $data['fb_id'] );
+				$this->db->insert('admin', $arinsertadmin);
+				redirect("manageuser");
+			}else{
+				redirect("store");
+			}
+		}else{
+			redirect("auth");
+		}
+		
+
+	}
+
 }
 
 ?>

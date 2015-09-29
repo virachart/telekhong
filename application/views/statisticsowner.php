@@ -199,11 +199,11 @@
                             <div class="dropdown col-lg-6" style="margin-top:3%">
                                 <?php echo form_open()?>
 
-                                <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/otherinfo/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;" >
+                                <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/otherinfo/'+this.value;this.form.submit()" class="form-control" style="width : 200px;background-color : #286090;color:#fff;" >
                                     <option hidden><?php echo $getinfoname['info_name']; ?></option>
                                     <?php
                                         foreach ($rs as $r) {
-                                            echo "<option value='".$r['info_id']."'>".$r['info_name']."</option>";
+                                            echo "<option value='".$r['info_id']."'>".substr($r['info_name'], 0,20)."</option>";
                                         }
                                     ?>
                                 </select>

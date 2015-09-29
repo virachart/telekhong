@@ -59,7 +59,7 @@ class Store extends CI_Controller{
 					$data['allstore'] = $this->db->query($sqlallstore)->result_array();
 
 					//show info log
-					$sqlgetinfo = "select * from info where store_id = '".$storeid."' order by info_date DESC ";
+					$sqlgetinfo = "select * from info where store_id = '".$storeid."' and info_status_id = '1' order by info_date DESC ";
 					$data['info'] = $this->db->query($sqlgetinfo)->result_array();
 
 					if ($numcheck == 10) {
@@ -179,8 +179,9 @@ class Store extends CI_Controller{
 	}
 
 	public function delinfo($id){
+		$dataupdate = array('info_status_id' => "4");
 		$this->db->where('info_id', $id);
-		$this->db->delete('info'); 
+		$this->db->update('info', $dataupdate); 
 		redirect("store"); 
 	}
 

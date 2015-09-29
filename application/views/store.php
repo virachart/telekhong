@@ -389,7 +389,7 @@
                         <div class="col-lg-5" style="width:50%;">
                         <div class="panel panel-primary">    
                             <div class="panel-heading" id="info_detail">
-                                <h3 class="panel-title"> sale 20 % for this month !!</h3>
+                                <h3 class="panel-title"> </h3>
                             </div>
                             <div class="panel-body" style="min-height: 760px; max-height: 760px;text-align:center" >
                                 <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" style="width:420px;height:420px" >
@@ -474,7 +474,7 @@
                                             $dayshow = $day."-".$month."-".$year;
                                             echo "<a href='javascript:void(0);' onclick='getedit(".$r['info_id'].")' class='list-group-item'>
                                                 <span class='badge' style='margin-top :1%'>".$dayshow."</span>
-                                                <img class='img-thumbnail' src='".base_url()."images/info/".$r['info_pic']."' width='75px' height='75px' alt=''> ".$r['info_name']."
+                                                <img class='img-thumbnail' src='".base_url()."images/info/".$r['info_pic']."' width='75px' height='75px' alt=''> ".substr($r['info_name'],0,30)."
                                                 </a>";
 
 
