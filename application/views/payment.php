@@ -129,7 +129,7 @@
 
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> &nbsp<?php $storename = $this->session->userdata('storename'); echo substr($storename, 0,15) ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
@@ -210,7 +210,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Payment of <?php echo $storedetail['store_name'] ?>
+                            Payment
                         </h1>
                         <ol class="breadcrumb">
                             <li>

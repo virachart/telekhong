@@ -96,7 +96,7 @@
 
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> &nbsp<?php $storename = $this->session->userdata('storename'); echo substr($storename, 0,15) ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
@@ -104,7 +104,7 @@
                         }else{
                             foreach ($allstore as $r) {
                                 $sta = "";
-                                if ($r['status_store_id']=="1" ) {
+                                if ($r['status_store_id']== 1 ) {
 
                                 }else{
                                     $sta = "class='not-active'";

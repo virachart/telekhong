@@ -81,7 +81,7 @@
 
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> &nbsp<?php $storename = $this->session->userdata('storename'); echo substr($storename, 0,15) ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
@@ -384,18 +384,26 @@
                                                                 <td> 26 - 35 year old</td>
                                                                 <td> 36 - 50 year old</td>
                                                                 <td> > 50 year old</td>
-                                                                <td>Total</td>
+                                                                
 
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><?php $pa1 = $age1->num_rows(); echo $pa1; ?></td>
-                                                                <td><?php $pa2 = $age2->num_rows(); echo $pa2; ?></td>
-                                                                <td><?php $pa3 = $age3->num_rows(); echo $pa3; ?></td>
-                                                                <td><?php $pa4 = $age4->num_rows(); echo $pa4; ?></td>
-                                                                <td><?php $pa5 = $age5->num_rows(); echo $pa5; ?></td>
-                                                                <td><?php $pa = $pa1+$pa2+$pa3+$pa4+$pa5; echo $pa; ?></td>
+                                                                <?php 
+                                                                $pa1 = $age1->num_rows(); 
+                                                                $pa2 = $age2->num_rows(); 
+                                                                $pa3 = $age3->num_rows(); 
+                                                                $pa4 = $age4->num_rows(); 
+                                                                $pa5 = $age5->num_rows(); 
+                                                                $pa = $pa1+$pa2+$pa3+$pa4+$pa5;
+                                                                ?>
+                                                                <td><?php $pa1 = ($pa1/$pa)*100; echo number_format($pa1,2)."%"; ?></td>
+                                                                <td><?php $pa2 = ($pa2/$pa)*100; echo number_format($pa2,2)."%"; ?></td>
+                                                                <td><?php $pa3 = ($pa3/$pa)*100; echo number_format($pa3,2)."%"; ?></td>
+                                                                <td><?php $pa4 = ($pa4/$pa)*100; echo number_format($pa4,2)."%"; ?></td>
+                                                                <td><?php $pa5 = ($pa5/$pa)*100; echo number_format($pa5,2)."%"; ?></td>
+                                                                
 
                                                             </tr>
                                                         </tbody>
@@ -432,16 +440,20 @@
                                                                 <td> Male </td>
                                                                 <td> Female </td>
                                                                 <td> Unknown </td>
-                                                                <td> Total </td>
 
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
-                                                                <td><?php $pa1 = $male->num_rows(); echo $pa1; ?></td>
-                                                                <td><?php $pa2 = $female->num_rows(); echo $pa2; ?></td>
-                                                                <td><?php $pa3 = $unkn->num_rows(); echo $pa3; ?></td>
-                                                                <td><?php $pa = $pa1+$pa2+$pa3; echo $pa; ?></td>
+                                                            <?php 
+                                                                $pa1 = $male->num_rows();
+                                                                $pa2 = $female->num_rows();
+                                                                $pa3 = $unkn->num_rows(); 
+                                                                $pa = $pa1+$pa2+$pa3;
+                                                            ?>
+                                                                <td><?php $pa1 = ($pa1/$pa)*100; echo number_format($pa1,2)."%"; ?></td>
+                                                                <td><?php $pa2 = ($pa2/$pa)*100; echo number_format($pa2,2)."%"; ?></td>
+                                                                <td><?php $pa3 = ($pa3/$pa)*100; echo number_format($pa3,2)."%"; ?></td>
 
                                                             </tr>
                                                         </tbody>

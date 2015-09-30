@@ -31,7 +31,7 @@ class Store extends CI_Controller{
 				}
 
 				// get min store id
-				$sqlfindminstore = "select MIN(store_id) AS store_id from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
+				$sqlfindminstore = "select MIN(store_id) AS store_id , store_name from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
 				$rsfindstore = $this->db->query($sqlfindminstore)->row_array();
 				
 				if ($rsfindstore == null) {
@@ -40,6 +40,7 @@ class Store extends CI_Controller{
 					$pay = 0;
 
 					$storeid = $rsfindstore['store_id'];
+					$storename = $rsfindstore['store_name'];
 
 					//get store and package info
 					$sqlgetstore = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
@@ -50,8 +51,12 @@ class Store extends CI_Controller{
 						$pay = 1;
 					}
 					
+					$this->session->unset_userdata("storeid");
+					$this->session->unset_userdata("storename");
+
 					//get store id set in session
-					$arstoreid = array('storeid' => $storeid );
+					$arstoreid = array('storeid' => $storeid ,
+										'storename' => $storename);
 					$this->session->set_userdata($arstoreid);
 
 					//show all store
@@ -121,9 +126,13 @@ class Store extends CI_Controller{
 		if ($rsstorepay['expire_date'] != null) {
 			$pay = 1;
 		}
+		$this->session->unset_userdata("storeid");
+		$this->session->unset_userdata("storename");
+		$storename = $rsstorepay['store_name'];
 		
 		//get store id set in session
-		$arstoreid = array('storeid' => $storeid );
+		$arstoreid = array('storeid' => $storeid ,
+							'storename' => $storename );
 		$this->session->set_userdata($arstoreid);
 
 		//show all store

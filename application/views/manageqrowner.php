@@ -91,7 +91,7 @@ hr { border: 1px solid;
                     }
                 </style>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart"></i> &nbsp<?php $storename = $this->session->userdata('storename'); echo substr($storename, 0,15) ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu alert-dropdown">
                         <?php
                         if ($allstore == null) {
