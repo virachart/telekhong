@@ -163,11 +163,11 @@ a:active {
 body {
       position: relative; 
   }
-  #home {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg7.jpg") ;background-size: 100% 100%;
+  #home {padding-top:50px;height:100vh;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg7.jpg") ;background-size: 100% 100%;
     background-repeat: no-repeat;}
-  #about {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg6.jpg") ;background-size: 100% 100%;
+  #about {padding-top:50px;height:100vh;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg6.jpg") ;background-size: 100% 100%;
     background-repeat: no-repeat;}
-  #policy {padding-top:50px;height:720px;color: #fff; background-image:url("<?=base_url()?>assets/Image/background2.jpg") ;background-size: 100% 100% ;
+  #policy {padding-top:50px;height:100vh;color: #fff; background-image:url("<?=base_url()?>assets/Image/background2.jpg") ;background-size: 100% 100% ;
     background-repeat: no-repeat;}
 </style>
 <style>
@@ -287,7 +287,7 @@ body {
                 /* all other browsers */
                 background: none;
                 text-align: center;
-                margin-top: 100px;
+                margin-top: 20vh;
                 -webkit-animation: fadein 3s;
                 }
                 #jumbo2 {

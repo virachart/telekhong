@@ -108,36 +108,8 @@
         <div id="page-wrapper">
 
             <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Manage Khong
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>dashboard">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-table"></i> Manage Khong                       
-                             </li>
-                        </ol>
-                    </div>
-                </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <div class="col-lg-3" >
-
-                Total of Store is : <span class="badge"><?php echo $num1->num_rows(); ?></span> <br>
-                Avaliable Store is :<span class="badge"><?php echo $num2->num_rows(); ?></span><br>
-                Blocked Store is : <span class="badge"><?php echo $num3->num_rows(); ?></span><br>
-                Ban Store is : <span class="badge"><?php echo $num4->num_rows(); ?></span><br>
-                Khong Type 1 is : <span class="badge"><?php echo $num5->num_rows(); ?></span><br>
-                Khong Type 2 is : <span class="badge"><?php echo $num6->num_rows(); ?></span><br>
-                
-                </div>
-
                 <!-- script create beacon -->
                 <script type="text/javascript">
                     // create beacon
@@ -261,28 +233,30 @@
 
 
             </div>
-            <div class="row">
-             <div class="col-lg-12 " style=" margin-top: 20px;" >
-                <ol class="breadcrumb"><li>-------------------------------</li></ol>
-            </div>
-        </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <center><h2>Total of Khong</h2></center>
+                        <center><h1>Total of Khong</h1></center>
                         <div class="table-responsive">
                             <table class="table  table-hover">
-                                <div class="input-group" style="margin-bottom:20px">
-                                        <button type='button' class='btn btn-primary col-sm-2' data-toggle="modal" data-target="#myModalcre1" >Create Khong + </button>
-                                   
+                                <div class="pull-left">
+                                        <button type='button' class='btn btn-primary' data-toggle="modal" data-target="#myModalcre1" >+ Create Khong</button>
+                                </div>   
+                                   <div class="col-lg-7" style="margin-top:7px;">
+                                    Khong Type 1 is : <span class="badge"><?php echo $num5->num_rows(); ?></span>&nbsp
+                                    Khong Type 2 is : <span class="badge"><?php echo $num6->num_rows(); ?></span>
+                                    
+                                    </div>
                                     
                                     <form action="<?php echo site_url('managestore/search');?>" method = "post">
-                                    <input type="text" name="searchst" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Store Name">
-                                    <div class="input-group-btn">
-                                        <input class="btn btn-default" type="submit" name="btsave" value="Search">
-                                     </div>
+                                    
+                                    <div class="pull-right">
+                                        <input class="btn btn-default pull-right" type="submit" name="btsave" value="Search">
+                                        <input type="text" name="searchst" class="form-control  pull-right" style="width: 200px;" placeholder="Search By Store Name">
+                                        
+                                    </div>
                                      </form>
-
-                                </div>
+                                     <div class="col-lg-12">&nbsp</div>
+                                
                                 <style>
                                 .table th{
                                     background-color: #2B68A5;
@@ -326,13 +300,13 @@
                                                     $sentype = "<span class='label label-info'>Count</span>";
                                                 }
                                                 echo "<tr>";
-                                                echo "<td>".$no."</td>";
+                                                echo "<td style='text-align:center;'>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
-                                                echo "<td>".$r['major']."</td>";
-                                                echo "<td>".$r['minor']."</td>";
-                                                echo "<td>".$sentype."</td>";
-                                                echo "<td>".substr($r['sensoro_date'],0,10)."</td>";
-                                                echo "<td>".$staown."</td>";
+                                                echo "<td style='text-align:center;'>".$r['major']."</td>";
+                                                echo "<td style='text-align:center;'>".$r['minor']."</td>";
+                                                echo "<td style='text-align:center;'>".$sentype."</td>";
+                                                echo "<td style='text-align:center;'>".substr($r['sensoro_date'],0,10)."</td>";
+                                                echo "<td style='text-align:center;'>".$staown."</td>";
                                                 echo "<td align= center>";
                                                 // echo "<button type='button' class='btn btn-success' onclick='showdetailbatt(".$r["sensoro_id"].")' data-toggle='modal' data-target='#myModal3' >Change Battery</button>";
                                                 echo "<button type='button' class='btn btn-success'  data-toggle='modal' data-target='#myModalbatt".$r['sensoro_id']."'  >";
