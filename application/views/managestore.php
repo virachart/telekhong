@@ -149,6 +149,12 @@
                                             location.reload("managestore");
                                         };
 
+                                        // function activeset(){
+                                        //     var target = event.target || event.srcElement;
+                                        //     document.getElementById("targetshow").innerHTML=event.target.innerHTML;
+                                        //     }
+                                        
+                                        
                                     </script>
 
                                 
@@ -158,6 +164,7 @@
                                     color: #ffffff;
                                     text-align: center;
                                 }
+                                
                                 </style>
                                 <thead>
                                     <tr>
@@ -167,7 +174,7 @@
                                         <th>Telephone</th>
                                         <th>Package</th>
                                         <th>Status</th>
-                                        <th style="color:black">
+                                        <!-- <th style="color:black" cl>
                                         <?php echo form_open()?>
                                             <select id="sortval" onchange="this.form.action='<?php echo site_url('managestore')?>/'+this.value;this.form.submit()";>
                                                 <option hidden><?php echo $expire; ?></option>
@@ -176,6 +183,14 @@
                                                 <option value="outdate">OutDated</option>
                                             </select>
                                         <?php echo form_close(); ?>
+                                        </th> -->
+                                        <th class="dropdown">
+                                           <a href="#" data-toggle="dropdown" class="dropdown-toggle" id="targetshow" style="color:#ffffff;">Expire Date <b class="caret"></b></a>
+                                           <ul class="dropdown-menu" >
+                                              <li value="nopay"><a href="<?=base_url()?>index.php/managestore/nopay">No Payment</a></li>
+                                              <li value="outdate"><a href="<?=base_url()?>index.php/managestore/outdate">OutDated</a></li>
+                                              <li value="index"><a href="<?=base_url()?>index.php/managestore/index">Show All</a></li>                     
+                                           </ul>
                                         </th>
                                         <th>Register Date</th>
                                         <th>Action</th>

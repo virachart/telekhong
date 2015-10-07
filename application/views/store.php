@@ -437,75 +437,6 @@
                 <!-- /.row -->
                 
                     <div class="col-lg-12">
-                        <div class="col-lg-5" style="width:50%;">
-                        <div class="panel panel-primary">    
-                            <div class="panel-heading" id="info_detail">
-                                <h3 class="panel-title"> &nbsp </h3>
-                            </div>
-                            <div class="panel-body" style="min-height: 760px; max-height: 760px;text-align:center" >
-                                <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" style="width:420px;height:420px" >
-                            <div class="col-sm-12" style="margin-top:12px">
-                                    
-                            <table align="center">
-                                <tr>
-                                    <td>Description :&nbsp</td> 
-                                    <td><textarea name="des" rows="3" class="form-control" style="width:250px;" id="des" disabled></textarea></td>
-                                </tr>
-                                <tr><td>&nbsp</td></tr>
-                                <tr>
-                                    <td>Begin Date :&nbsp</td>
-                                    <td><input type="text" name="bdate" class="form-control" id="begin" disabled/></td>
-                                </tr>
-                                <tr><td>&nbsp</td></tr>
-                                <tr>
-                                    <td>Expire Date :&nbsp</td> 
-                                    <td><input type="text" name="edate" class="form-control" id="expire" disabled/></td>
-                                </tr>
-                                <tr><td>&nbsp</td></tr>
-                                <tr>
-                                    <td>QR Code :&nbsp</td> 
-                                    <td><input type="text" name="qrcode" class="form-control" style="width:120px;" id="qr" disabled/></td>
-                                </tr>
-                                
-                                        
-                            </table>
-                            <br>
-                            <?php
-                                $amount = $lim - $up;
-                                if ($amount < 1) {
-                                    $dis = "disabled";
-                                }else{
-                                    $dis = null;
-                                }
-
-                                echo anchor("storeowner/addinfo/".$this->session->userdata('storeid'), "<button type='button' class='btn btn-primary btn-default pull-right' style='margin-right:20px;margin-left:10px;' ".$dis."".$disupload." >+ New Upload</button>");
-                                // echo anchor("storeowner/del/".$this->session->userdata('storedel'), "<button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
-                            ?>
-                            <!-- <a href="<?=base_url();?>index.php/storeowner/addinfo/6"><button type="button" class="btn btn-primary btn-default pull-right" style="margin-right:20px;margin-left:10px;">+ New Upload</button></a> -->
-                            <span id="infodel"></span>
-                            <!-- <a href="<?=base_url();?>index.php/storeowner/del" onclick="javascript:return confirm('Do you want to delete?');"><button type="button" class="btn btn-danger btn-default pull-right" style="text-align:right;">Delete</button></a> -->
-                            </div>
-                                    <div class="modal fade" id="myModal" role="dialog">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                                    <h4 class="modal-title">Confirm</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>This message was deleted , Are you sure ?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>  
-                    
                         <div class="col-lg-7" style="width:50%;">
                         <div class="panel panel-green">
                             <div class="panel-heading">
@@ -585,7 +516,77 @@
                                 -->
                             </div>
                         </div>
+                        </div> 
+                        <div class="col-lg-5" style="width:50%;">
+                        <div class="panel panel-primary">    
+                            <div class="panel-heading" id="info_detail">
+                                <h3 class="panel-title"> &nbsp </h3>
+                            </div>
+                            <div class="panel-body" style="min-height: 760px; max-height: 760px;text-align:center" >
+                                <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" style="width:420px;height:420px" >
+                            <div class="col-sm-12" style="margin-top:12px">
+                                    
+                            <table align="center">
+                                <tr>
+                                    <td>Description :&nbsp</td> 
+                                    <td><textarea name="des" rows="3" class="form-control" style="width:250px;" id="des" disabled></textarea></td>
+                                </tr>
+                                <tr><td>&nbsp</td></tr>
+                                <tr>
+                                    <td>Begin Date :&nbsp</td>
+                                    <td><input type="text" name="bdate" class="form-control" id="begin" disabled/></td>
+                                </tr>
+                                <tr><td>&nbsp</td></tr>
+                                <tr>
+                                    <td>Expire Date :&nbsp</td> 
+                                    <td><input type="text" name="edate" class="form-control" id="expire" disabled/></td>
+                                </tr>
+                                <tr><td>&nbsp</td></tr>
+                                <tr>
+                                    <td>QR Code :&nbsp</td> 
+                                    <td><input type="text" name="qrcode" class="form-control" style="width:120px;" id="qr" disabled/></td>
+                                </tr>
+                                
+                                        
+                            </table>
+                            <br>
+                            <?php
+                                $amount = $lim - $up;
+                                if ($amount < 1) {
+                                    $dis = "disabled";
+                                }else{
+                                    $dis = null;
+                                }
+
+                                echo anchor("storeowner/addinfo/".$this->session->userdata('storeid'), "<button type='button' class='btn btn-primary btn-default pull-right' style='margin-right:20px;margin-left:10px;' ".$dis."".$disupload." >+ New Upload</button>");
+                                // echo anchor("storeowner/del/".$this->session->userdata('storedel'), "<button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                            ?>
+                            <!-- <a href="<?=base_url();?>index.php/storeowner/addinfo/6"><button type="button" class="btn btn-primary btn-default pull-right" style="margin-right:20px;margin-left:10px;">+ New Upload</button></a> -->
+                            <span id="infodel"></span>
+                            <!-- <a href="<?=base_url();?>index.php/storeowner/del" onclick="javascript:return confirm('Do you want to delete?');"><button type="button" class="btn btn-danger btn-default pull-right" style="text-align:right;">Delete</button></a> -->
+                            </div>
+                                    <div class="modal fade" id="myModal" role="dialog">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Confirm</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>This message was deleted , Are you sure ?</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Yes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>  
+                    
+                         
                     </div>
             
                
