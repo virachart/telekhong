@@ -158,7 +158,7 @@
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
                         </li>
                         <li <?php echo $dismanage; ?>>
-                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> Manage QRCode</a> 
+                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i>  QRCode</a> 
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
@@ -180,12 +180,13 @@
                 <!-- Page Heading -->
                 <div class="col-lg-12">
                     <div class="col-lg-7">
-                        <h1 class="page-header">
+                        <h1>
                             <?php echo $rs['store_name']; ?>  <small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male"></i> follower <?php echo $follow->num_rows() ?>&nbsp)</small>
                         </h1>
+                        <hr style="width:100%">
                     </div>
                 <div>
-                    <div class="col-lg-5"style="margin-top :45px">
+                    <div class="col-lg-5"style="margin-top :20px">
                             
                             <a href="<?=base_url()?>index.php/managestoreowner"><button type="button" class="btn btn-warning pull-right "  style="margin-right:10px">Edit Store</button></a>
                             <button type="button" class="btn btn-success pull-right " data-toggle="modal" data-target="#myModal5" style="margin-right:10px">Activate Khong</button>
@@ -379,26 +380,6 @@
             </div>
                 </div>
                 </div>
-                    
-                    <div class="col-lg-12">
-                        <ol class="breadcrumb">
-                            <li class="active">
-                               <div class="col-md-12"><h4>Limit of your package in this period </h4></div> 
-                            </li>
-                            <div class="progress">
-                     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php $up = $rs['upload']; echo $up;?>" aria-valuemin="0" aria-valuemax="<?php $lim=$rs['upload_limit']; echo $lim;?>" style="width: <?php $cal=($up/$lim)*100; if($cal==0) echo "3"; else echo $cal; ?>%;">
-                    <?php 
-                       
-                        echo $up." / ".$lim; 
-                        
-                        ?>
-                    </div>
-                    </div>
-                        </ol>
-                    </div>
-
-
-                
                 <!-- /.row -->
                 
                     <script type="text/javascript">
@@ -411,9 +392,9 @@
                                 dataType:"json",
                                 success:function(res){
                                     console.log(JSON.stringify(res));
-                                    var textname = "<h3 class='panel-title'> "+res.info_name+"</h3>";
+                                    var textname = "<center><h3 class='panel-title'> "+res.info_name+"</h3></center>";
                                     var textpic = "<?=base_url();?>images/info/"+res.info_pic;
-                                    var textbutton = "<a href='<?=base_url();?>index.php/store/delinfo/"+res.info_id+"' onclick='javascript:return confirm('Do you want to delete?');'><button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button></a>";
+                                    var textbutton = "<a href='<?=base_url();?>index.php/store/delinfo/"+res.info_id+"' onclick='javascript:return confirm('Do you want to delete?');'><button type='button' class='btn btn-danger btn-default' style='text-align:center;margin-top:30px'>Delete</button></a>";
                                     $("#info_detail").html(textname);
                                     $("#infopic").attr("src",textpic);
                                     $("#des").attr("value",res.info_descrip);
@@ -437,14 +418,19 @@
                 <!-- /.row -->
                 
                     <div class="col-lg-12">
+                        
                         <div class="col-lg-7" style="width:50%;">
                         <div class="panel panel-green">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Message Log</h3>
+                                <center><h3 class="panel-title"><i class="fa fa-clock-o fa-fw"></i>Message Log</h3></center>
                             </div>
                        
-                            <div class="panel-body" style="min-height: 760px; max-height: 760px;overflow-y: scroll;">
-
+                    
+                         
+                    
+                   
+                            <div class="panel-body" style="min-height: 560px; max-height: 560px;overflow-y: scroll;">
+                                
                                 <div  class="list-group">
                                 
                                 <?php
@@ -516,14 +502,42 @@
                                 -->
                             </div>
                         </div>
-                        </div> 
+                        <div class="col-lg-12 breadcrumb">
+                            <div class="active col-lg-5" style="font-size:medium;">
+                               Limit of your package
+                            </div>
+                            <div class="progress" style="background-color:#cccccc;margin-top:3px">
+                     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="<?php $up = $rs['upload']; echo $up;?>" aria-valuemin="0" aria-valuemax="<?php $lim=$rs['upload_limit']; echo $lim;?>" style="width: <?php $cal=($up/$lim)*100; if($cal==0) echo "3"; else echo $cal; ?>%;">
+                    <?php 
+                       
+                        echo $up." / ".$lim; 
+                        
+                        ?>
+                    </div>
+                    </div>
+                    </div>
+                        <?php
+                                $amount = $lim - $up;
+                                if ($amount < 1) {
+                                    $dis = "disabled";
+                                }else{
+                                    $dis = null;
+                                }
+
+                                echo anchor("storeowner/addinfo/".$this->session->userdata('storeid'), "<button type='button' class='btn btn-lg btn-primary' style='width:100%;height:100px;font-size:xx-large;' ".$dis."".$disupload." ><i class='glyphicon glyphicon-cloud-upload'></i>&nbsp&nbsp New Message</button>");
+                                // echo anchor("storeowner/del/".$this->session->userdata('storedel'), "<button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                            ?>
+                        
+                        </div>
+                       
+                         
                         <div class="col-lg-5" style="width:50%;">
                         <div class="panel panel-primary">    
                             <div class="panel-heading" id="info_detail">
-                                <h3 class="panel-title"> &nbsp </h3>
+                                <center><h3 class="panel-title"><i class="glyphicon glyphicon-text-size"></i> Message Topic </h3></center>
                             </div>
                             <div class="panel-body" style="min-height: 760px; max-height: 760px;text-align:center" >
-                                <img class="img-thumbnail" src="http://placehold.it/420x420" id="infopic" alt="" style="width:420px;height:420px" >
+                                <img src="<?=base_url();?>images/info/preview.jpg" id="infopic" alt="" style="width:400px;height:400px" >
                             <div class="col-sm-12" style="margin-top:12px">
                                     
                             <table align="center">
@@ -549,18 +563,7 @@
                                 
                                         
                             </table>
-                            <br>
-                            <?php
-                                $amount = $lim - $up;
-                                if ($amount < 1) {
-                                    $dis = "disabled";
-                                }else{
-                                    $dis = null;
-                                }
-
-                                echo anchor("storeowner/addinfo/".$this->session->userdata('storeid'), "<button type='button' class='btn btn-primary btn-default pull-right' style='margin-right:20px;margin-left:10px;' ".$dis."".$disupload." >+ New Upload</button>");
-                                // echo anchor("storeowner/del/".$this->session->userdata('storedel'), "<button type='button' class='btn btn-danger btn-default pull-right' style='text-align:right;'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
-                            ?>
+                            
                             <!-- <a href="<?=base_url();?>index.php/storeowner/addinfo/6"><button type="button" class="btn btn-primary btn-default pull-right" style="margin-right:20px;margin-left:10px;">+ New Upload</button></a> -->
                             <span id="infodel"></span>
                             <!-- <a href="<?=base_url();?>index.php/storeowner/del" onclick="javascript:return confirm('Do you want to delete?');"><button type="button" class="btn btn-danger btn-default pull-right" style="text-align:right;">Delete</button></a> -->

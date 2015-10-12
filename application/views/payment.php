@@ -191,7 +191,7 @@
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
                         </li>
                         <li <?php echo $dismanage; ?>>
-                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> Manage QRCode</a> 
+                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> QRCode</a> 
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
@@ -209,22 +209,15 @@
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">
+                        <h1 >
                             Payment
                         </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-desktop"></i>  <a href="<?=base_url()?>store">store</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-table"></i> Payments 
-                            </li>
-                        </ol>
+                        <hr>
                     </div>
                 </div>
                 <!-- /.row -->
                 <div class="col-lg-12">
-                <div class="col-lg-4" >
+                
                     <style>
                         table.table1 tr{
                             
@@ -238,34 +231,60 @@
                         }
 
                     </style>
-                    <table class="table1">
-                        <tr>
-                            <td>Your Package is :</td>
-                            <td><span style="font-size: 14px" class="label label-primary label-as-badge"><?php echo $storedetail['package_name']; ?></span></td>
-                        </tr>
-                        <tr>
-                            <td>Service Charge : </td>
-                            <td><span style="font-size: 14px" class="label label-warning label-as-badge"><?php echo $storedetail['price']; ?> / Month</span></td>
-                        </tr>
-                        <tr>
-                            <td>Service start in : </td>
-                            <td><span style="font-size: 14px" class="label label-success label-as-badge"><?php echo substr($firstday['date'],0,10); ?></span></td>
-                        </tr>
-                        <tr>
-                            <td>End of agreement : </td>
-                            <td><span style="font-size: 14px" class="label label-info label-as-badge"><?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?></span></td>
-                        </tr>
-                    </table>
-                </div>
 
-                <div class="col-lg-8">
+                <div class="col-lg-12" style="text-align:center;background-color:#ffffff;border-color:#59AC59;border-style:solid;">
 
                 <Form method="post" action="https://www.paysbuy.com/paynow.aspx">
-                <table class="table1"> 
-                   <tr>
-                        <td><p>You can change package here ! :</p></td>
-                        <td >
-                            <button type="button" style="width:140px;" class="btn btn-warning col-lg-4" data-toggle="modal" data-target="#myModal3" >Change Package</button>
+                    <h3>Payment Here</h3>
+                        <div class="col-lg-12" style="margin-top:10px;">
+                            <input type="Hidden" Name="psb" value="psb"/> 
+                            <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
+                            
+                            
+                            <script type="text/javascript">
+                                window.onload=function(){
+                                    var stoid = '<?php echo $store ?>';
+                                    var setval = 'pack'+stoid+'01';
+                                    $("#inv").attr("value",setval);
+                                }
+                            </script>
+
+                            <!-- inv is Some String text from paysbuy-->
+                            <input Type="Hidden" Name="inv" id="inv" value=""/> 
+                            <input Type="Hidden" Name="itm" value="Service Charge"/> 
+                            
+                            <!-- amt is Store Package Charge--> 
+                            <input Type="Hidden" Name="amt" value="1" id="price"/>
+                            
+                            <!-- Redirect Web Controller-->
+                            <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
+                            <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
+                        </div>
+                        
+                        <div class="col-lg-12" style="margin-top:10px;">
+                        <div class="col-lg-7" style="text-align:right;"><h5>You can choose more than 1 period :</h5></div>
+                        <div >
+                            <select class="form-control " style="width:70px" onchange="payment()" id="priod">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                <option>11</option>
+                                <option>12</option>
+                        
+                            </select>
+                        </div>
+                        
+                     </div>
+
+                        <div class="col-lg-12" style="margin-top:10px;">
+                            <button type="button" style="width:140px;" class="btn btn-warning " data-toggle="modal" data-target="#myModal3" >Change Package</button>
                             <div class="modal fade" id="myModal3" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -405,67 +424,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </td>
-                        <td rowspan="3" width="100px">&nbsp</td>
 
-                        <td rowspan="3" >
-                        <div class="panel panel-danger">
-
-                        <div class="panel-body">
-
-                            <input type="Hidden" Name="psb" value="psb"/> 
-                            <input Type="Hidden" Name="biz" value="sleepyjob.oneside@gmail.com"/> 
-                            
-                            
-                            <script type="text/javascript">
-                                window.onload=function(){
-                                    var stoid = '<?php echo $store ?>';
-                                    var setval = 'pack'+stoid+'01';
-                                    $("#inv").attr("value",setval);
-                                }
-                            </script>
-
-                            <!-- inv is Some String text from paysbuy-->
-                            <input Type="Hidden" Name="inv" id="inv" value=""/> 
-                            <input Type="Hidden" Name="itm" value="Service Charge"/> 
-                            
-                            <!-- amt is Store Package Charge--> 
-                            <input Type="Hidden" Name="amt" value="1" id="price"/>
-                            
-                            <!-- Redirect Web Controller-->
-                            <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
-                            <input type="image" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
                         </div>
-                    </div>
-                        </td>    
-                    </tr> 
-                    <tr>
-
-                        <td><p>You can choose more than 1 period :</p></td>
-                        <td>
-                            <select class="form-control col-lg-12" style="width:70px" onchange="payment()" id="priod">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
                         
-                            </select>
-                        </td>    
-                            
-                    </tr>
-                    
-                </table>
-                     
                 </Form >
-                
+                <div class"col-lg-12">&nbsp</div>
                 </div>
             </div>
             <div class="row">
@@ -477,8 +440,23 @@
                     <div class="col-lg-12">
                         <h2 style="text-align:center;">Payment Logs</h2>
                         <br>
+                        <table class="table1" width="100%";>
+                        <tr>
+                            <td>Your Package is :</td>
+                            <td><span style="font-size: 14px" class="label label-primary label-as-badge"><?php echo $storedetail['package_name']; ?></span></td>
+                            <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td>
+                            <td>Service Charge : </td>
+                            <td><span style="font-size: 14px" class="label label-warning label-as-badge"><?php echo $storedetail['price']; ?> / Month</span></td>
+                            <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td>
+                            <td>Service start in : </td>
+                            <td><span style="font-size: 14px" class="label label-success label-as-badge"><?php echo substr($firstday['date'],0,10); ?></span></td>
+                            <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td>
+                            <td>End of agreement : </td>
+                            <td><span style="font-size: 14px" class="label label-info label-as-badge"><?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?></span></td>
+                        </tr>
+                    </table>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-hover" style="text-align:center">
+                            <table class="table table-bordered table-hover" style="text-align:center;margin-top:10px">
                                 <style>
                                 .table th {
                                     background-color: #47A347;

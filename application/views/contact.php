@@ -142,7 +142,7 @@
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
                         </li>
                         <li <?php echo $dismanage; ?>>
-                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> Manage QRCode</a> 
+                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> QRCode</a> 
                         </li>
                         <li class="active">
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
@@ -160,17 +160,10 @@
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">
+                            <h1>
                                 Contact
                             </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-desktop"></i>  <a href="<?=base_url()?>store">store</a>
-                                </li>
-                                <li class="active">
-                                    <i class="fa fa-edit"></i> contact
-                                </li>
-                            </ol>
+                            <hr>
                         </div>
                     </div>
                     <!-- /.row -->

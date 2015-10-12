@@ -156,7 +156,7 @@ hr { border: 1px solid;
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
                         </li>
                         <li class="active">
-                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> Manage QRCode</a> 
+                            <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> QRCode</a> 
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
@@ -170,45 +170,24 @@ hr { border: 1px solid;
         <div id="page-wrapper">
 
             <div class="container-fluid">
-
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Manage QR Code
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>dashboard">Dashboard</a>
-                            </li>
-                            <li class="active">
-                                <i class="fa fa-table"></i> ManageQR                         
-                             </li>
-                        </ol>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="col-lg-12">
-                <div class="col-lg-3" >
-
-                Total of QR Code is : <span class="badge progress-bar-success"><?php echo $num1->num_rows(); ?></span> <br>
-                
-                </div>
-                
-            </div>
-            <hr >
             
                 <div class="row">
                     <div class="col-lg-12">
                         <center><h2>All QR Code</h2></center>
                         <div class="table-responsive">
                             <table class="table  table-hover">
-                                <div class="input-group">
-                                    <form action="<?php echo site_url('manageqr/search');?>" method = "post">
-                                    <input type="text" name="searchqr" class="form-control input-sm pull-right" style="width: 200px; margin-top : 2px" placeholder="Search By Store Name">
-                                    <div class="input-group-btn">
-                                        <input class="btn btn-primary" style="margin-bottom:20px" type="submit" name="btsave" value="Search">
+                                <div class="col-lg-3" >
 
+                                    Total of QR Code is : <span class="badge progress-bar-success"><?php echo $num1->num_rows(); ?></span> <br>
+                
+                                </div>
+                                <div class=" pull-right">
+                                    <form action="<?php echo site_url('manageqr/search');?>" method = "post">
+                                    
+                                    <div >
+                                        
+                                        <input class="btn btn-primary  pull-right" style="margin-bottom:20px" type="submit" name="btsave" value="Search">
+                                        <input type="text" name="searchqr" class="form-control  pull-right" style="width: 200px; " placeholder="Search By Store Name">
                                      </div>
                                      </form>
                                 </div>
