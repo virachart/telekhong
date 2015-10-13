@@ -19,19 +19,12 @@ class Appback extends CI_Controller{
 		$major = $this->input->post("major");
 		$minor = $this->input->post("minor");
 		$id = $this->input->post("fb_id");
-		// echo "<pre>";
-		// print_r($data);
-		// echo "</pre>";
 
 		$ar = array('uuid' => $uuid , 'major' => $major , 'minor' => $minor , 'sensoro_type' => '1');
 		$sqlSenType = "select * from sensoro where uuid='".$uuid."' and major='".$major."' and minor='".$minor."' and sensoro_type='1' and status_sensoro_id = '1' ";
 		// $data['rs'] = $this->db->select("*")->from("sensoro");
 		$rs = $this->db->query($sqlSenType);
 		$data1 = $rs->row_array();
-		// echo "<pre>";
-		// print_r($data1);
-		// echo "</pre>";
-		// echo "string";
 				
 		$ar=array(
 			"sensoro_id"=>$data1['sensoro_id'],
@@ -107,7 +100,8 @@ class Appback extends CI_Controller{
 		$rsStore = $this->db->query($sqlStore);
 		$dataStore = $rsStore->row_array();
 		if ($rsStore->num_rows != 0) {
-			$arsend = array("detail"=>$dataStore['detail'],
+			$arsend = array("storename" => $dataStore['store_name'],
+				"detail"=>$dataStore['detail'],
 				"address"=>$dataStore['address'],
 				"tel"=>$dataStore['tel'],
 				"opentime"=>$dataStore['open_time'],
@@ -115,7 +109,8 @@ class Appback extends CI_Controller{
 				"id"=>$id
 				);
 		}else{
-			$arsend = array("detail"=>null,
+			$arsend = array("storename" => null,
+				"detail"=>null,
 				"address"=>null,
 				"tel"=>null,
 				"opentime"=>null,
@@ -255,6 +250,25 @@ class Appback extends CI_Controller{
 			'it' => $dataLogin['it'],
 			'healty' => $dataLogin['healty'],
 			);
+		$this->output
+        			->set_content_type('application/json')
+        			->set_output(json_encode($arsend));
+	}
+
+	public function checkuserinfo(){
+		$fbid = $this->input->post("id");
+		$sqlchinfouser = "select * from user where fb_id = '".$fbid."' ";
+		$rsuserlogin = $this->db->query($sqlchinfouser);
+		if ($rsuserlogin->num_rows != 0) {
+			$datachuserlogin = $rsuserlogin->row_array();
+			if ($datachuserlogin['sex'] != null && $datachuserlogin['birth'] != null) {
+				$arsend = array('status' => true);
+			}else{
+				$arsend = array('status' => false);
+			}
+		}else{
+			$arsend = array('status' => false);
+		}
 		$this->output
         			->set_content_type('application/json')
         			->set_output(json_encode($arsend));

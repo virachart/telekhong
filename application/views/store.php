@@ -394,14 +394,15 @@
                                     console.log(JSON.stringify(res));
                                     var textname = "<center><h3 class='panel-title'> "+res.info_name+"</h3></center>";
                                     var textpic = "<?=base_url();?>images/info/"+res.info_pic;
-                                    var textbutton = "<a href='<?=base_url();?>index.php/store/delinfo/"+res.info_id+"' onclick='javascript:return confirm('Do you want to delete?');'><button type='button' class='btn btn-danger btn-default' style='text-align:center;margin-top:30px'>Delete</button></a>";
+                                    // var textbutton = "<a href='<?=base_url();?>index.php/store/delinfo/"+res.info_id+"' onclick='javascript:return confirm('Do you want to delete?');'><button type='button' class='btn btn-danger btn-default pull-right' style='text-align:center;margin-top:30px;'>Delete</button></a>";
                                     $("#info_detail").html(textname);
                                     $("#infopic").attr("src",textpic);
                                     $("#des").attr("value",res.info_descrip);
                                     $("#begin").attr("value",res.info_begin_date);
                                     $("#expire").attr("value",res.info_expire_date);
                                     $("#qr").attr("value",res.qr);
-                                    $("#infodel").html(textbutton);
+                                    $("#adelinfo").attr("href","<?=base_url();?>index.php/store/delinfo/"+res.info_id);
+                                    $("#butdelinfo").attr("style","text-align:center;margin-top:30px;");
 
                                 },
                                 error:function(err){
@@ -559,13 +560,15 @@
                                 <tr>
                                     <td>QR Code :&nbsp</td> 
                                     <td><input type="text" name="qrcode" class="form-control" style="width:120px;" id="qr" disabled/></td>
-                                </tr>
-                                
-                                        
+                                </tr>  
                             </table>
                             
                             <!-- <a href="<?=base_url();?>index.php/storeowner/addinfo/6"><button type="button" class="btn btn-primary btn-default pull-right" style="margin-right:20px;margin-left:10px;">+ New Upload</button></a> -->
-                            <span id="infodel"></span>
+                            <span id="infodel">
+                                <a href="" onclick="javascript:return confirm('Do you want to delete?');" id="adelinfo">
+                                    <button type='button' id="butdelinfo" class='btn btn-danger btn-default' style='display:none;'>Delete</button>
+                                </a>
+                            </span>
                             <!-- <a href="<?=base_url();?>index.php/storeowner/del" onclick="javascript:return confirm('Do you want to delete?');"><button type="button" class="btn btn-danger btn-default pull-right" style="text-align:right;">Delete</button></a> -->
                             </div>
                                     <div class="modal fade" id="myModal" role="dialog">
