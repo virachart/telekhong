@@ -29,3 +29,5 @@ class Allstatistics extends CI_Controller{
 			redirect('auth');
 		}
 	}
+}
+?>
