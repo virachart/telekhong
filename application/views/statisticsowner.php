@@ -194,42 +194,10 @@
                                                 ?>
                                             </select>
                                         </td>
-                                        <td>
-                                            <select class="form-control" style="width : 100px;background-color : #286090;color:#fff;margin-left:5px">
-                                                <option value="1">January</option>
-                                                <option value="2">February</option>
-                                                <option value="3">March</option>
-                                                <option value="4">April</option>
-                                                <option value="5">May</option>
-                                                <option value="6">June</option>
-                                                <option value="7">July</option>
-                                                <option value="8">Augest</option>
-                                                <option value="9">September</option>
-                                                <option value="10">October</option>
-                                                <option value="11">November</option>
-                                                <option value="12">December</option>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <select class="form-control" style="width : 100px;background-color : #286090;color:#fff;margin-left:5px">
-                                                
-                                                <?php
-                                                    $ye = date("Y");
-                                                    echo "<option hidden>".$year."</option>"; 
-                                                    $ye -= 3;
-                                                    $ye2 = $ye+8;
-                                                    for ($i=$ye; $i <= $ye2 ; $i++) { 
-                                                        echo "<option value = ".$i.">".$i."</option>";
-                                                    }
-                                                ?>
-                                            </select>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-warning" style="width:80px;margin-left:5px">Show</button>
-                                        </td>
+
                                     </tr>
                                 </table>
-                                <?php echo form_close(); ?>
+                                <?php echo form_close()?>
                                 </div>
                             </div>
                         </div>
