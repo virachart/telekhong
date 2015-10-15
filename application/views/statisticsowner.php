@@ -178,19 +178,50 @@
                     <!-- Flot Charts -->
                     <div class="row">
                         <div class="col-lg-2">
-                            <h2 class="page-header">All Chart in </h2></div>
-                            <div class="dropdown col-lg-6" style="margin-top:3%">
+                            <h2>All Chart in :</h2></div>
+                            <div class="col-lg-10">
+                            <div class="dropdown col-lg-12" style="margin-top:20px" >
                                 <?php echo form_open()?>
-
-                                <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/otherinfo/'+this.value;this.form.submit()" class="form-control" style="width : 200px;background-color : #286090;color:#fff;" >
-                                    <option hidden><?php echo $getinfoname['info_name']; ?></option>
-                                    <?php
-                                        foreach ($rs as $r) {
-                                            echo "<option value='".$r['info_id']."'>".substr($r['info_name'], 0,20)."</option>";
-                                        }
-                                    ?>
-                                </select>
+                               <table>
+                                    <tr>
+                                        <td>
+                                            <select onchange="this.form.action='<?php echo site_url('statisticsowner')?>/otherinfo/'+this.value;this.form.submit()" class="form-control" style="width : 200px;background-color : #286090;color:#fff;" >
+                                                <option hidden><?php echo $getinfoname['info_name']; ?></option>
+                                                <?php
+                                                    foreach ($rs as $r) {
+                                                        echo "<option value='".$r['info_id']."'>".substr($r['info_name'], 0,20)."</option>";
+                                                    }
+                                                ?>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" style="width : 100px;background-color : #286090;color:#fff;margin-left:5px">
+                                                <option>January</option>
+                                                <option>February</option>
+                                                <option>March</option>
+                                                <option>April</option>
+                                                <option>May</option>
+                                                <option>June</option>
+                                                <option>July</option>
+                                                <option>Augest</option>
+                                                <option>September</option>
+                                                <option>October</option>
+                                                <option>November</option>
+                                                <option>December</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <select class="form-control" style="width : 100px;background-color : #286090;color:#fff;margin-left:5px">
+                                                <option>2015</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-warning" style="width:80px;margin-left:5px">Show</button>
+                                        </td>
+                                    </tr>
+                                </table>
                                 <?php echo form_close(); ?>
+                                </div>
                             </div>
                         </div>
 
@@ -556,7 +587,7 @@
     // Flot Pie Chart with Tooltips
             $('#mytab1').click(function (){
                 var data = [{
-                    label: " > 18 year old",
+                    label: " < 18 year old",
                     <?php
                     echo "data: ";
                     echo $age1->num_rows();
@@ -609,7 +640,7 @@
         
         $('#tab1').ready(function (){
                 var data = [{
-                    label: " > 18 year old",
+                    label: " < 18 year old",
                     <?php
                     echo "data: ";
                     echo $age1->num_rows();
@@ -1140,7 +1171,7 @@ $('#tab5').ready(function (){
         ykeys: ['a','b','c','d','e'],
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
-        labels: ['>18','18-25','26-35','36-50','>51'],
+        labels: ['<18','18-25','26-35','36-50','>51'],
         // Disables line smoothing
         colors: ['Red','blue','green','yellow','gray'],
         smooth: false,
@@ -1885,7 +1916,7 @@ $('#tab4').ready(function (){
         ykeys: ['a','b','c','d','e'],
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
-        labels: ['>18','18-25','26-35','36-50','>51'],
+        labels: ['<18','18-25','26-35','36-50','>51'],
         // Disables line smoothing
         colors: ['Red','blue','green','yellow','gray'],
         smooth: false,
@@ -2628,7 +2659,7 @@ $('#tab3').ready(function (){
         ykeys: ['a','b','c','d','e'],
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
-        labels: ['>18','18-25','26-35','36-50','>51'],
+        labels: ['<18','18-25','26-35','36-50','>51'],
         // Disables line smoothing
         colors: ['Red','blue','green','yellow','gray'],
         smooth: false,
@@ -3371,7 +3402,7 @@ $('#tab2').ready(function (){
         ykeys: ['a','b','c','d','e'],
         // Labels for the ykeys -- will be displayed when you hover over the
         // chart.
-        labels: ['>18','18-25','26-35','36-50','>51'],
+        labels: ['<18','18-25','26-35','36-50','>51'],
         // Disables line smoothing
         colors: ['Red','blue','green','yellow','gray'],
         smooth: false,
