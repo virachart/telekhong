@@ -20,6 +20,24 @@
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <!-- jQuery -->
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
+    <!-- <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script>-->
+
+    <!-- Flot Charts JavaScript -->
+    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
+    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
+    <!--<script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script>-->
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

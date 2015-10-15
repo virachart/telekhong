@@ -372,7 +372,16 @@ class Statisticsowner extends CI_Controller{
 		}
 
 
-		
+		if($this->session->userdata('id') != null){
+			// if($this->session->userdata('storeid') != null){
+			
+			}else{
+				redirect("storeowner");
+			}
+			
+		}else{
+			redirect("auth");
+		}
 	}
 
 	
