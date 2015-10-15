@@ -343,7 +343,7 @@
                 <script type="text/javascript">
                     function delstore(id){
                         $.ajax({
-                            url:"store/del",
+                            url:"<?php echo site_url("store/del");?>",
                             type: "POST",
                             cache: false,
                             data: "id="+id,
