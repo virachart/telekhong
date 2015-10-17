@@ -373,7 +373,7 @@
                                                             </div>
                                                             <div class='modal-footer'>
                                                                 <button type='button' class='btn btn-default' onclick='edit(".$r['store_id'].")' data-dismiss='modal'>Edit</button>
-                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>"
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>";
                                                                 echo anchor("managestore/del/".$r["store_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                             echo "</div>
 

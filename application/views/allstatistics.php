@@ -183,7 +183,7 @@
                         
                             <div class="col-lg-2"><h2>Statistics in</h2></div>
                             <div class="dropdown col-lg-10" style="margin-top:20px" >
-                                <?php echo form_open()?>
+                                <?php echo form_open("allstatistics/getfrommonth")?>
                                <table>
                                     <tr>
                                         
@@ -196,7 +196,7 @@
                                         </td>
                                         <td> 
                                             <div class="input-group date form_datetime1" >
-                                                <input  style="width:150px" type="text" value="" id="monthtext" readonly class="form-control" placeholder="Month / Year">
+                                                <input  style="width:150px" type="text" onchange="this.form.action=this.form.submit()" value="" name="getmonth" id="monthtext" readonly class="form-control" placeholder="Month / Year">
                                                     <span class="input-group-addon" id="button1">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
@@ -204,7 +204,7 @@
                                              
                                             <script type="text/javascript">
                                                 $(".form_datetime1").datetimepicker({
-                                                    format: "MM yyyy",
+                                                    format: "yyyy-mm",
                                                     autoclose: true,
                                                     startView:4,
                                                     maxView:4,
@@ -225,6 +225,9 @@
                                                 
                                             </script>
                                         </td>
+                                        <?php echo form_close(); ?>
+
+                                        <?php echo form_open("allstatistics/getfromyear")?>
                                         <td width="40px"></td>
                                         <td>
                                             <div>
@@ -236,7 +239,7 @@
 
                                         <td>
                                             <div class="input-group date form_datetime2" >
-                                                <input  style="width:80px" type="text" value="" id="yeartext" readonly class="form-control" placeholder="Year">
+                                                <input  style="width:80px" type="text" onchange="this.form.action=this.form.submit()" value="" id="yeartext" name="getyear" readonly class="form-control" placeholder="Year">
                                                     <span class="input-group-addon" id="button2" >
                                                         <span class="glyphicon glyphicon-calendar" ></span>
                                                     </span>
@@ -299,52 +302,49 @@
                                 }
                                 </style>
                                 <tr>
-                                    <th colspan="5"  style="height:30px;font-size:medium"><i class="glyphicon glyphicon-star" style="color:#FFCC00"></i>&nbspTop 5 Favorite Ranking</th>
+                                    <th colspan="5"  style="height:30px;font-size:medium"><i class="glyphicon glyphicon-star" style="color:#FFCC00"></i>&nbspTop Favorite Ranking</th>
                                 </tr>
                                 <tr>
-                                    <th width="10%" style="height:30px">Rank</th>
+                                    <th width="5%" style="height:30px">Rank</th>
                                     <th width="45%" style="height:30px">Message</th>
-                                    <th width="15%" style="height:30px">Upload</th>
-                                    <th width="15%" style="height:30px">Status</th>
+                                    <th width="25%" style="height:30px">Upload</th>
+                                    <th width="10%" style="height:30px">Status</th>
                                     <th width="15%" style="height:30px">Favorite</th>
                                 </tr>
                                 <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
-                                    <td>01/01/2015</td>
-                                    <td><span class="label label-danger">Outdate</span></td>
-                                    <td>13000000</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
-                                    <td>01/01/2015</td>
-                                    <td><span class="label label-success">Avaliable</span></td>
-                                    <td>13000000</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
-                                    <td>01/01/2015</td>
-                                    <td>Outdate</td>
-                                    <td>13000000</td>
-                                </tr>
+                                <?php
+                                    $no = 1;
+                                    $day = date("d");
+                                    $day += 1;
+                                    if ($day < 10 ) {
+                                        $day = "0".$day;
+                                    }
+                                    $date = date("Y-m-");
+                                    $date = $date.$day;
 
-                                <tr>
-                                    <td>1</td>
-                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
-                                    <td>01/01/2015</td>
-                                    <td>Outdate</td>
-                                    <td>13000000</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
-                                    <td>01/01/2015</td>
-                                    <td>Outdate</td>
-                                    <td>13000000</td>
-                                </tr>
+                                    
+                                    foreach ($favtop as $r) {
+                                        $stcolor = "";
+                                        $sttext = "";
+                                        if ($r['info_expire_date'] > $date) {
+                                            $stcolor = "success";
+                                            $sttext = "Avaliable";
+                                        }elseif ($r['info_expire_date'] < $date) {
+                                            $stcolor = "danger";
+                                            $sttext = "Outdate";
+                                        }
+                                        echo "<tr>
+                                                <td>".$no."</td>
+                                                <td Style='text-align:center'>".$r['info_name']."</td>
+                                                <td>".substr($r['info_date'], 0,10)."</td>
+                                                <td><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                <td>".$r['countfav']."</td>
+                                            </tr>";
+                                        $no++;
+                                    }
+
+                                ?>
+                                
                                 
                             </tbody>
                             </table>
@@ -361,84 +361,49 @@
                                 </style>
                                 <thead>
                                     <tr>
-                                        <th width="10%">No.</th>
+                                        <th width="5%">No.</th>
                                         <th width="45%">Message Name</th>
-                                        <th width="15%">Upload</th>
+                                        <th width="20%">Upload</th>
                                         <th width="15%">Status</th>
                                         <th width="15%">Received</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td width="10%">1</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">2</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">3</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">4</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">5</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">6</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">7</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">8</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">9</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
-                                     <tr>
-                                        <td width="10%">10</td>
-                                        <td width="45%">Test message</td>
-                                        <td width="15%">03/07/2015</td>
-                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
-                                        <td width="15%">34289</td>
-                                    </tr>
+                                    <?php
+                                        $no = 1;
+                                        $day = date("d");
+                                        $day += 1;
+                                        if ($day < 10 ) {
+                                            $day = "0".$day;
+                                        }
+                                        $date = date("Y-m-");
+                                        $date = $date.$day;
+
+                                        
+                                        foreach ($infore as $r) {
+                                            $stcolor = "";
+                                            $sttext = "";
+                                            if ($r['info_expire_date'] > $date) {
+                                                $stcolor = "success";
+                                                $sttext = "Avaliable";
+                                            }elseif ($r['info_expire_date'] < $date) {
+                                                $stcolor = "danger";
+                                                $sttext = "Outdate";
+                                            }
+                                            echo "<tr>
+                                                    <td width='10%'>".$no."</td>
+                                                    <td width='45%'>".$r['info_name']."</td>
+                                                    <td width='15%'>".substr($r['info_date'], 0,10)."</td>
+                                                    <td width='15%'><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                    <td width='15%'>".$r['countre']."</td>
+                                                </tr>";
+                                            $no++;
+                                        }
+
+                                    ?>
+
+
+                                    
                                      
                                 </tbody>
                             </table>
