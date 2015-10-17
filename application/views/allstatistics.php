@@ -196,7 +196,7 @@
                                         </td>
                                         <td> 
                                             <div class="input-group date form_datetime1" >
-                                                <input  style="width:150px" type="text" value="" id="monthtext" readonly class="form-control">
+                                                <input  style="width:150px" type="text" value="" id="monthtext" readonly class="form-control" placeholder="Month / Year">
                                                     <span class="input-group-addon" id="button1">
                                                         <span class="glyphicon glyphicon-calendar"></span>
                                                     </span>
@@ -236,7 +236,7 @@
 
                                         <td>
                                             <div class="input-group date form_datetime2" >
-                                                <input  style="width:80px" type="text" value="" id="yeartext" readonly class="form-control" >
+                                                <input  style="width:80px" type="text" value="" id="yeartext" readonly class="form-control" placeholder="Year">
                                                     <span class="input-group-addon" id="button2" >
                                                         <span class="glyphicon glyphicon-calendar" ></span>
                                                     </span>
