@@ -13,7 +13,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="<?=base_url()?>assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bootstrap-datetimepicker.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?=base_url()?>assets/css/sb-admin.css" rel="stylesheet">
 
@@ -25,7 +26,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
-
+    <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.js"></script>
     <!-- Morris Charts JavaScript -->
     <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
     <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
@@ -47,7 +49,7 @@
 
     </head>
 
-    <body>
+    <body onload="enablefield()">
 
         <div id="wrapper">
 
@@ -153,8 +155,8 @@
                         <li >
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
-                        <li <?php echo $dissta;?>>
-                            <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                        <li <?php echo $dissta;?>class="active">
+                            <a href="<?=base_url()?>index.php/allstatistics"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
@@ -162,7 +164,7 @@
                         <li <?php echo $dismanage; ?>>
                             <a href="<?=base_url()?>index.php/manageqrowner"><i class="glyphicon glyphicon-qrcode"></i> QRCode</a> 
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="<?=base_url()?>index.php/contact"><i class="fa fa-fw fa-edit"></i> Contact</a>
                         </li>
                     </ul>
@@ -176,41 +178,276 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h1>
-                                Contact
-                            </h1>
-                            <hr>
+                     <div class="row">
+                       
+                        
+                            <div class="col-lg-2"><h2>Statistics in</h2></div>
+                            <div class="dropdown col-lg-10" style="margin-top:20px" >
+                                <?php echo form_open()?>
+                               <table>
+                                    <tr>
+                                        
+                                        <td>
+                                            <div>
+                                                <label class="radio-inline">
+                                                  <input  onclick="enablefield()" style="margin-top:-50%" type="radio" name="inlineRadioOptions" id="radio_1" value="option1">
+                                                </label>
+                                            </div>  
+                                        </td>
+                                        <td> 
+                                            <div class="input-group date form_datetime1" >
+                                                <input  style="width:150px" type="text" value="" id="monthtext" readonly class="form-control">
+                                                    <span class="input-group-addon" id="button1">
+                                                        <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                            </div>
+                                             
+                                            <script type="text/javascript">
+                                                $(".form_datetime1").datetimepicker({
+                                                    format: "MM yyyy",
+                                                    autoclose: true,
+                                                    startView:4,
+                                                    maxView:4,
+                                                    minView:3,
+                                                    pickerPosition: "bottom-left"
+                                                    
+                                                });
+                                                function enablefield(){
+                                                    if($("#radio_1").prop("checked", true)){
+                                                        $("#monthtext").prop('disabled', false);
+                                                        $("#button1").css("visibility", "visible");
+                                                        $("#yeartext").prop('disabled', true);
+                                                        $("#button2").css("visibility", "hidden");
+                                                    }
+
+                                                    
+                                                }
+                                                
+                                            </script>
+                                        </td>
+                                        <td width="40px"></td>
+                                        <td>
+                                            <div>
+                                                <label class="radio-inline">
+                                                  <input  onclick="enablefield2()"style="margin-top:-50%" type="radio" name="inlineRadioOptions" id="radio_2" value="option2">
+                                                </label>
+                                            </div>
+                                        </td>
+
+                                        <td>
+                                            <div class="input-group date form_datetime2" >
+                                                <input  style="width:80px" type="text" value="" id="yeartext" readonly class="form-control" >
+                                                    <span class="input-group-addon" id="button2" >
+                                                        <span class="glyphicon glyphicon-calendar" ></span>
+                                                    </span>
+                                            </div>
+                                             
+                                            <script type="text/javascript">
+                                                $(".form_datetime2").datetimepicker({
+                                                    format: "yyyy",
+                                                    autoclose: true,
+                                                    startView:4,
+                                                    maxView:4,
+                                                    minView:4,
+                                                    pickerPosition: "bottom-left"
+                                                    
+                                                });
+
+                                                function enablefield2(){
+                                                    if($("#radio_2").prop("checked", true)){
+                                                        $("#yeartext").prop('disabled', false);
+                                                        $("#button2").css("visibility", "visible");
+                                                        $("#monthtext").prop('disabled', true);
+                                                        $("#button1").css("visibility", "hidden");
+                                                        
+                                                    }
+
+                                                    
+                                                }
+                                            </script>
+                                        </td>
+
+                                    </tr>
+                                </table>
+                                <?php echo form_close(); ?>
+                                </div>                 
+                           
                         </div>
-                    </div>
+                   <hr>
                     <!-- /.row -->
 
                     <div class="row">
                         <div class="col-lg-6">
+                            <h4 style="color:#999999">View Message Chart</h4>
+                            <a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large"><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a>
+                            
+                            <div  style="margin-top:20px;height:360px;">
+                            <table  class="table" >
+                                <style>
+                                .table th{
+                                    text-align: center;
 
-                            <?php 
-                                echo form_open('contact/sendmail');
-                            ?>
+                                }
+                                .table td{                                   
+                                    text-align: center;
+                                    padding: 3px 3px 3px 3px ;
+                                }
+                                .table tbody { 
+                                height:240px;  
+                                border: 1px solid #CCCCCC;
 
-                                <div class="form-group">
-                                    <label>Topic</label>
-                                    <input class="form-control" name="topic" placeholder="Enter topic">
-                                </div>
+                                }
+                                </style>
+                                <tr>
+                                    <th colspan="5"  style="height:30px;font-size:medium"><i class="glyphicon glyphicon-star" style="color:#FFCC00"></i>&nbspTop 5 Favorite Ranking</th>
+                                </tr>
+                                <tr>
+                                    <th width="10%" style="height:30px">Rank</th>
+                                    <th width="45%" style="height:30px">Message</th>
+                                    <th width="15%" style="height:30px">Upload</th>
+                                    <th width="15%" style="height:30px">Status</th>
+                                    <th width="15%" style="height:30px">Favorite</th>
+                                </tr>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
+                                    <td>01/01/2015</td>
+                                    <td><span class="label label-danger">Outdate</span></td>
+                                    <td>13000000</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
+                                    <td>01/01/2015</td>
+                                    <td><span class="label label-success">Avaliable</span></td>
+                                    <td>13000000</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
+                                    <td>01/01/2015</td>
+                                    <td>Outdate</td>
+                                    <td>13000000</td>
+                                </tr>
 
-                                <div class="form-group">
-                                    <label>Enter detail</label>
-                                    <textarea class="form-control" name="detail" rows="3"></textarea>
-                                </div>
-
-                                <button type="submit" class="btn btn-default">Send</button>
-
-                            <?php 
-                                echo form_close();
-                            ?>
+                                <tr>
+                                    <td>1</td>
+                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
+                                    <td>01/01/2015</td>
+                                    <td>Outdate</td>
+                                    <td>13000000</td>
+                                </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td Style="text-align:left">Test Messageeeeeeeeeeeeeeeeeeeeeee</td>
+                                    <td>01/01/2015</td>
+                                    <td>Outdate</td>
+                                    <td>13000000</td>
+                                </tr>
+                                
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
+                        
+                        <div class="col-lg-6">
+                            <h4 style="color:#999999">View Message Received</h4>
+                            <table class="table" height="440px">
+                                <style>
+                                .table tbody{
+                                    border: 0px;
+                                }
+                                </style>
+                                <thead>
+                                    <tr>
+                                        <th width="10%">No.</th>
+                                        <th width="45%">Message Name</th>
+                                        <th width="15%">Upload</th>
+                                        <th width="15%">Status</th>
+                                        <th width="15%">Received</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td width="10%">1</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">2</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">3</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">4</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">5</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">6</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">7</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">8</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">9</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     <tr>
+                                        <td width="10%">10</td>
+                                        <td width="45%">Test message</td>
+                                        <td width="15%">03/07/2015</td>
+                                        <td width="15%"><span class="label label-success">Avaliable</span></td>
+                                        <td width="15%">34289</td>
+                                    </tr>
+                                     
+                                </tbody>
+                            </table>
 
                         </div>
-
+                        <!--follow Graph -->
+                        <div class="col-lg-12">follow Age Fraph</div>
+                        <div class="col-lg-12">follow Gender Fraph</div>
+                        <!--End follow Graph -->
                     </div>
                     <div><br></div>
                     <center><div class="row">
