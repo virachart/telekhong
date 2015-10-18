@@ -67,18 +67,44 @@ class Appback extends CI_Controller{
 						"fb_id"=>$id
 						);
 					$this->db->insert("info_log",$arInfo);
+				}else{
+					$arsend = array("info_id"=> null,
+						"info_name"=>null,
+						"info_desc"=>null,
+						"info_begin"=>null,
+						"info_expire"=>null,
+						"info_pic"=>null,
+						"catagory"=>null,
+						"store_id"=>null,
+						"store_name"=>null
+						);
 				}
 			// echo $this->db->last_query();
+			}else{
+				$arsend = array("info_id"=> null,
+						"info_name"=>null,
+						"info_desc"=>null,
+						"info_begin"=>null,
+						"info_expire"=>null,
+						"info_pic"=>null,
+						"catagory"=>null,
+						"store_id"=>null,
+						"store_name"=>null
+						);
 			}
+		}else{
+			$arsend = array("info_id"=> null,
+						"info_name"=>null,
+						"info_desc"=>null,
+						"info_begin"=>null,
+						"info_expire"=>null,
+						"info_pic"=>null,
+						"catagory"=>null,
+						"store_id"=>null,
+						"store_name"=>null
+						);
 		}
 
-
-			// echo "<pre>";
-			// echo $dataInfo->store_id;
-			// print_r($dataInfo);
-			// print_r($dataInfo2);
-			// print_r($rsInfo);
-			// echo "</pre>";
 		$this->output
         			->set_content_type('application/json')
         			->set_output(json_encode($arsend));
