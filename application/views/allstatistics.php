@@ -302,7 +302,7 @@
                                 }
                                 </style>
                                 <tr>
-                                    <th colspan="5"  style="height:30px;font-size:medium"><i class="glyphicon glyphicon-star" style="color:#FFCC00"></i>&nbspTop Favorite Ranking</th>
+                                    <th colspan="5"  style="height:30px;font-size:medium"><i class="glyphicon glyphicon-star" style="color:#FFCC00"></i>&nbspTop 5 Favorite Ranking</th>
                                 </tr>
                                 <tr>
                                     <th width="5%" style="height:30px">Rank</th>
@@ -341,6 +341,28 @@
                                                 <td>".$r['countfav']."</td>
                                             </tr>";
                                         $no++;
+                                    }
+
+                                    if ($forfav == 1) {
+                                        foreach ($favadd as $r) {
+                                            $stcolor = "";
+                                            $sttext = "";
+                                            if ($r['info_expire_date'] > $date) {
+                                                $stcolor = "success";
+                                                $sttext = "Avaliable";
+                                            }elseif ($r['info_expire_date'] < $date) {
+                                                $stcolor = "danger";
+                                                $sttext = "Outdate";
+                                            }
+                                            echo "<tr>
+                                                <td>".$no."</td>
+                                                <td Style='text-align:center'>".$r['info_name']."</td>
+                                                <td>".substr($r['info_date'], 0,10)."</td>
+                                                <td><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                <td> 0 </td>
+                                            </tr>";
+                                        $no++;
+                                        }
                                     }
 
                                 ?>
@@ -398,6 +420,28 @@
                                                     <td width='15%'>".$r['countre']."</td>
                                                 </tr>";
                                             $no++;
+                                        }
+
+                                        if ($forinfo == 1) {
+                                            foreach ($readd as $r) {
+                                                $stcolor = "";
+                                                $sttext = "";
+                                                if ($r['info_expire_date'] > $date) {
+                                                    $stcolor = "success";
+                                                    $sttext = "Avaliable";
+                                                }elseif ($r['info_expire_date'] < $date) {
+                                                    $stcolor = "danger";
+                                                    $sttext = "Outdate";
+                                                }
+                                                echo "<tr>
+                                                        <td width='10%'>".$no."</td>
+                                                        <td width='45%'>".$r['info_name']."</td>
+                                                        <td width='15%'>".substr($r['info_date'], 0,10)."</td>
+                                                        <td width='15%'><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                        <td width='15%'> 0 </td>
+                                                    </tr>";
+                                                $no++;
+                                            }
                                         }
 
                                     ?>

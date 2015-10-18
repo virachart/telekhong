@@ -26,13 +26,14 @@ class Appback extends CI_Controller{
 		$rs = $this->db->query($sqlSenType);
 		$data1 = $rs->row_array();
 				
-		$ar=array(
+		
+		// echo $this->db->last_query();
+		if ($rs->num_rows() != null) {
+			$ar=array(
 			"sensoro_id"=>$data1['sensoro_id'],
 			"fb_id"=>$id
 			);
-		$this->db->insert("sensoro_log",$ar);
-		// echo $this->db->last_query();
-		if ($rs->num_rows() != null) {
+			$this->db->insert("sensoro_log",$ar);
 			// echo "test";
 			$idSen = $data1['sensoro_id'];
 		// 	// SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id
