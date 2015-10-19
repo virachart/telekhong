@@ -45,7 +45,14 @@ class Appback extends CI_Controller{
 
 			if ($rsInfo->num_rows() != 0) {
 				$dataInfo = $rsInfo->row_array();
-				
+				$dataqr = $this->db->select("*")
+							->from("qr")
+							->where("info_id",$dataInfo['info_id']);
+				if ($dataqr->num_rows != 0) {
+					$qrch = "have";
+				}else{
+					$qrch = "not have";
+				}
 				// print_r($dataInfo);
 				$cat = $dataInfo['catagory'];
 				$sqlCat = "Select * from user where ".$cat." = '1' ";
@@ -59,7 +66,8 @@ class Appback extends CI_Controller{
 						"info_pic"=>$dataInfo['info_pic'],
 						"catagory"=>$dataInfo['catagory'],
 						"store_id"=>$dataInfo['store_id'],
-						"store_name"=>$dataInfo['store_name']
+						"store_name"=>$dataInfo['store_name'],
+						"qr" => $qrch
 						);
 
 				//insert data to info_log
@@ -76,7 +84,8 @@ class Appback extends CI_Controller{
 						"info_pic"=>null,
 						"catagory"=>null,
 						"store_id"=>null,
-						"store_name"=>null
+						"store_name"=>null,
+						"qr" => null
 						);
 				}
 			// echo $this->db->last_query();
@@ -89,7 +98,8 @@ class Appback extends CI_Controller{
 						"info_pic"=>null,
 						"catagory"=>null,
 						"store_id"=>null,
-						"store_name"=>null
+						"store_name"=>null,
+						"qr" => null
 						);
 			}
 		}else{
@@ -101,7 +111,8 @@ class Appback extends CI_Controller{
 						"info_pic"=>null,
 						"catagory"=>null,
 						"store_id"=>null,
-						"store_name"=>null
+						"store_name"=>null,
+						"qr" => null
 						);
 		}
 
@@ -234,8 +245,9 @@ class Appback extends CI_Controller{
 			$qrid = $dataQr['qr_id'];
 			$arRe = array('qr_id' => $qrid , 'fb_id'=>$fb );
 			$this->db->insert('qr_log', $arRe);
+			$qrsend = $dataQr['code'].$fb;
 			$arsend = array('qrid' => $qrid,
-							'qrcode' => $dataQr['code']);
+							'qrcode' => $qrsend);
 		}else{
 			$arsend = null;
 		}

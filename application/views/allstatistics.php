@@ -28,18 +28,7 @@
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.js"></script>
-    <!-- Morris Charts JavaScript -->
-    <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
-    <!-- <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script>-->
-
-    <!-- Flot Charts JavaScript -->
-    <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
-    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.js"></script>
-    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
-    <!--<script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script>-->
+    
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -322,26 +311,28 @@
                                     $date = date("Y-m-");
                                     $date = $date.$day;
 
-                                    
-                                    foreach ($favtop as $r) {
-                                        $stcolor = "";
-                                        $sttext = "";
-                                        if ($r['info_expire_date'] > $date) {
-                                            $stcolor = "success";
-                                            $sttext = "Avaliable";
-                                        }elseif ($r['info_expire_date'] < $date) {
-                                            $stcolor = "danger";
-                                            $sttext = "Outdate";
+                                    if ($nothave1 == 0) {
+                                        foreach ($favtop as $r) {
+                                            $stcolor = "";
+                                            $sttext = "";
+                                            if ($r['info_expire_date'] > $date) {
+                                                $stcolor = "success";
+                                                $sttext = "Avaliable";
+                                            }elseif ($r['info_expire_date'] < $date) {
+                                                $stcolor = "danger";
+                                                $sttext = "Outdate";
+                                            }
+                                            echo "<tr>
+                                                    <td>".$no."</td>
+                                                    <td Style='text-align:center'>".$r['info_name']."</td>
+                                                    <td>".substr($r['info_date'], 0,10)."</td>
+                                                    <td><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                    <td>".$r['countfav']."</td>
+                                                </tr>";
+                                            $no++;
                                         }
-                                        echo "<tr>
-                                                <td>".$no."</td>
-                                                <td Style='text-align:center'>".$r['info_name']."</td>
-                                                <td>".substr($r['info_date'], 0,10)."</td>
-                                                <td><span class='label label-".$stcolor."'>".$sttext."</span></td>
-                                                <td>".$r['countfav']."</td>
-                                            </tr>";
-                                        $no++;
                                     }
+                                    
 
                                     if ($forfav == 1) {
                                         foreach ($favadd as $r) {
@@ -375,7 +366,7 @@
                         
                         <div class="col-lg-6">
                             <h4 style="color:#999999">View Message Received</h4>
-                            <table class="table" height="440px">
+                            <table class="table" >
                                 <style>
                                 .table tbody{
                                     border: 0px;
@@ -385,12 +376,12 @@
                                     <tr>
                                         <th width="5%">No.</th>
                                         <th width="45%">Message Name</th>
-                                        <th width="20%">Upload</th>
+                                        <th width="15%">Upload</th>
                                         <th width="15%">Status</th>
-                                        <th width="15%">Received</th>
+                                        <th width="25%">Received</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody style="height: 400px;position: absolute;overflow-y: scroll;">
                                     <?php
                                         $no = 1;
                                         $day = date("d");
@@ -401,25 +392,26 @@
                                         $date = date("Y-m-");
                                         $date = $date.$day;
 
-                                        
-                                        foreach ($infore as $r) {
-                                            $stcolor = "";
-                                            $sttext = "";
-                                            if ($r['info_expire_date'] > $date) {
-                                                $stcolor = "success";
-                                                $sttext = "Avaliable";
-                                            }elseif ($r['info_expire_date'] < $date) {
-                                                $stcolor = "danger";
-                                                $sttext = "Outdate";
+                                        if ($nothave2 == 0) {
+                                            foreach ($infore as $r) {
+                                                $stcolor = "";
+                                                $sttext = "";
+                                                if ($r['info_expire_date'] > $date) {
+                                                    $stcolor = "success";
+                                                    $sttext = "Avaliable";
+                                                }elseif ($r['info_expire_date'] < $date) {
+                                                    $stcolor = "danger";
+                                                    $sttext = "Outdate";
+                                                }
+                                                echo "<tr style='height:60px'>
+                                                        <td width='10%' style='padding-top: 20px;'>".$no."</td>
+                                                        <td width='45%' style='padding-top: 20px;'>".$r['info_name']."</td>
+                                                        <td width='15%' style='padding-top: 20px;'>".substr($r['info_date'], 0,10)."</td>
+                                                        <td width='15%' style='padding-top: 20px;'><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                        <td width='25%' style='padding-top: 20px;padding-left: 40px;'>".$r['countre']."</td>
+                                                    </tr>";
+                                                $no++;
                                             }
-                                            echo "<tr>
-                                                    <td width='10%'>".$no."</td>
-                                                    <td width='45%'>".$r['info_name']."</td>
-                                                    <td width='15%'>".substr($r['info_date'], 0,10)."</td>
-                                                    <td width='15%'><span class='label label-".$stcolor."'>".$sttext."</span></td>
-                                                    <td width='15%'>".$r['countre']."</td>
-                                                </tr>";
-                                            $no++;
                                         }
 
                                         if ($forinfo == 1) {
@@ -434,17 +426,19 @@
                                                     $sttext = "Outdate";
                                                 }
                                                 echo "<tr>
-                                                        <td width='10%'>".$no."</td>
-                                                        <td width='45%'>".$r['info_name']."</td>
-                                                        <td width='15%'>".substr($r['info_date'], 0,10)."</td>
-                                                        <td width='15%'><span class='label label-".$stcolor."'>".$sttext."</span></td>
-                                                        <td width='15%'> 0 </td>
+                                                        <td width='10%' style='padding-top: 20px;'>".$no."</td>
+                                                        <td width='45%' style='padding-top: 20px;'>".$r['info_name']."</td>
+                                                        <td width='15%' style='padding-top: 20px;'>".substr($r['info_date'], 0,10)."</td>
+                                                        <td width='15%' style='padding-top: 20px;'><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                        <td width='25%' style='padding-top: 20px;padding-left: 40px;'> 0 </td>
                                                     </tr>";
                                                 $no++;
                                             }
                                         }
 
                                     ?>
+
+                                    
 
 
                                     
@@ -454,8 +448,149 @@
 
                         </div>
                         <!--follow Graph -->
-                        <div class="col-lg-12">follow Age Fraph</div>
-                        <div class="col-lg-12">follow Gender Fraph</div>
+                        <div class="col-lg-12">
+                            <!-- /.row -->
+                                    <div class="row" style=" margin-top: 40px;">
+                                        <div class="col-lg-6">
+                                            <div class="panel panel-green">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Follow Chart </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="flot-chart">
+                                                        <div class="flot-chart-content" id="flot-pie-chart-folage"></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h4>Age Range Follow Chart</h4>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <td> < 18 year old</td>
+                                                                <td> 18 - 25 year old</td>
+                                                                <td> 26 - 35 year old</td>
+                                                                <td> 36 - 50 year old</td>
+                                                                <td> > 50 year old</td>
+                                                                
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                               <?php 
+                                                                $pa1 = $foage1->num_rows(); 
+                                                                $pa2 = $foage2->num_rows(); 
+                                                                $pa3 = $foage3->num_rows(); 
+                                                                $pa4 = $foage4->num_rows(); 
+                                                                $pa5 = $foage5->num_rows(); 
+                                                                $pa = $pa1+$pa2+$pa3+$pa4+$pa5;
+                                                                if ($pa1 != 0) {
+                                                                    $pa1 = ($pa1/$pa)*100;
+                                                                }
+                                                                if ($pa2 != 0) {
+                                                                    $pa2 = ($pa2/$pa)*100;
+                                                                }
+                                                                if ($pa3 != 0) {
+                                                                    $pa3 = ($pa3/$pa)*100;
+                                                                }
+                                                                if ($pa4 != 0) {
+                                                                    $pa4 = ($pa4/$pa)*100;
+                                                                }
+                                                                if ($pa5 != 0) {
+                                                                    $pa5 = ($pa5/$pa)*100;
+                                                                }
+                                                                echo "<td>".number_format($pa1,2)."%</td>
+                                                                    <td>".number_format($pa2,2)."</td>
+                                                                    <td>".number_format($pa3,2)."%</td>
+                                                                    <td>".number_format($pa4,2)."%</td>
+                                                                    <td>".number_format($pa5,2)."%</td>";
+                                                                ?>
+                                                                
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>                                 
+                                        </div>
+
+                                    </div>
+                                    <!-- /.row .........................-->
+                        </div>
+
+
+
+                        <div class="col-lg-12">
+                            <div class="col-lg-12">
+                            <!-- /.row -->
+                                    <div class="row" style=" margin-top: 40px;">
+                                        <div class="col-lg-6">
+                                            <div class="panel panel-green">
+                                                <div class="panel-heading">
+                                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Sex Range Follow Chart </h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <div class="flot-chart">
+                                                        <div class="flot-chart-content" id="flot-pie-chart-folsex"></div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6">
+                                                <h4>Sex Range Follow Chart</h4>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-hover">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <td> Male</td>
+                                                                <td> Female</td>
+                                                                <td> Unknow</td>
+                                                                
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                               <?php 
+                                                                $pa1 = $fosex1->num_rows(); 
+                                                                $pa2 = $fosex2->num_rows(); 
+                                                                $pa3 = $fosex3->num_rows(); 
+                                                                $pa = $pa1+$pa2+$pa3+$pa4+$pa5;
+                                                                if ($pa1 != 0) {
+                                                                    $pa1 = ($pa1/$pa)*100;
+                                                                }
+                                                                if ($pa2 != 0) {
+                                                                    $pa2 = ($pa2/$pa)*100;
+                                                                }
+                                                                if ($pa3 != 0) {
+                                                                    $pa3 = ($pa3/$pa)*100;
+                                                                }
+                                                                echo "<td>".number_format($pa1,2)."%</td>
+                                                                    <td>".number_format($pa2,2)."</td>
+                                                                    <td>".number_format($pa3,2)."%</td>";
+                                                                ?>
+                                                                
+
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>                                 
+                                        </div>
+
+                                    </div>
+                                    <!-- /.row .........................-->
+                        </div>
+                        </div>
                         <!--End follow Graph -->
                     </div>
                     <div><br></div>
@@ -484,6 +619,97 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="<?=base_url()?>assets/js/plugins/morris/raphael.min.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/morris/morris.min.js"></script>
+        <!-- <script src="<?=base_url()?>assets/js/plugins/morris/morris-data.js"></script>-->
+
+        <!-- Flot Charts JavaScript -->
+        <!--[if lte IE 8]><script src="js/excanvas.min.js"></script><![endif]-->
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
+        <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
+        <!--<script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script>-->
+
+
+        <script type="text/javascript">
+            $(function() {
+                var data = [{
+                    label: " < 18 year old",
+                    data: <?php $a1 = $foage1->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
+                }, {
+                    label: " 18-25 year old",
+                    data: <?php $a2 = $foage2->num_rows();if ($a2 == 0) {echo 1;}else{echo $a2;}?>
+                }, {
+                    label: " 26-35 year old",
+                    data: <?php $a3 = $foage3->num_rows();if ($a3 == 0) {echo 1;}else{echo $a3;}?>
+                }, {
+                    label: " 36-50 year old",
+                    data: <?php $a4 = $foage4->num_rows();if ($a4 == 0) {echo 1;}else{echo $a4;}?>
+                }, {
+                    label: " > 50 year old",
+                    data: <?php $a5 = $foage5->num_rows();if ($a5 == 0) {echo 1;}else{echo $a5;}?>
+                }];
+
+                var plotObj = $.plot($("#flot-pie-chart-folage"), data, {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        hoverable: true
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                        shifts: {
+                            x: 20,
+                            y: 0
+                        },
+                        defaultTheme: false
+                    }
+                });
+
+            });
+
+
+            $(function() {
+                var data = [{
+                    label: " Male",
+                    data: <?php $a1 = $fosex1->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
+                }, {
+                    label: " Female",
+                    data: <?php $a1 = $fosex2->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
+                }, {
+                    label: " Unknow",
+                    data: <?php $a1 = $fosex3->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
+                }];
+
+                var plotObj = $.plot($("#flot-pie-chart-folsex"), data, {
+                    series: {
+                        pie: {
+                            show: true
+                        }
+                    },
+                    grid: {
+                        hoverable: true
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                        content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
+                        shifts: {
+                            x: 20,
+                            y: 0
+                        },
+                        defaultTheme: false
+                    }
+                });
+
+            });
+        </script>
 
     </body>
 
