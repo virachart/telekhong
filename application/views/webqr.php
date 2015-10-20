@@ -24,7 +24,7 @@
                               <script>
                                     $(document).ready(function(){
                                       $('#reader').html5_qrcode(function(data){
-                                          $('#read').html(data);
+                                          $('#qrcodech').attr("value",data);
                                         },
                                         function(error){
                                           $('#read_error').html(error);
@@ -39,17 +39,30 @@
                             <canvas id="qr-canvas" width="298px" height="248px" style="display:none;"></canvas>
                           </div>
                         </div>      
-                    <div style="text-align:center;" class="col-lg-12">
-                      <h3 >Result</h3>
-                        <span id="read"  style="color:#197519;font-size:18px"></span>
+                    <!-- <div style="text-align:center;" class="col-lg-12">
+                      <h3 >Result</h3> -->
+                        <!-- <span id="read"  style="color:#197519;font-size:18px"></span> -->
+                        <?php $aratri = array('id' => 'qrform' ); echo form_open("webqr/checkqr",$aratri)?>
+                          <input type="text" onchange="al()" id="qrcodech" name="qrcode" value="">
+                        <?php echo form_close();?>
                           <br>
                           <br>
-                      <h4 >Read Error (Debug only)</h4>
+                          <script type="text/javascript">
+                            function al(){
+                              alert("aaa");
+                            }
+                            // $("#qrcodech").change(function(){
+                              // $("#qrform").submit();
+
+                            // });
+
+                          </script>
+                      <!-- <h4 >Read Error (Debug only)</h4>
                         <span >Will constantly show a message, can be ignored</span>
                         <span id="read_error" style="color:#A30000;">Couldn't find enough finder patterns</span>
 
                           <br>
-                      <h6 >Video Error</h6>
+                      <h6 >Video Error</h6> -->
                         <span id="vid_error" ></span>
                     </div>
                           <br>
