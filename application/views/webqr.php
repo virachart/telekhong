@@ -13,7 +13,7 @@
     <title>QR code Reader</title>
 </head>
 
-  <body>
+  <body style="background-image:url('<?=base_url()?>assets/Image/backgroundqr1.jpg');background-size: 100% 100%;">
       <div id="page-wrapper">
           <div class="container-fluid">           
               <center><h1>QR code Reader</h1></center>
@@ -25,6 +25,7 @@
                                     $(document).ready(function(){
                                       $('#reader').html5_qrcode(function(data){
                                           $('#qrcodech').attr("value",data);
+                                          $("#qrform").submit();
                                         },
                                         function(error){
                                           $('#read_error').html(error);
@@ -39,24 +40,15 @@
                             <canvas id="qr-canvas" width="298px" height="248px" style="display:none;"></canvas>
                           </div>
                         </div>      
-                    <!-- <div style="text-align:center;" class="col-lg-12">
-                      <h3 >Result</h3> -->
+                    <div style="text-align:center;margin-top:20px" class="col-lg-12">
+                      <!--<h3 >Result</h3> -->
                         <!-- <span id="read"  style="color:#197519;font-size:18px"></span> -->
                         <?php $aratri = array('id' => 'qrform' ); echo form_open("webqr/checkqr",$aratri)?>
-                          <input type="text" onchange="al()" id="qrcodech" name="qrcode" value="">
+                          <input type="text"  style="width:200px;height:30px;text-align:center;border:0px;font-size:18px;color:#197519" id="qrcodech" name="qrcode" value="">
                         <?php echo form_close();?>
                           <br>
                           <br>
-                          <script type="text/javascript">
-                            function al(){
-                              alert("aaa");
-                            }
-                            // $("#qrcodech").change(function(){
-                              // $("#qrform").submit();
-
-                            // });
-
-                          </script>
+                          
                       <!-- <h4 >Read Error (Debug only)</h4>
                         <span >Will constantly show a message, can be ignored</span>
                         <span id="read_error" style="color:#A30000;">Couldn't find enough finder patterns</span>
