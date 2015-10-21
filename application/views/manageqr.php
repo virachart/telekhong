@@ -100,7 +100,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <center><h1>Total QR Code</h1></center>
+                        <center><h1>Manage QR Code</h1></center>
                         <br>
                         <div class="table-responsive">
                             <table class="table  table-hover">

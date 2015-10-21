@@ -166,9 +166,10 @@
                                     background-color: #2B68A5;
                                     color: #ffffff;
                                     text-align: center;
+
                                 }
                                 </style>
-                                <thead>
+                                <thead >
                                     <tr>
                                         <th>No.</th>
                                         <th>Name</th>
@@ -177,6 +178,7 @@
                                         <th>Status</th>
                                         <th>Register Date</th>
                                         <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -212,8 +214,6 @@
                                                 echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['owner_id']."'  >";
                                                 echo "Edit";
                                                 echo "</button>";
-                                                echo "&nbsp";
-                                                echo anchor("manageowner/del/".$r["owner_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
                                                 echo "<td>";
                                                 
@@ -224,7 +224,7 @@
                                                                 <button type='button' class='close' data-dismiss='modal'></button>
                                                                 <h4 class='modal-title' >Owner Detail</h4>
                                                             </div>
-                                                            <div class='modal-body'style='padding:50px 50px;'>
+                                                            <div class='modal-body'style='padding:30px 50px;'>
 
                                                                 <table style='margin : 0 auto;'>
                                                                     <tr >
@@ -272,9 +272,9 @@
                                                                 <button type='button' class='close' data-dismiss='modal'></button>
                                                                 <h4 class='modal-title' >Edit Owner</h4>
                                                             </div>
-                                                            <div class='modal-body'style='padding:50px 50px;'>
+                                                            <div class='modal-body'style='padding:30px 50px;'>
 
-                                                                <table>
+                                                                <table style='margin : 0 auto;'>
                                                                     <tr >
                                                                         <td align='center'>Owner ID : &nbsp</td>
                                                                         <td align='center'><input type='text' name='ownerid' id='ownerid".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['owner_id']."' disabled></td>
@@ -301,9 +301,15 @@
                                                                     </tr>
                                                                 </table>
                                                             </div>
-                                                            <div class='modal-footer'>
-                                                                <button type='button' class='btn btn-default' onclick='edit(".$r['owner_id'].")' data-dismiss='modal'>Edit</button>
+                                                            <div class='modal-footer' style='text-align:center'>
+                                                                ";
+                                                                echo anchor("manageowner/del/".$r["owner_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                                                                echo "
+                                                                &nbsp&nbsp&nbsp
                                                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+
+                                                                &nbsp&nbsp
+                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['owner_id'].")' data-dismiss='modal'>Save</button>
                                                             </div>
 
                                                         </div>

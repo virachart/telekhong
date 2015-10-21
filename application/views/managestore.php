@@ -194,6 +194,7 @@
                                         </th>
                                         <th>Register Date</th>
                                         <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -270,32 +271,32 @@
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='right'>Store Name : </td>
+                                                                        <td align='right'>Store Name : &nbsp</td>
                                                                         <td >".$r['store_name']."</td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='right'>Owner Store : </td>
+                                                                        <td align='right'>Owner Store : &nbsp</td>
                                                                         <td>".$r['fb_name']."</td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='right'>Telephone : </td>
+                                                                        <td align='right'>Telephone : &nbsp</td>
                                                                         <td>".$r['tel']."</td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='right'>Package : </td>
+                                                                        <td align='right'>Package : &nbsp</td>
                                                                         <td>".$r['package_name']."</td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr>
-                                                                        <td align='right'>Status : </td>
+                                                                        <td align='right'>Status : &nbsp</td>
                                                                         <td>".$staown."</td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr>
-                                                                        <td align='right'>Expire Date : </td>
+                                                                        <td align='right'>Expire Date : &nbsp</td>
                                                                         <td>".$r['expire_date']."</td>
                                                                     </tr>";
                                                                     $dispayment = "";
@@ -304,7 +305,7 @@
                                                                     }
                                                                     echo "<tr><td>&nbsp</td></tr>
                                                                     <tr>
-                                                                        <td align='right'>Payment Log : </td>
+                                                                        <td align='right'>Payment Log : &nbsp</td>
                                                                         <td>".anchor("managestore/showpayment/".$r["store_id"], "<button type='button' class='btn btn-warning' ".$dispayment." >Display Payment</button>")."</td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
@@ -313,8 +314,8 @@
                                                                     if ($r['sennum'] == 0) {
                                                                         $disaallkh = "disabled";
                                                                     }
-                                                                    echo  "<td align='right'>Number of Khong : </td>
-                                                                        <td>".$r['sennum']." &nbsp ".anchor("managesensoro/searchsen/".$r["store_id"], "<button type='button' class='btn btn-info' ".$disaallkh." >Show all Khong</button>")." </td>
+                                                                    echo  "<td align='right'>Number of Khong : &nbsp</td>
+                                                                        <td>".anchor("managesensoro/searchsen/".$r["store_id"], "<button type='button' class='btn btn-info' ".$disaallkh." ><span class='badge'>".$r['sennum']."</span>  Show all Khong</button>")." </td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
@@ -332,51 +333,54 @@
                                                                 <button type='button' class='close' data-dismiss='modal'></button>
                                                                 <h4 class='modal-title' >Edit Store</h4>
                                                             </div>
-                                                            <div class='modal-body'style='padding:50px 50px;'>
+                                                            <div class='modal-body'style='padding:30px 50px;'>
 
-                                                                <table>
+                                                                <table style='margin : 0 auto;'>
                                                                     <tr >
                                                                         <td align='center'>Store ID : &nbsp</td>
                                                                         <td align='center'><input type='text' name='storeid' id='storeid".$r['store_id']."' class='form-control' style='width:200px' value='".$r['store_id']."' disabled></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='center'>Store Name : </td>
+                                                                        <td align='center'>Store Name : &nbsp</td>
                                                                         <td align='center'><input type='text' name='storename' id='storename".$r['store_id']."' class='form-control' style='width:200px' value='".$r['store_name']."' ></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr>
-                                                                        <td align='center'>Store Detail : </td>
-                                                                        <td align='center'><textarea name='detail' id='detail".$r['store_id']."'>".$r['detail']."</textarea></td>
+                                                                        <td align='center'>Store Detail : &nbsp</td>
+                                                                        <td align='center'><textarea name='detail' class='form-control' id='detail".$r['store_id']."'>".$r['detail']."</textarea></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr>
-                                                                        <td align='center'>Address : </td>
-                                                                        <td align='center'><textarea name='address' id='address".$r['store_id']."'>".$r['address']."</textarea></td>
+                                                                        <td align='center'>Address : &nbsp</td>
+                                                                        <td align='center'><textarea name='address' class='form-control' id='address".$r['store_id']."'>".$r['address']."</textarea></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='center'>Telephone : </td>
+                                                                        <td align='center'>Telephone : &nbsp</td>
                                                                         <td align='center'><input type='text' name='ownertel' id='storetel".$r['store_id']."' class='form-control' style='width:200px' value='".$r['tel']."'></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='center'>Open Time : </td>
+                                                                        <td align='center'>Open Time : &nbsp</td>
                                                                         <td align='center'><input type='text' name='open' id='open".$r['store_id']."' class='form-control' style='width:200px' value='".$r['open_time']."'></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='center'>Status : </td>
+                                                                        <td align='center'>Status : &nbsp</td>
                                                                         <td align='center'><input type='text' name='ownerstatus' id='status".$r['store_id']."' class='form-control' style='width:200px' value='".$r['status_store_id']."'></td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
-                                                            <div class='modal-footer'>
-                                                                <button type='button' class='btn btn-default' onclick='edit(".$r['store_id'].")' data-dismiss='modal'>Edit</button>
-                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>";
-                                                                echo anchor("managestore/del/".$r["store_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
-                                                            echo "</div>
-
+                                                            <div class='modal-footer' style='text-align:center'>
+                                                                ";
+                                                                echo anchor("managestore/del/".$r["store_id"], "<button type='button' class='btn btn-danger '>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                                                            echo "
+                                                                &nbsp&nbsp&nbsp
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                                 &nbsp&nbsp
+                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['store_id'].")' data-dismiss='modal'>Save</button>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>";

@@ -191,9 +191,10 @@
                         </tr>
                     </table>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id='create' data-dismiss="modal">Create</button>
+                <div class="modal-footer" style="text-align:center">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id='create' data-dismiss="modal">Create</button>
+                    
                 </div>
 
             </div>
@@ -235,7 +236,7 @@
             </div>
                 <div class="row">
                     <div class="col-lg-12">
-                        <center><h1>Total of Khong</h1></center>
+                        <center><h1>Manage Khong</h1></center>
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div class="pull-left">
@@ -274,6 +275,7 @@
                                         <th>Battery Date</th>
                                         <th>Status</th>
                                         <th style="text-align: center">Action</td>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -317,8 +319,6 @@
                                                 echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['sensoro_id']."'  >";
                                                 echo "Edit";
                                                 echo "</button>";
-                                                echo "&nbsp";
-                                                echo anchor("managesensoro/del/".$r["sensoro_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
                                                 echo "</td>";
                                                 echo "<td>";
 
@@ -330,31 +330,31 @@
                                                                     <button type='button' class='close' data-dismiss='modal'></button>
                                                                     <h4 class='modal-title' >Edit Khong</h4>
                                                                 </div>
-                                                                <div class='modal-body'style='padding:50px 50px;'>
+                                                                <div class='modal-body'style='padding:30px 50px;'>
 
-                                                                    <table>
+                                                                    <table style='margin : 0 auto;'>
                                                                         <tr >
-                                                                            <td align='center'>Khong ID : </td>
+                                                                            <td align='center'>Khong ID : &nbsp</td>
                                                                             <td align='center'><input type='text' id='senid".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['sensoro_id']."' disabled></td>
                                                                         </tr>
                                                                         <tr><td>&nbsp</td></tr>
                                                                         <tr >
-                                                                            <td align='center'>Major : </td>
+                                                                            <td align='center'>Major : &nbsp</td>
                                                                             <td align='center'><input type='text' id='majordetail".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['major']."' disabled></td>
                                                                         </tr>
                                                                         <tr><td>&nbsp</td></tr>
                                                                         <tr >
-                                                                            <td align='center'>Minor : </td>
+                                                                            <td align='center'>Minor : &nbsp</td>
                                                                             <td align='center'><input type='text' id='minordetail".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['minor']."' disabled></td>
                                                                         </tr>
                                                                         <tr><td>&nbsp</td></tr>
                                                                         <tr >
-                                                                            <td align='center'>Store ID : </td>
+                                                                            <td align='center'>Store ID : &nbsp</td>
                                                                             <td align='center'><input type='text' id='store".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['store_id']."'></td>
                                                                         </tr>
                                                                         <tr><td>&nbsp</td></tr>
                                                                         <tr >
-                                                                            <td align='center'>Type of Work : </td>
+                                                                            <td align='center'>Type of Work : &nbsp</td>
                                                                             <td align='center'>
                                                                                 <select class='form-control' name='type' id='typedetail".$r['sensoro_id']."' style='width:300px ;'> ";
                                                                                 $se1 = "";
@@ -394,10 +394,15 @@
                                                                         </tr>
                                                                     </table>
                                                                 </div>
-                                                                <div class='modal-footer'>
-                                                                    <button type='button' class='btn btn-default' onclick='edit(".$r['sensoro_id'].")' data-dismiss='modal'>Save</button>
-                                                                    
+                                                                <div class='modal-footer' style='text-align:center'>
+                                                                     ";
+                                                                    echo anchor("managesensoro/del/".$r["sensoro_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                                                                    echo "
+                                                                    &nbsp&nbsp&nbsp&nbsp
                                                                     <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+
+                                                                    &nbsp&nbsp
+                                                                    <button type='button' class='btn btn-primary' onclick='edit(".$r['sensoro_id'].")' data-dismiss='modal'>Save</button>
                                                                 </div>
 
                                                             </div>
@@ -418,7 +423,7 @@
                                                                 </div>
                                                                 <div class='modal-body'style='padding:50px 50px;'>
 
-                                                                    <table>
+                                                                    <table style='margin : 0 auto;'>
                                                                         <tr >
                                                                             <td align='center'>Khong ID : </td>
                                                                             <td align='center'><input type='text' id='senidbatt".$r['sensoro_id']."' class='form-control' style='width:200px' value='".$r['sensoro_id']."' disabled></td>
@@ -441,9 +446,11 @@
                                                                         
                                                                     </table>
                                                                 </div>
-                                                                <div class='modal-footer'>
-                                                                    <button type='button' class='btn btn-default' onclick='editbatt(".$r['sensoro_id'].")' data-dismiss='modal'>Save</button>
+                                                                <div class='modal-footer' style='text-align:center'>
                                                                     <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                                    &nbsp&nbsp&nbsp
+                                                                    <button type='button' class='btn btn-primary' onclick='editbatt(".$r['sensoro_id'].")' data-dismiss='modal'>Save</button>
+                                                                    
                                                                 </div>
 
                                                             </div>

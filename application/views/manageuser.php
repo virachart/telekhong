@@ -113,10 +113,68 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <center><h1>All User</h1></center>
+                                <div class="modal fade" id="myModaladmin" role="dialog">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"></button>
+                                                <h4 class="modal-title" >Vote to Admin</h4>
+                                            </div>
+                                        <div class="modal-body" style="padding:20px 30px;">
+                                            <div class="col-lg-12 pull-left" >
+                                                    <input type="text" name="searchfb" class="form-control col-lg-1" style="width: 200px;" placeholder="Search Input">
+                                                        &nbsp
+                                                    <input class="btn btn-default " type="submit" name="btsave" value="Search">
+                                            </div>
+                                                                 
+                                        <div class="col-lg-12">
+                                            <label >
+                                                <input type="radio" name="selectsearch" id="cat1" value="fb_name"> Facebook Name
+                                            </label>
+                                            <label >
+                                                <input type="radio" name="selectsearch" id="cat1" value="fb_id" checked="checked"> Facebook ID &nbsp
+                                            </label>
+                                        </div>
+
+                                            <table class="table1 col-lg-12" style="margin-top:20px">
+                                                <style>
+                                                    .table1 th{
+                                                        background-color: #2B68A5;
+                                                        color: #ffffff;
+                                                        text-align: center;
+                                                        
+                                                    }
+                                                </style>
+                                                <thead width="100%">
+                                                    <tr>
+                                                        <th >No.</th>
+                                                        <th >Facebook ID</th>
+                                                        <th >Facebook Name</th>
+                                                        <th >Gender</th>
+                                                        <th >Register Date</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td colspan="5" align="center">Please search for vote admin.</td>
+                                                    </tr>
+                                                </tbody>
+                                                </table>
+                                        </div>
+                                        <div class="modal-footer" style="text-align:center;margin-top:80%">
+                                            <button type="button" class="btn btn-success" onclick="javascript:return confirm('Do you want to confirm?');">Confirm</button>
+                                                &nbsp&nbsp&nbsp
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>                  
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>            
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div>
                                 <form action="<?php echo site_url('manageuser/search');?>" method = "post">
+                                        <button type="button" class="btn btn-warning pull-left"  data-toggle="modal" data-target="#myModaladmin">Vote to Admin</button>
+                                            
                                         <div class="pull-right">
                                             <input class="btn btn-default pull-right" type="submit" name="btsave" value="Search">
                                             <input type="text" name="searchfb" class="form-control pull-right" style="width: 200px;" placeholder="Search Input">
@@ -124,7 +182,6 @@
                                         </div>
                                      
                                      <div class="col-lg-12">
-                                        
                                         <label class="pull-right">
                                             <input type="radio" name="selectsearch" id="cat1" value="fb_name"> Facebook Name
                                         </label>
@@ -148,7 +205,6 @@
                                         <th>Facebook Name</th>
                                         <th>Gender</th>
                                         <th>Register Date</th>
-                                        <th>Vote Admin</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -170,46 +226,6 @@
                                                 echo "<td>".$r['fb_name']."</td>";
                                                 echo "<td style='text-align:center;'>".$r['sex']."</td>";
                                                 echo "<td style='text-align:center;'>".$r['user_date']."</td>";
-                                                echo "<td style='text-align:center;'> <button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModaladmin".$r['fb_id']."'  >";
-                                                echo "Vote To Admin";
-                                                echo "</button>";
-                                                echo "</td>";
-                                                echo "<td>";
-                                                echo "<div class='modal fade' id='myModaladmin".$r['fb_id']."' role='dialog'>
-                                                        <div class='modal-dialog'>
-                                                          <div class='modal-content'>
-                                                            <div class='modal-header'>
-                                                                <button type='button' class='close' data-dismiss='modal'></button>
-                                                                <h4 class='modal-title' >Confirm Vote Admin</h4>
-                                                            </div>
-                                                            <div class='modal-body'style='padding:50px 50px;'>
-
-                                                                <table style='margin : 0 auto;'>
-                                                                    <tr >
-                                                                        <td align='right'>FB ID : &nbsp</td>
-                                                                        <td>".$r['fb_id']."</td>
-                                                                    </tr>
-                                                                    <tr><td>&nbsp</td></tr>
-                                                                    <tr >
-                                                                        <td align='right'>Name : </td>
-                                                                        <td >".$r['fb_name']."</td>
-                                                                    </tr>
-                                                                    <tr><td>&nbsp</td></tr>
-                                                                    
-                                                                </table>
-                                                            </div>
-                                                            <div class='modal-footer'>";
-                                                                echo anchor("manageuser/addadmin/".$r["fb_id"], "<button type='button' class='btn btn-success'>Confirm</button>");
-                                                            echo " &nbsp<button type='button' class='btn btn-danger' data-dismiss='modal'>Cancle</button>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>";
-                                                echo "</td>";
-
-                                                echo "</tr>";
-                                                
                                                 $no++;
                                             }
                                         }
