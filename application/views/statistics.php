@@ -365,7 +365,7 @@
         <!-- user line graph -->
         <!-- start -->
         <script type="text/javascript">
-            var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -534,7 +534,7 @@
 <!-- owner line graph -->
 <!-- start -->
 <script type="text/javascript">
-    var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
@@ -701,7 +701,7 @@
 <!-- sensoro line graph -->
 <!-- start -->
 <script type="text/javascript">
-    var months = ["January", "Febuary", "March", "Apirl", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var months = ["January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     // Line Chart
     Morris.Line({
         // ID of the element in which to draw the chart.
