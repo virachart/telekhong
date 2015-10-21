@@ -74,5 +74,44 @@
     <input type="submit">
 
     <?php echo form_close(); ?>
+
+    <div class='col-lg-12' >
+        <div class='panel panel-red'>
+            <div class='panel-heading'>
+                <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+            </div>
+            <div class='panel-body'>
+                <div id='morris-line-chart'></div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+
+var months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+Morris.Line({
+element: 'morris-line-chart',
+data: [
+{ month: '00', a: 100, b: 90},
+{ month: '01', a: 100, b: 90 },
+{ month: '02', a: 100, b: 90},
+{ month: '03', a: 100, b: 90},
+{ month: '04', a: 100, b: 90 },
+{ month: '05', a: 100, b: 90 }
+],
+xkey: 'month',
+ykeys: ['a', 'b'],
+labels: ['2015', '2014'],
+hideHover: 'auto',
+resize: true,
+
+xLabelFormat : function (x) {
+return months[x.getMonth()];
+}
+});
+
+});
+</script>
 </body>
 </html>

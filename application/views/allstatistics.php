@@ -18,6 +18,9 @@
     <!-- Custom CSS -->
     <link href="<?=base_url()?>assets/css/sb-admin.css" rel="stylesheet">
 
+        <!-- Morris Charts CSS -->
+    <link href="<?=base_url()?>assets/css/plugins/morris.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -447,151 +450,58 @@
                             </table>
 
                         </div>
-                        <!--follow Graph -->
-                        <div class="col-lg-12">
-                            <!-- /.row -->
-                                    <div class="row" style=" margin-top: 40px;">
-                                        <div class="col-lg-6">
-                                            <div class="panel panel-green">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Follow Chart </h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div class="flot-chart">
-                                                        <div class="flot-chart-content" id="flot-pie-chart-folage"></div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <h4>Age Range Follow Chart</h4>
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered table-hover">
-                                                        <thead>
-                                                            <tr>
-
-                                                                <td> < 18 year old</td>
-                                                                <td> 18 - 25 year old</td>
-                                                                <td> 26 - 35 year old</td>
-                                                                <td> 36 - 50 year old</td>
-                                                                <td> > 50 year old</td>
-                                                                
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                               <?php 
-                                                                $pa1 = $foage1->num_rows(); 
-                                                                $pa2 = $foage2->num_rows(); 
-                                                                $pa3 = $foage3->num_rows(); 
-                                                                $pa4 = $foage4->num_rows(); 
-                                                                $pa5 = $foage5->num_rows(); 
-                                                                $pa = $pa1+$pa2+$pa3+$pa4+$pa5;
-                                                                if ($pa1 != 0) {
-                                                                    $pa1 = ($pa1/$pa)*100;
-                                                                }
-                                                                if ($pa2 != 0) {
-                                                                    $pa2 = ($pa2/$pa)*100;
-                                                                }
-                                                                if ($pa3 != 0) {
-                                                                    $pa3 = ($pa3/$pa)*100;
-                                                                }
-                                                                if ($pa4 != 0) {
-                                                                    $pa4 = ($pa4/$pa)*100;
-                                                                }
-                                                                if ($pa5 != 0) {
-                                                                    $pa5 = ($pa5/$pa)*100;
-                                                                }
-                                                                echo "<td>".number_format($pa1,2)."%</td>
-                                                                    <td>".number_format($pa2,2)."</td>
-                                                                    <td>".number_format($pa3,2)."%</td>
-                                                                    <td>".number_format($pa4,2)."%</td>
-                                                                    <td>".number_format($pa5,2)."%</td>";
-                                                                ?>
-                                                                
-
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>                                 
-                                        </div>
-
+                <!--follow Graph -->
+                    <!-- start line graph age range use qr code -->
+                    <?php
+                        if ($graphtype === "month") {
+                            echo "<div class='col-lg-12' >
+                                <div class='panel panel-red'>
+                                    <div class='panel-heading'>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
                                     </div>
-                                    <!-- /.row .........................-->
-                        </div>
-
-
-
-                        <div class="col-lg-12">
-                            <div class="col-lg-12">
-                            <!-- /.row -->
-                                    <div class="row" style=" margin-top: 40px;">
-                                        <div class="col-lg-6">
-                                            <div class="panel panel-green">
-                                                <div class="panel-heading">
-                                                    <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Sex Range Follow Chart </h3>
-                                                </div>
-                                                <div class="panel-body">
-                                                    <div class="flot-chart">
-                                                        <div class="flot-chart-content" id="flot-pie-chart-folsex"></div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6">
-                                                <h4>Sex Range Follow Chart</h4>
-                                                <div class="table-responsive">
-                                                    <table class="table table-bordered table-hover">
-                                                        <thead>
-                                                            <tr>
-
-                                                                <td> Male</td>
-                                                                <td> Female</td>
-                                                                <td> Unknow</td>
-                                                                
-
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                               <?php 
-                                                                $pa1 = $fosex1->num_rows(); 
-                                                                $pa2 = $fosex2->num_rows(); 
-                                                                $pa3 = $fosex3->num_rows(); 
-                                                                $pa = $pa1+$pa2+$pa3+$pa4+$pa5;
-                                                                if ($pa1 != 0) {
-                                                                    $pa1 = ($pa1/$pa)*100;
-                                                                }
-                                                                if ($pa2 != 0) {
-                                                                    $pa2 = ($pa2/$pa)*100;
-                                                                }
-                                                                if ($pa3 != 0) {
-                                                                    $pa3 = ($pa3/$pa)*100;
-                                                                }
-                                                                echo "<td>".number_format($pa1,2)."%</td>
-                                                                    <td>".number_format($pa2,2)."</td>
-                                                                    <td>".number_format($pa3,2)."%</td>";
-                                                                ?>
-                                                                
-
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            </div>                                 
-                                        </div>
-
+                                    <div class='panel-body'>
+                                        <div id='morris-line-chart-age-month'></div>
                                     </div>
-                                    <!-- /.row .........................-->
-                        </div>
-                        </div>
-                        <!--End follow Graph -->
+                                </div>
+                            </div>";
+
+                            echo "<div class='col-lg-12' >
+                                <div class='panel panel-red'>
+                                    <div class='panel-heading'>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+                                    </div>
+                                    <div class='panel-body'>
+                                        <div id='morris-line-chart-sex-month'></div>
+                                    </div>
+                                </div>
+                            </div>";
+                        }else{
+
+                            echo "<div class='col-lg-12' >
+                                <div class='panel panel-red'>
+                                    <div class='panel-heading'>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+                                    </div>
+                                    <div class='panel-body'>
+                                        <div id='morris-line-chart-age-year'></div>
+                                    </div>
+                                </div>
+                            </div>";
+
+                            echo "<div class='col-lg-12' >
+                                <div class='panel panel-red'>
+                                    <div class='panel-heading'>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+                                    </div>
+                                    <div class='panel-body'>
+                                        <div id='morris-line-chart-sex-year'></div>
+                                    </div>
+                                </div>
+                            </div>";
+                        }
+                    ?>
+                            
+                <!--End follow Graph -->
                     </div>
                     <div><br></div>
                     <center><div class="row">
@@ -631,84 +541,242 @@
         <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
         <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.resize.js"></script>
         <script src="<?=base_url()?>assets/js/plugins/flot/jquery.flot.pie.js"></script>
-        <!--<script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script>-->
-
+        <!-- <script src="<?=base_url()?>assets/js/plugins/flot/flot-data.js"></script> -->
 
         <script type="text/javascript">
-            $(function() {
-                var data = [{
-                    label: " < 18 year old",
-                    data: <?php $a1 = $foage1->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
-                }, {
-                    label: " 18-25 year old",
-                    data: <?php $a2 = $foage2->num_rows();if ($a2 == 0) {echo 1;}else{echo $a2;}?>
-                }, {
-                    label: " 26-35 year old",
-                    data: <?php $a3 = $foage3->num_rows();if ($a3 == 0) {echo 1;}else{echo $a3;}?>
-                }, {
-                    label: " 36-50 year old",
-                    data: <?php $a4 = $foage4->num_rows();if ($a4 == 0) {echo 1;}else{echo $a4;}?>
-                }, {
-                    label: " > 50 year old",
-                    data: <?php $a5 = $foage5->num_rows();if ($a5 == 0) {echo 1;}else{echo $a5;}?>
-                }];
+                   
+            var months = ['January', 'Febuary', 'March', 'Apirl', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                // Line Chart
+                Morris.Line({
+                // ID of the element in which to draw the chart.
+                element: 'morris-line-chart-age-month',
+                // Chart data records -- each entry in this array corresponds to a point on
+                // the chart.
+                data: [
+                
+                
+                // $yy = date('Y');
+                // if ($year == $yy) {
+                //     $z = date('n');
+                // }else{
+                //     $z = 12;
+                // }
+                <?php
+                $ye = $foryear;
+                $mo = 1;
+                for ($i=0; $i < $formonth ; $i++) { 
+                    if ($i != 0) {
+                        echo ",";
+                    };
+                    if ($mo < 10) {
+                        $mo = "0".$mo;
+                    };
+                    echo "{
+                            M : '".$ye."-".$mo."',
+                            a : '".$foage1[$i]."' ,
+                            b : '".$foage2[$i]."' ,
+                            c : '".$foage3[$i]."' ,
+                            d : '".$foage4[$i]."' ,
+                            e : '".$foage5[$i]."' 
+                        }";
+                    $mo++;
 
-                var plotObj = $.plot($("#flot-pie-chart-folage"), data, {
-                    series: {
-                        pie: {
-                            show: true
-                        }
-                    },
-                    grid: {
-                        hoverable: true
-                    },
-                    tooltip: true,
-                    tooltipOpts: {
-                        content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-                        shifts: {
-                            x: 20,
-                            y: 0
-                        },
-                        defaultTheme: false
-                    }
-                });
+                }?>
 
+                ],
+
+                // The name of the data record attribute that contains x-visitss.
+                xkey: 'M',
+                // A list of names of data record attributes that contain y-visitss.
+                ykeys: ['a','b','c','d','e'],
+                // Labels for the ykeys -- will be displayed when you hover over the
+                // chart.
+                labels: ['<18','18-25','26-35','36-50','>51'],
+                // Disables line smoothing
+                colors: ['Red','blue','green','yellow','gray'],
+
+                smooth: false,
+                resize: true
             });
 
+        </script>
 
-            $(function() {
-                var data = [{
-                    label: " Male",
-                    data: <?php $a1 = $fosex1->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
-                }, {
-                    label: " Female",
-                    data: <?php $a1 = $fosex2->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
-                }, {
-                    label: " Unknow",
-                    data: <?php $a1 = $fosex3->num_rows();if ($a1 == 0) {echo 1;}else{echo $a1;}?>
-                }];
+        <script type="text/javascript">
+                   
+            var months = ['January', 'Febuary', 'March', 'Apirl', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                // Line Chart
+                Morris.Line({
+                // ID of the element in which to draw the chart.
+                element: 'morris-line-chart-sex-month',
+                // Chart data records -- each entry in this array corresponds to a point on
+                // the chart.
+                data: [
+                
+                
+                // $yy = date('Y');
+                // if ($year == $yy) {
+                //     $z = date('n');
+                // }else{
+                //     $z = 12;
+                // }
+                <?php
+                $ye = $foryear;
+                $mo = 1;
+                for ($i=0; $i < $formonth ; $i++) { 
+                    if ($i != 0) {
+                        echo ",";
+                    };
+                    if ($mo < 10) {
+                        $mo = "0".$mo;
+                    };
+                    echo "{
+                            M : '".$ye."-".$mo."',
+                            a : '".$fosex1[$i]."' ,
+                            b : '".$fosex2[$i]."' ,
+                            c : '".$fosex3[$i]."' 
+                        }";
+                    $mo++;
 
-                var plotObj = $.plot($("#flot-pie-chart-folsex"), data, {
-                    series: {
-                        pie: {
-                            show: true
-                        }
-                    },
-                    grid: {
-                        hoverable: true
-                    },
-                    tooltip: true,
-                    tooltipOpts: {
-                        content: "%p.0%, %s", // show percentages, rounding to 2 decimal places
-                        shifts: {
-                            x: 20,
-                            y: 0
-                        },
-                        defaultTheme: false
-                    }
-                });
+                }?>
 
+                ],
+
+                // The name of the data record attribute that contains x-visitss.
+                xkey: 'M',
+                // A list of names of data record attributes that contain y-visitss.
+                ykeys: ['a','b','c'],
+                // Labels for the ykeys -- will be displayed when you hover over the
+                // chart.
+                labels: ['Male','Female','Unknow'],
+                // Disables line smoothing
+                colors: ['Red','blue','green'],
+
+                smooth: false,
+                resize: true
             });
+
+        </script>
+
+        <script type="text/javascript">
+                   
+            var months = ['January', 'Febuary', 'March', 'Apirl', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                // Line Chart
+                Morris.Line({
+                // ID of the element in which to draw the chart.
+                element: 'morris-line-chart-age-year',
+                // Chart data records -- each entry in this array corresponds to a point on
+                // the chart.
+                data: [
+                
+                
+                // $yy = date('Y');
+                // if ($year == $yy) {
+                //     $z = date('n');
+                // }else{
+                //     $z = 12;
+                // }
+                <?php
+                $ye = $foryear;
+                $mo = 1;
+                for ($i=0; $i < $formonth ; $i++) { 
+                    if ($i != 0) {
+                        echo ",";
+                    };
+                    if ($mo < 10) {
+                        $mo = "0".$mo;
+                    };
+                    echo "{
+                            M : '".$ye."-".$mo."',
+                            a : '".$foage1[$i]."' ,
+                            b : '".$foage2[$i]."' ,
+                            c : '".$foage3[$i]."' ,
+                            d : '".$foage4[$i]."' ,
+                            e : '".$foage5[$i]."' 
+                        }";
+                    $mo++;
+
+                }?>
+
+                ],
+
+                // The name of the data record attribute that contains x-visitss.
+                xkey: 'M',
+                // A list of names of data record attributes that contain y-visitss.
+                ykeys: ['a','b','c','d','e'],
+                // Labels for the ykeys -- will be displayed when you hover over the
+                // chart.
+                labels: ['<18','18-25','26-35','36-50','>51'],
+                // Disables line smoothing
+                colors: ['Red','blue','green','yellow','gray'],
+
+                xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+                    var month = months[x.getMonth()];
+                    return month;
+                },
+                smooth: false,
+                resize: true
+            });
+
+        </script>
+
+        <script type="text/javascript">
+                   
+            var months = ['January', 'Febuary', 'March', 'Apirl', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+                // Line Chart
+                Morris.Line({
+                // ID of the element in which to draw the chart.
+                element: 'morris-line-chart-sex-year',
+                // Chart data records -- each entry in this array corresponds to a point on
+                // the chart.
+                data: [
+                
+                
+                // $yy = date('Y');
+                // if ($year == $yy) {
+                //     $z = date('n');
+                // }else{
+                //     $z = 12;
+                // }
+                <?php
+                $ye = $foryear;
+                $mo = 1;
+                for ($i=0; $i < $formonth ; $i++) { 
+                    if ($i != 0) {
+                        echo ",";
+                    };
+                    if ($mo < 10) {
+                        $mo = "0".$mo;
+                    };
+                    echo "{
+                            M : '".$ye."-".$mo."',
+                            a : '".$fosex1[$i]."' ,
+                            b : '".$fosex2[$i]."' ,
+                            c : '".$fosex3[$i]."' 
+                        }";
+                    $mo++;
+
+                }?>
+
+                ],
+
+                // The name of the data record attribute that contains x-visitss.
+                xkey: 'M',
+                // A list of names of data record attributes that contain y-visitss.
+                ykeys: ['a','b','c'],
+                // Labels for the ykeys -- will be displayed when you hover over the
+                // chart.
+                labels: ['Male','Female','Unknow'],
+                // Disables line smoothing
+                colors: ['Red','blue','green'],
+
+                xLabelFormat: function(x) { // <--- x.getMonth() returns valid index
+                    var month = months[x.getMonth()];
+                    return month;
+                },
+                smooth: false,
+                resize: true
+            });
+
         </script>
 
     </body>

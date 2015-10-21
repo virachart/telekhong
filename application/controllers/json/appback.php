@@ -40,15 +40,23 @@ class Appback extends CI_Controller{
 			$sqlInfo = "SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id where sensoro_id = '".$idSen."' and info_begin_date < NOW() and info_expire_date >= NOW()+1 and status_store_id = '1'  and info_status_id = '1' ";
 		
 			$rsInfo = $this->db->query($sqlInfo);
+			// echo "<pre>";
+			// print_r($rsInfo);
+			// echo "</pre>";
 			// echo $this->db->last_query();
 			
 
-			if ($rsInfo->num_rows() != 0) {
+			if ($rsInfo->num_rows() > 0) {
 				$dataInfo = $rsInfo->row_array();
+				// echo "<pre>";
+				// print_r($dataInfo);
+				// echo "</pre>";
+				// echo $dataInfo['info_id'];
 				$dataqr = $this->db->select("*")
 							->from("qr")
-							->where("info_id",$dataInfo['info_id']);
-				if ($dataqr->num_rows != 0) {
+							->where("info_id",$dataInfo['info_id'])->get();
+							// echo $this->db->last_query();
+				if ($dataqr->num_rows() != 0) {
 					$qrch = "have";
 				}else{
 					$qrch = "not have";
@@ -57,7 +65,7 @@ class Appback extends CI_Controller{
 				$cat = $dataInfo['catagory'];
 				$sqlCat = "Select * from user where ".$cat." = '1' ";
 				$rsCat = $this->db->query($sqlCat);
-				if ($rsCat->num_rows != 0) {
+				if ($rsCat->num_rows() != 0) {
 					$arsend = array("info_id"=>$dataInfo['info_id'],
 						"info_name"=>$dataInfo['info_name'],
 						"info_desc"=>$dataInfo['info_descrip'],
@@ -137,7 +145,7 @@ class Appback extends CI_Controller{
 		$sqlStore = "Select * from store where store_id = '".$id."' and status_store_id = '1' ";
 		$rsStore = $this->db->query($sqlStore);
 		$dataStore = $rsStore->row_array();
-		if ($rsStore->num_rows != 0) {
+		if ($rsStore->num_rows() != 0) {
 			$arsend = array("storename" => $dataStore['store_name'],
 				"detail"=>$dataStore['detail'],
 				"address"=>$dataStore['address'],
@@ -241,7 +249,7 @@ class Appback extends CI_Controller{
 		$dataQr = $rsQr->row_array();
 		$sqlChQr = "select * FROM info join qr on info.info_id = qr.info_id where info_begin_date < NOW() and info_expire_date >= NOW()+1";
 		$rsChQr = $this->db->query($sqlChQr);
-		if ($rsChQr->num_rows != 0) {
+		if ($rsChQr->num_rows() != 0) {
 			$qrid = $dataQr['qr_id'];
 			$arRe = array('qr_id' => $qrid , 'fb_id'=>$fb );
 			$this->db->insert('qr_log', $arRe);
@@ -268,7 +276,7 @@ class Appback extends CI_Controller{
 
 		$sqlLogin = "Select * from user where fb_id = '".$fbid."' ";
 		$rsLogin = $this->db->query($sqlLogin);
-		if ($rsLogin->num_rows == 0) {
+		if ($rsLogin->num_rows() == 0) {
 			$arInLogin = array('fb_id' => $fbid ,
 				'fb_name' => $name,
 				'sex' => $sex,
@@ -298,7 +306,7 @@ class Appback extends CI_Controller{
 		$fbid = $this->input->post("id");
 		$sqlchinfouser = "select * from user where fb_id = '".$fbid."' ";
 		$rsuserlogin = $this->db->query($sqlchinfouser);
-		if ($rsuserlogin->num_rows != 0) {
+		if ($rsuserlogin->num_rows() != 0) {
 			$datachuserlogin = $rsuserlogin->row_array();
 			if ($datachuserlogin['sex'] != null && $datachuserlogin['birth'] != null) {
 				$arsend = array('status' => true);
