@@ -14,6 +14,9 @@
 </head>
 
   <body style="background-image:url('<?=base_url()?>assets/Image/backgroundqr1.jpg');background-size: 100% 100%;">
+
+
+  <span class="pull right"><a href="<?php echo site_url("webqr/logout");?>"><button>logout</button></a></span>
       <div id="page-wrapper">
           <div class="container-fluid">           
               <center><h1>QR code Reader</h1></center>
@@ -82,6 +85,20 @@
         </div>
         <!-- /#page-wrapper -->
     </div>
+
+    <?php
+      if ($complete != null) {
+        echo "<script type='text/javascript'>
+                alert('";
+                  echo $complete;
+                  echo "');
+              </script>";
+      }
+
+    ?>
+
+
+    
 
 </body>
 </html>

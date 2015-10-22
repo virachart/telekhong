@@ -251,8 +251,7 @@ class Appback extends CI_Controller{
 		$rsChQr = $this->db->query($sqlChQr);
 		if ($rsChQr->num_rows() != 0) {
 			$qrid = $dataQr['qr_id'];
-			$arRe = array('qr_id' => $qrid , 'fb_id'=>$fb );
-			$this->db->insert('qr_log', $arRe);
+			
 			$qrsend = $dataQr['code'].$fb;
 			$arsend = array('qrid' => $qrid,
 							'qrcode' => $qrsend);

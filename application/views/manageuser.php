@@ -173,7 +173,7 @@
                             <table class="table  table-hover">
                                 <div>
                                 <form action="<?php echo site_url('manageuser/search');?>" method = "post">
-                                        <button type="button" class="btn btn-warning pull-left"  data-toggle="modal" data-target="#myModaladmin">Vote to Admin</button>
+                                        <!-- <button type="button" class="btn btn-warning pull-left"  data-toggle="modal" data-target="#myModaladmin">Vote to Admin</button> -->
                                             
                                         <div class="pull-right">
                                             <input class="btn btn-default pull-right" type="submit" name="btsave" value="Search">
@@ -206,10 +206,7 @@
                                         <th>Facebook Name</th>
                                         <th>Gender</th>
                                         <th>Register Date</th>
-<<<<<<< HEAD
-                                        <!-- <th>Vote Admin</th> -->
-=======
->>>>>>> origin/master
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -231,7 +228,7 @@
                                                 echo "<td>".$r['fb_name']."</td>";
                                                 echo "<td style='text-align:center;'>".$r['sex']."</td>";
                                                 echo "<td style='text-align:center;'>".$r['user_date']."</td>";
-<<<<<<< HEAD
+
                                                 // echo "<td style='text-align:center;'> <button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModaladmin".$r['fb_id']."'  >";
                                                 // echo "Vote To Admin";
                                                 // echo "</button>";
@@ -272,8 +269,7 @@
 
                                                 echo "</tr>";
                                                 
-=======
->>>>>>> origin/master
+
                                                 $no++;
                                             }
                                         }

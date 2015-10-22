@@ -41,10 +41,14 @@
         	</style>
         	<img src="<?=base_url()?>images/icon/logo.jpg" style="width:150px;height:150px;border-radius:3px;" id= "jumbo"><br>
         	<h2 id="jumbo2" style="color:#8D8D8D;">"<span style="color:#FF6600;"> Telekhong</span> <span style="color:#FFFFFF;">[ QR ]</span> "</h2>
-        	<input type="text"   style="width:200px;height:33px;text-align:center;border:0px;color:#197519;margin-top:40px;border-radius:3px" id="jumbo2" value="" placeholder="Enter your code.">
-        	&nbsp 
-        	<input type="submit" class="btn btn-warning " value="Login" style="width:100px;"/>
-
+            
+            <?php echo form_open("webqrlogin/entercode");?>
+            
+            	<input type="text" name="codelogin" id="codelogin" style="width:200px;height:33px;text-align:center;border:0px;color:#197519;margin-top:40px;border-radius:3px" id="jumbo2" value="" placeholder="Enter your code.">
+            	&nbsp 
+            	<input type="submit" name="btsub" class="btn btn-warning " value="Login" style="width:100px;"/>
+            
+            <?php echo form_close();?>
     </div>
 	</body>
 </html>
