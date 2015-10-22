@@ -35,7 +35,22 @@ class Createstore extends CI_Controller{
 			$id = $this->session->userdata('ownerid');
 			// $id = '5';
 			$opentime = $opti." - ".$clti;
-			$sqlInsert = "INSERT INTO store (`store_name`, `detail`, `address`, `tel`, `open_time`, `package_id`, `owner_id`) VALUES ('".$stname."', '".$detail."', '".$address."', '".$tel."', '".$opentime."', '".$pack."', '".$id."');";
+
+			$secode = null;
+			if ($pack == 3) {
+				$secode = random_string('alnum', 10);
+				$secode = strtolower($ranqr);
+				$sqlChCode = "SELECT * FROM store where se_key ='".$secode."' ";
+				$rsChCode = $this->db->query($sqlChCode);
+				while ($rsChCode->num_rows != 0) {
+					$secode = random_string('alnum', 10);
+					$secode = strtolower($ranqr);
+					$sqlChCode = "select * FROM store where se_key ='".$secode."' ";
+					$rsChCode = $this->db->query($sqlChCode);
+				}
+			}
+
+			$sqlInsert = "INSERT INTO store (`store_name`, `detail`, `address`, `tel`, `open_time`, `se_key` ,`package_id`, `owner_id`) VALUES ('".$stname."', '".$detail."', '".$address."', '".$tel."', '".$opentime."', '".$secode."' , '".$pack."', '".$id."');";
 			$this->db->query($sqlInsert);
 			// echo $this->db->last_query();
 
