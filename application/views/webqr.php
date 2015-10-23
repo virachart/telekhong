@@ -22,7 +22,7 @@
               <center><h1>QR code Reader</h1></center>
                 <div class="col-lg-4"></div>
                     <div style="text-align:center">
-                          <div id="reader" style="width:100%;height:400px;" class="col-lg-4">
+                          <div id="reader" style="width:100%;height:50%;" class="col-lg-4">
 
                               <script>
                                     $(document).ready(function(){
