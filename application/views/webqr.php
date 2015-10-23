@@ -20,9 +20,9 @@
       <div id="page-wrapper">
           <div class="container-fluid">           
               <center><h1>QR code Reader</h1></center>
-                <div class="col-xs-4"></div>
+                <div class="col-xs-6 col-lg-4"></div>
                     <div style="text-align:center">
-                          <div id="reader" style="width:100%;height:50%;" class="col-xs-4">
+                          <div id="reader" style="width:100%;height:50%;" class="col-xs-6 col-lg-4">
 
                               <script>
                                     $(document).ready(function(){
