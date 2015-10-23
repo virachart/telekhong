@@ -1182,7 +1182,7 @@ class Statisticsowner extends CI_Controller{
 										foreach ($data['qragsex1d'.$count]->result_array() as $r) {
 											$sqlchqragsex1 = "select * from qr_log where fb_id = '".$r['fb_id']."' and qr_id = '".$r['qr_id']."' and qr_log_id != '".$r['qr_log_id']."'  ";
 											$rsqragsex1 = $this->db->query($sqlchqragsex1);
-											echo $this->db->last_query();
+											// echo $this->db->last_query();
 											if ($rsqragsex1->num_rows() != null) {
 												$data['countqragsex1d'.$count]++;
 											}

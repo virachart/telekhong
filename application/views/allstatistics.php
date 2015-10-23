@@ -293,7 +293,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <h4 style="color:#999999">View Message Chart</h4>
-                            <a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large"><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a>
+                            <a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large" <?php if($this->session->userdata("statuspack")==2) {echo "disabled";} ?>><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a>
                             
                             <div  style="margin-top:20px;height:360px;">
                             <table  class="table" >
