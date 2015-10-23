@@ -105,6 +105,45 @@
             <!-- /.navbar-collapse -->
         </nav>
 
+        <script type="text/javascript">
+           // $('#nameadmin').live('keypress',function(e){
+           //      var name = $("#nameadmin").val();
+           //      $.ajax({
+           //          url:"<?php echo site_url("manageuser/seadmin");?>/",
+           //          type: "POST",
+           //          data: "name="+name,
+           //          dataType:"json",
+           //          success:function(res){
+           //              console.log(JSON.stringify(res));
+           //              var obj = jQuery.parseJSON(res);
+           //              var fb= obj.fbid;
+           //              alert(fb.length);
+           //              var settable = "";
+           //              // var co = res.length ;
+           //              // alert(co);
+           //              // if (co > 0) {
+           //              //     for (i = 0; i < co; i++) { 
+           //              //         settable = settable+" <tr><td align='center'><input type='radio' name='user' value='"+res.fbid+"'></td><td align='center'>"+res.fbid[i]+"</td><td align='center'>"+res.fbname[i]+"</td><td align='center'>"+res.sex[i]+"</td><td align='center'>"+res.regis[i].substr(0,10)+"</td></tr>";
+           //              //     }
+           //              // }else{
+           //              //     settable = "<td colspan='5' align='center'>Not Have User</td>";
+           //              // }
+           //              // $("#tbadmin").html(settable);
+                        
+           //          },
+           //          error:function(err){
+           //              console.log("error : "+err);
+           //          },
+           //      });
+           //  });
+        </script>
+
+        <script type="text/javascript">
+            // function searchuser (){
+                
+            // };
+        </script>
+
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -122,19 +161,22 @@
                                             </div>
                                         <div class="modal-body" style="padding:20px 30px;">
                                             <div class="col-lg-12 pull-left" >
-                                                    <input type="text" name="searchfb" class="form-control col-lg-1" style="width: 200px;" placeholder="Search Input">
-                                                        &nbsp
-                                                    <input class="btn btn-default " type="submit" name="btsave" value="Search">
+                                            <label class="pull-right">
+                                                <input type="text" id="nameadmin" class="form-control col-lg-1" style="width: 200px;" placeholder="Facebook Name">
+                                            </label>
+                                                
+                                                    <!-- &nbsp
+                                                <input class="btn btn-default " type="submit" name="btsave" value="Search"> -->
                                             </div>
                                                                  
-                                        <div class="col-lg-12">
-                                            <label >
+                                        <!-- <div class="col-lg-12"> -->
+                                            <!-- <label >
                                                 <input type="radio" name="selectsearch" id="cat1" value="fb_name"> Facebook Name
-                                            </label>
-                                            <label >
+                                            </label> -->
+                                            <!-- <label >
                                                 <input type="radio" name="selectsearch" id="cat1" value="fb_id" checked="checked"> Facebook ID &nbsp
-                                            </label>
-                                        </div>
+                                            </label> -->
+                                        <!-- </div> -->
 
                                             <table class="table1 col-lg-12" style="margin-top:20px">
                                                 <style>
@@ -147,28 +189,35 @@
                                                 </style>
                                                 <thead width="100%">
                                                     <tr>
-                                                        <th >No.</th>
+                                                        <th >Select</th>
                                                         <th >Facebook ID</th>
                                                         <th >Facebook Name</th>
                                                         <th >Gender</th>
                                                         <th >Register Date</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
+                                                <tbody id="tbadmin">
+                                                <?php echo form_open("manageuser/addadmin"); ?>
                                                     <tr>
                                                         <td colspan="5" align="center">Please search for vote admin.</td>
                                                     </tr>
+                                                    
                                                 </tbody>
                                                 </table>
                                         </div>
                                         <div class="modal-footer" style="text-align:center;margin-top:80%">
-                                            <button type="button" class="btn btn-success" onclick="javascript:return confirm('Do you want to confirm?');">Confirm</button>
+                                            <button type="button" class="btn btn-success" onclick="javascript:return confirm('Confirm for add admin!!');">Confirm</button>
                                                 &nbsp&nbsp&nbsp
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>                  
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+                                            <?php echo form_close(); ?>                  
                                         </div>
                                         </div>
                                     </div>
-                                </div>            
+                                </div>
+
+
+                                
+
                         <div class="table-responsive">
                             <table class="table  table-hover">
                                 <div>
@@ -188,7 +237,7 @@
                                         <label class="pull-right">
                                             <input type="radio" name="selectsearch" id="cat1" value="fb_id" checked="checked"> Facebook ID &nbsp
                                         </label>
-                                        <label class="pull-left"><a href="<?php echo site_url('votead');?>"><button type='button' class='btn btn-warning'>Vote Admin</button></a></label>
+                                        <!-- <label class="pull-left"><a href="<?php //echo site_url('votead');?>"><button type='button' class='btn btn-warning'>Vote Admin</button></a></label> -->
                                     </div>
                                      </form>
                                 <style>

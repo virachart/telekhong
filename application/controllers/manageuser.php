@@ -59,12 +59,6 @@ class Manageuser extends CI_Controller{
 
 	}
 
-
-	public function del($id){
-		$this->db->delete("user",array("fb_id"=>$id));
-		redirect("manageuser","refresh");
-	}
-
 	public function edit(){
 			$fbid = $this->input->post("fbid");
 			$fbname = $this->input->post("fbname");
@@ -126,6 +120,43 @@ class Manageuser extends CI_Controller{
 			redirect("auth");
 		}
 		
+
+	}
+
+
+	public function seadmin(){
+		$name = $this->input->post("name");
+		$wh = "fb_name like '%".$name."%'";
+		$rsus = $this->db->select("*")
+				->from("user")
+				->where($wh)
+				->get();
+		$count = 0;
+		$arsend = array('co' => 0);
+		if ($rsus->num_rows() > 0) {
+			$dataus = $rsus->result_array();
+			
+			foreach ($dataus as $r) {
+				$arset = array('fbid' => $r['fb_id'] , 
+								'fbname' => $r['fb_name'],
+								'sex' => $r['sex'],
+								'regis' => $r['user_date']);
+				$arsend = array_merge_recursive($arsend, $arset);
+				$count++;
+			}
+			$arsend['co'] = $count."";
+			// $arcount = array('count' => $count );
+			// array_push($arsend, $arcount );
+
+			// echo "<pre>";
+			// print_r($arsend);
+			// echo "</pre>";
+			// echo $count;
+
+			// echo $arsend[];
+		}
+		
+		echo json_encode($arsend);
 
 	}
 

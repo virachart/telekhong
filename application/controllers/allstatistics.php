@@ -130,6 +130,8 @@ class Allstatistics extends CI_Controller{
 
 						$data['formonth'] = $formonth;
 
+
+
 						$data['foage1'] = array();
 						for ($i=1; $i <= $formonth; $i++) { 
 							if ($i < 10) {
@@ -196,6 +198,8 @@ class Allstatistics extends CI_Controller{
 							array_push($data['fosex3'], $data['fosex3m'.$i]->num_rows() );
 							
 						}
+
+						$data['showval'] = 
 
 						$data['graphtype'] = "year";
 						
@@ -348,7 +352,7 @@ class Allstatistics extends CI_Controller{
 		}
 
 		$data['formonth'] = $dayofmonth;
-		$data['foryear'] = $getmonth;
+		$data['foryear'] = $getmonth."";
 
 		$data['foage1'] = array();
 		for ($i=1; $i <= $dayofmonth; $i++) { 
@@ -419,7 +423,8 @@ class Allstatistics extends CI_Controller{
 
 
 
-		
+		$data['forte1'] = $getforyear;
+		$data['forte2'] = $getformonth;
 		// echo "<pre>";
 		// print_r($data);
 		// echo "</pre>";

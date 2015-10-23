@@ -31,7 +31,9 @@
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.js"></script>
-    
+
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -41,7 +43,7 @@
 
     </head>
 
-    <body onload="enablefield()">
+    <body>
 
         <div id="wrapper">
 
@@ -172,6 +174,22 @@
                     <!-- Page Heading -->
                      <div class="row">
                        
+                        <?php
+                            if ($graphtype === "year") {
+                                echo "<script type='text/javascript'>
+                                        $( document ).ready(function() {
+                                            $('#yeartext').attr('placeholder', ".$foryear.");
+                                        });   
+                                    </script>";
+                            }elseif ($graphtype === "month") {
+                                echo "<script type='text/javascript'>
+                                        $( document ).ready(function() {
+                                            $('#monthtext').attr('placeholder', '".$forte1."-".$forte2."');
+                                        });
+                                    </script>";
+                            }
+                        ?>
+
                         
                             <div class="col-lg-2"><h2>Statistics in</h2></div>
                             <div class="dropdown col-lg-10" style="margin-top:20px" >
@@ -181,9 +199,9 @@
                                         
                                         <td>
                                             <div>
-                                                <label class="radio-inline">
+                                                <!-- <label class="radio-inline">
                                                   <input  onclick="enablefield()" style="margin-top:-50%" type="radio" name="inlineRadioOptions" id="radio_1" value="option1">
-                                                </label>
+                                                </label> -->
                                             </div>  
                                         </td>
                                         <td> 
@@ -205,12 +223,12 @@
                                                     
                                                 });
                                                 function enablefield(){
-                                                    if($("#radio_1").prop("checked", true)){
+                                                    // if($("#radio_1").prop("checked", true)){
                                                         $("#monthtext").prop('disabled', false);
                                                         $("#button1").css("visibility", "visible");
                                                         $("#yeartext").prop('disabled', true);
                                                         $("#button2").css("visibility", "hidden");
-                                                    }
+                                                    // }
 
                                                     
                                                 }
@@ -219,13 +237,14 @@
                                         </td>
                                         <?php echo form_close(); ?>
 
+
                                         <?php echo form_open("allstatistics/getfromyear")?>
                                         <td width="40px"></td>
                                         <td>
                                             <div>
-                                                <label class="radio-inline">
+                                                <!-- <label class="radio-inline">
                                                   <input  onclick="enablefield2()"style="margin-top:-50%" type="radio" name="inlineRadioOptions" id="radio_2" value="option2">
-                                                </label>
+                                                </label> -->
                                             </div>
                                         </td>
 
@@ -249,13 +268,13 @@
                                                 });
 
                                                 function enablefield2(){
-                                                    if($("#radio_2").prop("checked", true)){
+                                                    // if($("#radio_2").prop("checked", true)){
                                                         $("#yeartext").prop('disabled', false);
                                                         $("#button2").css("visibility", "visible");
                                                         $("#monthtext").prop('disabled', true);
                                                         $("#button1").css("visibility", "hidden");
                                                         
-                                                    }
+                                                    // }
 
                                                     
                                                 }
