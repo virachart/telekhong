@@ -187,9 +187,9 @@
 
                     <!-- Flot Charts -->
                     <div class="row">
-                        <div class="col-lg-2">
+                        <div class="col-lg-1" style="width:140px">
                             <h2 class="page-header">All Chart in </h2></div>
-                            <div class="dropdown col-lg-6">
+                            <div class="dropdown col-lg-6" style="margin-top:5px">
                                 <?php echo form_open()?>
 
                                 <select onchange="this.form.action='<?php echo site_url('statistics')?>/'+this.value;this.form.submit()" class="form-control" style="width : 100px;background-color : #286090;color:#fff;" >

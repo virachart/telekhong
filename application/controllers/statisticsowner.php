@@ -22,7 +22,7 @@ class Statisticsowner extends CI_Controller{
 
 						$id = $storeid;
 						// $id = "6";
-						$sqlgetstoreinfo = "select * from info where store_id = '".$id."' and info_status_id ='1'; ";
+						$sqlgetstoreinfo = "select * from info where store_id = '".$id."' and info_status_id = '1' ";
 						$data['rs'] = $this->db->query($sqlgetstoreinfo)->result_array();
 						if ($data['rs'] != null) {
 
@@ -1641,7 +1641,7 @@ class Statisticsowner extends CI_Controller{
 	public function otherinfo($maxid){
 		$id = $this->session->userdata('storeid');
 				// $id = "6";
-		$sqlgetstoreinfo = "select * from info where store_id = '".$id."' ";
+		$sqlgetstoreinfo = "select * from info where store_id = '".$id."'  and info_status_id = '1' ";
 		$data['rs'] = $this->db->query($sqlgetstoreinfo)->result_array();
 
 		$sqlgetinfoname = "select * from info where info_id = '".$maxid."' ";

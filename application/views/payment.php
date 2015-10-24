@@ -390,7 +390,7 @@
                                             
 
 
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-1">
                                                 <select class="form-control " style="width:100px" onchange="showbutton()" id="package">
                                                 <option value="1200" <?php echo $pachop1;?> >Bronze</option>
                                                 <option value="2000" <?php echo $pachop2;?> >Silver</option>
@@ -399,8 +399,8 @@
                                             </select>
                                             </div>
                                             
-                                            <div class="col-sm-5" id="pricebutton2" style="display:none;margin-top:30px;"><p>Click this for change package payment. ---></p></div>
-                                            <div class="col-sm-6">
+                                            <div class="col-sm-5" id="pricebutton2" style="display:none;"><p>Change package payment &nbsp&nbsp<span class="glyphicon glyphicon-arrow-right"></span></p></div>
+                                            <div class="col-sm-3">
                                             <input Type="Hidden" Name="inv" id="inv2" value=""/> 
                                             <input Type="Hidden" Name="itm" value="Service Charge"/> 
                                             
@@ -409,14 +409,14 @@
                                             
                                             <!-- Redirect Web Controller-->
                                             <input Type="Hidden" Name="postURL" value="http://www.telekhong.me/index.php/payment/checkpayment"/> 
-                                            <input type="image" style="display:none;margin-top:10px;" id="pricebutton" onclick="changepackage();" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
+                                            <input type="image" style="display:none;" id="pricebutton" onclick="changepackage();" src="https://www.paysbuy.com/imgs/L_click2buy.gif" border="0" name="submit" alt="Make it easier,PaySbuy - it's fast,free and secure!"/> 
                                             </div>
                                                 
                                             
 
 
                                         </div>
-                                        <div class="modal-footer" style="margin-top:70px;">
+                                        <div class="modal-footer" style="margin-top:40px;">
                                             
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                         </div>

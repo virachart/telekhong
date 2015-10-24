@@ -298,7 +298,7 @@
                 <div class="modal-body"style=" text-align: center;height : 220px;">
                     <div class="col-xs-12" id="status">
                         <table class="table table-bordered" width="100%" >
-                            <thead >
+                            <thead style="background-color:#2B67A3;color:#ffffff">
                                 <tr>
                                     <th width="10" style="text-align:center">No.</th>
                                     <th width="40" style="text-align:center">UUID</th>

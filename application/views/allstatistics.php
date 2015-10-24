@@ -291,7 +291,7 @@
                     <!-- /.row -->
 
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="text-align:center">
                             <h4 style="color:#999999">View Message Chart</h4>
                             <a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large" <?php if($this->session->userdata("statuspack")==2) {echo "disabled";} ?>><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a>
                             
@@ -397,13 +397,13 @@
                                 <thead>
                                     <tr>
                                         <th width="5%">No.</th>
-                                        <th width="45%">Message Name</th>
-                                        <th width="15%">Upload</th>
+                                        <th width="40%">Message Name</th>
+                                        <th width="20%">Upload</th>
                                         <th width="15%">Status</th>
-                                        <th width="25%">Received</th>
+                                        <th width="20%">Received</th>
                                     </tr>
                                 </thead>
-                                <tbody style="height: 400px;position: absolute;overflow-y: scroll;">
+                                <tbody style="height: 400px;overflow-y: scroll;">
                                     <?php
                                         $no = 1;
                                         $day = date("d");
@@ -426,11 +426,11 @@
                                                     $sttext = "Outdate";
                                                 }
                                                 echo "<tr style='height:60px'>
-                                                        <td width='10%' style='padding-top: 20px;'>".$no."</td>
-                                                        <td width='45%' style='padding-top: 20px;'>".$r['info_name']."</td>
-                                                        <td width='15%' style='padding-top: 20px;'>".substr($r['info_date'], 0,10)."</td>
-                                                        <td width='15%' style='padding-top: 20px;'><span class='label label-".$stcolor."'>".$sttext."</span></td>
-                                                        <td width='25%' style='padding-top: 20px;padding-left: 40px;'>".$r['countre']."</td>
+                                                        <td width='5%' style='padding-top: 20px;text-align:center'>".$no."</td>
+                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
+                                                        <td width='20%' style='padding-top: 20px;text-align:center'>".substr($r['info_date'], 0,10)."</td>
+                                                        <td width='15%' style='padding-top: 20px;text-align:center'><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                        <td width='20%' style='padding-top: 20px;text-align:center'>".$r['countre']."</td>
                                                     </tr>";
                                                 $no++;
                                             }
@@ -448,11 +448,11 @@
                                                     $sttext = "Outdate";
                                                 }
                                                 echo "<tr>
-                                                        <td width='10%' style='padding-top: 20px;'>".$no."</td>
-                                                        <td width='45%' style='padding-top: 20px;'>".$r['info_name']."</td>
-                                                        <td width='15%' style='padding-top: 20px;'>".substr($r['info_date'], 0,10)."</td>
-                                                        <td width='15%' style='padding-top: 20px;'><span class='label label-".$stcolor."'>".$sttext."</span></td>
-                                                        <td width='25%' style='padding-top: 20px;padding-left: 40px;'> 0 </td>
+                                                        <td width='5%' style='padding-top: 20px;text-align:center'>".$no."</td>
+                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
+                                                        <td width='20%' style='padding-top: 20px;text-align:center'>".substr($r['info_date'], 0,10)."</td>
+                                                        <td width='15%' style='padding-top: 20px;text-align:center'><span class='label label-".$stcolor."'>".$sttext."</span></td>
+                                                        <td width='20%' style='padding-top: 20px;text-align:center'> 0 </td>
                                                     </tr>";
                                                 $no++;
                                             }

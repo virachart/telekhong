@@ -218,15 +218,15 @@ hr { border: 1px solid;
                                     </script>
 
                                 </div>
-                                <thead style="background-color:#E6A340;color:#FFFFFF;text-align:center">
+                                <thead style="background-color:#E6A340;color:#FFFFFF;">
                                     <tr>
-                                        <th>No.</th>
-                                        <th>Store Name</th>
-                                        <th>Message Name</th>
-                                        <th>Catagory</th>
-                                        <th>Status</th>
-                                        <th>Number of use</th>
-                                        <th>Action</th>
+                                        <th style="text-align:center">No.</th>
+                                        <th style="text-align:center">Store Name</th>
+                                        <th style="text-align:center">Message Name</th>
+                                        <th style="text-align:center">Catagory</th>
+                                        <th style="text-align:center">Status</th>
+                                        <th style="text-align:center">Number of use</th>
+                                        <th style="text-align:center">Action</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -242,7 +242,7 @@ hr { border: 1px solid;
                                                 if ($r['status_qr_id'] == 1) {
                                                     $staown = "<span class='label label-success'>Avaliable</span>";
                                                 }elseif ($r['status_qr_id'] == 2) {
-                                                    $staown = "<span class='label label-warning'>Blocked</span>";
+                                                    $staown = "<span class='label label-default'>Blocked</span>";
                                                 }
                                                 echo "<tr>";
                                                 echo "<td>".$no."</td>";
@@ -279,7 +279,7 @@ hr { border: 1px solid;
                                                                             <select name='statusqr' id='statusqr".$r["qr_id"]."' class='form-control' style='width : 200px;background-color : #ffffff;color:#000000;' >
                                                                                 <option value=''> ---Choose--- </option>
                                                                                 <option value='1'> Avaliable </option>
-                                                                                <option value='2'> Blocked </option>
+                                                                                <option value='2'> Block </option>
                                                                                         
                                                                             </select>
                                                                         </td>
