@@ -104,7 +104,7 @@ img{
             </div>
             
       <?php $aratri = array('id' => 'qrform' ); echo form_open("webqr/checkqr",$aratri)?>
-        <input type="text"  style="width:200px;height:30px;text-align:center;border:0px;font-size:18px;color:#197519" id="result" name="qrcode" value="">
+        <input type="text"  style="width:400px;height:30px;text-align:center;border:0px;font-size:18px;color:#197519" id="result" name="qrcode" value="">
       <?php echo form_close();?>
 
       <?php
@@ -117,7 +117,7 @@ img{
       }
 
     ?>
-    
+
 </div>&nbsp;
 </div>
 <canvas id="qr-canvas" width="800" height="600"></canvas>
