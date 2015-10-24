@@ -152,7 +152,7 @@
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
                         <li <?php echo $dissta;?>>
-                            <a href="<?=base_url()?>index.php/statisticsowner" ><i class="fa fa-fw fa-bar-chart-o" ></i> Statistics</a>
+                            <a href="<?=base_url()?>index.php/allstatistics"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>

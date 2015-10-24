@@ -152,8 +152,8 @@
                         <li >
                             <a href="<?=base_url()?>index.php/store"><i class="fa fa-fw fa-desktop"></i> Store</a>
                         </li>
-                        <li  class="active">
-                            <a href="<?=base_url()?>index.php/statisticsowner"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
+                        <li >
+                            <a href="<?=base_url()?>index.php/allstatistics"><i class="fa fa-fw fa-bar-chart-o"></i> Statistics</a>
                         </li>
                         <li>
                             <a href="<?=base_url()?>index.php/payment"><i class="fa fa-fw fa-table"></i> Payment</a>
@@ -295,11 +295,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input type="checkbox" id="activate1" checked="checked"/> Toggle "Series a"
-                                    <input type="checkbox" id="activate2" checked="checked"/> Toggle "Series b"
-                                    <input type="checkbox" id="activate3" checked="checked"/> Toggle "Series c"
-                                    <input type="checkbox" id="activate4" checked="checked"/> Toggle "Series d"
-                                    <input type="checkbox" id="activate5" checked="checked"/> Toggle "Series e"
+                                    
                                     <!-- end line graph age range use qr code -->
                                     <div class="col-lg-12" style="height : 30px"></div>
 
