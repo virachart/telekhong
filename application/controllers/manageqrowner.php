@@ -20,9 +20,15 @@ class Manageqrowner extends CI_Controller{
 
 						$sqluser = "Select * from qr where status_qr_id = '1'";
 						$data['num1'] = $this->db->query($sqluser);
-						$arselectqr = array('a.store_id' => $storeid ,
-											'a.status_qr_id' => '1' );
-						$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where($arselectqr)->get()->result_array();
+						$data['rs'] = $this->db->select("*,count(qr_log.qr_log_id) AS qrcount")
+										->from("qr a")
+										->join("info b","a.info_id = b.info_id")
+										->join("store c","a.store_id = c.store_id")
+										->join("qr_log","a.qr_id = qr_log.qr_id","left")
+										->where("a.store_id" , $storeid)
+										->where("status_qr_id !=","3")
+										->group_by("a.qr_id")
+										->get()->result_array();
 						$this->load->view("manageqrowner",$data);
 					}else{
 						redirect('store');
@@ -42,7 +48,7 @@ class Manageqrowner extends CI_Controller{
 	}
 
 	public function del($id){
-		$data = array('status_qr_id' => "2");
+		$data = array('status_qr_id' => "3");
 		$this->db->where('qr_id', $id);
 		$this->db->update('qr', $data); 
 		redirect("manageqrowner","refresh");
@@ -81,6 +87,21 @@ class Manageqrowner extends CI_Controller{
 		}
 	}
 
+
+	public function chstatus()	{
+		$id = $this->input->post("qrid");
+		$st = $this->input->post("statusqr");
+		// echo $id;
+		// echo $st;
+		if ($st != 0) {
+			$dataupdate = array('status_qr_id' => $st);
+			$this->db->where('qr_id', $id);
+			$this->db->update('qr', $dataupdate);
+		}
+		
+		// redirect("manageqr","refresh");
+
+	}
 	
 
 }

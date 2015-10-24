@@ -95,6 +95,29 @@
             <!-- /.navbar-collapse -->
         </nav>
 
+        <script type="text/javascript">
+
+             // show edit detail
+            function edit(id){
+                // alert($("#ownerid"+id).val()+"-"+$("#owneremail"+id).val()+"-"+$("#ownertel"+id).val()+"-"+$("#ownerstatus"+id).val());
+                $.ajax({
+                    url:"<?php echo site_url("manageqr/chstatus");?>",
+                    type: "POST",
+                    cache: false,
+                    data: "qrid="+id+"&statusqr="+$("#statusqr"+id).val(),
+                    
+                });
+                location.reload("manageqr");
+            };
+
+            // function activeset(){
+            //     var target = event.target || event.srcElement;
+            //     document.getElementById("targetshow").innerHTML=event.target.innerHTML;
+            //     }
+            
+            
+        </script>
+
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -142,6 +165,7 @@
                                         <th>Status</td>
                                         <th>Number of use</th>
                                         <th>Action</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -153,11 +177,18 @@
                                             $no = $this->uri->segment(3)+1;
                                             // echo var_dump($rs);
                                             foreach ($rs as $r) {
+                                                if ($r['status_qr_id'] == 1) {
+                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                }elseif ($r['status_qr_id'] == 2) {
+                                                    $staown = "<span class='label label-warning'>Blocked</span>";
+                                                }
                                                 echo "<tr>";
                                                 echo "<td style='text-align:center;'>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
                                                 echo "<td>".$r['info_name']."</td>";
                                                 echo "<td style='text-align:center;'>".$r['catagory']."</td>";
+                                                echo "<td style='text-align:center;'>".$staown."</td>";
+                                                echo "<td style='text-align:center;'>".$r['qrcount']."</td>";
                                                 echo "<td style='text-align:center;'>";
                                                 echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['store_id']."'  >";
                                                 echo "Edit";
@@ -170,23 +201,27 @@
                                                         <div class='modal-content'>
                                                             <div class='modal-header'>
                                                                 <button type='button' class='close' data-dismiss='modal'></button>
-                                                                <h4 class='modal-title' >Edit Store</h4>
+                                                                <h4 class='modal-title' >Edit QR Status</h4>
                                                             </div>
                                                             <div class='modal-body'style='padding:30px 50px;'>
 
-                                                                <table style='margin : 0 auto;'>
+                                                                <table style='margin : 0 auto;'>";
+                                                                echo "<tr>
+                                                                    <td>Message Name : </td>
+                                                                    <td>&nbsp&nbsp".$r['info_name']."</td>
+                                                                    </tr>
+                                                                    <tr><td><input type='hidden' id='qrid' name='qrid' value='".$r["qr_id"]."'></td></tr>
+                                                                    <tr><td>&nbsp</td></tr>
                                                                     <tr >
-                                                                        <td align='center'>Change Status: &nbsp</td>
-                                                                        <td align='center'><div class='dropdown'>
-                                                                          <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
-                                                                            Avaliable
-                                                                            <span class='caret'></span>
-                                                                          </button>
-                                                                          <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
-                                                                            
-                                                                            <li><a href='#'>Block</a></li>
-                                                                          </ul>
-                                                                        </div></td>
+                                                                    <td align='center'>Change Status: &nbsp</td>
+                                                                        <td align='center'>
+                                                                            <select name='statusqr' id='statusqr".$r["qr_id"]."' class='form-control' style='width : 200px;background-color : #ffffff;color:#000000;' >
+                                                                                <option value=''> ---Choose--- </option>
+                                                                                <option value='1'> Avaliable </option>
+                                                                                <option value='2'> Blocked </option>
+                                                                                        
+                                                                            </select>
+                                                                        </td>
                                                                     </tr>
                                                                     
                                                                 </table>
@@ -198,8 +233,9 @@
                                                                 &nbsp&nbsp&nbsp
                                                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
                                                                  &nbsp&nbsp
-                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['store_id'].")' data-dismiss='modal'>Save</button>
-                                                            </div>
+                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r["qr_id"].")' data-dismiss='modal'>Save</button>";
+                                                                
+                                                            echo "</div>
                                                         </div>
                                                     </div>
                                                 </div>";
