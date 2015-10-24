@@ -44,7 +44,7 @@ class Manageqr extends CI_Controller{
 
 				$sqluser = "Select * from qr where status_qr_id = '1'";
 				$data['num1'] = $this->db->query($sqluser);
-				$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where("status_qr_id !=","2")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
+				$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where("status_qr_id !=","3")->limit($config['per_page'],$this->uri->segment(3))->get()->result_array();
 			
 				$this->load->view("manageqr",$data);
 			}else{
@@ -58,7 +58,7 @@ class Manageqr extends CI_Controller{
 	}
 
 	public function del($id){
-		$dataupdate = array('status_qr_id' => "2");
+		$dataupdate = array('status_qr_id' => "3");
 		$this->db->where('qr_id', $id);
 		$this->db->update('qr', $dataupdate);
 		redirect("manageqr","refresh");

@@ -187,9 +187,9 @@
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php
-                        echo $inkhong['inkhong'];?></h3>
+                        echo $outkhong['outkhong'];?></h3>
                     <p><?php
-                        echo $outkhong['outkhong'];?>Khong In Stock</p>
+                        echo $inkhong['inkhong'] ;?> Khong In Stock</p>
                 </div>
                 <div class="icon" >
                   <i class="fa fa-bullseye"></i>
