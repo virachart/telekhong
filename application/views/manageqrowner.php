@@ -191,12 +191,14 @@ hr { border: 1px solid;
                                      </div>
                                      </form>
                                 </div>
-                                <thead style="background-color:#E6A340;color:#FFFFFF">
+                                <thead style="background-color:#E6A340;color:#FFFFFF;text-align:center">
                                     <tr>
                                         <td>No.</td>
                                         <td>Store Name</td>
                                         <td>Message Name</td>
                                         <td>Catagory</td>
+                                        <td>Status</td>
+                                        <td>Number of use</td>
                                         <td>Action</td>
                                     </tr>
                                 </thead>
@@ -213,9 +215,51 @@ hr { border: 1px solid;
                                                 echo "<td>".$no."</td>";
                                                 echo "<td>".$r['store_name']."</td>";
                                                 echo "<td>".$r['info_name']."</td>";
-                                                echo "<td>".$r['catagory']."</td>";
+                                                echo "<td style='text-align:center;'>".$r['catagory']."</td>";
+                                                echo "<td style='text-align:center;'>";
+                                                 echo "<button type='button' class='btn btn-warning'  data-toggle='modal' data-target='#myModal".$r['store_id']."'  >";
+                                                echo "Edit";
+                                                echo "</button>";
+                                                echo "</td>";
                                                 echo "<td>";
-                                                echo anchor("manageqrowner/del/".$r["qr_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                                                echo "<div class='modal fade' id='myModal".$r['store_id']."' role='dialog'>
+                                                    <div class='modal-dialog'>
+                                                        <div class='modal-content'>
+                                                            <div class='modal-header'>
+                                                                <button type='button' class='close' data-dismiss='modal'></button>
+                                                                <h4 class='modal-title' >Edit Store</h4>
+                                                            </div>
+                                                            <div class='modal-body'style='padding:30px 50px;'>
+
+                                                                <table style='margin : 0 auto;'>
+                                                                    <tr >
+                                                                        <td align='center'>Change Status: &nbsp</td>
+                                                                        <td align='center'><div class='dropdown'>
+                                                                          <button class='btn btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>
+                                                                            Avaliable
+                                                                            <span class='caret'></span>
+                                                                          </button>
+                                                                          <ul class='dropdown-menu' aria-labelledby='dropdownMenu1'>
+                                                                            
+                                                                            <li><a href='#'>Block</a></li>
+                                                                          </ul>
+                                                                        </div></td>
+                                                                    </tr>
+                                                                    
+                                                                </table>
+                                                            </div>
+                                                            <div class='modal-footer' style='text-align:center'>
+                                                                ";
+                                                                echo anchor("manageqrowner/del/".$r["qr_id"], "<button type='button' class='btn btn-danger'>Delete</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
+                                                            echo "
+                                                                &nbsp&nbsp&nbsp
+                                                                <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
+                                                                 &nbsp&nbsp
+                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['store_id'].")' data-dismiss='modal'>Save</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>";
                                                 echo "</td>";
                                                 echo "</tr>";
                                                 $no++;
