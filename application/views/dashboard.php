@@ -141,10 +141,10 @@
                           <!-- small box -->
                           <div class="small-box bg-aqua">
                             <div class="inner">
-                              <h3><?php
-                                echo $usernow['toowner'];?></h3>
+                              <h3><?php echo $usernow['toowner']; ?></h3>
                                 <p><?php
-                                echo $useryes['toowner'];?>User</p>
+                                $numuser = $user->num_rows() - $usernow['toowner'];
+                                echo $numuser;?> User</p>
                             </div>
                             <div class="icon">
                               <i class="ion ion-person"></i>
@@ -156,10 +156,10 @@
                       <!-- small box -->
                       <div class="small-box bg-green">
                         <div class="inner">
-                          <h3><?php
-                                echo $ownernow['toowner'];?></h3>
-                            <p><?php
-                                echo $owneryes['toowner'];?></p>
+                          <h3><?php echo $ownernow['toowner']; ?></h3>
+                                <p><?php
+                                $numuser = $owner->num_rows() - $ownernow['toowner'];
+                                echo $numuser;?> Owner</p>
                         </div>
                         <div class="icon">
                           <i class="ion ion-person-add"></i>
@@ -171,10 +171,10 @@
                   <!-- small box -->
                   <div class="small-box bg-yellow">
                     <div class="inner">
-                      <h3><?php
-                                echo $storenow['toowner'];?></h3>
-                        <p><?php
-                                echo $owneryes['toowner'];?>Store</p>
+                      <h3><?php echo $storenow['toowner']; ?></h3>
+                                <p><?php
+                                $numuser = $store->num_rows() - $storenow['toowner'];
+                                echo $numuser;?> Store</p>
                     </div>
                     <div class="icon">
                       <i class="fa fa-shopping-cart"></i>
