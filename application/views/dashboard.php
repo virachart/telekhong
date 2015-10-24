@@ -127,12 +127,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-dashboard"></i>  <a href="<?=base_url()?>dashboard">Dashboard</a>
-                                </li>
-                                
-                            </ol>
+                           
                         </div>
                     </div>
                     <!-- /.row -->
@@ -141,10 +136,10 @@
                           <!-- small box -->
                           <div class="small-box bg-aqua">
                             <div class="inner">
-                              <h3><?php echo $usernow['toowner']; ?></h3>
-                                <p><?php
+                              <h3><?php echo $usernow['toowner']; ?> New</h3>
+                                <p>from <?php
                                 $numuser = $user->num_rows() - $usernow['toowner'];
-                                echo $numuser;?> User</p>
+                                echo $numuser;?> yesterday users</p>
                             </div>
                             <div class="icon">
                               <i class="ion ion-person"></i>
@@ -156,10 +151,10 @@
                       <!-- small box -->
                       <div class="small-box bg-green">
                         <div class="inner">
-                          <h3><?php echo $ownernow['toowner']; ?></h3>
-                                <p><?php
+                          <h3><?php echo $ownernow['toowner']; ?> New</h3>
+                                <p>from <?php
                                 $numuser = $owner->num_rows() - $ownernow['toowner'];
-                                echo $numuser;?> Owner</p>
+                                echo $numuser;?> yesterday owners</p>
                         </div>
                         <div class="icon">
                           <i class="ion ion-person-add"></i>
@@ -171,10 +166,10 @@
                   <!-- small box -->
                   <div class="small-box bg-yellow">
                     <div class="inner">
-                      <h3><?php echo $storenow['toowner']; ?></h3>
-                                <p><?php
+                      <h3><?php echo $storenow['toowner']; ?> New</h3>
+                                <p>from <?php
                                 $numuser = $store->num_rows() - $storenow['toowner'];
-                                echo $numuser;?> Store</p>
+                                echo $numuser;?> yesterday store</p>
                     </div>
                     <div class="icon">
                       <i class="fa fa-shopping-cart"></i>
@@ -187,9 +182,9 @@
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php
-                        echo $outkhong['outkhong'];?></h3>
+                        echo $outkhong['outkhong'];?> Actived</h3>
                     <p><?php
-                        echo $inkhong['inkhong'] ;?> Khong In Stock</p>
+                        echo $inkhong['inkhong'] ;?> Khong remaining</p>
                 </div>
                 <div class="icon" >
                   <i class="fa fa-bullseye"></i>

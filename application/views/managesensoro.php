@@ -192,9 +192,8 @@
                     </table>
                 </div>
                 <div class="modal-footer" style="text-align:center">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                     <button type="button" class="btn btn-primary" id='create' data-dismiss="modal">Create</button>
-                    
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
 
             </div>
@@ -447,9 +446,10 @@
                                                                     </table>
                                                                 </div>
                                                                 <div class='modal-footer' style='text-align:center'>
-                                                                    <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
-                                                                    &nbsp&nbsp&nbsp
                                                                     <button type='button' class='btn btn-primary' onclick='editbatt(".$r['sensoro_id'].")' data-dismiss='modal'>Save</button>
+                                                                    
+                                                                    &nbsp&nbsp&nbsp
+                                                                    <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
                                                                     
                                                                 </div>
 

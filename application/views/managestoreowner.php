@@ -185,6 +185,7 @@
         <?php
             echo anchor("managestore/del/", "<button type='button' class='btn btn-danger'>Delete Store</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
         ?>
+        &nbsp&nbsp &nbsp&nbsp
             <?php echo anchor("store","<button type='button' style='width:70px' class='btn btn-default'>Cancle</button>"); ?>
            &nbsp&nbsp &nbsp&nbsp
            <input class="btn btn-primary" style="width:70px" type="submit" name="btsave" value="Save"> 

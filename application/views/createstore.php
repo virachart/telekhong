@@ -241,8 +241,8 @@
                         
                       ?>
                    </select>
-                   <div class="col-lg-1"></div>
-                   <button type="button" class="btn btn-info col-lg-3" data-toggle="modal" data-target="#myModal1" style="margin-right:10px;width:140px">Package Detail</button>
+                   
+                   <button type="button" class="btn btn-info col-lg-3" data-toggle="modal" data-target="#myModal1" style="margin-right:10px;margin-left:20px;width:140px">Package Detail</button>
                    <div class="modal fade" id="myModal1" role="dialog">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -334,18 +334,14 @@
             </div>
         </div>
         </div>
-        
-
-               
-               
-               <div class="col-lg-12" style="text-align:center;margin-top:40px;" >
-
-                <?php echo anchor("store", "<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
-                <input class="btn btn-success" type="submit" name="btsave" value="Create & Pay" style="margin-left: 30px">
-            </div>
 
             </div>	
-
+            <div class="col-lg-12" style="text-align:center;margin-top:40px;" >
+                <input class="btn btn-success" type="submit" name="btsave" value="Create & Pay" style="margin-left: 30px">
+                &nbsp&nbsp&nbsp
+                <?php echo anchor("store", "<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
+                
+            </div>
             </form>
 
             <div>

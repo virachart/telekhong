@@ -101,13 +101,15 @@
 
                 <div class="row">
                     <div class="col-lg-12">
+
                         <center><h1>Manage Store</h1></center>
                         <br>
-                        <div class="table-responsive">
+                        <div class="table table-responsive">
                             <table class="table  table-hover">
-                                <div class="pull-left">
-                                    <button type="button" style="width: 120px" class="btn btn-primary">+ Create Store</button>
-                                </div>
+                                <!--<div class="pull-left">
+                                    <button type="button" style="width: 120px" class="btn btn-primary" >+ Create Store</button>
+                                </div>-->
+                                
                                 <div class=" col-lg-7" style="margin-top:7px;">
 
                                 Total of Store is : <span class="badge"><?php echo $num1->num_rows(); ?></span>&nbsp

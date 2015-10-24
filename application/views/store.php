@@ -254,7 +254,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal6" id="acti" data-dismiss="modal">Activate</button>
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal6" id="acti" data-dismiss="modal">Activate</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
 
@@ -288,23 +288,23 @@
     </div>
 
     <!-- modal of Khong -->
-    <div class="modal fade" id="myModal7" role="dialog">
+    <div class="modal fade" id="myModal7" role="dialog" >
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"></button>
                     <h4 class="modal-title" >Khong of store</h4>
                 </div>
-                <div class="modal-body"style=" text-align: center;height : 220px">
+                <div class="modal-body"style=" text-align: center;height : 220px;">
                     <div class="col-xs-12" id="status">
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-bordered" width="100%" >
+                            <thead >
                                 <tr>
-                                    <th>No.</th>
-                                    <th>UUID</th>
-                                    <th>Major</th>
-                                    <th>Minor</th>
-                                    <th>Type of Work</th>
+                                    <th width="10" style="text-align:center">No.</th>
+                                    <th width="40" style="text-align:center">UUID</th>
+                                    <th width="20" style="text-align:center">Major</th>
+                                    <th width="20" style="text-align:center">Minor</th>
+                                    <th width="10" style="text-align:center">Type of Work</th>
                                 </tr>
                             </thead>
                             <tbody>

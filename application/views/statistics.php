@@ -111,17 +111,10 @@
                     <!-- Page Heading -->
                     <div class="row">
                         <div class="col-lg-12">
-                            <h1 class="page-header">
+                            <h1 >
                                 Statistics
                             </h1>
-                            <ol class="breadcrumb">
-                                <li>
-                                    <i class="fa fa-desktop"></i>  <a href="<?=base_url()?>store">store</a>
-                                </li>
-                                <li class="active">
-                                    <i class="fa fa-bar-chart-o"></i> Statistics
-                                </li>
-                            </ol>
+                            
                         </div>
                     </div>
                     <!-- /.row -->
