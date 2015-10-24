@@ -142,9 +142,9 @@
                           <div class="small-box bg-aqua">
                             <div class="inner">
                               <h3><?php
-                                $numuser = $user->num_rows();
-                                echo $numuser;?></h3>
-                                <p>User</p>
+                                echo $usernow['toowner'];?></h3>
+                                <p><?php
+                                echo $useryes['toowner'];?>User</p>
                             </div>
                             <div class="icon">
                               <i class="ion ion-person"></i>
@@ -157,9 +157,9 @@
                       <div class="small-box bg-green">
                         <div class="inner">
                           <h3><?php
-                                $numowner = $owner->num_rows();
-                                echo $numowner;?></h3>
-                            <p>Owner</p>
+                                echo $ownernow['toowner'];?></h3>
+                            <p><?php
+                                echo $owneryes['toowner'];?></p>
                         </div>
                         <div class="icon">
                           <i class="ion ion-person-add"></i>
@@ -172,9 +172,9 @@
                   <div class="small-box bg-yellow">
                     <div class="inner">
                       <h3><?php
-                            $numStore = $store->num_rows();
-                            echo $numStore;?></h3>
-                        <p>Store</p>
+                                echo $storenow['toowner'];?></h3>
+                        <p><?php
+                                echo $owneryes['toowner'];?>Store</p>
                     </div>
                     <div class="icon">
                       <i class="fa fa-shopping-cart"></i>
@@ -187,9 +187,9 @@
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php
-                        $numsen12 = $sen12->num_rows();
-                        echo $numsen12;?></h3>
-                    <p>Khong In Stock</p>
+                        echo $inkhong['inkhong'];?></h3>
+                    <p><?php
+                        echo $outkhong['outkhong'];?>Khong In Stock</p>
                 </div>
                 <div class="icon" >
                   <i class="fa fa-bullseye"></i>

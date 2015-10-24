@@ -25,8 +25,14 @@ class Dashboard extends CI_Controller{
 				$month = date("m");
 				$year = date("Y");
 
-				$sqlcounttoday = "select count(owner_id) AS toowner from owner where owner_date = '".$year."-".$month."-".$day."%' ";
-				$data['ownernow'] = $this->db->query($sqlcounttoday);
+				$sqlcounttodayowner = "select count(owner_id) AS toowner from owner where owner_date = '".$year."-".$month."-".$day."%' ";
+				$data['ownernow'] = $this->db->query($sqlcounttodayowner)->row_array();
+
+				$sqlcounttodayuser = "select count(fb_id) AS toowner from user where user_date = '".$year."-".$month."-".$day."%' ";
+				$data['usernow'] = $this->db->query($sqlcounttodayuser)->row_array();
+
+				$sqlcounttodaystore = "select count(store_id) AS toowner from store where store_date = '".$year."-".$month."-".$day."%' ";
+				$data['storenow'] = $this->db->query($sqlcounttodaystore)->row_array();
 
 				$day = $day-1;
 				if ($day < 1) {
@@ -45,10 +51,27 @@ class Dashboard extends CI_Controller{
 					$day = "0".$day;
 				}
 
-				$sqlcountyes = "select count(owner_id) AS toowner from owner where owner_date = '".$year."-".$month."-".$day."%' ";
-				$data['owneryes'] = $this->db->query($sqlcountyes);
+				$sqlcountyesowner = "select count(owner_id) AS toowner from owner where owner_date = '".$year."-".$month."-".$day."%' ";
+				$data['owneryes'] = $this->db->query($sqlcountyesowner)->row_array();
+
+				$sqlcountyesuser = "select count(fb_id) AS toowner from user where user_date = '".$year."-".$month."-".$day."%' ";
+				$data['useryes'] = $this->db->query($sqlcountyesuser)->row_array();
+
+				$sqlcountyesstore = "select count(store_id) AS toowner from store where store_date = '".$year."-".$month."-".$day."%' ";
+				$data['storeyes'] = $this->db->query($sqlcounttodaystore)->row_array();
 
 				// end growth owner
+
+				// Start Count khong
+
+				$sqlcountkhin = "select count(sensoro_id) AS inkhong from sensoro where store_id = '6' ";
+				$data['inkhong'] = $this->db->query($sqlcountkhin)->row_array();
+
+				$sqlcountkhout = "select count(sensoro_id) AS outkhong from sensoro where store_id != '6' ";
+				$data['outkhong'] = $this->db->query($sqlcountkhout)->row_array();
+
+
+				// End Count Khong
 
 
 				$d = date("j");
