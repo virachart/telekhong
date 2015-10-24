@@ -14,7 +14,7 @@
 </head>
 
   <body style="background-image:url('<?=base_url()?>assets/Image/backgroundqr1.jpg');background-size: 100% 100%;">
-
+  
 
   <span class="pull right"><a href="<?php echo site_url("webqr/logout");?>"><button>logout</button></a></span>
       <div id="page-wrapper">
