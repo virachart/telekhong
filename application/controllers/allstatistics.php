@@ -15,7 +15,14 @@ class Allstatistics extends CI_Controller{
 					if ($this->session->userdata('statuspack') == "2" ||
 						$this->session->userdata('statuspack') == "3") {
 
-						$storeid = $this->session->userdata("storeid");
+						// $storeid = $this->session->userdata("storeid");
+						//start show all store have all owner page
+						$ownerid = $this->session->userdata('ownerid');
+						$storeid = $this->session->userdata('storeid');
+						$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+						$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+						//end show all store have all owner page
+
 							
 						$year = date("Y");
 
@@ -227,7 +234,14 @@ class Allstatistics extends CI_Controller{
 	public function getfrommonth(){
 		
 		$getmonth = $this->input->post("getmonth");
-		$storeid = $this->session->userdata("storeid");
+		// $storeid = $this->session->userdata("storeid");
+		//start show all store have all owner page
+		$ownerid = $this->session->userdata('ownerid');
+		$storeid = $this->session->userdata('storeid');
+		$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+		$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+		//end show all store have all owner page
+
 						
 		$data['nothave1'] = "0";
 		$data['nothave2'] = "0";
@@ -440,7 +454,14 @@ class Allstatistics extends CI_Controller{
 	public function getfromyear(){
 		
 		$getmonth = $this->input->post("getyear");
-		$storeid = $this->session->userdata("storeid");
+		// $storeid = $this->session->userdata("storeid");
+		//start show all store have all owner page
+		$ownerid = $this->session->userdata('ownerid');
+		$storeid = $this->session->userdata('storeid');
+		$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+		$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+		//end show all store have all owner page
+
 						
 		$year = date("Y");
 

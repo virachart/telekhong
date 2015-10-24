@@ -19,6 +19,38 @@ class Dashboard extends CI_Controller{
 				$sqlSensoro = "Select * from sensoro where store_id = '6' ";
 				$data['sensoro'] = $this->db->query($sqlSensoro);
 
+				// start growth owner
+
+				$day = date("d");
+				$month = date("m");
+				$year = date("Y");
+
+				$sqlcounttoday = "select count(owner_id) AS toowner from owner where owner_date = '".$year."-".$month."-".$day."%' ";
+				$data['ownernow'] = $this->db->query($sqlcounttoday);
+
+				$day = $day-1;
+				if ($day < 1) {
+					$month = $month - 1;
+					if ($month < 1) {
+						$year = $year - 1;
+						$month = 12;
+						$day = 31; 
+					}
+				}
+				if ($month < 10) {
+					$month = "0".$month;
+				}
+
+				if ($day < 10) {
+					$day = "0".$day;
+				}
+
+				$sqlcountyes = "select count(owner_id) AS toowner from owner where owner_date = '".$year."-".$month."-".$day."%' ";
+				$data['owneryes'] = $this->db->query($sqlcountyes);
+
+				// end growth owner
+
+
 				$d = date("j");
 				$m = date("n");
 				$a = $m-6;
