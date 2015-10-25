@@ -96,7 +96,15 @@ class Manageqr extends CI_Controller{
 											->get()->result_array();
 				}
 				if ($find == "info_name") {
-					$data['rs'] = $this->db->select("*")->from("qr a")->join("info b","a.info_id = b.info_id")->join("store c","a.store_id = c.store_id")->where("status_qr_id !=","2")->like("info_name",$name)->get()->result_array();
+					$data['rs'] = $this->db->select("*,count(qr_log.qr_log_id) AS qrcount")
+											->from("qr a")
+											->join("info b","a.info_id = b.info_id")
+											->join("store c","a.store_id = c.store_id")
+											->join("qr_log","a.qr_id = qr_log.qr_id","left")
+											->where("status_qr_id !=","3")
+											->like("info_name",$name)
+											->group_by("a.qr_id")
+											->get()->result_array();
 				}
 				// echo $this->db->last_query();
 				$this->load->view("manageqr",$data);
