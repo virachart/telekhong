@@ -144,8 +144,10 @@
 		</table>
 				
 				<div class="col-lg-12" style="text-align:center;margin-top:30px; margin-down: 30px">
-				<?php echo anchor("regis","<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
 				<input class="form-control btn btn-primary" type="submit" name="bttsave" value="Save" style="width: 80px;margin-left:20px"> 
+				&nbsp&nbsp&nbsp
+				<?php echo anchor("regis","<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
+				
 				
 				</div>
 	</form>
