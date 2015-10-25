@@ -98,6 +98,9 @@ class Statisticsowner extends CI_Controller{
 								$difmonth = $mexpire + $difa;
 							}
 
+							$sqlgetfav = "select count(fav_id) AS countfav from favorite where info_id = '".$maxid."' ";
+							$data['countfav'] = $this->db->query($sqlgetfav)->row_array();
+
 
 					//begin age recive message
 							$simumonth = $mbegin;
@@ -1646,6 +1649,9 @@ class Statisticsowner extends CI_Controller{
 
 		$sqlgetinfoname = "select * from info where info_id = '".$maxid."' ";
 		$data['getinfoname'] = $this->db->query($sqlgetinfoname)->row_array();
+
+		$sqlgetfav = "select count(fav_id) AS countfav from favorite where info_id = '".$maxid."' ";
+		$data['countfav'] = $this->db->query($sqlgetfav)->row_array();
 		
 		$y = date("Y");
 		$nowdate = date("Y-m-d");

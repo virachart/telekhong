@@ -194,10 +194,12 @@
                                                 ?>
                                             </select>
                                         </td>
+                                        <td><small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male"></i> favorite <?php echo $countfav['countfav'];?>&nbsp)</small></td>
 
                                     </tr>
                                 </table>
                                 <?php echo form_close()?>
+
                                 </div>
                             </div>
                         </div>

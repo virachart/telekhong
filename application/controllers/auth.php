@@ -88,14 +88,7 @@ class Auth extends CI_CONTROLLER{
 		$rs = $this->db->query($sqlUser);
 		if ($rs->num_rows==0) {
 			$this->session->set_userdata($me);
-			$birth = null;
-			if ($me['birthday'] == null) {
-				$birth = "0000-00-00";
-			}else{
-				$bi = $me['birthday'];
-				$birth = date('Y-m-d', strtotime($bi));
-			}
-			$sqlInsert = "INSERT INTO `telekhong`.`user` (`fb_id`, `fb_name`, `sex`, `birth`) VALUES ('".$me['id']."', '".$me['name']."', '".$me['gender']."' , '".$birth."' );";
+			$sqlInsert = "INSERT INTO `telekhong`.`user` (`fb_id`, `fb_name`, `sex`) VALUES ('".$me['id']."', '".$me['name']."', '".$me['gender']."');";
 			$this->db->query($sqlInsert);
 			redirect("regis");
 		}elseif ($rs->num_rows>0) {
