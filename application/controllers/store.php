@@ -18,7 +18,8 @@ class Store extends CI_Controller{
 
 				$numcheck = 0;
 				if ($rsfindstore == null) {
-					redirect("createstore");
+					$data['ch'] = 1;
+					redirect("createstore",$data);
 				}else{
 					foreach ($rsfindstore as $r) {
 						if ($r['status_store_id'] != 1 && $numcheck != 0) {
@@ -35,7 +36,8 @@ class Store extends CI_Controller{
 				$rsfindstore = $this->db->query($sqlfindminstore)->row_array();
 				
 				if ($rsfindstore == null) {
-					redirect("createstore");
+					$data['ch'] = 1;
+					redirect("createstore",$data);
 				}else{
 					$pay = 0;
 

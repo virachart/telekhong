@@ -221,6 +221,15 @@
                             }
                         </script>
 
+
+                        <?php
+                            if ($ch == 1) {
+                                echo "<script type='text/javascript'>
+                                    alert('Please Create A Least 1 Store!!!');
+                                  </script>";
+                          }
+
+                        ?>
                     
 
                     <div class="col-lg-12" style="margin-top:10px;"></div>
