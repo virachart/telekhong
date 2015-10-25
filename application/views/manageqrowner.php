@@ -185,7 +185,7 @@ hr { border: 1px solid;
                 
                                 </div>
                                 <div class=" pull-right">
-                                    <form action="<?php echo site_url('manageqr/search');?>" method = "post">
+                                    <form action="<?php echo site_url('manageqrowner/search');?>" method = "post">
                                     
                                     <div >
                                         
