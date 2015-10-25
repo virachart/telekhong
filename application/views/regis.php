@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 	<title>Register Owner</title>
 
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
     <script src="<?=base_url()?>assets/js/jquery.cropit.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
 
@@ -17,18 +23,30 @@
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+    <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="<?=base_url()?>assets/js/bootstrap-datetimepicker.js"></script>
+    <link href="<?=base_url()?>assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bootstrap-datetimepicker.css" rel="stylesheet">
+
+
 </head>
 <body>
 		<script type="text/javascript">
 
-		function check(form_id,email,tel) {
+		function check(form_id,email,tel,birthdate) {
 			
 			
 			var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 			var address = document.forms[form_id].elements[email].value;
-			var tele = document.forms[form_id].elements[tel].value;    
+			var tele = document.forms[form_id].elements[tel].value;
+			var bd = document.forms[form_id].elements[birthdate].value;    
 		      
-				if(tele.length<1){
+				if(bd.length<1){
+					alert('Please input your birth date');
+					document.forms[form_id].elements[birthdate].focus();
+					return false;
+
+				}else if(tele.length<1){
 					alert('Please input your Telephone number');
 					document.forms[form_id].elements[tel].focus();
 					return false;
@@ -85,8 +103,33 @@
             <div id="page-wrapper">
                 <div class="container-fluid">
                 <h1>Create Owner Info</h1><br>
-	<form name="info" action="<?php echo site_url("regis/add");?>" method="post" onsubmit="javascript:return check('info','email','tel');">
+	<form name="info" action="<?php echo site_url("regis/add");?>" method="post" onsubmit="javascript:return check('info','email','tel','birthdate');">
 		<table>
+			<tr>
+				<td>Birth Date : </td>
+				<td>
+					<div class="input-group date form_datetime1" >
+                        <input  style="width:150px" type="text"  value="" name="birthdate" id="monthtext" readonly class="form-control" placeholder="Month / Year">
+                            <span class="input-group-addon" id="button1">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                    </div>
+                                             
+                        <script type="text/javascript">
+                            $(".form_datetime1").datetimepicker({
+                                format: "yyyy-mm-dd",
+                                autoclose: true,
+                                startView:4,
+                                maxView:4,
+                                minView:2,
+                                pickerPosition: "bottom-left"
+                                                    
+                                });
+                                                
+                        </script>
+                </td>
+			</tr>
+			<tr><td>&nbsp</td></tr>
 			<tr>
 				<td>Telephone Number : &nbsp</td>
 				<td><input class="form-control" type="text" name="tel" value="" onkeypress= numCheck('info','tel');></td>
@@ -97,6 +140,7 @@
 				<td><input class="form-control" type="text" name="email" value="" id="email"></td>
 			</tr>
 			<tr><td>&nbsp</td></tr>
+
 		</table>
 				
 				<div class="col-lg-12" style="text-align:center;margin-top:30px; margin-down: 30px">
