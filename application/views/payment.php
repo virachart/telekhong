@@ -283,8 +283,22 @@
                         
                      </div>
 
+                    <?php 
+                        $stat3 = "";
+                        $stpackid = $storedetail['package_id'];
+                        $perdate = $storedetail['contract_date'];
+                        if ($stpackid == 3) {
+                            $stat3 = "disabled";
+                            if (strtotime($perdate) < time()) {
+                                $stat3 = "";
+                            }
+                        }
+
+
+                    ?>
+
                         <div class="col-lg-12" style="margin-top:10px;">
-                            <button type="button" style="width:140px;" class="btn btn-warning " data-toggle="modal" data-target="#myModal3" >Change Package</button>
+                            <button type="button" style="width:140px;" class="btn btn-warning " data-toggle="modal" data-target="#myModal3"  <?php echo $stat3?> >Change Package</button>
                             <div class="modal fade" id="myModal3" role="dialog">
                                 <div class="modal-dialog modal-lg">
                                     <div class="modal-content">
@@ -405,12 +419,26 @@
 
                                             ?>
 
+                                            <?php 
+                                                $pa1 = "";
+                                                $pa2 = "";
+                                                $stpackid = $storedetail['package_id'];
+                                                $perdate = $storedetail['contract_date'];
+                                                if ($stpackid == 2) {
+                                                    $pa1 = "disabled";
+                                                    $pa2 = "disabled";
+                                                    if (strtotime($perdate) < time()) {
+                                                        $pa1 = "";
+                                                    }
+                                                }
+
+                                            ?>
                                             
 
 
                                             <div class="col-sm-1">
                                                 <select class="form-control " style="width:100px" onchange="showbutton()" id="package">
-                                                <option value="1200" <?php echo $pachop1;?> >Bronze</option>
+                                                <option value="1200" <?php echo $pachop1; echo $pa1;?> >Bronze</option>
                                                 <option value="2000" <?php echo $pachop2;?> >Silver</option>
                                                 <option value="3500" <?php echo $pachop3;?> >Gold</option>
                                                 
