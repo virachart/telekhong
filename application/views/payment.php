@@ -309,63 +309,81 @@
                                     </style>
                                             <table class="table3" style="width:100%;color:#000000">
                                         <tr>
-                                            <th colspan="2" style="width:10%">Package</th>
-                                            <td>Bronze</td>
-                                            <td>Silver</td>
-                                            <td>Gold</td>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="2" style="width:10%">Upload Limit</th>
-                                            <td>5</td>
-                                            <td>10</td>
-                                            <td>15</td>       
-                                        </tr>
-                                        <tr>
-                                            <th colspan="2" style="width:10%">Khong Use</th>
-                                            <td>1</td>
-                                            <td>2</td>
-                                            <td>2</td>
-                                        </tr>
-                                        <tr>
-                                            <th rowspan="6" style="width:10%">Statistics</th>
+                    <th colspan="2" style="width:10%">Package</th>
+                    <td>Bronze</td>
+                    <td>Silver</td>
+                    <td>Gold</td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Upload Limit</th>
+                    <td>12</td>
+                    <td>20</td>
+                    <td>30</td>       
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Khong Use</th>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>2</td>
+                </tr>
+                <tr>
+                    <th rowspan="9" style="width:10%">Statistics</th>
 
-                                        </tr>
-                                        <tr>
-                                            <td >General</td>
-                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td >Message Receive</td>      
-                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td >Come to Store</td>
-                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td >QR Buy</td>      
-                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <td >Come back again</td>
-                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                                            <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                                            <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                                        </tr>
-                                        <tr>
-                                            <th colspan="2" style="width:10%">Service Charge</th>
-                                            <td>1,200 x 12 Month</td>
-                                            <td>2,000 x 12 Month</td>
-                                            <td>3,000 x 12 Month</td>
-                                        </tr>
+                </tr>
+                <tr>
+                    <td >Follow Chart</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Favorite Ranking</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Message Receive</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >General Chart</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Message Receive Chart</td>      
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >Come to Store Chart</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >QR Buy Chart</td>      
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <td >QR Buy Again Chart</td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
+                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
+                </tr>
+                <tr>
+                    <th colspan="2" style="width:10%">Service Charge</th>
+                    <td>1,200 x 12 Month</td>
+                    <td>2,000 x 12 Month</td>
+                    <td>3,500 x 12 Month</td>
+                </tr>
                                     </table>
 
                                             
