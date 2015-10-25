@@ -194,7 +194,7 @@
                                                 ?>
                                             </select>
                                         </td>
-                                        <td><small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male"></i> favorite <?php echo $countfav['countfav'];?>&nbsp)</small></td>
+                                        <td><h4>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-star" style="color:#FFDE58"></i> favorite <?php echo $countfav['countfav'];?>&nbsp)</h4></td>
 
                                     </tr>
                                 </table>

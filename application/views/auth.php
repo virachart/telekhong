@@ -406,11 +406,14 @@ body {
 <li>1.broadcast message to many people.</li>
 <li>2.User statistics (for package silver & Gold)</li>
 <ul>
-<li><span style="color:#FF6600;">2.1 General :</span> Show ratio  of  people who use application (Group by age & gender).</li>
-<li><span style="color:#FF6600;">2.2 Message receive : </span>Show amount of people who received message and came to store.</li>
-<li><span style="color:#FF6600;">2.3 Come to store : </span>Show amount of people who received message and came to store.</li>
-<li><span style="color:#FF6600;">2.4 QR Buy :</span> Show amount of people who use qr code from message.</li>
-<li><span style="color:#FF6600;">2.5 Come back again :</span> Show amount of people who came to use qr code again. </li>
+<li><span style="color:#FF6600;">2.1 Follow Store Chart  :</span> Show amount  of  people who followed your store (Group by age & gender).</li>
+<li><span style="color:#FF6600;">2.1 Favorite Ranking  :</span> Show rank  of  top 5 message group by favorite .</li>
+<li><span style="color:#FF6600;">2.1 Message Received :</span> Show amount of people who received message. .</li>
+<li><span style="color:#FF6600;">2.1 General Chart (Gold only) :</span> Show ratio  of  chart who use application (Group by age & gender).</li>
+<li><span style="color:#FF6600;">2.2 Message receive Chart (Gold only) : </span>Show chart of people who received message. </li>
+<li><span style="color:#FF6600;">2.3 Come to store Chart (Gold only) : </span>Show chart of people who received message and came to store.</li>
+<li><span style="color:#FF6600;">2.4 QR Buy Chart (Gold only) :</span> Show chart of people who use qr code from message.</li>
+<li><span style="color:#FF6600;">2.5 QR buy again Chart (Gold only) :</span> Show chart of people who came to use qr code again. </li>
     </ul>
 <li>3.Our service have 3 different package :&nbsp<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1" style="margin-right:10px">View Package</button></li>
 </ul>
