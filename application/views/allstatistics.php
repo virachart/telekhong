@@ -294,12 +294,13 @@
                     <div class="row">
                         <div class="col-lg-6" style="text-align:center">
                             <h4 style="color:#999999">View Message Chart</h4>
-                            <a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large" <?php if($this->session->userdata("statuspack")==2) {echo "disabled data-toggle='tooltip' data-placement='top' title='Hooray!'";} ?>><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a>
+                            <li style="color:white" <?php if($this->session->userdata("statuspack")==2) {echo "data-toggle='tooltip' title='Only Gold Package  can be unlocked.'";} ?>><a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large" <?php if($this->session->userdata("statuspack")==2) {echo "disabled ";} ?>><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a></li>
                             <script>
-                                $(document).ready(function(){
-                                    $('[data-toggle="tooltip"]').tooltip();   
-                                });
+                            $(document).ready(function(){
+                                $('[data-toggle="tooltip"]').tooltip();   
+                            });
                             </script>
+
                             
                             <div  style="margin-top:20px;height:360px;">
                             <table  class="table" >

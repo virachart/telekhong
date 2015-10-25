@@ -181,7 +181,7 @@
                 <div class="col-lg-12">
                     <div class="col-lg-7">
                         <h1>
-                            <?php echo $rs['store_name']; ?>  <small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male"></i> follower <?php echo $follow->num_rows() ?>&nbsp)</small>
+                            <?php echo $rs['store_name']; ?>  <small>&nbsp&nbsp&nbsp(&nbsp<i class="fa fa-male" ></i> <?php echo $follow->num_rows() ?> follower&nbsp)</small>
                         </h1>
                         <hr style="width:100%">
                     </div>
