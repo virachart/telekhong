@@ -262,7 +262,7 @@
                                     <?php
                                         if(count($rs)==0)
                                         {
-                                            echo "<tr><td align='center'>---no data----</td></tr>";
+                                            echo "<tr><td colspan='5' align='center'>---Don't Have User. Please Search Again!!!----</td></tr>";
                                         }else {
                                             $no = $this->uri->segment(3)+1;
                                             // echo var_dump($rs);

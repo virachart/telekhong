@@ -104,7 +104,10 @@ class Payment extends CI_Controller{
 					$day = "0".$day;
 				}
 				$setdate = $year."-".$month1."-".$day;
-				$arupdateexpire = array('expire_date' => $setdate);
+				$year = $year + 1;
+				$setcontract = $year."-".$month1."-".$day;
+				$arupdateexpire = array('expire_date' => $setdate,
+										'contract_date' => $setcontract);
 				$this->db->where("store_id",$storepay);
 				$this->db->update('store',$arupdateexpire);
 			}else{

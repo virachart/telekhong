@@ -221,6 +221,7 @@ class Managestore extends CI_Controller{
 								->group_by("store.store_id")
 								->get()->result_array();
 				}
+				$data['pagi'] = 0;
 				// echo $this->db->last_query();
 				$this->load->view("managestore",$data);
 				// print_r($data['rs']);

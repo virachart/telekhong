@@ -203,7 +203,7 @@
                                     <?php
                                         if(count($rs)==0)
                                         {
-                                            echo "<tr><td align='center'>---no data----</td></tr>";
+                                            echo "<tr><td colspan='9' align='center'>---Don't Have Store. Please Search Again!!!----</td></tr>";
                                         }else {
                                             if ($no1 == "1") {
                                                 $no = 1;
@@ -396,116 +396,7 @@
                                      ?>
 
 
-                                    <!-- <tr>
-                                        <td>1</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>13/06/2015</td>
-                                        <td>13:50</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>13/06/2015</td>
-                                        <td>13:50</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>13/06/2015</td>
-                                        <td>13:50</td>
-                                        <td><span class="label label-warning">Blocked</span></td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>13/06/2015</td>
-                                        <td>13:50</td>
-                                        <td><span class="label label-warning">Blocked</span></td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>13/06/2015</td>
-                                        <td>13:50</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>13/06/2015</td>
-                                        <td>13:50</td>
-                                        <td><span class="label label-warning">Blocked</span></td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>scverwvsfd</td>
-                                        <td>Store 1</td>
-                                        <td>Get 1 free 1</td>
-                                        <td>12/07/2015</td>
-                                        <td>13/06/2015</td>
-                                        <td>13:50</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
-                                        <td>
-                                        <button type="button" class="btn btn-info">Detail</button>&nbsp
-                                        <button type="button" class="btn btn-warning">Block</button>&nbsp
-                                        <button type="button" class="btn btn-danger">Delete</button>
-                                        </td>
-                                    </tr> -->
+                                    
                                 </tbody>
                             </table>
                             <?php

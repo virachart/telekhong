@@ -452,7 +452,7 @@
                             <td><span style="font-size: 14px" class="label label-success label-as-badge"><?php echo substr($firstday['date'],0,10); ?></span></td>
                             <td>&nbsp</td><td>&nbsp</td><td>&nbsp</td><td>&nbsp</td>
                             <td>End of agreement : </td>
-                            <td><span style="font-size: 14px" class="label label-info label-as-badge"><?php $y = substr($firstday['date'],0,4); $y+=1; echo $y.substr($firstday['date'],4,6); ?></span></td>
+                            <td><span style="font-size: 14px" class="label label-info label-as-badge"><?php echo $storedetail['contract_date']; ?></span></td>
                         </tr>
                     </table>
                         <div class="table-responsive">

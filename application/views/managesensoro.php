@@ -247,7 +247,7 @@
                                     
                                     </div>
                                     
-                                    <form action="<?php echo site_url('managestore/search');?>" method = "post">
+                                    <form action="<?php echo site_url('managesensoro/search');?>" method = "post">
                                     
                                     <div class="pull-right">
                                         <input class="btn btn-default pull-right" type="submit" name="btsave" value="Search">
@@ -281,7 +281,7 @@
                                     <?php
                                         if(count($rs)==0)
                                         {
-                                            echo "<tr><td align='center'>---no data----</td></tr>";
+                                            echo "<tr><td colspan='8' align='center'>---Don't Have Khong. Please Search Again!!!----</td></tr>";
                                         }else {
                                             $no = $this->uri->segment(3)+1;
                                             // echo var_dump($rs);
