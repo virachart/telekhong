@@ -26,6 +26,7 @@
 
     <!-- jQuery -->
     <script src="<?=base_url()?>assets/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
@@ -293,7 +294,12 @@
                     <div class="row">
                         <div class="col-lg-6" style="text-align:center">
                             <h4 style="color:#999999">View Message Chart</h4>
-                            <a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large" <?php if($this->session->userdata("statuspack")==2) {echo "disabled";} ?>><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a>
+                            <a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large" <?php if($this->session->userdata("statuspack")==2) {echo "disabled data-toggle='tooltip' data-placement='top' title='Hooray!'";} ?>><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a>
+                            <script>
+                                $(document).ready(function(){
+                                    $('[data-toggle="tooltip"]').tooltip();   
+                                });
+                            </script>
                             
                             <div  style="margin-top:20px;height:360px;">
                             <table  class="table" >
