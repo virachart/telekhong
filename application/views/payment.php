@@ -412,7 +412,7 @@
                                                 <select class="form-control " style="width:100px" onchange="showbutton()" id="package">
                                                 <option value="1200" <?php echo $pachop1;?> >Bronze</option>
                                                 <option value="2000" <?php echo $pachop2;?> >Silver</option>
-                                                <option value="3000" <?php echo $pachop3;?> >Gold</option>
+                                                <option value="3500" <?php echo $pachop3;?> >Gold</option>
                                                 
                                             </select>
                                             </div>
