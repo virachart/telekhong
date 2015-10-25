@@ -344,22 +344,23 @@ class Allstatistics extends CI_Controller{
 				$i = "0".$i;
 			}
 			//follow age graph
-			$sqlfollowage1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y17."-01-01' and '".$nowdate."' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
-			$sqlfollowage2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
-			$sqlfollowage3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
-			$sqlfollowage4 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
-			$sqlfollowage5 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
+			$sqlfollowage1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y17."-01-01' and '".$nowdate."' and fol_date like '".$getmonth."-".$i."%'";
+			$sqlfollowage2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and fol_date like '".$getmonth."-".$i."%'";
+			$sqlfollowage3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and fol_date like '".$getmonth."-".$i."%' ";
+			$sqlfollowage4 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and fol_date like '".$getmonth."-".$i."%' ";
+			$sqlfollowage5 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and fol_date like '".$getmonth."-".$i."%' ";
 
 			$data['foage1m'.$i] = $this->db->query($sqlfollowage1);
 			$data['foage2m'.$i] = $this->db->query($sqlfollowage2);
+			// echo $this->db->last_query();
 			$data['foage3m'.$i] = $this->db->query($sqlfollowage3);
 			$data['foage4m'.$i] = $this->db->query($sqlfollowage4);
 			$data['foage5m'.$i] = $this->db->query($sqlfollowage5);
 
 			//follow sex graph
-			$sqlfollowsex1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'male' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
-			$sqlfollowsex2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'female' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
-			$sqlfollowsex3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'null' and fol_date between '".$getmonth."-".$i."' and '".$getmonth."-".$i."' ";
+			$sqlfollowsex1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'male' and fol_date like '".$getmonth."-".$i."%' ";
+			$sqlfollowsex2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'female' and fol_date like '".$getmonth."-".$i."%' ";
+			$sqlfollowsex3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'null' and fol_date like '".$getmonth."-".$i."%' ";
 
 			$data['fosex1m'.$i] = $this->db->query($sqlfollowsex1);
 			$data['fosex2m'.$i] = $this->db->query($sqlfollowsex2);
@@ -558,11 +559,11 @@ class Allstatistics extends CI_Controller{
 			if ($i < 10) {
 				$i = "0".$i;
 			}
-			$sqlfollowage1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y17."-01-01' and '".$nowdate."' and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-01' ";
-			$sqlfollowage2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y25."-01-01' and '".$y18."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-01' ";
-			$sqlfollowage3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y35."-01-01' and '".$y26."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-01' ";
-			$sqlfollowage4 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y50."-01-01' and '".$y36."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-01' ";
-			$sqlfollowage5 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y100."-01-01' and '".$y51."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-01' ";
+			$sqlfollowage1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y17."-01-01' and '".$nowdate."' and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-31' ";
+			$sqlfollowage2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y25."-01-01' and '".$y18."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-31' ";
+			$sqlfollowage3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y35."-01-01' and '".$y26."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-31' ";
+			$sqlfollowage4 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y50."-01-01' and '".$y36."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-31' ";
+			$sqlfollowage5 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and birth between '".$y100."-01-01' and '".$y51."-12-31'  and fol_date between '".$getmonth."-".$i."-01' and '".$getmonth."-".$i."-31' ";
 
 			$data['foage1m'.$i] = $this->db->query($sqlfollowage1);
 			$data['foage2m'.$i] = $this->db->query($sqlfollowage2);
@@ -571,9 +572,9 @@ class Allstatistics extends CI_Controller{
 			$data['foage5m'.$i] = $this->db->query($sqlfollowage5);
 
 			//follow sex graph
-			$sqlfollowsex1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'male'  and fol_date between '".$year."-".$i."-01' and '".$year."-".$i."-01' ";
-			$sqlfollowsex2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'female'  and fol_date between '".$year."-".$i."-01' and '".$year."-".$i."-01' ";
-			$sqlfollowsex3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'null'  and fol_date between '".$year."-".$i."-01' and '".$year."-".$i."-01' ";
+			$sqlfollowsex1 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'male'  and fol_date between '".$year."-".$i."-01' and '".$year."-".$i."-31' ";
+			$sqlfollowsex2 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'female'  and fol_date between '".$year."-".$i."-01' and '".$year."-".$i."-31' ";
+			$sqlfollowsex3 = "select * from follow join user on follow.fb_id = user.fb_id join sensoro on follow.sensoro_id = sensoro.sensoro_id where store_id = '".$storeid."' and sex = 'null'  and fol_date between '".$year."-".$i."-01' and '".$year."-".$i."-31' ";
 
 			$data['fosex1m'.$i] = $this->db->query($sqlfollowsex1);
 			$data['fosex2m'.$i] = $this->db->query($sqlfollowsex2);
