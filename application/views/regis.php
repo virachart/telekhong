@@ -95,7 +95,36 @@
                 </div>
                 
 
+                <ul class="nav navbar-right top-nav">
+                
+                <?php
+                    $dissta = "";
+                    $dismanage = "";
+                    $disdelete = "";
+                    $disupload = "";
+                    $stastore = $this->session->userdata('statuspack');
+                    if ($stastore == 1) {
+                        $dissta = "style = 'display : none' ";
+                        $dismanage = "style = 'display : none'";
+                    }elseif ($stastore == 5) {
+                        $dissta = "class = 'disabled'";
+                        $dismanage = "class = 'disabled'";
+                        $disdelete = "disabled";
+                        $disupload = "disabled";
+                    }
 
+                ?>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('first_name');?> <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        
+                        <li>
+                            <a href="<?php echo site_url("auth/logout");?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
                 <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
                 
             </nav>
@@ -144,9 +173,8 @@
 		</table>
 				
 				<div class="col-lg-12" style="text-align:center;margin-top:30px; margin-down: 30px">
-				<input class="form-control btn btn-primary" type="submit" name="bttsave" value="Save" style="width: 80px;margin-left:20px"> 
-				&nbsp&nbsp&nbsp
-				<?php echo anchor("regis","<button type='button' class='btn btn-danger'>Cancle</button>"); ?>
+				<input class="form-control btn btn-success" type="submit" name="bttsave" value="Next" style="width: 80px;margin-left:20px"> 
+				
 				
 				
 				</div>
