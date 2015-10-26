@@ -31,6 +31,17 @@ class Regis extends CI_Controller{
 			$email = $this->input->post("email");
 			$tel = $this->input->post("tel");
 			$id = $this->session->userdata('id');
+			$name = $this->input->post("name");
+			$birth = $this->input->post("birthdate");
+			$sex = $this->input->post("sex");
+
+			$aruser = array('fb_name' => $name,
+							'sex' => $sex,
+							'birth' => $birth
+							);
+			$this->db->where('fb_id', $id);
+			$this->db->update('user', $aruser); 
+
 			$sql = "INSERT INTO `telekhong`.`owner` (`owner_email`, `owner_tel`, `fb_id`) VALUES ('".$email."', '".$tel."', '".$id."');";
 			$this->db->query($sql);
 			$sqlOwner = "Select * from owner where fb_id = ".$id;

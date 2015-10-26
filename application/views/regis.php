@@ -134,6 +134,21 @@
                 <h1>Create Owner Info</h1><br>
 	<form name="info" action="<?php echo site_url("regis/add");?>" method="post" onsubmit="javascript:return check('info','email','tel','birthdate');">
 		<table>
+            <tr>
+            <td>Name : </td>
+            <td><input class="form-control" type="text" name="name" value="<?php echo $this->session->userdata('name'); ?>"></td>
+            </tr>
+            <tr><td>&nbsp</td></tr>
+            <tr>
+            <td>Gender : </td>
+            <td>
+                <select name="sex" class="form-control">
+                    <option value="male"> Male </option>
+                    <option value="female"> Female </option>
+                </select>
+            </td>
+            </tr>
+            <tr><td>&nbsp</td></tr>
 			<tr>
 				<td>Birth Date : </td>
 				<td>
@@ -158,7 +173,9 @@
                         </script>
                 </td>
 			</tr>
-			<tr><td>&nbsp</td></tr>
+            <tr><td>&nbsp</td></tr>
+			
+                
 			<tr>
 				<td>Telephone Number : &nbsp</td>
 				<td><input class="form-control" type="text" name="tel" value="" onkeypress= numCheck('info','tel');></td>
@@ -173,7 +190,7 @@
 		</table>
 				
 				<div class="col-lg-12" style="text-align:center;margin-top:30px; margin-down: 30px">
-				<input class="form-control btn btn-success" type="submit" name="bttsave" value="Next" style="width: 80px;margin-left:20px"> 
+				<input class="form-control btn btn-success" type="submit" name="bttsave" value="Register" style="width: 80px;margin-left:20px"> 
 				
 				
 				
