@@ -120,7 +120,7 @@
                                     <div class="col-lg-8" style="margin-top:7px;">
 
                                         Total of Owner is : <span class="badge"><?php echo $num1->num_rows(); ?></span>&nbsp
-                                        Avaliable Owner is :<span class="badge"><?php echo $num2->num_rows(); ?></span>&nbsp
+                                        Available Owner is :<span class="badge"><?php echo $num2->num_rows(); ?></span>&nbsp
                                         Blocked Owmer is : <span class="badge"><?php echo $num3->num_rows(); ?></span>&nbsp
                                         Ban Owner is : <span class="badge"><?php echo $num4->num_rows(); ?></span><br>
 
@@ -192,7 +192,7 @@
                                             foreach ($rs as $r) {
                                                 $staown = "";
                                                 if ($r['status_owner'] == 1) {
-                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                    $staown = "<span class='label label-success'>Available</span>";
                                                 }elseif ($r['status_owner'] == 2) {
                                                     $staown = "<span class='label label-warning'>Blocked</span>";
                                                 }elseif ($r['status_owner'] == 3) {

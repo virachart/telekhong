@@ -288,7 +288,7 @@
                                             foreach ($rs as $r) {
                                                 $staown = "";
                                                 if ($r['status_sensoro_id'] == 1) {
-                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                    $staown = "<span class='label label-success'>Available</span>";
                                                 }elseif ($r['status_sensoro_id'] == 2) {
                                                     $staown = "<span class='label label-warning'>Blocked</span>";
                                                 }elseif ($r['status_sensoro_id'] == 3) {
@@ -385,7 +385,7 @@
                                                                             <td align='center'>Status Khong : &nbsp</td>
                                                                             <td align='center'>
                                                                                 <select class='form-control' name='type' id='statusdetail".$r['sensoro_id']."' style='width:300px ;'>  
-                                                                                    <option id='status1' value='1' ".$sta1.">Avaliable</option>
+                                                                                    <option id='status1' value='1' ".$sta1.">Available</option>
                                                                                     <option id='status2' value='2' ".$sta2.">Block</option>
                                                                                     <option id='status3' value='3' ".$sta3.">Ban</option>
                                                                                 </select>

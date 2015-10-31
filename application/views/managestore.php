@@ -113,7 +113,7 @@
                                 <div class=" col-lg-7" style="margin-top:7px;">
 
                                 Total of Store is : <span class="badge"><?php echo $num1->num_rows(); ?></span>&nbsp
-                                Avaliable Store is :<span class="badge"><?php echo $num2->num_rows(); ?></span>&nbsp
+                                Available Store is :<span class="badge"><?php echo $num2->num_rows(); ?></span>&nbsp
                                 Blocked Store is : <span class="badge"><?php echo $num3->num_rows(); ?></span>&nbsp
                                 Ban Store is : <span class="badge"><?php echo $num4->num_rows(); ?></span>&nbsp
                                 
@@ -215,7 +215,7 @@
                                             foreach ($rs as $r) {
                                                 $staown = "";
                                                 if ($r['status_store_id'] == 1) {
-                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                    $staown = "<span class='label label-success'>Available</span>";
                                                 }elseif ($r['status_store_id'] == 2) {
                                                     $staown = "<span class='label label-warning'>Blocked</span>";
                                                 }elseif ($r['status_store_id'] == 3) {

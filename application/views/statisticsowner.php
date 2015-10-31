@@ -99,7 +99,7 @@
                                 echo site_url("store/selectst/".$r['store_id']);
                                 echo "'> ".substr($r['store_name'],0,13); 
                                     if ($r['status_store_id']=="1" ) {
-                                        echo "<span class='label label-success' style='float : right;'>Avaliable</span></a>
+                                        echo "<span class='label label-success' style='float : right;'>Available</span></a>
                                     </li>";
                                 }elseif ($r['status_store_id']=="2" ) {
                                     echo "<span class='label label-warning' style='float : right;'>Blocked</span></a>

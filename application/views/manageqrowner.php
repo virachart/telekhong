@@ -112,7 +112,7 @@ hr { border: 1px solid;
                                 echo site_url("store/selectst/".$r['store_id']);
                                 echo "'> ".substr($r['store_name'],0,13); 
                                     if ($r['status_store_id']=="1" ) {
-                                        echo "<span class='label label-success' style='float : right;'>Avaliable</span></a>
+                                        echo "<span class='label label-success' style='float : right;'>Available</span></a>
                                     </li>";
                                 }elseif ($r['status_store_id']=="2" ) {
                                     echo "<span class='label label-warning' style='float : right;'>Blocked</span></a>
@@ -240,7 +240,7 @@ hr { border: 1px solid;
                                             // echo var_dump($rs);
                                             foreach ($rs as $r) {
                                                 if ($r['status_qr_id'] == 1) {
-                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                    $staown = "<span class='label label-success'>Available</span>";
                                                 }elseif ($r['status_qr_id'] == 2) {
                                                     $staown = "<span class='label label-default'>Blocked</span>";
                                                 }
@@ -278,7 +278,7 @@ hr { border: 1px solid;
                                                                         <td align='center'>
                                                                             <select name='statusqr' id='statusqr".$r["qr_id"]."' class='form-control' style='width : 200px;background-color : #ffffff;color:#000000;' >
                                                                                 <option value=''> ---Choose--- </option>
-                                                                                <option value='1'> Avaliable </option>
+                                                                                <option value='1'> Available </option>
                                                                                 <option value='2'> Block </option>
                                                                                         
                                                                             </select>
@@ -315,7 +315,7 @@ hr { border: 1px solid;
                                         <td>scverwvsfd</td>
                                         <td>Store 1</td>
                                         <td>Get 1 free 1</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
+                                        <td><span class="label label-success">Available</span></td>
                                         <td>
                                         <button type="button" class="btn btn-danger">Delete</button>
                                         </td>
@@ -329,7 +329,7 @@ hr { border: 1px solid;
                                         <td>12/07/2015</td>
                                         <td>13/06/2015</td>
                                         <td>13:50</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
+                                        <td><span class="label label-success">Available</span></td>
                                         <td>
                                         <button type="button" class="btn btn-info">Detail</button>&nbsp
                                         <button type="button" class="btn btn-warning">Block</button>&nbsp
@@ -376,7 +376,7 @@ hr { border: 1px solid;
                                         <td>12/07/2015</td>
                                         <td>13/06/2015</td>
                                         <td>13:50</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
+                                        <td><span class="label label-success">Available</span></td>
                                         <td>
                                         <button type="button" class="btn btn-info">Detail</button>&nbsp
                                         <button type="button" class="btn btn-warning">Block</button>&nbsp
@@ -408,7 +408,7 @@ hr { border: 1px solid;
                                         <td>12/07/2015</td>
                                         <td>13/06/2015</td>
                                         <td>13:50</td>
-                                        <td><span class="label label-success">Avaliable</span></td>
+                                        <td><span class="label label-success">Available</span></td>
                                         <td>
                                         <button type="button" class="btn btn-info">Detail</button>&nbsp
                                         <button type="button" class="btn btn-warning">Block</button>&nbsp

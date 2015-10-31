@@ -182,7 +182,7 @@
               <div class="small-box bg-red">
                 <div class="inner">
                   <h3><?php
-                        echo $outkhong['outkhong'];?> Actived</h3>
+                        echo $outkhong['outkhong'];?> Active</h3>
                     <p><?php
                         echo $inkhong['inkhong'] ;?> Khong remaining</p>
                 </div>

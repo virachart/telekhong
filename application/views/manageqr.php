@@ -178,7 +178,7 @@
                                             // echo var_dump($rs);
                                             foreach ($rs as $r) {
                                                 if ($r['status_qr_id'] == 1) {
-                                                    $staown = "<span class='label label-success'>Avaliable</span>";
+                                                    $staown = "<span class='label label-success'>Available</span>";
                                                 }elseif ($r['status_qr_id'] == 2) {
                                                     $staown = "<span class='label label-warning'>Blocked</span>";
                                                 }
@@ -217,7 +217,7 @@
                                                                         <td align='center'>
                                                                             <select name='statusqr' id='statusqr".$r["qr_id"]."' class='form-control' style='width : 200px;background-color : #ffffff;color:#000000;' >
                                                                                 <option value=''> ---Choose--- </option>
-                                                                                <option value='1'> Avaliable </option>
+                                                                                <option value='1'> Available </option>
                                                                                 <option value='2'> Blocked </option>
                                                                                         
                                                                             </select>
