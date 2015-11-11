@@ -321,6 +321,189 @@ class Appback extends CI_Controller{
 	}
 
 
+	public function findinfo2(){
+		$arsend = null;
+
+		$uuid = $this->input->post("uuid");
+		$major = $this->input->post("major");
+		$minor = $this->input->post("minor");
+		$id = $this->input->post("fb_id");
+
+		$ar = array('uuid' => $uuid , 'major' => $major , 'minor' => $minor , 'sensoro_type' => '1');
+		$sqlSenType = "select * from sensoro where uuid='".$uuid."' and major='".$major."' and minor='".$minor."' and sensoro_type='1' and status_sensoro_id = '1' ";
+		// $data['rs'] = $this->db->select("*")->from("sensoro");
+		$rs = $this->db->query($sqlSenType);
+		$data1 = $rs->row_array();
+				
+		
+		// echo $this->db->last_query();
+		if ($rs->num_rows() != null) {
+			$ar=array(
+			"sensoro_id"=>$data1['sensoro_id'],
+			"fb_id"=>$id
+			);
+			$this->db->insert("sensoro_log",$ar);
+			// echo "test";
+			$idSen = $data1['sensoro_id'];
+		// 	// SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id
+			$sqlInfo = "SELECT * FROM (info INNER JOIN store ON info.store_id = store.store_id) JOIN sensoro ON info.store_id = sensoro.store_id where sensoro_id = '".$idSen."' and info_begin_date < NOW() and info_expire_date >= NOW()+1 and status_store_id = '1'  and info_status_id = '1' ";
+		
+			$rsInfo = $this->db->query($sqlInfo);
+			// echo "<pre>";
+			// print_r($rsInfo);
+			// echo "</pre>";
+			// echo $this->db->last_query();
+			
+
+			if ($rsInfo->num_rows() > 0) {
+				$dataInfo = $rsInfo->result_array();
+				// echo "<pre>";
+				// print_r($dataInfo);
+				// echo "</pre>";
+				// echo $dataInfo['info_id'];
+
+				$intcountdata = 1;
+				$qrch = null;
+
+				$arinfoid = array();
+				$arinfoname = array();
+				$arinfodesc = array();
+				$arinfobegin = array();
+				$arinfoexpire = array();
+				$arinfopic = array();
+				$arinfocat = array();
+				$arstoreid = array();
+				$arstorename = array();
+				$arqr = array();
+
+				foreach ($dataInfo as $r) {
+
+					// check cat user
+					$cat = $r['catagory'];
+					$sqlCat = "Select * from user where ".$cat." = '1' ";
+					$rsCat = $this->db->query($sqlCat);
+					if ($rsCat->num_rows() != 0) {
+						// check qr
+						$dataqr = $this->db->select("*")
+									->from("qr")
+									->where("info_id",$r['info_id'])->get();
+									// echo $this->db->last_query();
+						if ($dataqr->num_rows() != 0) {
+							$qrch = "have";
+						}else{
+							$qrch = "not have";
+						}
+						if ($intcountdata == 1) {
+							$arinfoid = array($r['info_id']);
+							$arinfoname = array($r['info_name']);
+							$arinfodesc = array($r['info_descrip']);
+							$arinfobegin = array($r['info_begin_date']);
+							$arinfoexpire = array($r['info_expire_date']);
+							$arinfopic = array($r['info_pic']);
+							$arinfocat = array($r['catagory']);
+							$arstoreid = array($r['store_id']);
+							$arstorename = array($r['store_name']);
+							$arqr = array($qrch);
+						}else{
+							array_push($arinfoid, $r['info_id']);
+							array_push($arinfoname, $r['info_name']);
+							array_push($arinfodesc, $r['info_descrip']);
+							array_push($arinfobegin, $r['info_begin_date']);
+							array_push($arinfoexpire, $r['info_expire_date']);
+							array_push($arinfopic, $r['info_pic']);
+							array_push($arinfocat, $r['catagory']);
+							array_push($arstoreid, $r['store_id']);
+							array_push($arstorename, $r['store_name']);
+							array_push($arqr, $qrch);
+						}
+						$intcountdata++;
+
+						//insert data to info_log
+						$arInfo = array("info_id"=>$r['info_id'],
+										"fb_id"=>$id
+										);
+						$this->db->insert("info_log",$arInfo);
+					}
+
+				}
+				if ($arinfoid != null) {
+					$arsend = array("info_id"=>$arinfoid,
+								"info_name"=>$arinfoname,
+								"info_desc"=>$arinfodesc,
+								"info_begin"=>$arinfobegin,
+								"info_expire"=>$arinfoexpire,
+								"info_pic"=>$arinfopic,
+								"catagory"=>$arinfocat,
+								"store_id"=>$arstoreid,
+								"store_name"=>$arstorename,
+								"qr" => $arqr
+								);
+				}else{
+					$arsend = array("info_id"=> null,
+									"info_name"=>null,
+									"info_desc"=>null,
+									"info_begin"=>null,
+									"info_expire"=>null,
+									"info_pic"=>null,
+									"catagory"=>null,
+									"store_id"=>null,
+									"store_name"=>null,
+									"qr" => null
+									);
+				}
+
+				
+
+				
+					
+			}else{
+				$arsend = array("info_id"=> null,
+								"info_name"=>null,
+								"info_desc"=>null,
+								"info_begin"=>null,
+								"info_expire"=>null,
+								"info_pic"=>null,
+								"catagory"=>null,
+								"store_id"=>null,
+								"store_name"=>null,
+								"qr" => null
+								);
+			}
+			// echo $this->db->last_query();
+		}else{
+			$arsend = array("info_id"=> null,
+							"info_name"=>null,
+							"info_desc"=>null,
+							"info_begin"=>null,
+							"info_expire"=>null,
+							"info_pic"=>null,
+							"catagory"=>null,
+							"store_id"=>null,
+							"store_name"=>null,
+							"qr" => null
+							);
+		}
+		// }else{
+		// 	$arsend = array("info_id"=> null,
+		// 				"info_name"=>null,
+		// 				"info_desc"=>null,
+		// 				"info_begin"=>null,
+		// 				"info_expire"=>null,
+		// 				"info_pic"=>null,
+		// 				"catagory"=>null,
+		// 				"store_id"=>null,
+		// 				"store_name"=>null,
+		// 				"qr" => null
+		// 				);
+		// }
+
+		$this->output
+        			->set_content_type('application/json')
+        			->set_output(json_encode($arsend));
+
+	}
+
+
 }
 
 ?>

@@ -29,8 +29,12 @@ class Testdate extends CI_Controller{
 	public function test(){
 		$da = $this->input->post("datepick");
 		echo $da;
+	}
 
-
+	public function test2(){
+		$artt = array();
+		$artt = array("test");
+		print_r($artt);
 	}
 }
 ?>
