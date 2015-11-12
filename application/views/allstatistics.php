@@ -352,12 +352,18 @@
                                                 $stcolor = "danger";
                                                 $sttext = "Outdate";
                                             }
+                                            $countfav = $r['countfav'];
+                                            if ($countfav >= 1000) {
+                                                $countfav = (int)($countfav / 1000);
+                                                $countfav = $countfav."K";
+                                            }
                                             echo "<tr>
                                                     <td>".$no."</td>
                                                     <td Style='text-align:center'>".$r['info_name']."</td>
+                                                    <td Style='text-align:center'>".$r['catagory']."</td>
                                                     <td>".substr($r['info_date'], 0,10)."</td>
                                                     <td><span class='label label-".$stcolor."'>".$sttext."</span></td>
-                                                    <td>".$r['countfav']."</td>
+                                                    <td>".$countfav."</td>
                                                 </tr>";
                                             $no++;
                                         }
@@ -375,9 +381,11 @@
                                                 $stcolor = "danger";
                                                 $sttext = "Outdate";
                                             }
+
                                             echo "<tr>
                                                 <td>".$no."</td>
                                                 <td Style='text-align:center'>".$r['info_name']."</td>
+                                                <td Style='text-align:center'>".$r['catagory']."</td>
                                                 <td>".substr($r['info_date'], 0,10)."</td>
                                                 <td><span class='label label-".$stcolor."'>".$sttext."</span></td>
                                                 <td> 0 </td>
@@ -434,12 +442,18 @@
                                                     $stcolor = "danger";
                                                     $sttext = "Outdate";
                                                 }
+                                                $countre = $r['countre'];
+                                                if ($countre >= 1000) {
+                                                    $countre = (int)($countre / 1000);
+                                                    $countre = $countre."K";
+                                                }
                                                 echo "<tr style='height:60px'>
                                                         <td width='5%' style='padding-top: 20px;text-align:center'>".$no."</td>
                                                         <td width='40%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
+                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['catagory']."</td>
                                                         <td width='20%' style='padding-top: 20px;text-align:center'>".substr($r['info_date'], 0,10)."</td>
                                                         <td width='15%' style='padding-top: 20px;text-align:center'><span class='label label-".$stcolor."'>".$sttext."</span></td>
-                                                        <td width='20%' style='padding-top: 20px;text-align:center'>".$r['countre']."</td>
+                                                        <td width='20%' style='padding-top: 20px;text-align:center'>".$countre."</td>
                                                     </tr>";
                                                 $no++;
                                             }
@@ -459,6 +473,7 @@
                                                 echo "<tr>
                                                         <td width='5%' style='padding-top: 20px;text-align:center'>".$no."</td>
                                                         <td width='40%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
+                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['catagory']."</td>
                                                         <td width='20%' style='padding-top: 20px;text-align:center'>".substr($r['info_date'], 0,10)."</td>
                                                         <td width='15%' style='padding-top: 20px;text-align:center'><span class='label label-".$stcolor."'>".$sttext."</span></td>
                                                         <td width='20%' style='padding-top: 20px;text-align:center'> 0 </td>
