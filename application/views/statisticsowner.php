@@ -208,11 +208,11 @@
 
                         <div class="tabbable" > <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs" id="mytab">
-                                <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()" id="mytab1">General Graph</a></li>
-                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab2">User Received</a></li>
-                                <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()" id="mytab3">Received and come to Store</a></li>
-                                <li <?php echo $disfirst; ?>><a href="#tab4" data-toggle="tab" onclick="showtab4()" id="mytab4">First QR Code</a></li>
-                                <li <?php echo $dissecond; ?>><a href="#tab5" data-toggle="tab" onclick="showtab5()" id="mytab5">Second or more QR Code</a></li>     
+                                <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()" id="mytab1">General Graph </a></li>
+                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab2"><span style="color:#808080">555555555</span> User Received </a></li>
+                                <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()" id="mytab3"><span style="color:#808080">555555555</span> Received and come to Store </a></li>
+                                <li <?php echo $disfirst; ?>><a href="#tab4" data-toggle="tab" onclick="showtab4()" id="mytab4"><span style="color:#808080">555555555</span> First QR Code </a></li>
+                                <li <?php echo $dissecond; ?>><a href="#tab5" data-toggle="tab" onclick="showtab5()" id="mytab5"><span style="color:#808080">555555555</span> Second or more QR Code </a></li>     
                             </ul>
                             <div class="tab-content ">
 
@@ -227,6 +227,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Graph </h3>
                                             </div>
                                             <div class="panel-body">
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of message receiver from application group by age. </div>
                                                 <div id="morris-line-chart-age-re"></div>
                                             </div>
                                         </div>
@@ -241,6 +242,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Gender Graph </h3>
                                             </div>
                                             <div class="panel-body">
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of message receiver from application group by gender. </div>
                                                 <div id="morris-line-chart-sex-re"></div>
                                             </div>
                                         </div>
@@ -261,6 +263,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Graph </h3>
                                             </div>
                                             <div class="panel-body">
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of application users come into store  group by age. </div>
                                                 <div id="morris-line-chart-age-rein"></div>
                                             </div>
                                         </div>
@@ -275,6 +278,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Gender Graph </h3>
                                             </div>
                                             <div class="panel-body">
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of application users come into store  group by gender. </div>
                                                 <div id="morris-line-chart-sex-rein"></div>
                                             </div>
                                         </div>
@@ -293,6 +297,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Graph </h3>
                                             </div>
                                             <div class="panel-body">
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of first time application users for use qr code group by age </div>
                                                 <div id="morris-line-chart-age-qr"></div>
                                             </div>
                                         </div>
@@ -308,6 +313,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Gender Graph </h3>
                                             </div>
                                             <div class="panel-body">
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of first time application users for use qr code group by gender </div>
                                                 <div id="morris-line-chart-sex-qr"></div>
                                             </div>
                                         </div>
@@ -326,6 +332,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Graph </h3>
                                             </div>
                                             <div class="panel-body" >
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of second or more time application users for use qr code group by age </div>
                                                 <div id="morris-line-chart-age-qrag"></div>
                                             </div>
                                         </div>
@@ -340,6 +347,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Gender Graph </h3>
                                             </div>
                                             <div class="panel-body">
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of first time application users for use qr code group by gender </div>
                                                 <div id="morris-line-chart-sex-qrag"></div>
                                             </div>
                                         </div>
@@ -350,6 +358,16 @@
 
             <!-- begin tab1 -->
                                 <div class=" active" id="tab1" >
+                                <style>
+                                    table.table1 th{
+                                        background-color: #5EB85E;
+                                        text-align: center;
+                                        color: #ffffff;
+                                    }
+                                    table.table1 td{              
+                                        text-align: center;
+                                    }
+                                </style>    
                                     <!-- /.row -->
                                     <div class="row" style=" margin-top: 40px;">
                                         <div class="col-lg-6">
@@ -358,7 +376,8 @@
                                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Chart </h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                    <div class="flot-chart">
+                                                    <div style="text-align:center;color:#808080">* This pie graph shows all age range ratio of application users in telekhong. </div>
+                                                    <div class="flot-chart" style="margin-top:20px">
                                                         <div class="flot-chart-content" id="flot-pie-chart-age"></div>
                                                     </div>
 
@@ -369,15 +388,15 @@
                                             <div class="col-lg-6">
                                                 <h4>Age Range Chart</h4>
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered table-hover">
+                                                    <table class="table table-bordered table-hover table1">
                                                         <thead>
                                                             <tr>
 
-                                                                <td> < 18 year old</td>
-                                                                <td> 18 - 25 year old</td>
-                                                                <td> 26 - 35 year old</td>
-                                                                <td> 36 - 50 year old</td>
-                                                                <td> > 50 year old</td>
+                                                                <th> < 18 year old</th>
+                                                                <th> 18 - 25 year old</th>
+                                                                <th> 26 - 35 year old</th>
+                                                                <th> 36 - 50 year old</th>
+                                                                <th> > 50 year old</th>
                                                                 
 
                                                             </tr>
@@ -416,7 +435,8 @@
                                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Gender Chart </h3>
                                                 </div>
                                                 <div class="panel-body">
-                                                    <div class="flot-chart">
+                                                    <div style="text-align:center;color:#808080">* This pie graph shows all gender ratio of application users in telekhong. </div>
+                                                    <div class="flot-chart"style="margin-top:20px">
                                                         <div class="flot-chart-content" id="flot-pie-chart-sex"></div>
                                                     </div>
 
@@ -427,13 +447,13 @@
                                             <div class="col-lg-6">
                                                 <h4>Gender Chart</h4>
                                                 <div class="table-responsive">
-                                                    <table class="table table-bordered table-hover">
+                                                    <table class="table table-bordered table-hover table1">
                                                         <thead>
                                                             <tr>
 
-                                                                <td> Male </td>
-                                                                <td> Female </td>
-                                                                <td> Unknown </td>
+                                                                <th> Male </th>
+                                                                <th> Female </th>
+                                                                <th> Unknown </th>
 
                                                             </tr>
                                                         </thead>

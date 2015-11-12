@@ -292,7 +292,7 @@
                     <!-- /.row -->
 
                     <div class="row">
-                        <div class="col-lg-6" style="text-align:center">
+                        <div class="col-lg-6" style="text-align:center;height:480px" >
                             <h4 style="color:#999999">View Message Chart</h4>
                             <li style="color:white" <?php if($this->session->userdata("statuspack")==2) {echo "data-toggle='tooltip' title='Only Gold Package  can be unlocked.'";} ?>><a href="<?=base_url()?>index.php/statisticsowner"><button class="btn btn-lg btn-success" style="width:320px;height:80px;font-size:x-large" <?php if($this->session->userdata("statuspack")==2) {echo "disabled ";} ?>><i class="glyphicon glyphicon-stats">&nbspMessage Chart</i></button></a></li>
                             <script>
@@ -324,7 +324,8 @@
                                 </tr>
                                 <tr>
                                     <th width="5%" style="height:30px">Rank</th>
-                                    <th width="45%" style="height:30px">Message</th>
+                                    <th width="35%" style="height:30px">Message</th>
+                                    <th width="10%" style="height:30px">Category</th>
                                     <th width="25%" style="height:30px">Upload</th>
                                     <th width="10%" style="height:30px">Status</th>
                                     <th width="15%" style="height:30px">Favorite</th>
@@ -393,7 +394,7 @@
                         </div>
                         </div>
                         
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="border-left: 2px solid #d9d9d9;height:480px">
                             <h4 style="color:#999999">View Message Received</h4>
                             <table class="table" >
                                 <style>
@@ -404,7 +405,8 @@
                                 <thead>
                                     <tr>
                                         <th width="5%">No.</th>
-                                        <th width="40%">Message Name</th>
+                                        <th width="30%">Message Name</th>
+                                        <th width="10%">Category</th>
                                         <th width="20%">Upload</th>
                                         <th width="15%">Status</th>
                                         <th width="20%">Received</th>
@@ -480,7 +482,7 @@
                     <!-- start line graph age range use qr code -->
                     <?php
                         if ($graphtype === "month") {
-                            echo "<div class='col-lg-12' >
+                            echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
                                         <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
@@ -491,7 +493,7 @@
                                 </div>
                             </div>";
 
-                            echo "<div class='col-lg-12' >
+                            echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
                                         <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
@@ -503,7 +505,7 @@
                             </div>";
                         }else{
 
-                            echo "<div class='col-lg-12' >
+                            echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
                                         <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
@@ -514,7 +516,7 @@
                                 </div>
                             </div>";
 
-                            echo "<div class='col-lg-12' >
+                            echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
                                         <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>

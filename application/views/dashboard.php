@@ -228,7 +228,9 @@
                                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age of Khong Chart </h3>
                                                 </div>
                                                 <div class="panel-body" >
-                                                    <div class="flot-chart" style="height:300px;width:500px;">
+                                                    <div style="text-align:center;color:#808080">* This is persentage of Khong's age range from all Khong. </div>
+                                                    <div class="flot-chart" style="height:300px;width:500px;margin-top:20px">
+
                                                         <div class="flot-chart-content" id="flot-pie-chart"></div>
                                                     </div>
 

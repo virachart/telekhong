@@ -208,6 +208,7 @@
                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> User Graph </h3>
                                 </div>
                                 <div class="panel-body">
+                                    <div style="text-align:center;color:#808080">* This line graph shows total of registered users from mobile application for each month. </div>
                                     <div id="morris-line-chart-user"></div>
                                     
                                 </div>
@@ -221,6 +222,7 @@
                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Owner Graph </h3>
                                 </div>
                                 <div class="panel-body">
+                                    <div style="text-align:center;color:#808080">* This line graph shows total of registered owner'store from Telekhong website for each month. </div>
                                     <div id="morris-line-chart-owner"></div>
                                     
                                 </div>
@@ -234,6 +236,7 @@
                                     <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Khong Graph </h3>
                                 </div>
                                 <div class="panel-body">
+                                    <div style="text-align:center;color:#808080">* This line graph shows total of activated Khong from all store for each month. </div>
                                     <div id="morris-line-chart-sen"></div>
                                     
                                 </div>
@@ -241,20 +244,21 @@
                         </div>
                         <!-- /.row -->
 
-                        <div class="row" style="display:none;">
+                        <!-- <div class="row" style="display:none;">
                             <div class="col-lg-12">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i> Line Graph Example with Tooltips</h3>
                                     </div>
                                     <div class="panel-body">
+                                        <div>*This pie graph shows all packages ratio from all stores in system. </div>
                                         <div class="flot-chart">
                                             <div class="flot-chart-content" id="flot-line-chart"></div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         
                         <!-- /.row -->
@@ -265,7 +269,8 @@
                                         <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Package Chart </h3>
                                     </div>
                                     <div class="panel-body">
-                                        <div class="flot-chart">
+                                         <div style="text-align:center;color:#808080">* This pie graph shows all packages ratio from all stores in system. </div>
+                                        <div class="flot-chart" style="margin-top:20px">
                                             <div class="flot-chart-content" id="flot-pie-chart-package"></div>
                                         </div>
                                         
