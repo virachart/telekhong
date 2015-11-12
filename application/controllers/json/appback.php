@@ -376,6 +376,9 @@ class Appback extends CI_Controller{
 				$arstorename = array();
 				$arqr = array();
 
+				$arsend = array();
+				$arsend2 = array();
+
 				foreach ($dataInfo as $r) {
 
 					// check cat user
@@ -393,29 +396,39 @@ class Appback extends CI_Controller{
 						}else{
 							$qrch = "not have";
 						}
-						if ($intcountdata == 1) {
-							$arinfoid = array($r['info_id']);
-							$arinfoname = array($r['info_name']);
-							$arinfodesc = array($r['info_descrip']);
-							$arinfobegin = array($r['info_begin_date']);
-							$arinfoexpire = array($r['info_expire_date']);
-							$arinfopic = array($r['info_pic']);
-							$arinfocat = array($r['catagory']);
-							$arstoreid = array($r['store_id']);
-							$arstorename = array($r['store_name']);
-							$arqr = array($qrch);
-						}else{
-							array_push($arinfoid, $r['info_id']);
-							array_push($arinfoname, $r['info_name']);
-							array_push($arinfodesc, $r['info_descrip']);
-							array_push($arinfobegin, $r['info_begin_date']);
-							array_push($arinfoexpire, $r['info_expire_date']);
-							array_push($arinfopic, $r['info_pic']);
-							array_push($arinfocat, $r['catagory']);
-							array_push($arstoreid, $r['store_id']);
-							array_push($arstorename, $r['store_name']);
-							array_push($arqr, $qrch);
-						}
+						
+						$arsetar = array("info_id"=>$r['info_id'],
+										"info_name"=>$r['info_name'],
+										"info_desc"=>$r['info_descrip'],
+										"info_begin"=>$r['info_begin_date'],
+										"info_expire"=>$r['info_expire_date'],
+										"info_pic"=>$r['info_pic'],
+										"catagory"=>$r['catagory'],
+										"store_id"=>$r['store_id'],
+										"store_name"=>$r['store_name'],
+										"qr" => $qrch
+										);
+						// $arinfoid = array($r['info_id']);
+						// $arinfoname = array($r['info_name']);
+						// $arinfodesc = array($r['info_descrip']);
+						// $arinfobegin = array($r['info_begin_date']);
+						// $arinfoexpire = array($r['info_expire_date']);
+						// $arinfopic = array($r['info_pic']);
+						// $arinfocat = array($r['catagory']);
+						// $arstoreid = array($r['store_id']);
+						// $arstorename = array($r['store_name']);
+						// $arqr = array($qrch);
+						array_push($arsend2, $arsetar);
+						// array_push($arinfoname, $r['info_name']);
+						// array_push($arinfodesc, $r['info_descrip']);
+						// array_push($arinfobegin, $r['info_begin_date']);
+						// array_push($arinfoexpire, $r['info_expire_date']);
+						// array_push($arinfopic, $r['info_pic']);
+						// array_push($arinfocat, $r['catagory']);
+						// array_push($arstoreid, $r['store_id']);
+						// array_push($arstorename, $r['store_name']);
+						// array_push($arqr, $qrch);
+
 						$intcountdata++;
 
 						//insert data to info_log
@@ -424,37 +437,15 @@ class Appback extends CI_Controller{
 										);
 						$this->db->insert("info_log",$arInfo);
 					}
+					// echo "<pre>";
+					// print_r($arsend2);
+					// echo "</pre>";
+					// echo "</br>";
+					$arsend = array_values($arsend2);
 
 				}
-				if ($arinfoid != null) {
-					$arsend = array("info_id"=>$arinfoid,
-								"info_name"=>$arinfoname,
-								"info_desc"=>$arinfodesc,
-								"info_begin"=>$arinfobegin,
-								"info_expire"=>$arinfoexpire,
-								"info_pic"=>$arinfopic,
-								"catagory"=>$arinfocat,
-								"store_id"=>$arstoreid,
-								"store_name"=>$arstorename,
-								"qr" => $arqr
-								);
-				}else{
-					$arsend = array("info_id"=> null,
-									"info_name"=>null,
-									"info_desc"=>null,
-									"info_begin"=>null,
-									"info_expire"=>null,
-									"info_pic"=>null,
-									"catagory"=>null,
-									"store_id"=>null,
-									"store_name"=>null,
-									"qr" => null
-									);
-				}
-
 				
 
-				
 					
 			}else{
 				$arsend = array("info_id"=> null,
@@ -497,9 +488,16 @@ class Appback extends CI_Controller{
 		// 				);
 		// }
 
+		// echo json_encode($arsend,JSON_FORCE_OBJECT);
+
 		$this->output
         			->set_content_type('application/json')
-        			->set_output(json_encode($arsend));
+        			->set_output(json_encode($arsend,JSON_FORCE_OBJECT));
+
+		
+		// echo "<pre>";
+		// print_r(json_encode($arsend));
+		// echo "</pre>";
 
 	}
 

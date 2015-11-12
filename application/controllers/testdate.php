@@ -32,9 +32,26 @@ class Testdate extends CI_Controller{
 	}
 
 	public function test2(){
-		$artt = array();
-		$artt = array("test");
-		print_r($artt);
+		$art1 = array(
+						array('test1' => "aaa",
+							   'no' => 1 )
+					);
+		$art2 = array(array('test1' => "bnb",
+							   'no' => 2 ));
+
+		$art3 = array();
+
+		array_push($art3, $art1);
+		array_push($art3, $art2);
+
+		echo "<pre>";
+		print_r(json_encode(array_values($art3)));
+		echo "</pre>";
+
+		
 	}
+
+
+
 }
 ?>
