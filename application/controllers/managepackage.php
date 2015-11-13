@@ -7,19 +7,16 @@ class managepackage extends CI_Controller{
 	}
 
 	public function index(){
-		// if($this->session->userdata('admin') != null){
-			// $data['rs'] = $this->db->select("*")->from("package")->get()->result_array();
-			// echo $this->db->last_query();
-			// var_dump($data);
-			// echo "<pre>";
-			// print_r($data);
-			// echo "</pre>";
-			// print_r($data['rs']);
-			$this->load->view("managepackage.php");
+		if ($this->session->userdata('id') != null) {
+			if ($this->session->userdata('admin') != null) {
+				$this->load->view("managepackage.php");
+			}else{
+				redirect("store");
+			}
 
-		// }else{
-			// redirect("auth");
-		// }
+		}else{
+			redirect("auth");
+		}
 	}
 
 	public function del($id){
