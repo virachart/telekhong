@@ -96,6 +96,9 @@
                                 <li>
                                     <a href="<?=base_url()?>index.php/managesensoro">Manage Khong</a>
                                 </li>
+                                <li>
+                                    <a href="<?=base_url()?>index.php/managepackage">Manage Package</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

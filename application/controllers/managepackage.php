@@ -1,5 +1,5 @@
 <?php
-class Package extends CI_Controller{
+class managepackage extends CI_Controller{
 
 	public function main(){
 
@@ -15,7 +15,7 @@ class Package extends CI_Controller{
 			// print_r($data);
 			// echo "</pre>";
 			// print_r($data['rs']);
-			$this->load->view("package.php");
+			$this->load->view("managepackage.php");
 
 		// }else{
 			// redirect("auth");
