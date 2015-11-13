@@ -449,8 +449,8 @@
                                                 }
                                                 echo "<tr style='height:60px'>
                                                         <td width='5%' style='padding-top: 20px;text-align:center'>".$no."</td>
-                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
-                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['catagory']."</td>
+                                                        <td width='30%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
+                                                        <td width='10%' style='padding-top: 20px;text-align:center'>".$r['catagory']."</td>
                                                         <td width='20%' style='padding-top: 20px;text-align:center'>".substr($r['info_date'], 0,10)."</td>
                                                         <td width='15%' style='padding-top: 20px;text-align:center'><span class='label label-".$stcolor."'>".$sttext."</span></td>
                                                         <td width='20%' style='padding-top: 20px;text-align:center'>".$countre."</td>
@@ -472,8 +472,8 @@
                                                 }
                                                 echo "<tr>
                                                         <td width='5%' style='padding-top: 20px;text-align:center'>".$no."</td>
-                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
-                                                        <td width='40%' style='padding-top: 20px;text-align:center'>".$r['catagory']."</td>
+                                                        <td width='30%' style='padding-top: 20px;text-align:center'>".$r['info_name']."</td>
+                                                        <td width='10%' style='padding-top: 20px;text-align:center'>".$r['catagory']."</td>
                                                         <td width='20%' style='padding-top: 20px;text-align:center'>".substr($r['info_date'], 0,10)."</td>
                                                         <td width='15%' style='padding-top: 20px;text-align:center'><span class='label label-".$stcolor."'>".$sttext."</span></td>
                                                         <td width='20%' style='padding-top: 20px;text-align:center'> 0 </td>
@@ -503,6 +503,7 @@
                                         <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
                                     </div>
                                     <div class='panel-body'>
+                                        <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users per day group by age. </div>
                                         <div id='morris-line-chart-age-month'></div>
                                     </div>
                                 </div>
@@ -511,9 +512,10 @@
                             echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
-                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Gender Graph </h3>
                                     </div>
                                     <div class='panel-body'>
+                                    <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users per day group by gender. </div>
                                         <div id='morris-line-chart-sex-month'></div>
                                     </div>
                                 </div>
@@ -526,6 +528,7 @@
                                         <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
                                     </div>
                                     <div class='panel-body'>
+                                        <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users for each month group by age. </div>
                                         <div id='morris-line-chart-age-year'></div>
                                     </div>
                                 </div>
@@ -534,9 +537,10 @@
                             echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
-                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Gender Graph </h3>
                                     </div>
                                     <div class='panel-body'>
+                                    <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users for each month group by gender. </div>
                                         <div id='morris-line-chart-sex-year'></div>
                                     </div>
                                 </div>

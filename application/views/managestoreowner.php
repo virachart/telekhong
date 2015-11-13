@@ -69,7 +69,7 @@
                 </style>
     <table align="center">
         <tr>
-            <td>Strore Name : &nbsp</td>
+            <td>Store Name : &nbsp</td>
             <td><input type="text" name="name" class="form-control" style="width:200px" value="<?php echo $store['store_name']; ?>"></td>
         </tr>
         <tr><td>&nbsp</td></tr> 
@@ -79,7 +79,7 @@
         </tr>
         <tr><td>&nbsp</td></tr> 
         <tr>
-            <td>Telepphone : </td>
+            <td>Telephone : </td>
             <td><input type="text" name="tel" class="form-control" style="width:200px" value="<?php echo $store['tel']; ?>"></td>
         </tr>
         <tr><td>&nbsp</td></tr> 
@@ -186,7 +186,7 @@
             echo anchor("managestore/del/", "<button type='button' class='btn btn-danger'>Delete Store</button>",array("onclick"=>"javascript:return confirm('Do you want to delete?');"));
         ?>
         &nbsp&nbsp &nbsp&nbsp
-            <?php echo anchor("store","<button type='button' style='width:70px' class='btn btn-default'>Cancle</button>"); ?>
+            <?php echo anchor("store","<button type='button' style='width:70px' class='btn btn-default'>Cancel</button>"); ?>
            &nbsp&nbsp &nbsp&nbsp
            <input class="btn btn-primary" style="width:70px" type="submit" name="btsave" value="Save"> 
         

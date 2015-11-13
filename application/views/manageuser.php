@@ -211,7 +211,7 @@
                                         <div class="modal-footer" style="text-align:center;margin-top:80%">
                                             <button type="button" class="btn btn-success" onclick="javascript:return confirm('Confirm for add admin!!');">Confirm</button>
                                                 &nbsp&nbsp&nbsp
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancle</button>
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
                                             <?php echo form_close(); ?>                  
                                         </div>
                                         </div>
@@ -311,7 +311,7 @@
                                                 //             </div>
                                                 //             <div class='modal-footer'>";
                                                 //                 echo anchor("manageuser/addadmin/".$r["fb_id"], "<button type='button' class='btn btn-success'>Confirm</button>");
-                                                //             echo " &nbsp<button type='button' class='btn btn-danger' data-dismiss='modal'>Cancle</button>
+                                                //             echo " &nbsp<button type='button' class='btn btn-danger' data-dismiss='modal'>Cancel</button>
                                                 //             </div>
 
                                                 //         </div>
