@@ -153,13 +153,46 @@
                         </div>
                         </div>
                 </div>
+
+                <script type="text/javascript">
+                    $(document).ready(function(){
+                        $("#packk").change(function(){
+                            $.ajax({
+                                url:"<?php echo site_url("managepackage/getpack");?>",
+                                type: "POST",
+                                cache: false,
+                                data: "id="+$("#packk").val(),
+                                dataType:"JSON",
+                                success:function(res){
+                                    console.log(JSON.stringify(res));
+                                    $("#pid").attr("value",res.pid);
+                                    $("#pname").attr("value",res.pname);
+                                    $("#pdes").text(res.pdes);
+                                    $("#pprice").attr("value",res.pprice);
+                                    $("#plimit").attr("value",res.pup);
+                                    $("#adelinfo").attr("href","<?=base_url();?>index.php/managepackage/delpack/"+res.pid);
+                                    $("#delpack").attr("style","width:80px;margin-right:20px;");
+                                },
+                                error:function(err){
+                                    console.log("error : "+err);
+                                },
+                            });
+                        });
+                    });
+                </script>
+
                 <div style="text-align:center"><h3>Choose Package</h3></div>
                 <div class="col-lg-12" style="text-align:center;margin-top:20px">
                 <table align="center">
                     <tr>
                         <td>
-                            <select class="form-control col-lg-12" name="pack" style="width:300px ;">
-                                <option>Package : Gold</option>
+                            <select class="form-control col-lg-12" id="packk" name="pack" style="width:300px ;">
+                                <option>Please Select Package</option>
+                                <?php
+                                    foreach ($pack as $r) {
+                                        echo "<option value='".$r['package_id']."'>Package : ".$r['package_name']."</option>";
+                                    }
+                                ?>
                             </select>
                         </td>
                     </tr>
@@ -167,35 +200,40 @@
                 </div>
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8" style="text-align:center;margin-top:40px">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        <h3 class="panel-title"><i class="fa fa-fw fa-wrench"></i> Package Setting </h3>
-                                    </div>
-                                    <div class="panel-body">
-                                        <table width="100%">
-                                            <tr>
-                                                <td>Package Name :<td>
-                                                <td><input type="text" name="pname" class="form-control" style="width:120px"/></td>
-                                                <td width="10%"></td>
-                                                <td>Upload Limit :</td>
-                                                <td><input type="number" name="plimit" class="form-control" min="1" style="width:100px"/></td>
-                                            </tr>
-                                            <tr><td>&nbsp</td></tr>
-                                            <tr>
-                                                <td>Package Description :<td>
-                                                <td><textarea name="pdes" class="form-control" style="width:180px;height:80px;resize:none"></textarea></td>
-                                                <td width="10%"></td>
-                                                <td>Package Price :</td>
-                                                <td><input type="number" name="pprice" class="form-control" min="0" style="width:100px"/></td>
-                                            </tr>
-                                            <tr><td>&nbsp</td></tr>
-                                        </table>
-                                        <div style="margin-top:20px">
-                                            <button class="btn btn-danger" style="width:80px;margin-right:20px">Delete</button>
-                                            <button class="btn btn-primary" style="width:80px;margin-left:20px">Save</button>
-                                        </div>
-                                    </div>
-                                </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><i class="fa fa-fw fa-wrench"></i> Package Setting </h3>
+                        </div>
+                        <div class="panel-body">
+                            <table width="100%">
+                                <form name="info" action="<?php echo site_url("managepackage/editpack");?>" method="post">
+                                    <input type="hidden" name="pid" id="pid" value="">
+                                    <tr>
+                                        <td>Package Name :<td>
+                                        <td><input type="text" name="pname" id="pname" class="form-control" style="width:120px"/></td>
+                                        <td width="10%"></td>
+                                        <td>Upload Limit :</td>
+                                        <td><input type="number" name="plimit" id="plimit" class="form-control" min="1" style="width:100px"/></td>
+                                    </tr>
+                                    <tr><td>&nbsp</td></tr>
+                                    <tr>
+                                        <td>Package Description :<td>
+                                        <td><textarea name="pdes" id="pdes" class="form-control" style="width:180px;height:80px;resize:none"></textarea></td>
+                                        <td width="10%"></td>
+                                        <td>Package Price :</td>
+                                        <td><input type="number" name="pprice" id="pprice" class="form-control" min="0" style="width:100px"/></td>
+                                    </tr>
+                                    <tr><td>&nbsp</td></tr>
+                            </table>
+                                <div style="margin-top:20px">
+                                    <a href="" onclick="javascript:return confirm('Do you want to delete?');" id="adelinfo">
+                                        <button class="btn btn-danger" id="delpack" style="width:80px;margin-right:20px;display: none;">Delete</button>
+                                    </a>
+                                    <button class="btn btn-primary" type="submit" style="width:80px;margin-left:20px">Save</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div><br></div>
                 <center><div class="row">

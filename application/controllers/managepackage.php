@@ -9,7 +9,13 @@ class managepackage extends CI_Controller{
 	public function index(){
 		if ($this->session->userdata('id') != null) {
 			if ($this->session->userdata('admin') != null) {
-				$this->load->view("managepackage.php");
+
+				$data['pack'] = $this->db->select("*")
+											->from("package")
+											->get()->result_array();
+
+
+				$this->load->view("managepackage",$data);
 			}else{
 				redirect("store");
 			}
@@ -17,6 +23,46 @@ class managepackage extends CI_Controller{
 		}else{
 			redirect("auth");
 		}
+	}
+
+	public function delpack($pid){
+		$this->db->where('package_id', $pid);
+		$this->db->delete('package'); 
+		redirect("managepackage");
+	}
+
+	public function editpack(){
+			$id = $this->input->post("pid");
+			$name = $this->input->post("pname");
+			$lim = $this->input->post("plimit");
+			$des = $this->input->post("pdes");
+			$price = $this->input->post("pprice");
+
+			$arpack = array('package_name' => $name,
+							'upload_limit' => $lim,
+							'package_descrip' => $des,
+							'price' => $price
+							);
+			$this->db->where('package_id', $id);
+			$this->db->update('package', $arpack); 
+			echo $this->db->last_query();
+			
+			redirect("managepackage");
+			
+	}
+
+	public function getpack(){
+		$id = $this->input->post("id");
+		$sqlgetpack = "select * from package where package_id = '".$id."' ";
+		$rs = $this->db->query($sqlgetpack)->row_array();
+		
+		$arsend = array('pid' => $rs['package_id'] ,
+						'pname' => $rs['package_name'] ,
+						'pdes' => $rs['package_descrip'] ,
+						'pprice' => $rs['price'] , 
+						'pup' => $rs['upload_limit'] ); 
+		
+		echo json_encode($arsend);
 	}
 
 	public function del($id){
