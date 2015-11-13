@@ -227,7 +227,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Age Range Graph </h3>
                                             </div>
                                             <div class="panel-body">
-                                                <div style="text-align:center;color:#808080">* This line graph shows total of message receiver from application group by age. </div>
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of message receiver from application users group by age. </div>
                                                 <div id="morris-line-chart-age-re"></div>
                                             </div>
                                         </div>
@@ -242,7 +242,7 @@
                                                 <h3 class="panel-title"><i class="fa fa-long-arrow-right"></i> Gender Graph </h3>
                                             </div>
                                             <div class="panel-body">
-                                                <div style="text-align:center;color:#808080">* This line graph shows total of message receiver from application group by gender. </div>
+                                                <div style="text-align:center;color:#808080">* This line graph shows total of message receiver from application users group by gender. </div>
                                                 <div id="morris-line-chart-sex-re"></div>
                                             </div>
                                         </div>

@@ -353,12 +353,12 @@
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr>
                                                                         <td align='center'>Store Detail : &nbsp</td>
-                                                                        <td align='center'><textarea name='detail' class='form-control' id='detail".$r['store_id']."'>".$r['detail']."</textarea></td>
+                                                                        <td align='center'><textarea name='detail' style='resize:none;height:100px'class='form-control' id='detail".$r['store_id']."'>".$r['detail']."</textarea></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr>
                                                                         <td align='center'>Address : &nbsp</td>
-                                                                        <td align='center'><textarea name='address' class='form-control' id='address".$r['store_id']."'>".$r['address']."</textarea></td>
+                                                                        <td align='center'><textarea name='address' style='resize:none;height:100px'class='form-control' id='address".$r['store_id']."'>".$r['address']."</textarea></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >

@@ -544,7 +544,7 @@
                             <table align="center">
                                 <tr>
                                     <td>Description :&nbsp</td> 
-                                    <td><textarea name="des" rows="3" class="form-control" style="width:250px;" id="des" disabled></textarea></td>
+                                    <td><textarea name="des" rows="3" class="form-control" style="width:250px;resize:none" id="des" disabled></textarea></td>
                                 </tr>
                                 <tr><td>&nbsp</td></tr>
                                 <tr>
@@ -633,7 +633,7 @@
                                                     </form>
                                                 </div>
                                                 <div class="col-lg-12" style="margin-top:10px;"></div>
-                                                <div class="col-lg-4">Description :</div><div class="col-lg-8"><textarea name="description" id="des" class="form-control"></textarea></div>
+                                                <div class="col-lg-4">Description :</div><div class="col-lg-8"><textarea name="description" id="des" class="form-control" style="resize:none"></textarea></div>
                                                 <div class="col-lg-12"></div>
                                                 <div class="col-lg-4" style="margin-top:20px;">Use QR Coce ? :</div>
                                                 <div class="col-lg-8" style="margin-top:20px;">

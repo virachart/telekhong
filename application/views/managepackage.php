@@ -134,7 +134,7 @@
                                             <tr><td>&nbsp</td></tr>
                                             <tr>
                                                 <td>Package Description :<td>
-                                                <td><textarea name="cpdes" class="form-control" style="width:180px;height:80px"></textarea></td>
+                                                <td><textarea name="cpdes" class="form-control" style="width:180px;height:80px;resize:none"></textarea></td>
                                                 <td width="10%"></td>
                                                 <td>Package Price :</td>
                                                 <td><input type="number" name="cpprice" class="form-control" min="0" style="width:100px"/></td>
@@ -183,7 +183,7 @@
                                             <tr><td>&nbsp</td></tr>
                                             <tr>
                                                 <td>Package Description :<td>
-                                                <td><textarea name="pdes" class="form-control" style="width:180px;height:80px"></textarea></td>
+                                                <td><textarea name="pdes" class="form-control" style="width:180px;height:80px;resize:none"></textarea></td>
                                                 <td width="10%"></td>
                                                 <td>Package Price :</td>
                                                 <td><input type="number" name="pprice" class="form-control" min="0" style="width:100px"/></td>

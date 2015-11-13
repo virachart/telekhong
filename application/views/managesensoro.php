@@ -170,7 +170,7 @@
                     <table>
                         <tr >
                             <td align="center">UUID : </td>
-                            <td align="center"><textarea class="form-control" name="uuid" id="uuid" rows="3" style="width:400px" placeholder="UUID"></textarea></td>
+                            <td align="center"><textarea class="form-control" name="uuid" id="uuid" rows="3" style="width:400px;resize:none" placeholder="UUID"></textarea></td>
                         </tr>
                         <tr><td>&nbsp</td></tr>
                         <tr >

@@ -140,7 +140,7 @@
 
                     <!-- Information Description -->
                     <div class="col-lg-6" style="text-align:right;" >Description :</div>
-                    <div class="col-lg-6"><textarea class="form-control" name="desc" rows="3" style="width:250px" placeholder="Description" id="des"></textarea></div>
+                    <div class="col-lg-6"><textarea class="form-control" name="desc" rows="3" style="width:250px;resize:none" placeholder="Description" id="des"></textarea></div>
                     <div class="col-lg-12" style="margin-top:30px;"></div>
 
                     <!-- Catagory -->

@@ -182,7 +182,7 @@
 
                                 <div class="form-group">
                                     <label>Enter detail</label>
-                                    <textarea class="form-control" name="detail" rows="3"></textarea>
+                                    <textarea class="form-control" name="detail" rows="3" style="resize:none"></textarea>
                                 </div>
 
                                 <button type="submit" class="btn btn-default">Send</button>
