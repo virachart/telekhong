@@ -26,6 +26,11 @@ class Statisticsowner extends CI_Controller{
 						$data['rs'] = $this->db->query($sqlgetstoreinfo)->result_array();
 						if ($data['rs'] != null) {
 
+							$data['count1'] = 0; 
+							$data['count2'] = 0; 
+							$data['count3'] = 0; 
+							$data['count4'] = 0; 
+
 							$y = date("Y");
 							$nowdate = date("Y-m-d");
 
@@ -323,18 +328,21 @@ class Statisticsowner extends CI_Controller{
 							$data['resex1'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count1'] +=  $data['resex1d'.$counttoar]->num_rows();
 								array_push($data['resex1'], $data['resex1d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
 							$data['resex2'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count1'] += $data['resex2d'.$counttoar]->num_rows();
 								array_push($data['resex2'], $data['resex2d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
 							$data['resex3'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count1'] += $data['resex3d'.$counttoar]->num_rows();
 								array_push($data['resex3'], $data['resex3d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
@@ -570,18 +578,21 @@ class Statisticsowner extends CI_Controller{
 							$data['reinsex1'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count2'] += $data['reinsex1d'.$counttoar]->num_rows();
 								array_push($data['reinsex1'], $data['reinsex1d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
 							$data['reinsex2'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count2'] += $data['reinsex2d'.$counttoar]->num_rows();
 								array_push($data['reinsex2'], $data['reinsex2d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
 							$data['reinsex3'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count2'] += $data['reinsex3d'.$counttoar]->num_rows();
 								array_push($data['reinsex3'], $data['reinsex3d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
@@ -818,18 +829,21 @@ class Statisticsowner extends CI_Controller{
 							$data['qrsex1'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count3'] += $data['qrsex1d'.$counttoar]->num_rows();
 								array_push($data['qrsex1'], $data['qrsex1d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
 							$data['qrsex2'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count3'] += $data['qrsex2d'.$counttoar]->num_rows();
 								array_push($data['qrsex2'], $data['qrsex2d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
 							$data['qrsex3'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count3'] += $data['qrsex3d'.$counttoar]->num_rows();
 								array_push($data['qrsex3'], $data['qrsex3d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
@@ -1111,6 +1125,7 @@ class Statisticsowner extends CI_Controller{
 										
 									}
 								}
+
 							}
 
 							$countday = $count;
@@ -1323,18 +1338,21 @@ class Statisticsowner extends CI_Controller{
 							$data['qragsex1'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count4'] += $data['countqragsex1d'.$counttoar];
 								array_push($data['qragsex1'], $data['countqragsex1d'.$counttoar] );
 								$counttoar++;
 							}
 							$data['qragsex2'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count4'] += $data['countqragsex2d'.$counttoar];
 								array_push($data['qragsex2'], $data['countqragsex2d'.$counttoar]);
 								$counttoar++;
 							}
 							$data['qragsex3'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
+								$data['count4'] += $data['countqragsex3d'.$counttoar];
 								array_push($data['qragsex3'], $data['countqragsex3d'.$counttoar] );
 								$counttoar++;
 							}

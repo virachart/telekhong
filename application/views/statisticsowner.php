@@ -204,15 +204,52 @@
                             </div>
                         </div>
 
+                        <?php
+                            if ($count1 >= 1000) {
+                                $count1 = $count1 / 1000;
+                                $a1 = fmod($count1,1);
+                                if ($a1 != 0) {
+                                    $count1 = number_format($count1, 1, '.', '');
+                                }
+                                $count1 = $count1."K";
+                            }
+
+                            if ($count2 >= 1000) {
+                                $count2 = $count2 / 1000;
+                                $a2 = fmod($count2,1);
+                                if ($a2 != 0) {
+                                    $count2 = number_format($count2, 1, '.', '');
+                                }
+                                $count2 = $count2."K";
+                            }
+
+                            if ($count3 >= 1000) {
+                                $count3 = $count3 / 1000;
+                                $a3 = fmod($count3,1);
+                                if ($a3 != 0) {
+                                    $count3 = number_format($count3, 1, '.', '');
+                                }
+                                $count3 = $count3."K";
+                            }
+
+                            if ($count4 >= 1000) {
+                                $count4 = $count4 / 1000;
+                                $a4 = fmod($count4,1);
+                                if ($a4 != 0) {
+                                    $count4 = number_format($count4, 1, '.', '');
+                                }
+                                $count4 = $count4."K";
+                            }
+                        ?>
 
 
                         <div class="tabbable" > <!-- Only required for left/right tabs -->
                             <ul class="nav nav-tabs" id="mytab">
                                 <li class="active"><a href="#tab1" data-toggle="tab" onclick="showtab1()" id="mytab1">General Graph </a></li>
-                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab2"><span style="color:#808080">555555555</span> User Received </a></li>
-                                <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()" id="mytab3"><span style="color:#808080">555555555</span> Received and come to Store </a></li>
-                                <li <?php echo $disfirst; ?>><a href="#tab4" data-toggle="tab" onclick="showtab4()" id="mytab4"><span style="color:#808080">555555555</span> First QR Code </a></li>
-                                <li <?php echo $dissecond; ?>><a href="#tab5" data-toggle="tab" onclick="showtab5()" id="mytab5"><span style="color:#808080">555555555</span> Second or more QR Code </a></li>     
+                                <li ><a href="#tab2" data-toggle="tab" onclick="showtab2()" id="mytab2"><span style="color:#808080"><?php echo $count1; ?></span> User Received </a></li>
+                                <li ><a href="#tab3" data-toggle="tab" onclick="showtab3()" id="mytab3"><span style="color:#808080"><?php echo $count2; ?></span> Received and come to Store </a></li>
+                                <li <?php echo $disfirst; ?>><a href="#tab4" data-toggle="tab" onclick="showtab4()" id="mytab4"><span style="color:#808080"><?php echo $count3; ?></span> First QR Code </a></li>
+                                <li <?php echo $dissecond; ?>><a href="#tab5" data-toggle="tab" onclick="showtab5()" id="mytab5"><span style="color:#808080"><?php echo $count4; ?></span> Second or more QR Code </a></li>
                             </ul>
                             <div class="tab-content ">
 
