@@ -261,9 +261,7 @@
                                     <tr><td>&nbsp</td></tr>
                             </table>
                                 <div style="margin-top:20px">
-                                    <a href="" onclick="javascript:return confirm('Do you want to delete?');" id="adelinfo">
-                                        <button class="btn btn-danger" id="delpack" style="width:80px;margin-right:20px;display: none;">Delete</button>
-                                    </a>
+                                    <a href="" onclick="javascript:return confirm('Do you want to delete?');" id="adelinfo"><button class="btn btn-danger" id="delpack" style="margin-right:20px;display: none;">Delete</button></a>
                                     <button class="btn btn-primary" type="submit" style="width:80px;margin-left:20px">Save</button>
                             </form>
                             </div>

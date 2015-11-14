@@ -163,7 +163,7 @@ a:active {
 body {
       position: relative; 
   }
-  #home {padding-top:50px;height:100vh;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg7.jpg") ;background-size: 100% 100%;
+  #home {padding-top:50px;height:100vh;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg1.jpg") ;background-size: 100% 100%;
     background-repeat: no-repeat;}
   #about {padding-top:50px;height:100vh;color: #fff; background-image:url("<?=base_url()?>assets/Image/bg6.jpg") ;background-size: 100% 100%;
     background-repeat: no-repeat;}
@@ -310,7 +310,7 @@ body {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Telekhong.Me</a>
+      <a class="navbar-brand" href="<?=base_url()?>index.php/auth">Telekhong.Me</a>
     </div>
     <div>
       <div class="collapse navbar-collapse col-lg-10" id="myNavbar">
@@ -395,139 +395,14 @@ body {
     <div class="col-lg-4" style="margin-left:60px;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;overflow-y: scroll;">
         <h1 >What is "<span style="color:#FF6600;">Telekhong</span>"</h1>
         <p>Telekhong is message delivery service by passing intermediary device as name "<span style="color:#FF6600;">Khong</span>"</p>
-<p><span style="color:#FF6600;">What is this "Khong" ? :</span> Khong is iBeacon device  bluetooth 4.0. It works by  signal broadcasting around the area . When telekhong application come in area ( switch on bluetooth & 3g or wifi ) Khong will send a key to mobile application and application use a key to get message for show on application from telekhong server.</p>
-<p>Our services are divided into two groups of users.</p>
-<ul>
-<li><span style="color:#FF6600;">1.End user : </span>Receiver message , people who use application mobile (free)</li>
-<li><span style="color:#FF6600;">2.Store Owner : </span>sender message , people who registered (facebook account only) and create store on telekhong website ( Service charge )</li>
-</ul>
-<p>What is a benefit from registered with us?: </p>
-<ul>
-<li>1.broadcast message to many people.</li>
-<li>2.User statistics (for package silver & Gold)</li>
-<ul>
-<li><span style="color:#FF6600;">2.1 Follow Store Chart  :</span> Show amount  of  people who followed your store (Group by age & gender).</li>
-<li><span style="color:#FF6600;">2.1 Favorite Ranking  :</span> Show rank  of  top 5 message group by favorite .</li>
-<li><span style="color:#FF6600;">2.1 Message Received :</span> Show amount of people who received message. .</li>
-<li><span style="color:#FF6600;">2.1 General Chart (Gold only) :</span> Show ratio  of  chart who use application (Group by age & gender).</li>
-<li><span style="color:#FF6600;">2.2 Message receive Chart (Gold only) : </span>Show chart of people who received message. </li>
-<li><span style="color:#FF6600;">2.3 Come to store Chart (Gold only) : </span>Show chart of people who received message and came to store.</li>
-<li><span style="color:#FF6600;">2.4 QR Buy Chart (Gold only) :</span> Show chart of people who use qr code from message.</li>
-<li><span style="color:#FF6600;">2.5 QR buy again Chart (Gold only) :</span> Show chart of people who came to use qr code again. </li>
-    </ul>
-<li>3.Our service have 3 different package :&nbsp<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal1" style="margin-right:10px">View Package</button></li>
-</ul>
-<p>How to payment ? : All store owner must have paysbuy account  for payment. Now It is only way for payment .</p>     
-
-        <div class="modal fade" id="myModal1" role="dialog">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"></button>
-                    <h4 class="modal-title" >Package Info</h4>
-                </div>
-                <div class="modal-body">
-
-                    <table style="width:100%;color:#000000">
-                <tr>
-                    <th colspan="2" style="width:10%">Package</th>
-                    <td>Bronze</td>
-                    <td>Silver</td>
-                    <td>Gold</td>
-                </tr>
-                <tr>
-                    <th colspan="2" style="width:10%">Upload Limit</th>
-                    <td>12</td>
-                    <td>20</td>
-                    <td>30</td>       
-                </tr>
-                <tr>
-                    <th colspan="2" style="width:10%">Khong Use</th>
-                    <td>1</td>
-                    <td>2</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <th rowspan="9" style="width:10%">Statistics</th>
-
-                </tr>
-                <tr>
-                    <td >Follow Chart</td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <td >Favorite Ranking</td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <td >Message Receive</td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <td >General Chart</td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <td >Message Receive Chart</td>      
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <td >Come to Store Chart</td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <td >QR Buy Chart</td>      
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <td >QR Buy Again Chart</td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-remove" style="border:none;color:red"></span></td>
-                    <td><span class="glyphicon glyphicon-ok" style="border:none;color:green"></span></td>
-                </tr>
-                <tr>
-                    <th colspan="2" style="width:10%">Service Charge</th>
-                    <td>1,200 x 12 Month</td>
-                    <td>2,000 x 12 Month</td>
-                    <td>3,500 x 12 Month</td>
-                </tr>
-            </table>
-            
-            <style>
-            table, th, td {
-                border: 1px solid black;
-                border-collapse: collapse;
-            }
-            th, td {
-                padding: 5px;
-                text-align: center;    
-            }
-            </style>
-
-
-                </div>
-                <div class="modal-footer">
-                    
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-
-            </div>
-        </div>
-        </div>
+        <p><span style="color:#FF6600;">What is this "Khong" ? :</span> Khong is iBeacon device  bluetooth 4.0. It works by  signal broadcasting around the area . When telekhong application come in area ( switch on bluetooth & 3g or wifi ) Khong will send a key to mobile application and application use a key to get message for show on application from telekhong server.</p>
+        <p>Our services are divided into two groups of users.</p>
+        <ul>
+        <li><span style="color:#FF6600;">1.End user : </span>Receiver message , people who use application mobile (free)</li>
+        <li><span style="color:#FF6600;">2.Store Owner : </span>sender message , people who registered (facebook account only) and create store on telekhong website ( Service charge )</li>
+        </ul>
+        <p>What is a benefit from registered with us?: <a href="<?=base_url()?>index.php/packageowner"><button type="button" class="btn btn-info" style="margin-left:10px">See more</button></a></p>
+         
     </div>
 </div>
 <div id="policy" class="container-fluid">

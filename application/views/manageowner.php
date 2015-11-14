@@ -38,7 +38,44 @@
 </head>
 
 <body>
+    <script>
+        function checkfield() {
+            
+            var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            var address = document.getElementById("owneremail").value;
+            var tele = document.getElementById("ownertel").value;
+            if(address.length<1){
+                    alert('Please input your email address');
+                    document.getElementById("owneremail").focus();
+                    return false;
+            }else if(filter.test(address)==false){
+                    alert('Invalid Email Address');
+                    document.getElementById("owneremail").focus();
 
+                    return false;
+            }
+            else if (tele.value == '') {
+                alert("Please input owner telephone number.");
+                document.getElementById("ownertel").focus();
+                return false;
+            }
+            alert('This Email is ok');
+            return true;
+        }
+        function numCheck(ownertel) {
+            var tele = document.getElementById("ownertel").value; 
+            e_k=event.keyCode
+            //if (((e_k < 48) || (e_k > 57)) && e_k != 46 ) {
+            if (e_k != 13 && (e_k < 48) || (e_k > 57))  {
+                    event.returnValue = false;
+                    alert("Input Number Only");
+                }
+                else if(tele.length>9){
+                    event.returnValue = false;
+                    alert("Your telephone number must not be over 10 digits");
+                }
+        }          
+        </script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -295,7 +332,7 @@
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
                                                                         <td align='center'>Tel : </td>
-                                                                        <td align='center'><input type='text' name='ownertel' id='ownertel".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['owner_tel']."'></td>
+                                                                        <td align='center'><input type='text' name='ownertel' onkeypress='numCheck()'; id='ownertel".$r['owner_id']."' class='form-control' style='width:200px' value='".$r['owner_tel']."'></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
@@ -312,7 +349,7 @@
                                                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
 
                                                                 &nbsp&nbsp
-                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['owner_id'].")' data-dismiss='modal'>Save</button>
+                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['owner_id'].")' onclick='checkfield()' data-dismiss='modal'>Save</button>
                                                             </div>
 
                                                         </div>

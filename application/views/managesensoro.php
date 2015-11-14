@@ -40,7 +40,25 @@
 </head>
 
 <body>
+    <script>
+    function checkfield() {
 
+            if (uuid.value == '') {
+                alert("Please input UUID.");
+                document.getElementById("uuid").focus();
+                return false;
+            }else if (major.value == '') {
+                alert("Please input Major.");
+                document.getElementById("major").focus();
+                return false;
+            }else if (minor.value == '') {
+                alert("Please input Minor.");
+                document.getElementById("minor").focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -195,8 +213,9 @@
                     </table>
                 </div>
                 <div class="modal-footer" style="text-align:center">
-                    <button type="button" class="btn btn-primary" id='create' data-dismiss="modal">Create</button>
+                    
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id='create' data-dismiss="modal" onclick="checkfield()">Create</button>
                 </div>
 
             </div>
