@@ -249,7 +249,10 @@ class Appback extends CI_Controller{
 			$getidfav = $r['info_id'];
 			array_push($argetfav , $getidfav);
 		}
-		print_r($argetfav) ;
+		// print_r($argetfav) ;
+		$this->output
+        			->set_content_type('application/json')
+        			->set_output(json_encode($argetfav));
 
 	}
 
@@ -295,7 +298,10 @@ class Appback extends CI_Controller{
 			array_push($argetfol , $getidfol);
 
 		}
-		print_r($argetfol);
+		// print_r($argetfol);
+		$this->output
+        			->set_content_type('application/json')
+        			->set_output(json_encode($argetfol));
 
 	}
 
