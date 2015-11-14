@@ -239,6 +239,66 @@ class Appback extends CI_Controller{
         			->set_output(json_encode($arsend));
 	}
 
+	public function getfav(){
+		$id = $this->input->post("fbid");
+
+		$sqlgetfav = "select DISTINCT info.info_id from favorite join info on favorite.info_id = info.info_id where fb_id = '".$id."' and info_begin_date < NOW() and info_expire_date >= NOW()+1 and info_status_id = '1' ";
+		$datafav = $this->db->query($sqlgetfav)->result_array();
+		$argetfav = array();
+		foreach ($datafav as $r) {
+			$getidfav = $r['info_id'];
+			array_push($argetfav , $getidfav);
+		}
+		print_r($argetfav) ;
+
+	}
+
+	public function getinfo(){
+		$infoid = $this->input->post("info");
+		$sqlgetinfo = "select * from info join store on info.store_id = store.store_id where info_id = '".$infoid."' ";
+		$dataInfo = $this->db->query($sqlgetinfo)->row_array(); 
+
+		$dataqr = $this->db->select("*")
+							->from("qr")
+							->where("info_id",$dataInfo['info_id'])->get();
+							// echo $this->db->last_query();
+		if ($dataqr->num_rows() != 0) {
+			$qrch = "have";
+		}else{
+			$qrch = "not have";
+		}
+		$arsend = array("info_id"=>$dataInfo['info_id'],
+						"info_name"=>$dataInfo['info_name'],
+						"info_desc"=>$dataInfo['info_descrip'],
+						"info_begin"=>$dataInfo['info_begin_date'],
+						"info_expire"=>$dataInfo['info_expire_date'],
+						"info_pic"=>$dataInfo['info_pic'],
+						"catagory"=>$dataInfo['catagory'],
+						"store_id"=>$dataInfo['store_id'],
+						"store_name"=>$dataInfo['store_name'],
+						"qr" => $qrch
+						);
+		$this->output
+        			->set_content_type('application/json')
+        			->set_output(json_encode($arsend));
+
+	}
+
+	public function getfol(){
+		$id = $this->input->post("fbid");
+
+		$sqlgetfol = "select DISTINCT store.store_id from follow join sensoro on follow.sensoro_id = sensoro.sensoro_id join store on sensoro.store_id = store.store_id where fb_id = '".$id."' and store.status_store_id = '1'  ";
+		$datafol = $this->db->query($sqlgetfol)->result_array();
+		$argetfol = array();
+		foreach ($datafol as $r) {
+			$getidfol = $r['store_id'];
+			array_push($argetfol , $getidfol);
+
+		}
+		print_r($argetfol);
+
+	}
+
 	public function qrcode(){
 		// $jsQr = $this->input->post("qr");
 		// $arQr = json_decode($jsQr);
