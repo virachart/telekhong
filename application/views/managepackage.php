@@ -115,6 +115,8 @@
                 <!-- /.row --> 
                 <div class="col-lg-12">
                     <button class="btn btn-success pull-right" data-toggle="modal" data-target="#myModal1" style="width:140px;margin-top:20px">+ New Package</button>
+                    
+                    <!-- modal add package -->
                     <div class="modal fade" id="myModal1" role="dialog">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -124,34 +126,67 @@
                                 </div>
                                 <div class="modal-body" >
                                     <table width="80%" align="center" style="margin-top:20px">
+                                        <!-- <form name="apppack" id="appback" action="<?php //echo site_url("managepackage/addpack");?>" method="post"> -->
                                             <tr >
                                                 <td>Package Name :<td>
-                                                <td><input type="text" name="cpname" class="form-control" style="width:120px"/></td>
+                                                <td><input type="text" name="cpname" id="cpname" class="form-control" style="width:120px"/></td>
                                                 <td width="10%"></td>
                                                 <td>Upload Limit :</td>
-                                                <td><input type="number" name="cplimit" class="form-control" min="1" style="width:100px"/></td>
+                                                <td><input type="number" name="cplimit" id="cplimit" class="form-control" min="1" style="width:100px"/></td>
                                             </tr>
                                             <tr><td>&nbsp</td></tr>
                                             <tr>
                                                 <td>Package Description :<td>
-                                                <td><textarea name="cpdes" class="form-control" style="width:180px;height:80px;resize:none"></textarea></td>
+                                                <td><textarea name="cpdes" id="cpdes" class="form-control" style="width:180px;height:80px;resize:none"></textarea></td>
                                                 <td width="10%"></td>
                                                 <td>Package Price :</td>
-                                                <td><input type="number" name="cpprice" class="form-control" min="0" style="width:100px"/></td>
+                                                <td><input type="number" name="cpprice" id="cpprice" class="form-control" min="0" style="width:100px"/></td>
                                             </tr>
                                             <tr><td>&nbsp</td></tr>
                                         </table>
 
                                 </div>
+                                <script type="text/javascript">
+                                    $(document).ready(function(){
+                                        $("#subaddpack").click(function() {
+                                            $.ajax({
+                                                url:"<?php echo site_url("managepackage/addpack");?>",
+                                                type: "POST",
+                                                cache: false,
+                                                data: "cpname="+$("#cpname").val()+"&limit="+$("#cplimit").val()+"&des="+$("#cpdes").val()+"&price="+$("#cpprice").val(),
+                                                dataType:"JSON",
+                                                success:function(res){
+                                                    // console.log(JSON.stringify(res));
+                                                    // $("#pid").attr("value",res.pid);
+                                                    // $("#pname").attr("value",res.pname);
+                                                    // $("#pdes").text(res.pdes);
+                                                    // $("#pprice").attr("value",res.pprice);
+                                                    // $("#plimit").attr("value",res.pup);
+                                                    // $("#adelinfo").attr("href","<?=base_url();?>index.php/managepackage/delpack/"+res.pid);
+                                                    // $("#delpack").attr("style","width:80px;margin-right:20px;");
+                                                },
+                                                error:function(err){
+                                                    console.log("error : "+err);
+                                                },
+                                            });
+                                            location.reload("managepackage");
+                                        });
+                                    });
+                                </script>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">Create Package</button>
+                                    <button type="submit" class="btn btn-success" id="subaddpack" data-dismiss="modal">Create Package</button>
                                     &nbsp&nbsp
+                                    <!-- </form> -->
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                
                                 </div>
 
                             </div>
                         </div>
-                        </div>
+                    </div>
+                    <!-- end modal add package -->
+
+
                 </div>
 
                 <script type="text/javascript">

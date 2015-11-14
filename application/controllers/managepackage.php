@@ -25,9 +25,10 @@ class managepackage extends CI_Controller{
 		}
 	}
 
-	public function delpack($pid){
-		$this->db->where('package_id', $pid);
-		$this->db->delete('package'); 
+	public function delpack($id){
+		$sqldelpack = "delete from package where package_id = '".$id."' ";
+		$this->db->query($sqldelpack);
+		echo $this->db->last_query();
 		redirect("managepackage");
 	}
 
@@ -102,6 +103,37 @@ class managepackage extends CI_Controller{
 	    $image = array_pop($exp);
 	   
 	    echo $image;
+	}
+
+
+	public function addpack(){
+		$name = $this->input->post("cpname");
+		$lim = $this->input->post("limit");
+		$des = $this->input->post("des");
+		$price = $this->input->post("price");
+		$araddpack = array(
+		   'package_name' => $name ,
+		   'upload_limit' => $lim ,
+		   'package_descrip' => $des ,
+		   'price' => $price
+		);
+
+		$this->db->insert('package', $araddpack); 
+		// echo $name;
+		// echo "<br>";
+		// echo $lim;
+		// echo "<br>";
+		// echo $des;
+		// echo "<br>";
+		// echo $price;
+		// echo "<br>";
+		// $arsend = array('name' => $name,
+						// 'limit' => $lim,
+						// 'des' => $des,
+						// 'price' => $price
+						//  );
+		// $arsend = array('' => , );
+		// echo json_encode($arsend);
 	}
 
 }
