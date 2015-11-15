@@ -88,14 +88,7 @@ body {
       <a class="navbar-brand" href="<?=base_url()?>index.php/auth">Telekhong.Me</a>
     </div>
     <div>
-      <div class="collapse navbar-collapse col-lg-10" id="myNavbar">
-        <ul class="nav navbar-nav">
-          <li><a href="#service">Service</a></li>
-          <!-- <li><a href="#about">About Us</a></li> -->
-          <li><a href="#policy">Policy</a></li>
-        </ul>
-        
-      </div>
+      
         <ul class="nav navbar-right top-nav" >
             <a href="<?php echo site_url("auth/login");?>"><img src="<?=base_url()?>images/icon/facebook-login.png" alt="HTML5 Icon" style="width:162px;height:35px;margin-top:7px;border-radius:3px"></a>
         </ul>
@@ -116,7 +109,7 @@ body {
         </div>
         <!-- /.container -->
 </section>
-<section id="services" class="services">
+<section id="services" class="container-fluid" >
         <div class="container">
             <div class="row text-center">
                 <div class="col-lg-10 col-lg-offset-1">

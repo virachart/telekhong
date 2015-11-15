@@ -279,10 +279,10 @@
                                                     </table>
                                                 </div>
                                                 <div>
-                                                <table width="30%">
+                                                <table width="30%" style="text-align:center">
                                                     <tr bgcolor="pink">
-                                                    <th><b>Service</b></th>
-                                                    <th><b>Status</b></th>
+                                                    <th style="text-align:center"><b>Service</b></th>
+                                                    <th style="text-align:center"><b>Status</b></th>
                                                     </tr>
                                                     
                                                     <tr>

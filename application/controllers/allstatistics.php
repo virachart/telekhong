@@ -64,9 +64,11 @@ class Allstatistics extends CI_Controller{
 						}
 
 						// recive info
-						$sqlgetinfore = "select * , count(fb_id) AS countre from info join info_log on info.info_id = info_log.info_id where info.store_id = '".$storeid."' and info.info_status_id = '1' and info_begin_date between '".$year."-01-01' and '".$year."-12-31' ;";
+						$sqlgetinfore = "select * , count(fb_id) AS countre from info join info_log on info.info_id = info_log.info_id where info.store_id = '".$storeid."' and info.info_status_id = '1' and info_begin_date between '".$year."-01-01' and '".$year."-12-31' GROUP BY info_log.info_id ;";
 						$reinfore = $this->db->query($sqlgetinfore);
 						$data['infore'] = $reinfore->result_array();
+
+
 
 						$data['forinfo'] = 0;
 						$sqlcountinfo = "select count(info_id) AS numinfo from info where store_id = '".$storeid."' and info_status_id ='1' ";

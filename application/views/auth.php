@@ -333,13 +333,14 @@ body {
 <div id="home" class="container-fluid ">
     <div style="text-align:center">
         <img src="<?=base_url()?>images/icon/logo.jpg" style="width:180px;height:180px;border-radius:3px;" id= "jumbo"><br>
-        <h2 id="jumbo2">"<span style="color:#FF6600;"> Telekhong</span> Talk Everything "</h2>
+        <h2 id="jumbo2">"<span style="color:#FF6600;"> TeleKhong</span> Instead all your voice. "</h2>
     </div>
     <br>
 </div>
-<div id="about" class="container-fluid">
-  <h1 style="margin-left:40px">About Us</h1>
-  <div id="slider1_container" class="col-lg-8"style="position: relative; top: 20px; left: 60px; width: 800px;
+<div id="about" class="container-fluid" >
+  <h1 style="margin-left:15vh">About Us</h1>
+
+  <div id="slider1_container" class="col-lg-8"style="position: relative; top: 20px; left: 15vh; width: 800px;
         height: 456px; background: #191919; overflow: hidden;">
 
         <!-- Loading Screen -->
@@ -392,11 +393,11 @@ body {
             <!-- Thumbnail Item Skin End -->
         </div>
     </div>
-    <div class="col-lg-4" style="margin-left:60px;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;overflow-y: scroll;">
+    <div class="col-lg-4" style="margin-left:15vh;margin-top:20px;background-color:rgba(0,0,0,0.7);height:456px;overflow-y: scroll;">
         <h1 >What is "<span style="color:#FF6600;">Telekhong</span>"</h1>
         <p>Telekhong is message delivery service by passing intermediary device as name "<span style="color:#FF6600;">Khong</span>"</p>
         <p><span style="color:#FF6600;">What is this "Khong" ? :</span> Khong is iBeacon device  bluetooth 4.0. It works by  signal broadcasting around the area . When telekhong application come in area ( switch on bluetooth & 3g or wifi ) Khong will send a key to mobile application and application use a key to get message for show on application from telekhong server.</p>
-        <p>Our services are divided into two groups of users.</p>
+        <p>Our services are divided two groups of users.</p>
         <ul>
         <li><span style="color:#FF6600;">1.End user : </span>Receiver message , people who use application mobile (free)</li>
         <li><span style="color:#FF6600;">2.Store Owner : </span>sender message , people who registered (facebook account only) and create store on telekhong website ( Service charge )</li>
