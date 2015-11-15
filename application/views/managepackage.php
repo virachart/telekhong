@@ -169,26 +169,17 @@
                                                 url:"<?php echo site_url("managepackage/addpack");?>",
                                                 type: "POST",
                                                 cache: false,
-                                                data: "cpname="+$("#cpname").val()+"&limit="+$("#cplimit").val()+"&des="+$("#cpdes").val()+"&price="+$("#cpprice").val(),
-                                                dataType:"JSON",
-                                                success:function(res){
-                                                    // console.log(JSON.stringify(res));
-                                                    // $("#pid").attr("value",res.pid);
-                                                    // $("#pname").attr("value",res.pname);
-                                                    // $("#pdes").text(res.pdes);
-                                                    // $("#pprice").attr("value",res.pprice);
-                                                    // $("#plimit").attr("value",res.pup);
-                                                    // $("#adelinfo").attr("href","<?=base_url();?>index.php/managepackage/delpack/"+res.pid);
-                                                    // $("#delpack").attr("style","width:80px;margin-right:20px;");
-                                                },
-                                                error:function(err){
-                                                    console.log("error : "+err);
-                                                },
+                                                data: "cpname="+$("#cpname").val()+"&limit="+$("#cplimit").val()+"&des="+$("#cpdes").val()+"&price="+$("#cpprice").val()
                                             });
-                                            location.reload("managepackage");
+                                            setInterval(reload, 500);
                                         });
+
+                                        function reload() {
+                                            location.reload("managepackage");
+                                        }
                                     });
                                 </script>
+
                                 <div class="modal-footer">
                                     <button type="submit" class="btn btn-success" id="subaddpack" >Create Package</button>
                                     &nbsp&nbsp
