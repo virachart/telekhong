@@ -135,6 +135,20 @@
                 <script type="text/javascript">
                     // create beacon
                     $('#create').live("click",function(){
+
+                        if (uuid.value.length<1) {
+                            alert("Please input UUID.");
+                            document.getElementById("uuid").focus();
+                            return false;
+                        }else if (major.value.length<1) {
+                            alert("Please input Major.");
+                            document.getElementById("major").focus();
+                            return false;
+                        }else if (minor.value.length<1) {
+                            alert("Please input Minor.");
+                            document.getElementById("minor").focus();
+                            return false;
+                        }
                         $.ajax({
                             url:"managesensoro/add",
                             type: "POST",
@@ -215,7 +229,7 @@
                 <div class="modal-footer" style="text-align:center">
                     
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id='create' data-dismiss="modal" onclick="checkfield()">Create</button>
+                    <button type="button" class="btn btn-primary" id='create' >Create</button>
                 </div>
 
             </div>

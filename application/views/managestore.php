@@ -19,7 +19,11 @@
 
     <!-- Custom Fonts -->
     <link href="<?=base_url()?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
+    <script src="<?=base_url()?>assets/js/jquery.min.js"></script>
+    
+    <!-- Bootstrap Core JavaScript -->
+    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -30,7 +34,21 @@
 </head>
 
 <body>
-
+    <script>
+        function numCheck(storetel,id) {
+            var telnum = document.getElementById("storetel"+id).value; 
+            e_k=event.keyCode
+            //if (((e_k < 48) || (e_k > 57)) && e_k != 46 ) {
+            if (e_k != 13 && (e_k < 48) || (e_k > 57))  {
+                event.returnValue = false;
+                alert("Input Number Only");
+            }
+            else if(telnum.length>9){
+                event.returnValue = false;
+                alert("Your telephone number must not be over 10 digits");
+            }
+        }                                              
+    </script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -140,10 +158,37 @@
                                      </form>
 
                                      <script type="text/javascript">
-
+                                        
                                          // show edit detail
                                         function edit(id){
                                             // alert($("#ownerid"+id).val()+"-"+$("#owneremail"+id).val()+"-"+$("#ownertel"+id).val()+"-"+$("#ownerstatus"+id).val());
+                                            var stn = document.getElementById("storename"+id).value;
+                                            var des = document.getElementById("detail"+id).value;
+                                            var address = document.getElementById("address"+id).value;
+                                            var telnum = document.getElementById("storetel"+id).value;
+                                            var time = document.getElementById("open"+id).value;
+                                            if (stn.length<1) {
+                                                alert("Please input store name.");
+                                                document.getElementById("stn").focus();
+                                                return false;
+                                            }else if (des.length<1) {
+                                                alert("Please input store detail.");
+                                                document.getElementById("detail").focus();
+                                                return false;
+                                            }else if (address.length<1) {
+                                                alert("Please input store address.");
+                                                document.getElementById("address").focus();
+                                                return false;
+                                            }else if (telnum.length<1) {
+                                                alert("Please input store telephone number.");
+                                                document.getElementById("storetel").focus();
+                                                return false;
+                                            }else if (time.length<1) {
+                                                alert("Please input store open time.");
+                                                document.getElementById("open").focus();
+                                                return false;
+                                            
+                                            }
                                             $.ajax({
                                                 url:"<?php echo site_url("managestore/edit");?>",
                                                 type: "POST",
@@ -363,7 +408,7 @@
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
                                                                         <td align='center'>Telephone : &nbsp</td>
-                                                                        <td align='center'><input type='text' name='ownertel' id='storetel".$r['store_id']."' class='form-control' style='width:200px' value='".$r['tel']."'></td>
+                                                                        <td align='center'><input type='text' name='storetel' id='storetel".$r['store_id']."' onkeypress='numCheck(storetel,".$r['store_id'].")'; class='form-control' style='width:200px' value='".$r['tel']."'></td>
                                                                     </tr>
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
@@ -373,7 +418,7 @@
                                                                     <tr><td>&nbsp</td></tr>
                                                                     <tr >
                                                                         <td align='center'>Status : &nbsp</td>
-                                                                        <td align='center'><input type='text' name='ownerstatus' id='status".$r['store_id']."' class='form-control' style='width:200px' value='".$r['status_store_id']."'></td>
+                                                                        <td align='center'><input type='number' min='0' name='status' id='status".$r['store_id']."' class='form-control' style='width:200px' value='".$r['status_store_id']."'></td>
                                                                     </tr>
                                                                 </table>
                                                             </div>
@@ -384,7 +429,7 @@
                                                                 &nbsp&nbsp&nbsp
                                                                 <button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>
                                                                  &nbsp&nbsp
-                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['store_id'].")' data-dismiss='modal'>Save</button>
+                                                                <button type='button' class='btn btn-primary' onclick='edit(".$r['store_id'].")' >Save</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -434,10 +479,6 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-    <script src="<?=base_url()?>assets/js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
 
 </body>
 

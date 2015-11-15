@@ -41,7 +41,18 @@
 </head>
 
 <body>
+    <script>
+    function checkfield() {
 
+                if (pname.value == '') {
+                    alert("Please input package name.");
+                    document.getElementById("pname").focus();
+                    return false;
+                }
+                return true;
+            }
+    
+    </script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -149,6 +160,11 @@
                                 <script type="text/javascript">
                                     $(document).ready(function(){
                                         $("#subaddpack").click(function() {
+                                            if (cpname.value == '') {
+                                                alert("Please input package name.");
+                                                document.getElementById("cpname").focus();
+                                                return false;
+                                            }
                                             $.ajax({
                                                 url:"<?php echo site_url("managepackage/addpack");?>",
                                                 type: "POST",
@@ -174,7 +190,7 @@
                                     });
                                 </script>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-success" id="subaddpack" data-dismiss="modal">Create Package</button>
+                                    <button type="submit" class="btn btn-success" id="subaddpack" >Create Package</button>
                                     &nbsp&nbsp
                                     <!-- </form> -->
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -207,6 +223,7 @@
                                     $("#plimit").attr("value",res.pup);
                                     $("#adelinfo").attr("href","<?=base_url();?>index.php/managepackage/delpack/"+res.pid);
                                     $("#delpack").attr("style","width:80px;margin-right:20px;");
+                                    $("#savepack").attr("style","width:80px;margin-left:20px;");
                                 },
                                 error:function(err){
                                     console.log("error : "+err);
@@ -262,7 +279,7 @@
                             </table>
                                 <div style="margin-top:20px">
                                     <a href="" onclick="javascript:return confirm('Do you want to delete?');" id="adelinfo"><button class="btn btn-danger" id="delpack" style="margin-right:20px;display: none;">Delete</button></a>
-                                    <button class="btn btn-primary" type="submit" style="width:80px;margin-left:20px">Save</button>
+                                    <button class="btn btn-primary" type="submit" id="savepack" onclick="checkfield()"style="width:80px;margin-left:20px;display:none;">Save</button>
                             </form>
                             </div>
                         </div>
