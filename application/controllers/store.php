@@ -10,56 +10,103 @@ class Store extends CI_Controller{
 		
 		if($this->session->userdata('id') != null){
 			if ($this->session->userdata('ownerid') != null) {
-				$ownerid = $this->session->userdata('ownerid');
-				// $ownerid = 5;
-				// $sqlfindstore = "select MIN(store_id) AS store_id from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
-				$sqlchstore = "select * from store where owner_id = '".$ownerid."' ";
-				$rsfindstore = $this->db->query($sqlchstore)->result_array();
+				if ($this->session->userdata('store') > 1 ) {
+					$ownerid = $this->session->userdata('ownerid');
+					// $ownerid = 5;
+					// $sqlfindstore = "select MIN(store_id) AS store_id from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
+					$sqlchstore = "select * from store where owner_id = '".$ownerid."' ";
+					$rsfindstore = $this->db->query($sqlchstore)->result_array();
 
-				$numcheck = 0;
-				if ($rsfindstore == null) {
-					$data['ch'] = 1;
-					redirect("createstore",$data);
-				}else{
-					foreach ($rsfindstore as $r) {
-						if ($r['status_store_id'] != 1 && $numcheck != 0) {
-							$numcheck = 10;
-						}else{
-							$numcheck = 11;
+					$numcheck = 0;
+					if ($rsfindstore == null) {
+						$data['ch'] = 1;
+						redirect("createstore",$data);
+					}else{
+						foreach ($rsfindstore as $r) {
+							if ($r['status_store_id'] != 1 && $numcheck != 0) {
+								$numcheck = 10;
+							}else{
+								$numcheck = 11;
+							}
 						}
+
 					}
 
-				}
+					// get min store id
+					$sqlfindminstore = "select MIN(store_id) AS store_id , store_name from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
+					$rsfindstore = $this->db->query($sqlfindminstore)->row_array();
+					
+					if ($rsfindstore == null) {
+						$data['ch'] = 1;
+						redirect("createstore",$data);
+					}else{
+						$pay = 0;
 
-				// get min store id
-				$sqlfindminstore = "select MIN(store_id) AS store_id , store_name from store where status_store_id = '1' and owner_id = '".$ownerid."' ";
-				$rsfindstore = $this->db->query($sqlfindminstore)->row_array();
-				
-				if ($rsfindstore == null) {
-					$data['ch'] = 1;
-					redirect("createstore",$data);
+						$storeid = $rsfindstore['store_id'];
+						$storename = $rsfindstore['store_name'];
+
+						//get store and package info
+						$sqlgetstore = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
+						$rsstorepay = $this->db->query($sqlgetstore)->row_array();
+						$data['rs'] = $this->db->query($sqlgetstore)->row_array();
+
+						if ($rsstorepay['expire_date'] != null) {
+							$pay = 1;
+						}
+						
+						$this->session->unset_userdata("storeid");
+						$this->session->unset_userdata("storename");
+
+						//get store id set in session
+						$arstoreid = array('storeid' => $storeid ,
+											'storename' => $storename);
+						$this->session->set_userdata($arstoreid);
+
+						//show all store
+						$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
+						$data['allstore'] = $this->db->query($sqlallstore)->result_array();
+
+						//show info log
+						$sqlgetinfo = "select * from info where store_id = '".$storeid."' and info_status_id = '1' order by info_date DESC ";
+						$data['info'] = $this->db->query($sqlgetinfo)->result_array();
+
+						if ($numcheck == 10) {
+							$this->session->set_userdata("statuspack", "5");
+						}elseif ($pay == 0) {
+							$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
+							$data['storedetail'] = $this->db->query($sqlgetst)->row_array();
+							$this->load->view("selectpayment",$data);
+						}elseif ($rsstorepay['package_id'] == 1) {
+							$this->session->set_userdata("statuspack", "1");
+						}elseif ($rsstorepay['package_id'] == 2) {
+							$this->session->set_userdata("statuspack", "2");
+						}elseif ($rsstorepay['package_id'] == 3) {
+							$this->session->set_userdata("statuspack", "3");
+						}
+						$follow = $this->db->select("*")
+											->from("follow")
+											->join("sensoro","follow.sensoro_id = sensoro.sensoro_id")
+											->join("store","sensoro.store_id = store.store_id")
+											->where('sensoro.store_id',$storeid)->get()->result_array();
+						$sqlfollow = "select * from follow join sensoro on follow.sensoro_id = sensoro.sensoro_id where sensoro.store_id = '".$storeid."' ";
+						$data['follow'] = $this->db->query($sqlfollow);
+
+						$sqlgetsensoro = "select * from sensoro where store_id = '".$storeid."' ";
+						$data['sensoro'] = $this->db->query($sqlgetsensoro)->result_array();
+						
+						// echo "<pre>";
+						// print_r($follow);
+						// echo "</pre>";
+
+						$this->load->view("store",$data);
+					}
 				}else{
-					$pay = 0;
-
-					$storeid = $rsfindstore['store_id'];
-					$storename = $rsfindstore['store_name'];
-
+					$ownerid = $this->session->userdata('ownerid');
+					$storeid = $this->session->userdata('storeid');
 					//get store and package info
 					$sqlgetstore = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
 					$rsstorepay = $this->db->query($sqlgetstore)->row_array();
 					$data['rs'] = $this->db->query($sqlgetstore)->row_array();
-
-					if ($rsstorepay['expire_date'] != null) {
-						$pay = 1;
-					}
-					
-					$this->session->unset_userdata("storeid");
-					$this->session->unset_userdata("storename");
-
-					//get store id set in session
-					$arstoreid = array('storeid' => $storeid ,
-										'storename' => $storename);
-					$this->session->set_userdata($arstoreid);
 
 					//show all store
 					$sqlallstore = "select * from store where owner_id = '".$ownerid."' and status_store_id != '4' and store_id != '".$storeid."' ";
@@ -69,37 +116,17 @@ class Store extends CI_Controller{
 					$sqlgetinfo = "select * from info where store_id = '".$storeid."' and info_status_id = '1' order by info_date DESC ";
 					$data['info'] = $this->db->query($sqlgetinfo)->result_array();
 
-					if ($numcheck == 10) {
-						$this->session->set_userdata("statuspack", "5");
-					}elseif ($pay == 0) {
-						$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
-						$data['storedetail'] = $this->db->query($sqlgetst)->row_array();
-						$this->load->view("selectpayment",$data);
-					}elseif ($rsstorepay['package_id'] == 1) {
-						$this->session->set_userdata("statuspack", "1");
-					}elseif ($rsstorepay['package_id'] == 2) {
-						$this->session->set_userdata("statuspack", "2");
-					}elseif ($rsstorepay['package_id'] == 3) {
-						$this->session->set_userdata("statuspack", "3");
-					}
-					$follow = $this->db->select("*")
-										->from("follow")
-										->join("sensoro","follow.sensoro_id = sensoro.sensoro_id")
-										->join("store","sensoro.store_id = store.store_id")
-										->where('sensoro.store_id',$storeid)->get()->result_array();
-					$sqlfollow = "select * from follow join sensoro on follow.sensoro_id = sensoro.sensoro_id where sensoro.store_id = '".$storeid."' ";
-					$data['follow'] = $this->db->query($sqlfollow);
-
 					$sqlgetsensoro = "select * from sensoro where store_id = '".$storeid."' ";
 					$data['sensoro'] = $this->db->query($sqlgetsensoro)->result_array();
-					
-					// echo "<pre>";
-					// print_r($follow);
-					// echo "</pre>";
+
+
+					$sqlfollow = "select * from follow join sensoro on follow.sensoro_id = sensoro.sensoro_id where sensoro.store_id = '".$storeid."' ";
+								$data['follow'] = $this->db->query($sqlfollow);
+								
 
 					$this->load->view("store",$data);
 				}
-			
+				
 			}else{
 				// login but don't have owner id
 				redirect("regis");
@@ -151,7 +178,7 @@ class Store extends CI_Controller{
 		if ($pay == 0) {
 			$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
 			$data['storedetail'] = $this->db->query($sqlgetst)->row_array();
-			$this->load->view("selectpayment",$data);
+			// $this->load->view("selectpayment",$data);
 		}elseif ($rsstorepay['package_id'] == 1) {
 			$this->session->set_userdata("statuspack", "1");
 		}elseif ($rsstorepay['package_id'] == 2) {
