@@ -17,7 +17,7 @@ class addlog extends CI_Controller{
 		$fbid4 = "1176771389006111";
 		$fbid5 = "10149999012543146";
 		
-		$sqlgetinfoname = "select * from info where info_id = '49' ";
+		$sqlgetinfoname = "select * from info where info_id = '50' ";
 		
 
 		$datainfo = $this->db->query($sqlgetinfoname)->row_array();
@@ -79,24 +79,26 @@ class addlog extends CI_Controller{
 						$ran4 = rand(50,200);
 						$ran5 = rand(50,200);
 
-						for ($i=0; $i < $ran1; $i++) { 
-							$sqlinsert1 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid1."')";
+						for ($k=0; $k < $ran1; $k++) { 
+							$sqlinsert1 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '50', '".$fbid1."')";
 							$this->db->query($sqlinsert1);
+							// echo $this->db->last_query();
+							// echo "<br>";
 						}
-						for ($i=0; $i < $ran2; $i++) { 
-							$sqlinsert2 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid2."')";
+						for ($k=0; $k < $ran2; $k++) { 
+							$sqlinsert2 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '50', '".$fbid2."')";
 							$this->db->query($sqlinsert2);
 						}
-						for ($i=0; $i < $ran3; $i++) { 
-							$sqlinsert3 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid3."')";
+						for ($k=0; $k < $ran3; $k++) { 
+							$sqlinsert3 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '50', '".$fbid3."')";
 							$this->db->query($sqlinsert3);
 						}
-						for ($i=0; $i < $ran4; $i++) { 
-							$sqlinsert4 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid4."')";
+						for ($k=0; $k < $ran4; $k++) { 
+							$sqlinsert4 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '50', '".$fbid4."')";
 							$this->db->query($sqlinsert4);
 						}
-						for ($i=0; $i < $ran5; $i++) { 
-							$sqlinsert5 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid5."')";
+						for ($k=0; $k < $ran5; $k++) { 
+							$sqlinsert5 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '50', '".$fbid5."')";
 							$this->db->query($sqlinsert5);
 						}
 					}
@@ -206,10 +208,10 @@ class addlog extends CI_Controller{
 	}
 
 	public function addinto(){
-		$sqlgetuser = "select * from user limit 20";
+		$sqlgetuser = "select * from user ";
 		$rsuser = $this->db->query($sqlgetuser)->result_array();
 
-		$sqlgetinfoname = "select * from info where info_id = '49' ";
+		$sqlgetinfoname = "select * from info where info_id = '50' ";
 		
 
 		$datainfo = $this->db->query($sqlgetinfoname)->row_array();
@@ -236,7 +238,7 @@ class addlog extends CI_Controller{
 
 //begin age recive message
 		$simumonth = $mbegin;
-		$simuday = $dbegin;
+		$simuday = $dbegin+0;
 		$simuyear = $ybegin;
 
 		foreach ($rsuser as $r) {
@@ -256,7 +258,7 @@ class addlog extends CI_Controller{
 						$j = "0".$j;
 					} 
 
-					$fulldatesimu = $simuyear."-".$i."-".$simuday;
+					$fulldatesimu = $simuyear."-".$i."-".$j;
 
 					$fulldate = date("Y-m-d");
 					// echo $fulldate;
@@ -266,23 +268,56 @@ class addlog extends CI_Controller{
 						// echo $fulldatesimu;
 						// echo "<br>";
 
-						$sqlinsert1 = "INSERT INTO sensoro_log (`sensoro_log_date`, `sensoro_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '8', '".$r['fb_id']."')";
-						$this->db->query($sqlinsert1);
+						// add to info_log
+							// $sqlinsert1 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '50', '".$r['fb_id']."')";
+							// $this->db->query($sqlinsert1);
+							// echo $this->db->last_query();
+							// echo "<br>";
+						// for ($k=0; $k < $ran2; $k++) { 
+						// 	$sqlinsert2 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '50', '".$fbid2."')";
+						// 	$this->db->query($sqlinsert2);
+						// }
+						// for ($k=0; $k < $ran3; $k++) { 
+						// 	$sqlinsert3 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '50', '".$fbid3."')";
+						// 	$this->db->query($sqlinsert3);
+						// }
+						// for ($k=0; $k < $ran4; $k++) { 
+						// 	$sqlinsert4 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '50', '".$fbid4."')";
+						// 	$this->db->query($sqlinsert4);
+						// }
+						// for ($k=0; $k < $ran5; $k++) { 
+						// 	$sqlinsert5 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '50', '".$fbid5."')";
+						// 	$this->db->query($sqlinsert5);
+						// }
+						// end add to info_log
 
-						$sqlinsert2 = "INSERT INTO sensoro_log (`sensoro_log_date`, `sensoro_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '13', '".$r['fb_id']."')";
-						$this->db->query($sqlinsert2);
+						$sqlinsertqr = "INSERT INTO qr_log (`qr_log_date`, `qr_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '26', '".$r['fb_id']."') ";
+						$this->db->query($sqlinsertqr);
+
+						echo $this->db->last_query();
+						echo "<br>";
+
+
+
+						// $sqlinsert1 = "INSERT INTO sensoro_log (`sensoro_log_date`, `sensoro_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '13', '".$r['fb_id']."')";
+						// $this->db->query($sqlinsert1);
+						// echo $this->db->last_query();
+						// echo "<br>";
+
+						// $sqlinsert2 = "INSERT INTO sensoro_log (`sensoro_log_date`, `sensoro_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '13', '".$r['fb_id']."')";
+						// $this->db->query($sqlinsert2);
 					
-						// $sqlinsert2 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid2."')";
+						// $sqlinsert2 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '49', '".$fbid2."')";
 						// $this->db->query($sqlinsert2);
 					
 					
-						// $sqlinsert3 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid3."')";
+						// $sqlinsert3 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '49', '".$fbid3."')";
 						// $this->db->query($sqlinsert3);
 					
-						// $sqlinsert4 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid4."')";
+						// $sqlinsert4 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '49', '".$fbid4."')";
 						// $this->db->query($sqlinsert4);
 					
-						// $sqlinsert5 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$simuday." 10:18:43', '49', '".$fbid5."')";
+						// $sqlinsert5 = "INSERT INTO info_log (`info_log_date`, `info_id`, `fb_id`) VALUES ('".$simuyear."-".$i."-".$j." 10:18:43', '49', '".$fbid5."')";
 						// $this->db->query($sqlinsert5);
 						
 					}

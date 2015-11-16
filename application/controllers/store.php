@@ -145,6 +145,9 @@ class Store extends CI_Controller{
 		$sqlgetinfo = "select * from info where store_id = '".$storeid."' and info_status_id = '1' order by info_date DESC ";
 		$data['info'] = $this->db->query($sqlgetinfo)->result_array();
 
+		$sqlgetsensoro = "select * from sensoro where store_id = '".$storeid."' ";
+		$data['sensoro'] = $this->db->query($sqlgetsensoro)->result_array();
+
 		if ($pay == 0) {
 			$sqlgetst = "select * from store join package on store.package_id = package.package_id where store_id = '".$storeid."' ";
 			$data['storedetail'] = $this->db->query($sqlgetst)->row_array();

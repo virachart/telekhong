@@ -377,15 +377,18 @@ class Statisticsowner extends CI_Controller{
 											$j = "0".$j;
 										} 
 										
-										$sqlreciveinstoreage1[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage1[$count] = "select * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinage1d'.$count] = $this->db->query($sqlreciveinstoreage1[$count]);
-										$sqlreciveinstoreage2[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										// echo var_dump($data['reinage1d'.$count]);
+										$sqlreciveinstoreage2[$count] = "select * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinage2d'.$count] = $this->db->query($sqlreciveinstoreage2[$count]);
-										$sqlreciveinstoreage3[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										// echo $this->db->last_query();
+										// echo "<br>";
+										$sqlreciveinstoreage3[$count] = "select * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinage3d'.$count] = $this->db->query($sqlreciveinstoreage3[$count]);
-										$sqlreciveinstoreage4[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage4[$count] = "select * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinage4d'.$count] = $this->db->query($sqlreciveinstoreage4[$count]);
-										$sqlreciveinstoreage5[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage5[$count] = "select * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinage5d'.$count] = $this->db->query($sqlreciveinstoreage5[$count]);
 
 										$count++;
@@ -406,15 +409,15 @@ class Statisticsowner extends CI_Controller{
 										if ($j < 10) {
 											$j = "0".$j;
 										} 
-										$sqlreciveinstoreage1[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage1[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage1d'.$count] = $this->db->query($sqlreciveinstoreage1[$count]);
-										$sqlreciveinstoreage2[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage2[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage2d'.$count] = $this->db->query($sqlreciveinstoreage2[$count]);
-										$sqlreciveinstoreage3[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage3[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage3d'.$count] = $this->db->query($sqlreciveinstoreage3[$count]);
-										$sqlreciveinstoreage4[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage4[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage4d'.$count] = $this->db->query($sqlreciveinstoreage4[$count]);
-										$sqlreciveinstoreage5[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage5[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage5d'.$count] = $this->db->query($sqlreciveinstoreage5[$count]);
 
 										$count++;
@@ -435,15 +438,15 @@ class Statisticsowner extends CI_Controller{
 										if ($j < 10) {
 											$j = "0".$j;
 										} 
-										$sqlreciveinstoreage1[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage1[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y17."-01-01' and '".$nowdate."' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage1d'.$count] = $this->db->query($sqlreciveinstoreage1[$count]);
-										$sqlreciveinstoreage2[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage2[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage2d'.$count] = $this->db->query($sqlreciveinstoreage2[$count]);
-										$sqlreciveinstoreage3[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage3[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage3d'.$count] = $this->db->query($sqlreciveinstoreage3[$count]);
-										$sqlreciveinstoreage4[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage4[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage4d'.$count] = $this->db->query($sqlreciveinstoreage4[$count]);
-										$sqlreciveinstoreage5[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinstoreage5[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and birth between '".$y100."-01-01' and '".$y51."-12-31' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by d.sensoro_id ;";
 										$data['reinage5d'.$count] = $this->db->query($sqlreciveinstoreage5[$count]);
 
 										$count++;
@@ -453,10 +456,13 @@ class Statisticsowner extends CI_Controller{
 								}
 							}
 
+							// echo "<pre>";
+							// var_dump($data);
+							// echo "</pre>";
 							$data['reinage1'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
-								array_push($data['reinage1'], $data['reinage1d'.$counttoar]->num_rows() );
+								array_push($data['reinage1'], sizeof($data['reinage1d'.$counttoar]->num_rows()) );
 								$counttoar++;
 							}
 							$data['reinage2'] = array();
@@ -465,6 +471,9 @@ class Statisticsowner extends CI_Controller{
 								array_push($data['reinage2'], $data['reinage2d'.$counttoar]->num_rows() );
 								$counttoar++;
 							}
+							// echo "<pre>";
+							// print_r($data['reinage2']);
+							// echo "</pre>";
 							$data['reinage3'] = array();
 							$counttoar = 1;
 							for ($i=0; $i < $count-1; $i++) { 
@@ -511,11 +520,11 @@ class Statisticsowner extends CI_Controller{
 											$j = "0".$j;
 										} 
 										
-										$sqlreciveinsex1[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = 'male' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinsex1[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = 'male' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinsex1d'.$count] = $this->db->query($sqlreciveinsex1[$count]);
-										$sqlreciveinsex2[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = 'female' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinsex2[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = 'female' and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinsex2d'.$count] = $this->db->query($sqlreciveinsex2[$count]);
-										$sqlreciveinsex3[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = null and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' ;";
+										$sqlreciveinsex3[$count] = "select DISTINCT * from info_log a inner join user b on a.fb_id = b.fb_id inner join sensoro_log c on b.fb_id = c.fb_id inner join sensoro d on c.sensoro_id = d.sensoro_id where info_id = '".$maxid."' and sex = null and info_log_date like '".$simuyear."-".$i."-".$j."%' and sensoro_type = '2' group by c.fb_id ;";
 										$data['reinsex3d'.$count] = $this->db->query($sqlreciveinsex3[$count]);
 
 										$count++;
@@ -604,7 +613,7 @@ class Statisticsowner extends CI_Controller{
 					//begin part of age use qr code
 
 							$simumonth = $mbegin;
-							$simuday = $dbegin;
+							$simuday = $dbegin+0;
 							$simuyear = $ybegin;
 							$count = 1;
 
@@ -629,6 +638,8 @@ class Statisticsowner extends CI_Controller{
 										$data['qrage1d'.$count] = $this->db->query($sqlqrage1[$count]);
 										$sqlqrage2[$count] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y25."-01-01' and '".$y18."-12-31' and qr_log_date like '".$simuyear."-".$i."-".$j."%';";
 										$data['qrage2d'.$count] = $this->db->query($sqlqrage2[$count]);
+										// echo $this->db->last_query();
+										// echo "<br>";
 										$sqlqrage3[$count] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y35."-01-01' and '".$y26."-12-31' and qr_log_date like '".$simuyear."-".$i."-".$j."%';";
 										$data['qrage3d'.$count] = $this->db->query($sqlqrage3[$count]);
 										$sqlqrage4[$count] = "select * from qr a inner join qr_log b on a.qr_id = b.qr_id inner join user c on b.fb_id = c.fb_id where info_id = '".$maxid."' and birth between '".$y50."-01-01' and '".$y36."-12-31' and qr_log_date like '".$simuyear."-".$i."-".$j."%';";
