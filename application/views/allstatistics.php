@@ -500,7 +500,7 @@
                             echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
-                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Follow graph by age range. </h3>
                                     </div>
                                     <div class='panel-body'>
                                         <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users per day group by age. </div>
@@ -512,7 +512,7 @@
                             echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
-                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Gender Graph </h3>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Follow graph by gender. </h3>
                                     </div>
                                     <div class='panel-body'>
                                     <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users per day group by gender. </div>
@@ -525,7 +525,7 @@
                             echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
-                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Age Range Graph </h3>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Follow graph by age range. </h3>
                                     </div>
                                     <div class='panel-body'>
                                         <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users for each month group by age. </div>
@@ -537,7 +537,7 @@
                             echo "<div class='col-lg-12' style='margin-top:20px'>
                                 <div class='panel panel-red'>
                                     <div class='panel-heading'>
-                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Gender Graph </h3>
+                                        <h3 class='panel-title'><i class='fa fa-long-arrow-right'></i> Follow graph by gender. </h3>
                                     </div>
                                     <div class='panel-body'>
                                     <div style='text-align:center;color:#808080'>* This line graph shows total of follower from application users for each month group by gender. </div>
